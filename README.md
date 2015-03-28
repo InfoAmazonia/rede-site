@@ -1,4 +1,4 @@
-# Rede Infoamazonia
+# Rede InfoAmazonia
 
 A platform of water quality sensors.
 
