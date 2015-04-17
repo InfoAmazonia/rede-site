@@ -1,0 +1,16 @@
+doctype html
+html
+
+	include includes/head
+
+	body(ng-controller="TestCtrl")
+
+		include includes/header
+
+		include includes/messages
+
+		.ui-view(autoscroll='false')
+
+		include includes/loading
+
+		include includes/footer
