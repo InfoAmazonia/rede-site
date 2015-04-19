@@ -1,4 +1,4 @@
-angular.module('cc')
+angular.module('rede')
 
 .factory('RedeService', [
 	'$resource',

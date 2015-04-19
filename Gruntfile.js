@@ -56,6 +56,16 @@ module.exports = function(grunt) {
 						expand: true
 					}
 				]
+			},
+			mapbox: {
+				files: [
+					{
+						cwd: 'node_modules/mapbox.js/theme',
+						src: ['**'],
+						dest: 'public/lib/mapbox',
+						expand: true
+					}
+				]
 			}
 		},
 		watch: {

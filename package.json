@@ -38,7 +38,9 @@
     "grunt-contrib-less": "^1.0.1",
     "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^0.6.1",
-    "underscore": "^1.8.3"
+    "leaflet": "^0.7.3",
+    "underscore": "^1.8.3",
+    "mapbox.js": "mapbox/mapbox.js#v2.1.8"
   },
   "browser": {
     "angular": "./node_modules/angular/angular.js"
