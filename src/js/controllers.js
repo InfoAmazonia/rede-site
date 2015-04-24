@@ -23,5 +23,13 @@ angular.module('rede')
 			}
 		];
 
+		$scope.measureType = 'ph';
+
+		$scope.chartMeasure = function(type) {
+			$scope.measureType = type;
+		};
+
+		$scope.readings = _.sortBy(Rede.sample.readings, function(item) { return new Date(item.timestamp); });
+
 	}
 ]);

@@ -2,13 +2,17 @@ require('mapbox.js');
 L.mapbox.accessToken = 'pk.eyJ1IjoibWlndWVscGVpeGUiLCJhIjoiVlc0WWlrQSJ9.pIPkSx25w7ossO6rZH9Tcw';
 window.angular = require('angular');
 window._ = require('underscore');
+window.moment = require('moment');
 
+require('angular-google-chart');
 require('angular-ui-router');
 require('angular-resource');
 
+
 var app = angular.module('rede', [
 	'ui.router', 
-	'ngResource'
+	'ngResource',
+	'googlechart'
 ]);
 
 app

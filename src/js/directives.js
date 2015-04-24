@@ -157,4 +157,44 @@ angular.module('rede')
 			}
 		}
 	}
+])
+
+.directive('readingChart', [
+	function() {
+		return {
+			restrict: 'E',
+			scope: {
+				'dataset': '=',
+				'type': '='
+			},
+			template: '<div google-chart chart="chart"></div>',
+			link: function(scope, element, attrs) {
+
+				function init() {
+
+					// See https://google-developers.appspot.com/chart/interactive/docs/gallery/linechart
+					scope.chart = {
+						type: 'LineChart',
+						data: [['Timestamp', scope.type]],
+						options: {
+							chartArea: {
+								left: 50,
+								top: 20,
+								bottom: 0,
+								right: 0
+							}
+						}
+					};
+					_.each(scope.dataset, function(data) {
+						scope.chart.data.push([new Date(data.timestamp), data[scope.type]]);
+					});
+
+				}
+
+				scope.$watchGroup(['type', 'dataset'], function() {
+					init();
+				});
+			}
+		}
+	}
 ]);

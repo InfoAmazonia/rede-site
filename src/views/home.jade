@@ -3,3 +3,10 @@ section#home
 		.sensor-map-map
 			cartodb(map-id="teste" base-layer="map.baseLayer" layers="map.layers" bounds-index="'0'")
 		.sensor-map-info
+			h2 Belterra #1
+			.sensor-chart
+				nav.chart-nav
+					a(href="javascript:void(0);" ng-click="chartMeasure('water_temp')") Temperatura 
+					a(href="javascript:void(0);" ng-click="chartMeasure('ph')") pH 
+					a(href="javascript:void(0);" ng-click="chartMeasure('barometric_pressure')") Pressão barométrica 
+				reading-chart(dataset="readings" type="measureType")
