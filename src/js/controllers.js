@@ -24,9 +24,11 @@ angular.module('rede')
 		];
 
 		$scope.measureType = 'ph';
+		$scope.measureLabel = 'pH';
 
-		$scope.chartMeasure = function(type) {
+		$scope.chartMeasure = function(type, label) {
 			$scope.measureType = type;
+			$scope.measureLabel = label;
 		};
 
 		$scope.readings = _.sortBy(Rede.sample.readings, function(item) { return new Date(item.timestamp); });

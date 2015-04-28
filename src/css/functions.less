@@ -1,0 +1,57 @@
+.box-shadow(@arguments) {
+	-webkit-box-shadow: @arguments;
+	-khtml-box-shadow: @arguments;
+	-moz-box-shadow: @arguments;
+	-o-box-shadow: @arguments;
+	box-shadow: @arguments;
+}
+
+.border-radius(@radius) {
+	-webkit-border-radius: @radius;
+	-khtml-border-radius: @radius;
+	-moz-border-radius: @radius;
+	-o-border-radius: @radius;
+	border-radius: @radius;
+}
+
+.transition(@arguments) {
+	-webkit-transition: @arguments;
+	-khtml-transition: @arguments;
+	-moz-transition: @arguments;
+	-o-transition: @arguments;
+	transition: @arguments;
+}
+
+.transform(@arguments) {
+	-webkit-transform: @arguments;
+	-khtml-transform: @arguments;
+	-moz-transform: @arguments;
+	-o-transform: @arguments;
+	transform: @arguments;
+}
+.box-sizing(@arguments) {
+	-webkit-box-sizing: @arguments;
+	-moz-box-sizing: @arguments;
+	box-sizing: @arguments;
+}
+.font-smoothing(@arguments) {
+	-webkit-font-smoothing: @arguments;
+}
+
+.gradient(@color: #F5F5F5, @start: #EEE, @stop: #FFF) {
+	background: @color;
+	background:	-webkit-gradient(linear,
+				left bottom,
+				left top,
+				color-stop(0, @start),
+				color-stop(1, @stop));
+	background:	-ms-linear-gradient(bottom,
+				@start,
+				@stop);
+	background:	-moz-linear-gradient(center bottom,
+				@start 0%,
+				@stop 100%);
+	background:	-o-linear-gradient(@stop,
+				@start);
+	filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@stop,@start));
+}

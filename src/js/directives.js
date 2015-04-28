@@ -83,7 +83,11 @@ angular.module('rede')
 
 				cdb.count(true);
 
-				var map = L.map('cartodb-map', {center: [0,0], zoom: 2, scrollWheelZoom: false});
+				var map = L.map('cartodb-map', {
+					center: [0,0],
+					zoom: 2,
+					scrollWheelZoom: true
+				});
 
 				L.tileLayer(scope.baseLayer).addTo(map);
 
@@ -165,7 +169,8 @@ angular.module('rede')
 			restrict: 'E',
 			scope: {
 				'dataset': '=',
-				'type': '='
+				'type': '=',
+				'label': '='
 			},
 			template: '<div google-chart chart="chart"></div>',
 			link: function(scope, element, attrs) {
@@ -175,10 +180,10 @@ angular.module('rede')
 					// See https://google-developers.appspot.com/chart/interactive/docs/gallery/linechart
 					scope.chart = {
 						type: 'LineChart',
-						data: [['Timestamp', scope.type]],
+						data: [['Timestamp', scope.label]],
 						options: {
 							chartArea: {
-								left: 50,
+								left: 20,
 								top: 20,
 								bottom: 0,
 								right: 0
