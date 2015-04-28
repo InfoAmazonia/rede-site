@@ -23,12 +23,28 @@ angular.module('rede')
 			}
 		];
 
-		$scope.measureType = 'ph';
-		$scope.measureLabel = 'pH';
+		$scope.chartFilters = [
+			{
+				type: 'ph',
+				label: 'pH'
+			},
+			{
+				type: 'water_temp',
+				label: 'Temperatura'
+			},
+			{
+				type: 'barometric_pressure',
+				label: 'Pressão barométrica'
+			}
+		];
+
+		$scope.currentFilter = $scope.chartFilters[0];
 
 		$scope.chartMeasure = function(type, label) {
-			$scope.measureType = type;
-			$scope.measureLabel = label;
+			$scope.currentFilter = {
+				type: type,
+				label: label
+			}
 		};
 
 		$scope.readings = _.sortBy(Rede.sample.readings, function(item) { return new Date(item.timestamp); });
