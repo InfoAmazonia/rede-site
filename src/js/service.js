@@ -19,6 +19,9 @@ angular.module('rede')
 				}
 			}),
 			stories: $http.get('http://infoamazonia.org/?publisher=infoamazonia&geojson=1'),
+			data: {
+				states: $http.get('http://visaguas.infoamazonia.org/api?query=estados')
+			},
 			sample: sampleData
 		}
 

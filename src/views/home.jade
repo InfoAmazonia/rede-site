@@ -8,8 +8,9 @@ section#home
 			leaflet#map(center="map.center" layers="map.layers" legend="legend" markers="map.markers" geojson="map.geojson" defaults="map.options")
 		article.sensor-map-info
 			header
-				span.icon-cross.close
-				h2 Belterra #1
+				.clearfix
+					span.icon-cross.close
+					h2 Belterra #1
 					span.status.ok Recebendo dados
 				section
 					.sensor-quality
@@ -54,3 +55,8 @@ section#home
 		.container
 			.twelve.columns
 				h2 Qualidade da água e doenças na Amazônia
+		.container
+			.six.columns
+				p A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda vazão hídrica.
+				p Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país.
+				p Na Amazônia Legal, 60% dos munícipios são atendidos por rede geral de água. A média nacional é de 82,7% 

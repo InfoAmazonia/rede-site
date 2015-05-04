@@ -13,13 +13,17 @@ angular.module('rede')
 		// 	console.log(data);
 		// });
 
-		// Rede.stories
-		// 	.success(function(data) {
-		// 		console.log(data);
-		// 	})
-		// 	.error(function(data, status, headers, config) {
-		// 		console.log(data);
-		// 	});
+		Rede.stories
+			.success(function(data) {
+				console.log(data);
+			})
+			.error(function(data, status, headers, config) {
+				console.log(data);
+			});
+
+		Rede.data.states.success(function(data) {
+			console.log(data);
+		});
 
 		$scope.fromNow = function(reading) {
 			return moment(reading.timestamp).fromNow();
