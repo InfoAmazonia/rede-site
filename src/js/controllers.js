@@ -25,10 +25,6 @@ angular.module('rede')
 			console.log(data);
 		});
 
-		$scope.fromNow = function(reading) {
-			return moment(reading.timestamp).fromNow();
-		};
-
 		/* 
 		 * Map
 		 */
@@ -127,59 +123,6 @@ angular.module('rede')
 		leafletData.getMap('map').then(function(m) {
 			m.fitBounds(bounds, {reset: true});
 		});
-
-		/*
-		 * Chart
-		 */
-
-		$scope.chartFilters = [
-			{
-				type: 'ph',
-				label: 'pH'
-			},
-			{
-				type: 'water_temp',
-				label: 'Temperatura'
-			},
-			{
-				type: 'luminosity',
-				label: 'Luminosidade'
-			},
-			{
-				type: 'water_conductivity',
-				label: 'Condutividade'
-			},
-			{
-				type: 'turbidity',
-				label: 'Turbidez'
-			},
-			{
-				type: 'orp',
-				label: 'ORP'
-			},
-			{
-				type: 'acceleration',
-				label: 'Aceleração'
-			}
-		];
-
-		$scope.currentFilter = $scope.chartFilters[0];
-
-		$scope.chartMeasure = function(type, label) {
-			$scope.currentFilter = {
-				type: type,
-				label: label
-			}
-		};
-
-		$scope.readings = _.sortBy(Rede.sample.readings, function(item) { return new Date(item.timestamp); });
-
-		$scope.latest = _.sample(Rede.sample.readings, 3);
-		setInterval(function() {
-			$scope.$apply(function() {
-				$scope.latest = _.sample(Rede.sample.readings, 3);
-			});
-		}, 3 * 1000);
 
 	}
 ]);

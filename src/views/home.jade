@@ -13,44 +13,9 @@ section#home
 					h2 Belterra #1
 					span.status.ok Recebendo dados
 				section
-					.sensor-quality
-						h3
-							| Últimas medições
-							span.realtime
-						table
-							thead
-								tr
-									th(title="Hora")
-										span Hora
-									th(title="Qualidade")
-										span Qualidade
-									th(title="Condutividade")
-										span Condutividade
-									th(title="Turbidez")
-										span Turbidez
-									th(title="ORP")
-										span ORP
-							tbody
-								tr(ng-repeat="reading in latest | limitTo: 3")
-									td.time(title="{{fromNow(reading)}}")
-										span {{fromNow(reading)}}
-									td.quality(title="Boa")
-										span
-											span.quality-3
-											| Boa
-									td(title="{{reading.water_conductivity}}")
-										span {{reading.water_conductivity}}
-									td(title="{{reading.turbidity}}")
-										span {{reading.turbidity}}
-									td(title="{{reading.orp}}")
-										span {{reading.orp}}
+					latest-readings(amount="'3'" sensor="'1'")
 			section
-				.sensor-chart
-					h3 Dados das últimas 24 horas
-					nav.chart-nav
-						a(ng-repeat="filter in chartFilters" href="javascript:void(0);" ng-click="chartMeasure(filter.type, filter.label)" ng-class="{active: currentFilter.type == filter.type}") {{filter.label}}  
-					.chart
-						reading-chart(dataset="readings" type="currentFilter.type" label="currentFilter.label")
+				sensor-chart-summary(sensor="'1'")
 	#city-data.row
 		.container
 			.twelve.columns

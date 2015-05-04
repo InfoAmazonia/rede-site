@@ -1,0 +1,6 @@
+.sensor-chart
+	h3 Dados das últimas 24 horas
+	nav.chart-nav
+		a(ng-repeat="filter in chartFilters" href="javascript:void(0);" ng-click="chartMeasure(filter.type, filter.label)" ng-class="{active: currentFilter.type == filter.type}") {{filter.label}}  
+	.chart
+		reading-chart(dataset="readings" type="currentFilter.type" label="currentFilter.label")

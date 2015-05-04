@@ -1,0 +1,31 @@
+.latest-readings
+	h3
+		| Últimas medições
+		span.realtime
+	table
+		thead
+			tr
+				th(title="Hora")
+					span Hora
+				th(title="Qualidade")
+					span Qualidade
+				th(title="Condutividade")
+					span Condutividade
+				th(title="Turbidez")
+					span Turbidez
+				th(title="ORP")
+					span ORP
+		tbody
+			tr(ng-repeat="reading in latest | limitTo: amount")
+				td.time(title="{{fromNow(reading)}}")
+					span {{fromNow(reading)}}
+				td.quality(title="Boa")
+					span
+						span.quality-3
+						| Boa
+				td(title="{{reading.water_conductivity}}")
+					span {{reading.water_conductivity}}
+				td(title="{{reading.turbidity}}")
+					span {{reading.turbidity}}
+				td(title="{{reading.orp}}")
+					span {{reading.orp}}

@@ -153,6 +153,95 @@ angular.module('rede')
 	}
 ])
 
+.directive('latestReadings', [
+	'RedeService',
+	'$interval',
+	function(Rede, $interval) {
+		return {
+			restrict: 'E',
+			scope: {
+				'sensor': '=',
+				'amount': '='
+			},
+			templateUrl: '/views/sensor/latest-readings.html',
+			link: function(scope, element, attrs) {
+
+				scope.fromNow = function(reading) {
+					return moment(reading.timestamp).fromNow();
+				};
+
+				scope.amount = scope.amount || 3;
+
+				// EXTRACTING SAMPLE
+				scope.latest = _.sample(Rede.sample.readings, scope.amount);
+				$interval(function() {
+					scope.latest = _.sample(Rede.sample.readings, scope.amount);
+				}, 3 * 1000);
+
+			}
+		}
+	}
+])
+
+.directive('sensorChartSummary', [
+	'RedeService',
+	'$interval',
+	function(Rede, $interval) {
+		return {
+			restrict: 'E',
+			scope: {
+				'sensor': '='
+			},
+			templateUrl: '/views/sensor/chart-summary.html',
+			link: function(scope, element, attrs) {
+
+				scope.chartFilters = [
+					{
+						type: 'ph',
+						label: 'pH'
+					},
+					{
+						type: 'water_temp',
+						label: 'Temperatura'
+					},
+					{
+						type: 'luminosity',
+						label: 'Luminosidade'
+					},
+					{
+						type: 'water_conductivity',
+						label: 'Condutividade'
+					},
+					{
+						type: 'turbidity',
+						label: 'Turbidez'
+					},
+					{
+						type: 'orp',
+						label: 'ORP'
+					},
+					{
+						type: 'acceleration',
+						label: 'Aceleração'
+					}
+				];
+
+				scope.currentFilter = scope.chartFilters[0];
+
+				scope.chartMeasure = function(type, label) {
+					scope.currentFilter = {
+						type: type,
+						label: label
+					}
+				};
+
+				scope.readings = _.sortBy(Rede.sample.readings, function(item) { return new Date(item.timestamp); });
+
+			}
+		}
+	}
+])
+
 .directive('readingChart', [
 	function() {
 		return {
