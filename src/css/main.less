@@ -1,5 +1,6 @@
 @import (inline) "normalize.css";
 @import (inline) "skeleton.css";
+@import (inline) "icons.css";
 @import "functions.less";
 
 html,body {
@@ -11,6 +12,10 @@ h2,
 h3
 h4 {
 	font-family: "Open Sans Condensed";
+}
+
+.row {
+	margin-bottom: 40px;
 }
 
 #masthead {
@@ -84,7 +89,8 @@ h4 {
 
 #sensor-map {
 	width: 100%;
-	height: 600px;
+	height: 650px;
+	border-bottom: 1px solid #ddd;
 	.sensor-map-map,
 	.sensor-map-info {
 		width: 50%;
@@ -92,14 +98,33 @@ h4 {
 		float: left;
 		box-sizing: border-box;
 	}
+	.sensor-map-map {
+		.leaflet-container {
+			width: 100%;
+			height: 100%;
+		}
+	}
 	.sensor-map-info {
+		overflow: auto;
 		header {
 			background: #f0f0f0;
-			padding: 30px 40px;
+			padding: 20px 20px;
 			border-bottom: 1px solid #ccc;
+			h3 {
+				padding: 0 0 10px;
+				background: transparent;
+				color: #999;
+				font-size: 12px;
+			}
+			.close {
+				float: right;
+				font-size: 30px;
+				margin-left: 40%;
+				margin-top: 7px;
+			}
 		}
 		h2 {
-			margin: 0;
+			margin: 0 0 30px;
 			padding: 0;
 			text-transform: uppercase;
 			font-size: 30px;
@@ -129,37 +154,191 @@ h4 {
 				}
 			}
 		}
+		h3 {
+			font-size: 14px;
+			text-transform: uppercase;
+			background: #444;
+			color: #f0f0f0;
+			font-weight: 600;
+			padding: 10px 10px 10px 20px;
+			margin: 0;
+			span {
+				font-weight: 400;
+				color: #999;
+				float: right;
+				font-size: 12px;
+			}
+		}
+		.realtime {
+			&:before {
+				content: "\e690";
+			}
+			font-family: 'icomoon';
+			speak: none;
+			font-style: normal;
+			font-weight: normal;
+			font-variant: normal;
+			text-transform: none;
+			line-height: 1;
+			/* Better Font Rendering =========== */
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			margin-top: 5px;
+			display: inline-block;
+			.rotating(3s);
+		}
 		canvas {
 			width: 100%;
 			height: 400px;
 		}
+		.sensor-quality {
+			table {
+				border-top: 2px solid lighten(green, 20%);
+				width: 100%;
+				margin: 0;
+				table-layout: fixed;
+				th {
+					font-size: 12px;
+					color: #aaa;
+					text-transform: uppercase;
+					padding-bottom: 5px;
+					padding-right: 20px;
+					font-weight: normal;
+					> span {
+						display: inline-block;
+						width: 100%;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+					}
+				}
+				td {
+					font-size: 12px;
+					> span {
+						display: inline-block;
+						width: 100%;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+					}
+					&.quality {
+						font-weight: 600;
+						text-transform: uppercase;
+						.quality-3 {
+							content: '';
+							float: right;
+							display: inline-block;
+							width: 10px;
+							height: 10px;
+							background: green;
+							margin-top: 5px;
+							.border-radius(100%);
+							.box-shadow(0 0 3px lighten(green, 10%));
+						}
+					}
+				}
+				tbody {
+					tr:nth-child(1) {
+						&.ng-enter {
+							.transition(all linear 0.5s);
+						}
+						&.ng-enter {
+							transform: translate(0, -25px);
+							opacity: 0;
+						}
+						&.ng-enter.ng-enter-active {
+							opacity: 1;
+							transform: translate(0, 0);
+						}
+						// &.ng-leave.ng-leave-active,
+						// &.ng-move.ng-move-active {
+						// 	opacity: 0;
+						// 	transform: translate(0, 10px);
+						// }
+						// td {
+						// 	font-weight: 600;
+						// 	font-size: 14px;
+						// }
+					}
+					tr:nth-child(2) {
+						opacity: .5;
+						&.ng-enter {
+							.transition(all linear 0.5s);
+						}
+						&.ng-enter {
+							transform: translate(0, -25px);
+							opacity: 1;
+						}
+						&.ng-enter.ng-enter-active {
+							opacity: .5;
+							transform: translate(0, 0);
+						}
+						// &.ng-leave.ng-leave-active,
+						// &.ng-move.ng-move-active {
+						// 	opacity: 1;
+						// 	transform: translate(0, 10px);
+						// }
+					}
+					tr:nth-child(3) {
+						opacity: .3;
+						&.ng-enter {
+							.transition(all linear 0.5s);
+						}
+						&.ng-enter {
+							transform: translate(0, -25px);
+							opacity: .5;
+						}
+						&.ng-enter.ng-enter-active {
+							opacity: .3;
+							transform: translate(0, 0);
+						}
+						// &.ng-leave.ng-leave-active,
+						// &.ng-move.ng-move-active {
+						// 	opacity: 0;
+						// 	transform: translate(0, 10px);
+						// }
+						td {
+							border-bottom: 0;
+							padding-bottom: 0;
+						}
+
+					}
+				}
+			}
+		}
 		.chart-nav {
 			margin: 0 0 20px;
 			background: #ddd;
-			border-bottom: 1px solid #d0d0d0;
-			padding: 10px 40px;
+			border-bottom: 1px solid #bbb;
+			padding: 10px;
 			.box-shadow(inset 0 0 10px rgba(0,0,0,0.05));
+			display: table;
 			a {
-				display: inline-block;
+				display: table-cell;
+				width: 1%;
 				line-height: 100%;
 				color: #666;
 				text-decoration: none;
-				padding: 8px;
-				margin: 0 5px 0 0;
-				background: #eee;
+				padding: 10px 5px;
+				margin: 0;
+				text-align: center;
+				vertical-align: middle;
 				.border-radius(3px);
 				font-weight: 400;
 				outline: none;
+				font-size: 12px;
 				&.active,
 				&:hover {
 					color: #333;
-					background: #fff;
-					.box-shadow(2px 2px 2px rgba(0,0,0,0.1));
+				}
+				&.active {
+					background: #f6f6f6;
+					.box-shadow(1px 1px 2px rgba(0,0,0,0.15));
 				}
 			}
 		}
 		.chart {
-			padding: 0 40px;
+			padding: 0 20px;
 		}
 	}
 }

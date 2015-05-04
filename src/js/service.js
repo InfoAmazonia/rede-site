@@ -2,12 +2,14 @@ angular.module('rede')
 
 .factory('RedeService', [
 	'$resource',
-	function($resource) {
+	'$http',
+	function($resource, $http) {
 
 		var apiUrl = '/api/v1';
 
 		var sampleData = {
-			readings: require('./sample-data/readings')
+			readings: require('./sample-data/readings'),
+			sensors: require('./sample-data/sensors')
 		};
 
 		return {
@@ -16,6 +18,7 @@ angular.module('rede')
 					method: 'PUT'
 				}
 			}),
+			stories: $http.get('http://infoamazonia.org/?publisher=infoamazonia&geojson=1'),
 			sample: sampleData
 		}
 

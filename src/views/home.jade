@@ -3,16 +3,54 @@ section#home
 		.container
 			.twelve.columns
 				h2 Environmental sensors connected via mobile networks to generate indicators of water quality in cities in the Brazilian Amazon.
-	#sensor-map
+	#sensor-map.row
 		.sensor-map-map
-			cartodb(map-id="teste" base-layer="map.baseLayer" layers="map.layers" bounds-index="'0'")
+			leaflet#map(center="map.center" layers="map.layers" legend="legend" markers="map.markers" geojson="map.geojson" defaults="map.options")
 		article.sensor-map-info
 			header
+				span.icon-cross.close
 				h2 Belterra #1
 					span.status.ok Recebendo dados
+				section
+					.sensor-quality
+						h3
+							| Últimas medições
+							span.realtime
+						table
+							thead
+								tr
+									th(title="Hora")
+										span Hora
+									th(title="Qualidade")
+										span Qualidade
+									th(title="Condutividade")
+										span Condutividade
+									th(title="Turbidez")
+										span Turbidez
+									th(title="ORP")
+										span ORP
+							tbody
+								tr(ng-repeat="reading in latest | limitTo: 3")
+									td.time(title="{{fromNow(reading)}}")
+										span {{fromNow(reading)}}
+									td.quality(title="Boa")
+										span
+											span.quality-3
+											| Boa
+									td(title="{{reading.water_conductivity}}")
+										span {{reading.water_conductivity}}
+									td(title="{{reading.turbidity}}")
+										span {{reading.turbidity}}
+									td(title="{{reading.orp}}")
+										span {{reading.orp}}
 			section
 				.sensor-chart
+					h3 Dados das últimas 24 horas
 					nav.chart-nav
 						a(ng-repeat="filter in chartFilters" href="javascript:void(0);" ng-click="chartMeasure(filter.type, filter.label)" ng-class="{active: currentFilter.type == filter.type}") {{filter.label}}  
 					.chart
 						reading-chart(dataset="readings" type="currentFilter.type" label="currentFilter.label")
+	#city-data.row
+		.container
+			.twelve.columns
+				h2 Qualidade da água e doenças na Amazônia

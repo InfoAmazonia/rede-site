@@ -3,18 +3,31 @@ L.mapbox.accessToken = 'pk.eyJ1IjoibWlndWVscGVpeGUiLCJhIjoiVlc0WWlrQSJ9.pIPkSx25
 window.angular = require('angular');
 window._ = require('underscore');
 window.moment = require('moment');
+require('moment/locale/pt-br');
+moment.locale('pt-br');
 
+require('angular-animate');
+require('angular-leaflet-directive');
 require('angular-google-chart');
 require('angular-ui-router');
 require('angular-resource');
 
 var app = angular.module('rede', [
 	'ui.router', 
+	'ngAnimate',
 	'ngResource',
-	'googlechart'
+	'googlechart',
+	'leaflet-directive'
 ]);
 
 app
+.value('googleChartApiConfig', {
+	version: '1.1',
+	optionalSettings: {
+		packages: ['line', 'bar'],
+		language: 'en'
+	}
+})
 .config([
 	'$stateProvider',
 	'$urlRouterProvider',

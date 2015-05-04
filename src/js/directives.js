@@ -5,15 +5,7 @@ angular.module('rede')
 .factory('CartoDBService', [
 	function() {
 
-		var count = 0;
-
 		return {
-			count: function(add) {
-				if(add == true) {
-					count++;
-				}
-				return count;
-			},
 			getTiles: function(config, cb) {
 				cartodb.Tiles.getTiles({
 					user_name: config.user,
@@ -80,8 +72,6 @@ angular.module('rede')
 
 			},
 			link: function(scope, element, attrs) {
-
-				cdb.count(true);
 
 				var map = L.map('cartodb-map', {
 					center: [0,0],
@@ -177,22 +167,28 @@ angular.module('rede')
 
 				function init() {
 
+					var data = [['', scope.label]];
+
+					_.each(scope.dataset, function(d, i) {
+						if(i <= 23)
+							data.push([new Date(d.timestamp), d[scope.type]]);
+					});
+
 					// See https://google-developers.appspot.com/chart/interactive/docs/gallery/linechart
 					scope.chart = {
-						type: 'LineChart',
-						data: [['Timestamp', scope.label]],
+						type: 'google.charts.Line',
+						data: data,
+						curveType: 'function',
 						options: {
 							chartArea: {
-								left: 20,
-								top: 20,
+								left: 0,
+								top: 0,
 								bottom: 0,
 								right: 0
-							}
+							},
+							legend: {position: 'none'}
 						}
 					};
-					_.each(scope.dataset, function(data) {
-						scope.chart.data.push([new Date(data.timestamp), data[scope.type]]);
-					});
 
 				}
 
