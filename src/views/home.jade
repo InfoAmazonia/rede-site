@@ -1,8 +1,20 @@
 section#home
 	#about
 		.container
-			.twelve.columns
-				h2 Environmental sensors connected via mobile networks to generate indicators of water quality in cities in the Brazilian Amazon.
+			.six.columns
+				h2(ng-mouseout="aboutText = ''")
+					strong.first(ng-mouseover="aboutText = 'Lorem ipsum'") Sensores ambientais
+					br
+					| conectados via 
+					strong(ng-mouseover="aboutText = 'Dolor sit'") redes móveis
+					br 
+					| para gerar indicadores de 
+					strong(ng-mouseover="aboutText = 'Amet lorem ipsum'") qualidade da água
+					br 
+					| em cidades da 
+					strong(ng-mouseover="aboutText = 'Lorem amet sit dolor'") Amazônia Brasileira.
+			.six.columns
+				p.about-text(ng-show="aboutText") {{aboutText}}
 	#sensor-map.row
 		.sensor-map-map
 			leaflet#map(center="map.center" layers="map.layers" legend="legend" markers="map.markers" geojson="map.geojson" defaults="map.options")

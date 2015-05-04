@@ -23,6 +23,30 @@ h4 {
 	margin-bottom: 40px;
 }
 
+.realtime {
+	&:before {
+		content: "\e690";
+	}
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin-top: 5px;
+	display: inline-block;
+	.rotating(3s);
+}
+
+.leaflet-container {
+	width: 100%;
+	height: 100%;
+}
+
 #masthead {
 	background: #222;
 	padding: 20px;
@@ -56,11 +80,11 @@ h4 {
 			margin: 0;
 			padding: 0;
 			list-style: none;
-			display: table;
+			float: right;
 			li {
-				margin: 0;
-				padding: 0 10px;
-				display: table-cell;
+				margin: 0 0 0 20px;
+				padding: 0;
+				float: left;
 				a {
 					display: block;
 					text-align: center;			
@@ -75,21 +99,40 @@ h4 {
 
 #home {
 	#about {
-		background: #333;
+		background: url(../img/shattered-dark.png);
 		border-bottom: 2px solid #222;
 		color: #fff;
-		text-align: center;
-		padding: 60px 0;
+		padding: 40px 0;
+		border-bottom: 2px solid #061d20;
 		h2 {
 			font-family: "Open Sans";
-			font-size: 32px;
+			font-size: 20px;
+			line-height: 40px;
+			text-align: right;
+			strong {
+				font-size: 26px;
+				border-bottom: 1px dotted rgba(255,255,255,0.1);
+				cursor: default;
+				display: inline-block;
+				margin-left: 10px;
+				&.first {
+					font-size: 32px;
+				}
+				&:hover {
+					margin-left: -29px;
+					border-color: rgba(255,255,255,0.5);
+					.transform(translate(39px, 0));
+					padding-right: 39px;
+				}
+			}
+		}
+		.about-text {
+			border-left: 1px dotted rgba(255,255,255,0.5);
+			padding-left: 20px;
+			min-height: 190px;
+			margin: 0;
 		}
 	}
-}
-
-.interactive-map {
-	width: 100%;
-	height: 100%;
 }
 
 #sensor-map {
@@ -102,12 +145,6 @@ h4 {
 		height: 100%;
 		float: left;
 		box-sizing: border-box;
-	}
-	.sensor-map-map {
-		.leaflet-container {
-			width: 100%;
-			height: 100%;
-		}
 	}
 	.sensor-map-info {
 		overflow: auto;
@@ -176,65 +213,12 @@ h4 {
 				font-size: 12px;
 			}
 		}
-		.realtime {
-			&:before {
-				content: "\e690";
-			}
-			font-family: 'icomoon';
-			speak: none;
-			font-style: normal;
-			font-weight: normal;
-			font-variant: normal;
-			text-transform: none;
-			line-height: 1;
-			/* Better Font Rendering =========== */
-			-webkit-font-smoothing: antialiased;
-			-moz-osx-font-smoothing: grayscale;
-			margin-top: 5px;
-			display: inline-block;
-			.rotating(3s);
-		}
 		canvas {
 			width: 100%;
 			height: 400px;
 		}
-		.chart-nav {
-			margin: 0 0 20px;
-			background: #ddd;
-			border-bottom: 1px solid #bbb;
-			padding: 10px;
-			.box-shadow(inset 0 0 10px rgba(0,0,0,0.05));
-			display: table;
-			a {
-				display: table-cell;
-				width: 1%;
-				line-height: 100%;
-				color: #666;
-				text-decoration: none;
-				padding: 10px 5px;
-				margin: 0;
-				text-align: center;
-				vertical-align: middle;
-				.border-radius(3px);
-				font-weight: 400;
-				outline: none;
-				font-size: 12px;
-				&.active,
-				&:hover {
-					color: #333;
-				}
-				&.active {
-					background: #f6f6f6;
-					.box-shadow(1px 1px 2px rgba(0,0,0,0.15));
-				}
-			}
-		}
-		.chart {
-			padding: 0 20px;
-		}
 	}
 }
-
 
 .latest-readings {
 	table {
@@ -349,5 +333,42 @@ h4 {
 
 			}
 		}
+	}
+}
+
+.sensor-chart {
+	.chart-nav {
+		margin: 0 0 20px;
+		background: #ddd;
+		border-bottom: 1px solid #bbb;
+		padding: 10px;
+		.box-shadow(inset 0 0 10px rgba(0,0,0,0.05));
+		display: table;
+		a {
+			display: table-cell;
+			width: 1%;
+			line-height: 100%;
+			color: #666;
+			text-decoration: none;
+			padding: 10px 5px;
+			margin: 0;
+			text-align: center;
+			vertical-align: middle;
+			.border-radius(3px);
+			font-weight: 400;
+			outline: none;
+			font-size: 12px;
+			&.active,
+			&:hover {
+				color: #333;
+			}
+			&.active {
+				background: #f6f6f6;
+				.box-shadow(1px 1px 2px rgba(0,0,0,0.15));
+			}
+		}
+	}
+	.chart {
+		padding: 0 20px;
 	}
 }
