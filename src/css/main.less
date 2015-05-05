@@ -26,6 +26,10 @@ h4 {
 	margin-bottom: 40px;
 }
 
+.anti-row {
+	margin-top: -40px;
+}
+
 .realtime {
 	&:before {
 		content: "\e690";
@@ -179,14 +183,14 @@ h4 {
 	}
 }
 
-#sensor-map {
+#sensors-map {
 	width: 100%;
-	height: 650px;
+	height: 700px;
 	border-bottom: 1px solid #ddd;
 	position: relative;
 	.sensor-map-container,
 	.sensor-map-info,
-	.sensor-summary, {
+	#sensor-summary, {
 		width: 50%;
 		height: 100%;
 		float: left;
@@ -195,14 +199,105 @@ h4 {
 	.sensor-map-info {
 		padding: 20px;
 	}
-	.close {
-		position: absolute;
-		top: 25px;
-		right: 10px;
-		font-size: 30px;
-		line-height: 100%;
-		text-align: right;
-		cursor: pointer;
+	#sensor-summary {
+		position: relative;
+		.button {
+			display: block;
+			margin: 0 20px;
+		}
+		.close {
+			position: absolute;
+			top: 25px;
+			right: 10px;
+			font-size: 30px;
+			line-height: 100%;
+			text-align: right;
+			cursor: pointer;
+		}
+	}
+}
+
+#sensor {
+	#sensor-header {
+		background: url(../img/shattered-dark.png);
+		border-bottom: 2px solid #222;
+		color: #fff;
+		padding: 40px 0;
+		border-bottom: 2px solid #061d20;
+		h1 {
+			text-transform: uppercase;
+			margin: 0;
+			padding: 0;
+		}
+	}
+	#sensor-main {
+		padding: 40px 0;
+		background: #f0f0f0;
+		border-bottom: 1px solid #ccc;
+	}
+	#sensor-map {
+		width: 100%;
+		height: 300px;
+		border-bottom: 2px solid #222;
+	}
+	h2 {
+		font-family: "Open Sans";
+		color: #999;
+		text-transform: uppercase;
+		font-size: 14px;
+		font-weight: 600;
+		border-bottom: 2px solid #ccc;
+		margin: 0 0 10px;
+		padding: 0 0 10px;
+	}
+	.average-list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		.average-item {
+			margin: 0 10px 10px 0;
+			padding: 0;
+			width: calc(~"50% - 5px");
+			float: left;
+			.box-sizing(border-box);
+			padding: 19px 16px;
+			border: 1px solid #ddd;
+			.border-radius(3px);
+			&:nth-of-type(2n) {
+				margin-right: 0;
+			}
+			h3 {
+				font-size: 14px;
+				font-weight: 600;
+				margin: 0;
+				color: #999;
+				float: left;
+				line-height: 20px;
+			}
+			p {
+				float: right;
+				margin: 0;
+				font-size: 20px;
+				line-height: 20px;
+			}
+		}
+	}
+	#sensor-charts-header {
+		background: #444;
+		padding: 10px 10px 10px 20px;
+		h3 {
+			font-size: 14px;
+			text-transform: uppercase;
+			color: #f0f0f0;
+			font-weight: 600;
+			margin: 0;
+			span {
+				font-weight: 400;
+				color: #999;
+				float: right;
+				font-size: 12px;
+			}
+		}
 	}
 }
 
@@ -298,9 +393,26 @@ h4 {
 		width: 100%;
 		height: 400px;
 	}
+	.chart {
+		margin: 0 0 20px;
+	}
 }
 
 .latest-readings {
+	h3 {
+		font-size: 14px;
+		text-transform: uppercase;
+		color: #999;
+		font-weight: 600;
+		margin: 0;
+		padding: 0 0 10px;
+		span {
+			font-weight: 400;
+			color: #999;
+			float: right;
+			font-size: 12px;
+		}
+	}
 	table {
 		border-top: 2px solid lighten(green, 20%);
 		width: 100%;
@@ -347,70 +459,100 @@ h4 {
 			}
 		}
 		tbody {
-			tr:nth-child(1) {
-				&.ng-enter {
-					.transition(all linear 0.5s);
-				}
-				&.ng-enter {
-					transform: translate(0, -25px);
-					opacity: 0;
-				}
-				&.ng-enter.ng-enter-active {
-					opacity: 1;
-					transform: translate(0, 0);
-				}
-				// &.ng-leave.ng-leave-active,
-				// &.ng-move.ng-move-active {
-				// 	opacity: 0;
-				// 	transform: translate(0, 10px);
-				// }
-				// td {
-				// 	font-weight: 600;
-				// 	font-size: 14px;
-				// }
-			}
-			tr:nth-child(2) {
-				opacity: .5;
-				&.ng-enter {
-					.transition(all linear 0.5s);
-				}
-				&.ng-enter {
-					transform: translate(0, -25px);
-					opacity: 1;
-				}
-				&.ng-enter.ng-enter-active {
-					opacity: .5;
-					transform: translate(0, 0);
-				}
-				// &.ng-leave.ng-leave-active,
-				// &.ng-move.ng-move-active {
-				// 	opacity: 1;
-				// 	transform: translate(0, 10px);
-				// }
-			}
-			tr:nth-child(3) {
-				opacity: .3;
-				&.ng-enter {
-					.transition(all linear 0.5s);
-				}
-				&.ng-enter {
-					transform: translate(0, -25px);
-					opacity: .5;
-				}
-				&.ng-enter.ng-enter-active {
-					opacity: .3;
-					transform: translate(0, 0);
-				}
-				// &.ng-leave.ng-leave-active,
-				// &.ng-move.ng-move-active {
-				// 	opacity: 0;
-				// 	transform: translate(0, 10px);
-				// }
+			tr:last-child {
 				td {
 					border-bottom: 0;
 					padding-bottom: 0;
 				}
+			}
+		}
+		&.amount-3 {
+			tbody {
+				tr:nth-child(1) {
+					&.ng-enter {
+						.transition(all linear 0.5s);
+					}
+					&.ng-enter {
+						transform: translate(0, -25px);
+						opacity: 0;
+					}
+					&.ng-enter.ng-enter-active {
+						opacity: 1;
+						transform: translate(0, 0);
+					}
+				}
+				tr:nth-child(2) {
+					opacity: .5;
+					&.ng-enter {
+						.transition(all linear 0.5s);
+					}
+					&.ng-enter {
+						transform: translate(0, -25px);
+						opacity: 1;
+					}
+					&.ng-enter.ng-enter-active {
+						opacity: .5;
+						transform: translate(0, 0);
+					}
+				}
+				tr:nth-child(3) {
+					opacity: .3;
+					&.ng-enter {
+						.transition(all linear 0.5s);
+					}
+					&.ng-enter {
+						transform: translate(0, -25px);
+						opacity: .5;
+					}
+					&.ng-enter.ng-enter-active {
+						opacity: .3;
+						transform: translate(0, 0);
+					}
 
+				}
+			}
+		}
+		&.amount-5 {
+			tbody {
+				tr:nth-child(1) {
+					&.ng-enter {
+						.transition(all linear 0.5s);
+					}
+					&.ng-enter {
+						transform: translate(0, -25px);
+						opacity: 0;
+					}
+					&.ng-enter.ng-enter-active {
+						opacity: 1;
+						transform: translate(0, 0);
+					}
+				}
+				tr:nth-child(2),
+				tr:nth-child(3),
+				tr:nth-child(4),
+				tr:nth-child(5) {
+					&.ng-enter {
+						.transition(all linear 0.5s);
+					}
+					&.ng-enter {
+						transform: translate(0, -25px);
+					}
+					&.ng-enter.ng-enter-active {
+						transform: translate(0, 0);
+					}
+				}
+				tr:nth-child(2) {
+					opacity: .8;
+				}
+				tr:nth-child(3) {
+					opacity: .6;
+				}
+				tr:nth-child(4) {
+					opacity: .4;
+				}
+				tr:nth-child(5) {
+					opacity: .2;
+				}
 			}
 		}
 	}
@@ -418,12 +560,14 @@ h4 {
 
 .sensor-chart {
 	.chart-nav {
+		width: 100%;
 		margin: 0 0 20px;
 		background: #ddd;
 		border-bottom: 1px solid #bbb;
 		padding: 10px;
 		.box-shadow(inset 0 0 10px rgba(0,0,0,0.05));
 		display: table;
+		.box-sizing(border-box);
 		a {
 			display: table-cell;
 			width: 1%;

@@ -1,0 +1,53 @@
+article#sensor
+	header#sensor-header.anti-row
+		.container
+			.twelve.columns
+				h1 Belterra #1
+	section#sensor-main
+		.container
+			.six.columns
+				.sensor-average
+					h2 Média dos últimos 30 dias
+					ul.average-list
+						li.average-item
+							h3 Qualidade
+							p Boa
+						li.average-item
+							h3 Temperatura
+							p 23 C
+						li.average-item
+							h3 pH
+							p 7
+						li.average-item
+							h3 Luminosidade
+							p 100
+						li.average-item
+							h3 Condutividade
+							p 203
+						li.average-item
+							h3 Turbidez
+							p 5
+						li.average-item
+							h3 ORP
+							p 349
+						li.average-item
+							h3 Aceleração
+							p 120
+			.six.columns
+				latest-readings(sensor="sensor" amount="'5'")
+	section#sensor-map(ng-controller="MapCtrl")
+		leaflet#map(center="map.center" layers="map.layers" legend="legend" markers="map.markers" geojson="geojson" defaults="map.options")
+	section#sensor-charts
+		.sensor-chart
+			header#sensor-charts-header
+				.container
+					.twelve.columns
+						h3 Dados das últimas 24 horas
+			nav.chart-nav
+				.container
+					.twelve.columns
+						a(ng-repeat="filter in chartFilters" href="javascript:void(0);" ng-click="chartMeasure(filter.type, filter.label)" ng-class="{active: currentFilter.type == filter.type}") {{filter.label}}  
+			.container
+				.twelve.columns
+					.chart
+						reading-chart(dataset="readings" type="currentFilter.type" label="currentFilter.label")

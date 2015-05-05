@@ -2,54 +2,11 @@
 
 angular.module('rede')
 
-.controller('HomeCtrl', [
+.controller('MapCtrl', [
 	'$scope',
-	'RedeService',
 	'CartoDBService',
 	'leafletData',
-	'$interval',
-	function($scope, Rede, CartoDB, leafletData, $interval) {
-
-		// Rede.user.query(function(data) {
-		// 	console.log(data);
-		// });
-
-		Rede.stories
-			.success(function(data) {
-				console.log(data);
-			})
-			.error(function(data, status, headers, config) {
-				console.log(data);
-			});
-
-		Rede.data.states.success(function(data) {
-			console.log(data);
-		});
-
-		/*
-		 * About
-		 */
-		var texts = ['sensor','sim','water','forest'];
-		var aboutI = 0;
-		var setAbout = function(c) {
-			$scope.aboutText = texts[c];
-			aboutI = c;
-		}
-		setAbout(0);
-		var aboutInterval = $interval(function() {
-			setAbout(aboutI);
-			aboutI++;
-			if(aboutI == 4) aboutI = 0;
-		}, 8000);
-		$scope.resetAbout = function(t) {
-			var c;
-			_.find(texts, function(text, i) { if(text == t) { c = i; return true; } });
-			$interval.cancel(aboutInterval);
-			setAbout(c);
-		};
-		$scope.$on('$destroy', function() {
-			$interval.cancel(aboutInterval);
-		});
+	function($scope, CartoDB, leafletData) {
 
 		/* 
 		 * Map
@@ -100,10 +57,61 @@ angular.module('rede')
 				}
 			});
 		});
+	}
+])
+
+.controller('HomeCtrl', [
+	'$scope',
+	'RedeService',
+	'CartoDBService',
+	'leafletData',
+	'$interval',
+	function($scope, Rede, CartoDB, leafletData, $interval) {
+
+		// Rede.user.query(function(data) {
+		// 	console.log(data);
+		// });
+
+		Rede.stories
+			.success(function(data) {
+				console.log(data);
+			})
+			.error(function(data, status, headers, config) {
+				console.log(data);
+			});
+
+		Rede.data.states.success(function(data) {
+			console.log(data);
+		});
+
+		/*
+		 * About
+		 */
+		var texts = ['sensor','sim','water','forest'];
+		var aboutI = 0;
+		var setAbout = function(c) {
+			$scope.aboutText = texts[c];
+			aboutI = c;
+		}
+		setAbout(0);
+		var aboutInterval = $interval(function() {
+			setAbout(aboutI);
+			aboutI++;
+			if(aboutI == 4) aboutI = 0;
+		}, 8000);
+		$scope.resetAbout = function(t) {
+			var c;
+			_.find(texts, function(text, i) { if(text == t) { c = i; return true; } });
+			$interval.cancel(aboutInterval);
+			setAbout(c);
+		};
+		$scope.$on('$destroy', function() {
+			$interval.cancel(aboutInterval);
+		});
 
 		var sCount = 1;
 
-		$scope.map.geojson = {
+		$scope.geojson = {
 			data: Rede.sample.sensors,
 			pointToLayer: function(f, latlng) {
 				return new L.Marker(latlng, {
@@ -160,5 +168,98 @@ angular.module('rede')
 
 		console.log($scope.sensors);
 
+	}
+])
+
+.controller('SensorCtrl', [
+	'$scope',
+	'RedeService',
+	'leafletData',
+	function($scope, Rede, leafletData) {
+		$scope.sensor = 1;
+
+		var sCount = 1;
+
+		$scope.geojson = {
+			data: Rede.sample.sensors,
+			pointToLayer: function(f, latlng) {
+				return new L.Marker(latlng, {
+					icon: L.icon({
+						iconUrl: '/img/sensor-icon-white-small.png',
+						iconSize: [20,20],
+						shadowSize: [0,0],
+						iconAnchor: [10,10],
+						shadowAnchor: [0,0],
+						popupAnchor: [0,-10]
+					})
+				});
+			},
+			onEachFeature: function(f, layer) {
+				sCount++;
+			}
+		};
+
+		var latLngs = [];
+		_.each(Rede.sample.sensors.features, function(feature) {
+			latLngs.push(
+				[
+					feature.geometry.coordinates[1],
+					feature.geometry.coordinates[0]
+				]
+			);
+		});
+		var bounds = L.latLngBounds(latLngs);
+		leafletData.getMap('map').then(function(m) {
+			m.fitBounds(bounds, {reset: true});
+		});
+
+		$scope.chartFilters = [
+			{
+				type: 'ph',
+				label: 'pH'
+			},
+			{
+				type: 'water_temp',
+				label: 'Temperatura'
+			},
+			{
+				type: 'luminosity',
+				label: 'Luminosidade'
+			},
+			{
+				type: 'water_conductivity',
+				label: 'Condutividade'
+			},
+			{
+				type: 'turbidity',
+				label: 'Turbidez'
+			},
+			{
+				type: 'orp',
+				label: 'ORP'
+			},
+			{
+				type: 'acceleration',
+				label: 'Aceleração'
+			}
+		];
+
+		$scope.currentFilter = $scope.chartFilters[0];
+
+		$scope.chartMeasure = function(type, label) {
+			$scope.currentFilter = {
+				type: type,
+				label: label
+			}
+		};
+
+		$scope.$watch('sensor', function(sensor) {
+			if(sensor) {
+				// EXTRACTING SAMPLE
+				$scope.readings = _.sortBy(Rede.sample.readings, function(item) { return new Date(item.timestamp); });
+			} else {
+				$scope.readings = [];
+			}
+		});
 	}
 ]);
