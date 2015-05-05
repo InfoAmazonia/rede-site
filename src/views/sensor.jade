@@ -37,12 +37,19 @@ article#sensor
 				latest-readings(sensor="sensor" amount="'5'")
 	section#sensor-map(ng-controller="MapCtrl")
 		leaflet#map(center="map.center" layers="map.layers" legend="legend" markers="map.markers" geojson="geojson" defaults="map.options")
-	section#sensor-charts
+	section#sensor-charts.row
 		.sensor-chart
 			header#sensor-charts-header
 				.container
 					.twelve.columns
-						h3 Dados das últimas 24 horas
+						h2 Dados históricos
+						nav.chart-filters
+							.chart-filter-item
+								select(ng-model="chartDateFilter" ng-options="filter.label for filter in chartDateFilters track by filter.value")
+							.chart-filter-item(ng-show="chartDateFilter.value == 'custom'")
+								input(type="text" placeholder="Data de início")
+							.chart-filter-item(ng-show="chartDateFilter.value == 'custom'")
+								input(type="text" placeholder="Data de fim")
 			nav.chart-nav
 				.container
 					.twelve.columns
@@ -51,3 +58,121 @@ article#sensor
 				.twelve.columns
 					.chart
 						reading-chart(dataset="readings" type="currentFilter.type" label="currentFilter.label")
+					.download
+						a.button(href="#") Baixar estes dados
+	section#sensor-api
+		.container
+			.twelve.columns
+				h2 Acessando dados e medições do sensor via API
+		.container
+			.six.columns
+				h3 Dados do sensor
+
+				p
+					code GET /api/v1/sensors/
+						strong 1
+
+				h4 Resposta
+
+				p Objeto contendo dados do sensor
+
+				p Corpo da resposta:
+
+				ul
+					li 
+						code id
+						i int
+					li 
+						code name
+						i string
+					li 
+						code location
+						i [lon, lat] par de coordenadas de localização
+
+				p Exemplo de resposta:
+
+				pre
+					code
+						| {
+						|   "id": 1,
+						|   "name": "Belterra #1",
+						|   "location": [
+						|     -55.05523681640625,
+						|     -2.7811947651144058
+						|   ]
+						| }
+
+				p
+					a.button(href="https://github.com/InfoAmazonia/rede/wiki/api-reference" rel="external") Documentação completa da API
+
+			.six.columns
+				h3 Medições do sensor
+
+				p
+					code GET /api/v1/readings?sensor_id=
+						strong 1
+
+				h4 Entrada
+
+				ul
+					li
+						code sensor_id
+						i int
+					li
+						code since_date
+						i string (ISO 8601)
+					li
+						code max_date
+						i string (ISO 8601)
+					li
+						code count
+						i int 
+						| padrão: 20 máximo: 100
+					li
+						code since_id
+						i int
+					li
+						code max_id
+						i int
+
+				h4 Resposta
+
+				p Códigos de resposta
+
+				ul
+					li 
+						code 200
+						| Ok
+					li
+						code 400
+						| Bad request
+
+				p Corpo da resposta:
+
+				ul
+					li Array de medições
+
+				p Exemplo de resposta:
+
+				pre
+					code
+						| {
+						|   "data": [
+						|     {
+						|       "id": 2,
+						|       "sensor_id": 59,
+						|       "timestamp": "2015-03-01T13:00:00Z",
+						|       "water_temp": 22,
+						|       "luminosity": null,
+						|       "water_conductivity": null,
+						|       "turbidity": null,
+						|       "ph": 4,
+						|       "orp": null,
+						|       "acceleration": null,
+						|       "barometric_pressure": null
+						|     },
+						|     ...
+						|   ]
+						| }
+				p
+					a.button(href="https://github.com/InfoAmazonia/rede/wiki/api-reference" rel="external") Documentação completa da API

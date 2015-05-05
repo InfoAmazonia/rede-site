@@ -213,6 +213,23 @@ angular.module('rede')
 			m.fitBounds(bounds, {reset: true});
 		});
 
+		$scope.chartDateFilters = [
+			{
+				label: 'Últimas 24 horas',
+				value: '24hours'
+			},
+			{
+				label: 'Últimos 30 dias',
+				value: '30days'
+			},
+			{
+				label: 'Customizado',
+				value: 'custom'
+			}
+		];
+
+		$scope.chartDateFilter = $scope.chartDateFilters[0];
+
 		$scope.chartFilters = [
 			{
 				type: 'ph',

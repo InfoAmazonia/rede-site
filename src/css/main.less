@@ -7,10 +7,7 @@ html,body {
 	font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
 
-h1,
-h2,
-h3
-h4 {
+h1 {
 	font-family: "Open Sans Condensed";
 }
 
@@ -234,21 +231,21 @@ h4 {
 		padding: 40px 0;
 		background: #f0f0f0;
 		border-bottom: 1px solid #ccc;
+		h2 {
+			font-family: "Open Sans";
+			color: #999;
+			text-transform: uppercase;
+			font-size: 14px;
+			font-weight: 600;
+			border-bottom: 2px solid #ccc;
+			margin: 0 0 10px;
+			padding: 0 0 10px;
+		}
 	}
 	#sensor-map {
 		width: 100%;
 		height: 300px;
 		border-bottom: 2px solid #222;
-	}
-	h2 {
-		font-family: "Open Sans";
-		color: #999;
-		text-transform: uppercase;
-		font-size: 14px;
-		font-weight: 600;
-		border-bottom: 2px solid #ccc;
-		margin: 0 0 10px;
-		padding: 0 0 10px;
 	}
 	.average-list {
 		margin: 0;
@@ -282,21 +279,64 @@ h4 {
 			}
 		}
 	}
-	#sensor-charts-header {
-		background: #444;
-		padding: 10px 10px 10px 20px;
-		h3 {
-			font-size: 14px;
-			text-transform: uppercase;
-			color: #f0f0f0;
-			font-weight: 600;
-			margin: 0;
-			span {
-				font-weight: 400;
-				color: #999;
-				float: right;
-				font-size: 12px;
+	#sensor-charts {
+		#sensor-charts-header {
+			background: #444;
+			padding: 30px 0;
+			h2 {
+				font-family: "Open Sans";
+				font-size: 20px;
+				line-height: 38px;
+				text-transform: uppercase;
+				color: #f0f0f0;
+				font-weight: 200;
+				margin: 0 40px 0 0;
+				float: left;
 			}
+			.chart-filters {
+				float: left;
+				.chart-filter-item {
+					float: left;
+					margin: 0 20px 0 0;
+					input,
+					select {
+						background: #444;
+						color: #fff;
+						margin: 0;
+						border: 1px solid #555;
+					}
+					select {
+						option {
+							color: #f0f0f0;
+							padding: 10px;
+						}
+					}
+				}
+			}
+		}
+		.chart {
+			padding: 0;
+			margin: 40px 0;
+		}
+		.download {
+			.button {
+				display: block;
+			}
+		}
+	}
+	#sensor-api {
+		h2 {
+			border-bottom: 1px solid #ccc;
+			font-size: 28px;
+			padding-bottom: 10px;
+		}
+		h3 {
+			font-weight: 600;
+			font-size: 24px;
+		}
+		h4 {
+			font-weight: 600;
+			font-size: 18px;
 		}
 	}
 }
