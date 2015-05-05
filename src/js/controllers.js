@@ -7,7 +7,8 @@ angular.module('rede')
 	'RedeService',
 	'CartoDBService',
 	'leafletData',
-	function($scope, Rede, CartoDB, leafletData) {
+	'$interval',
+	function($scope, Rede, CartoDB, leafletData, $interval) {
 
 		// Rede.user.query(function(data) {
 		// 	console.log(data);
@@ -23,6 +24,31 @@ angular.module('rede')
 
 		Rede.data.states.success(function(data) {
 			console.log(data);
+		});
+
+		/*
+		 * About
+		 */
+		var texts = ['sensor','sim','water','forest'];
+		var aboutI = 0;
+		var setAbout = function(c) {
+			$scope.aboutText = texts[c];
+			aboutI = c;
+		}
+		setAbout(0);
+		var aboutInterval = $interval(function() {
+			setAbout(aboutI);
+			aboutI++;
+			if(aboutI == 4) aboutI = 0;
+		}, 8000);
+		$scope.resetAbout = function(t) {
+			var c;
+			_.find(texts, function(text, i) { if(text == t) { c = i; return true; } });
+			$interval.cancel(aboutInterval);
+			setAbout(c);
+		};
+		$scope.$on('$destroy', function() {
+			$interval.cancel(aboutInterval);
 		});
 
 		/* 
@@ -103,7 +129,7 @@ angular.module('rede')
 				});
 				layer.on('click', function() {
 					$scope.$apply(function() {
-						//
+						$scope.sensor = 1;
 					});
 				});
 				sCount++;
@@ -123,6 +149,16 @@ angular.module('rede')
 		leafletData.getMap('map').then(function(m) {
 			m.fitBounds(bounds, {reset: true});
 		});
+
+		$scope.sensor = false;
+
+		$scope.setSensor = function(sensor) {
+			$scope.sensor = sensor;
+		};
+
+		$scope.sensors = Rede.sample.sensors.features;
+
+		console.log($scope.sensors);
 
 	}
 ]);

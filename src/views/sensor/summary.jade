@@ -1,0 +1,9 @@
+article.sensor-summary
+	header
+		.clearfix
+			h2 Belterra #1
+			span.status.ok Recebendo dados
+		section
+			latest-readings(amount="'3'" sensor="sensorId")
+	section
+		sensor-chart-summary(sensor="sensorId")

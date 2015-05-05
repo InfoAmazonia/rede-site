@@ -172,12 +172,25 @@ angular.module('rede')
 
 				scope.amount = scope.amount || 3;
 
-				// EXTRACTING SAMPLE
-				scope.latest = _.sample(Rede.sample.readings, scope.amount);
-				$interval(function() {
-					scope.latest = _.sample(Rede.sample.readings, scope.amount);
-				}, 3 * 1000);
+				var latestInterval = false;
 
+				scope.$watch('sensor', function(sensor) {
+					if(latestInterval) {
+						$interval.cancel(latestInterval);
+					}
+					if(sensor) {
+						// EXTRACTING SAMPLE
+						scope.latest = _.sample(Rede.sample.readings, scope.amount);
+						latestInterval = $interval(function() {
+							scope.latest = _.sample(Rede.sample.readings, scope.amount);
+						}, 3 * 1000);
+						scope.$on('$destroy', function() {
+							$interval.cancel(latestInterval);
+						});
+					} else {
+						scope.latest = [];
+					}
+				});
 			}
 		}
 	}
@@ -235,7 +248,29 @@ angular.module('rede')
 					}
 				};
 
-				scope.readings = _.sortBy(Rede.sample.readings, function(item) { return new Date(item.timestamp); });
+				scope.$watch('sensor', function(sensor) {
+					if(sensor) {
+						// EXTRACTING SAMPLE
+						scope.readings = _.sortBy(Rede.sample.readings, function(item) { return new Date(item.timestamp); });
+					} else {
+						scope.readings = [];
+					}
+				});
+
+			}
+		}
+	}
+])
+
+.directive('sensorSummary', [
+	function() {
+		return {
+			restrict: 'E',
+			scope: {
+				sensorId: '=sensor'
+			},
+			templateUrl: '/views/sensor/summary.html',
+			link: function(scope, element, attrs) {
 
 			}
 		}
@@ -281,8 +316,18 @@ angular.module('rede')
 
 				}
 
+				var destroy = function() {
+
+					scope.chart = null;
+
+				};
+
 				scope.$watchGroup(['type', 'dataset'], function() {
-					init();
+					if(scope.type && scope.dataset) {
+						init();
+					} else {
+						destroy();
+					}
 				});
 			}
 		}

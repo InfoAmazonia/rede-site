@@ -14,9 +14,12 @@ h4 {
 	font-family: "Open Sans Condensed";
 }
 
-.clearfix {
-	overflow: auto;
-	zoom: 1;
+.clearfix:before, .clearfix:after {
+	content: '';
+	display: table;
+}
+.clearfix:after {
+	clear: both;
 }
 
 .row {
@@ -49,7 +52,7 @@ h4 {
 
 #masthead {
 	background: #222;
-	padding: 20px;
+	padding: 20px 0;
 	border-bottom: 2px solid #111;
 	h1 {
 		font-family: "Open Sans Condensed", sans-serif;
@@ -77,7 +80,7 @@ h4 {
 	}
 	#mastnav {
 		ul {
-			margin: 0;
+			margin: 5px 0 0;
 			padding: 0;
 			list-style: none;
 			float: right;
@@ -91,6 +94,7 @@ h4 {
 					color: #999;
 					text-decoration: none;
 					text-transform: uppercase;
+					font-size: 14px;
 				}
 			}
 		}
@@ -104,33 +108,73 @@ h4 {
 		color: #fff;
 		padding: 40px 0;
 		border-bottom: 2px solid #061d20;
-		h2 {
-			font-family: "Open Sans";
-			font-size: 20px;
-			line-height: 40px;
-			text-align: right;
-			strong {
-				font-size: 26px;
-				border-bottom: 1px dotted rgba(255,255,255,0.1);
-				cursor: default;
-				display: inline-block;
-				margin-left: 10px;
-				&.first {
-					font-size: 32px;
-				}
-				&:hover {
-					margin-left: -29px;
-					border-color: rgba(255,255,255,0.5);
-					.transform(translate(39px, 0));
-					padding-right: 39px;
+		.main-text,
+		.details {
+			width: 50%;
+			float: left;
+			.box-sizing(border-box);
+		}
+		.main-text {
+			padding-right: 30px;
+			h2 {
+				font-family: "Open Sans";
+				font-size: 18px;
+				line-height: 40px;
+				text-align: right;
+				strong {
+					font-size: 24px;
+					border-bottom: 1px dotted rgba(255,255,255,0.1);
+					cursor: default;
+					display: inline-block;
+					&.first {
+						font-size: 28px;
+					}
+					&:hover,
+					&.active {
+						margin-left: -29px;
+						border-color: rgba(255,255,255,0.5);
+						.transform(translate(29px, 0));
+						padding-right: 29px;
+					}
 				}
 			}
 		}
-		.about-text {
-			border-left: 1px dotted rgba(255,255,255,0.5);
-			padding-left: 20px;
-			min-height: 190px;
-			margin: 0;
+		.details {
+			padding: 0 0 0 30px;
+			border-left: 1px dotted rgba(255,255,255,0.3);
+			height: 180px;
+			.box-sizing(border-box);
+			.about-text {
+				// Animation not working
+				&.ng-enter,
+				&.ng-leave {
+					.transition(all .5s linear);
+				}
+				&.ng-leave,
+				&.ng-enter.ng-enter-active {
+					opacity: 1;
+				}
+				&.ng-enter,
+				&.ng-leave.ng-leave-active {
+					opacity: 0;
+				}
+				.image {
+					float: left;
+					margin: 0 30px 0 0;
+					width: 100px;
+					height: 180px;
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: 100px;
+				}
+				p {
+					margin: 0;
+					a {
+						color: inherit;
+						font-weight: 600;
+					}
+				}
+			}
 		}
 	}
 }
@@ -139,84 +183,120 @@ h4 {
 	width: 100%;
 	height: 650px;
 	border-bottom: 1px solid #ddd;
-	.sensor-map-map,
-	.sensor-map-info {
+	position: relative;
+	.sensor-map-container,
+	.sensor-map-info,
+	.sensor-summary, {
 		width: 50%;
 		height: 100%;
 		float: left;
-		box-sizing: border-box;
+		.box-sizing(border-box);
 	}
 	.sensor-map-info {
-		overflow: auto;
-		header {
-			background: #f0f0f0;
-			padding: 20px 20px;
-			border-bottom: 1px solid #ccc;
-			h2 {
-				margin: 0 0 30px;
-				padding: 0;
-				text-transform: uppercase;
-				font-size: 30px;
-				float: left;
-			}
-			h3 {
-				padding: 0 0 10px;
-				background: transparent;
-				color: #999;
-				font-size: 12px;
-			}
-			.status {
-				display: block;
-				float: left;
-				font-family: "Open Sans";
-				font-size: 12px;
-				color: #999;
-				line-height: 15px;
-				margin: 14px 0 0 20px;
-				text-transform: uppercase;
-				font-weight: 400;
-				&:before {
-					content: '';
-					float: left;
-					width: 15px;
-					height: 15px;
-					display: inline-block;
-					margin-right: 10px;
-					background: gray;
-					.border-radius(100%);
-				}
-				&.ok:before {
-					background: lighten(green, 10%);
-					.box-shadow(0 0 10px lighten(green, 20%));
-				}
-			}
-			.close {
-				float: right;
-				font-size: 30px;
-				margin-top: 7px;
-				line-height: 100%;
-				text-align: right;
+		padding: 20px;
+	}
+	.close {
+		position: absolute;
+		top: 25px;
+		right: 10px;
+		font-size: 30px;
+		line-height: 100%;
+		text-align: right;
+		cursor: pointer;
+	}
+}
+
+.sensor-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	.sensor-item {
+		margin: 0;
+		padding: 5px;
+		float: left;
+		width: 50%;
+		.box-sizing(border-box);
+		.sensor-content {
+			.border-radius(3px);
+			border: 1px solid #ccc;
+			padding: 10px;
+			cursor: pointer;
+			&:hover {
+				.box-shadow(1px 1px 1px rgba(0,0,0,0.1));
 			}
 		}
 		h3 {
 			font-size: 14px;
-			text-transform: uppercase;
-			background: #444;
-			color: #f0f0f0;
-			font-weight: 600;
-			padding: 10px 10px 10px 20px;
 			margin: 0;
-			span {
-				font-weight: 400;
-				color: #999;
-				float: right;
-				font-size: 12px;
+		}
+	}
+}
+
+.sensor-summary {
+	header {
+		background: #f0f0f0;
+		padding: 20px 20px;
+		border-bottom: 1px solid #ccc;
+		h2 {
+			margin: 0;
+			padding: 0;
+			text-transform: uppercase;
+			font-size: 30px;
+			float: left;
+		}
+		h3 {
+			padding: 0 0 10px;
+			background: transparent;
+			color: #999;
+			font-size: 12px;
+		}
+		.status {
+			display: block;
+			float: left;
+			font-family: "Open Sans";
+			font-size: 12px;
+			color: #999;
+			line-height: 15px;
+			margin: 14px 0 0 20px;
+			text-transform: uppercase;
+			font-weight: 400;
+			&:before {
+				content: '';
+				float: left;
+				width: 15px;
+				height: 15px;
+				display: inline-block;
+				margin-right: 10px;
+				background: gray;
+				.border-radius(100%);
+			}
+			&.ok:before {
+				background: lighten(green, 10%);
+				.box-shadow(0 0 10px lighten(green, 20%));
 			}
 		}
-		canvas {
-			width: 100%;
-			height: 400px;
+		.latest-readings {
+			margin-top: 30px;
 		}
+	}
+	h3 {
+		font-size: 14px;
+		text-transform: uppercase;
+		background: #444;
+		color: #f0f0f0;
+		font-weight: 600;
+		padding: 10px 10px 10px 20px;
+		margin: 0;
+		span {
+			font-weight: 400;
+			color: #999;
+			float: right;
+			font-size: 12px;
+		}
+	}
+	canvas {
+		width: 100%;
+		height: 400px;
 	}
 }
 
