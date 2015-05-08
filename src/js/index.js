@@ -1,3 +1,4 @@
+window.$ = window.jQuery = require('jquery');
 require('mapbox.js');
 L.mapbox.accessToken = 'pk.eyJ1IjoibWlndWVscGVpeGUiLCJhIjoiVlc0WWlrQSJ9.pIPkSx25w7ossO6rZH9Tcw';
 window.angular = require('angular');

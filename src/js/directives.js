@@ -346,4 +346,69 @@ angular.module('rede')
 			}
 		}
 	}
+])
+
+.directive('scrollFixed', [
+	function() {
+
+		return {
+			restrict: 'A',
+			link: function(scope, element, attrs) {
+
+				$(document).ready(function() {
+
+					var $element = $(element);
+					var offset = $element.offset().top;
+
+					var clone = false;
+
+					$(window).resize(function() {
+						offset = $element.offset().top;
+						if(clone) {
+							clone.css({
+								left: $element.offset().left
+							});
+							if(parseInt(attrs.useWidth)) {
+								close.css({
+									width: $element.width()
+								});
+							}
+						}
+					});
+
+					$(window).scroll(scroll);
+
+					function scroll() {
+						var scrollTop = $(window).scrollTop();
+						if(scrollTop >= offset) {
+							if(!clone && !clone.length) {
+								clone = $element.clone();
+								clone.css({
+									left: $element.offset().left
+								});
+								if(parseInt(attrs.useWidth)) {
+									clone.css({
+										width: $element.width()
+									});
+								}
+								clone.addClass('scroll-fixed').insertAfter($element);
+							}
+						} else {
+							if(clone && clone.length) {
+								clone.remove();
+								clone = false;
+							}
+						}
+					}
+
+				});
+
+				scope.$on('$destroy', function() {
+
+				});
+
+			}
+		}
+
+	}
 ]);

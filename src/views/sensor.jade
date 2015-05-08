@@ -1,8 +1,16 @@
 article#sensor
-	header#sensor-header.anti-row
+	header#sensor-header.anti-row(scroll-fixed use-width="0")
 		.container
-			.twelve.columns
+			.four.columns
 				h1 Belterra #1
+			.eight.columns
+				nav#sensor-nav
+					a(href="#") Últimas medições
+					a(href="#") Localização
+					a(href="#") Dados históricos
+					a(href="#") Análises
+					a(href="#") Belterra
+					a(href="#") API
 	section#sensor-main
 		.container
 			.six.columns
@@ -61,12 +69,45 @@ article#sensor
 					.download
 						a.button(href="#") Baixar estes dados
 
+	section#sensor-lab.row
+		.container
+			.four.columns
+				h2 Análises de laboratório
+				p A equipe do Rede InfoAmazonia além de monitorar via sensores realiza periodicamente análises de laboratório da água.
+			.eight.columns
+				table
+					thead
+						tr
+							th Data
+							th OD
+							th DBO
+							th pH
+							th PO4
+							th Coliformes
+							th NHO3
+							th Temperatura
+					tbody
+						tr
+							td Ontem
+							td 123
+							td 4
+							td 6
+							td 30
+							td 12
+							td 23
+							td 22 C
+
 	section#sensor-city.row
 		.container
-			.twelve.columns
-				h2 Água e doenças em Belterra
+			.six.columns
+				h2 Qualidade da água e doenças em 
+					strong Belterra
 				p via 
 					a.visaguas(href="http://visaguas.infoamazonia.org/" rel="external") Visaguas
+			.six.columns
+				p A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda vazão hídrica.
+				p Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país.
+				p Na Amazônia Legal, 60% das residências são atendidas pela rede geral de água. A média nacional é de 82,7%.
 		iframe(src="http://visaguas.infoamazonia.org/uf/15/cidade/150145/?theme=rede&lock=true&hide_title=true" frameborder="0" width="100%" height="800")
 
 
