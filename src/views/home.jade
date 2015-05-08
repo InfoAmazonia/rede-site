@@ -31,7 +31,7 @@ section#home.anti-row
 					.about-text(ng-show="aboutText == 'forest'")
 						.image(style="background-image:url(/img/forest.png)")
 						p Aenean libero nisl, luctus vel nibh vel, maximus tristique odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo sollicitudin ornare. Donec sem dolor, convallis at interdum et, accumsan imperdiet ex. Vestibulum feugiat id felis a vehicula.
-	#sensors-map.row
+	#sensors-map
 		.sensor-map-container(ng-controller="MapCtrl")
 			leaflet#map(center="map.center" layers="map.layers" legend="legend" markers="map.markers" geojson="geojson" defaults="map.options")
 		.sensor-map-info(ng-hide="sensor")
@@ -44,12 +44,15 @@ section#home.anti-row
 			span.icon-cross.close(ng-click="setSensor(false)")
 			sensor-summary(sensor="sensor")
 			a.button(ui-sref="sensor({sensorId: '1'})") Ver detalhes deste sensor
-	#city-data.row
-		.container
-			.twelve.columns
-				h2 Qualidade da água e doenças na Amazônia
-		.container
-			.six.columns
-				p A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda vazão hídrica.
-				p Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país.
-				p Na Amazônia Legal, 60% dos munícipios são atendidos por rede geral de água. A média nacional é de 82,7% 
+	section#city-data.row
+		header.city-data-header
+			.container
+				.six.columns
+					h2 Qualidade da água e doenças na Amazônia
+					p via 
+						a.visaguas(href="http://visaguas.infoamazonia.org" rel="external" target="_blank") VISAGUAS
+				.six.columns
+					p A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda vazão hídrica.
+					p Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país.
+					p Na Amazônia Legal, 60% das residências são atendidas pela rede geral de água. A média nacional é de 82,7%.
+		iframe(width="100%" height="800" src="http://visaguas.infoamazonia.org/?theme=rede" frameborder="0")

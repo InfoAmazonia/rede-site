@@ -291,11 +291,25 @@ angular.module('rede')
 
 				function init() {
 
-					var data = [['', scope.label]];
+					var data = [['', scope.label, 'Média']];
 
 					_.each(scope.dataset, function(d, i) {
 						if(i <= 23)
 							data.push([new Date(d.timestamp), d[scope.type]]);
+					});
+
+					// Extract average
+					var total = 0;
+					_.each(data, function(d, i) {
+						if(i != 0)
+							total = total + d[1];
+					});
+
+					var average = total / (data.length-1);
+
+					_.each(data, function(d, i) {
+						if(i != 0)
+							d.push(average);
 					});
 
 					// See https://google-developers.appspot.com/chart/interactive/docs/gallery/linechart
