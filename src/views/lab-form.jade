@@ -1,0 +1,33 @@
+form#lab-form
+	.container
+		.six.columns.offset-by-three
+			h2 Enviar análise de laboratório
+			p
+				label(for="sensor_id_input") ID do sensor
+				input(id="sensor_id_input" type="text")
+			p
+				label(for="od_input") OD (Oxigênio dissolvido)
+				input(id="od_input" type="text")
+			p
+				label(for="dbo_input") DBO (Demanda bioquímica de oxigênio)
+				input(id="dbo_input" type="text")
+			p
+				label(for="ph_input") pH (Potencial Hidrogenionico)
+				input(id="ph_input" type="text")
+			p
+				label(for="po4_input") PO4 (Fosfato)
+				input(id="po4_input" type="text")
+			p
+				label(for="coliformes_input") Coliformes
+				input(id="coliformes_input" type="text")
+			p
+				label(for="nho3_input") NHO3 (Nitrato)
+				input(id="nho3_input" type="text")
+			p
+				label(for="temp_input") Temperatura
+				input(id="temp_input" type="text")
+			p
+				label(for="turbidez_input") Turbidez (JTu)
+				input(id="turbidez_input" type="text")
+			p
+				input(type="submit" value="Enviar análise")

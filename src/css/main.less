@@ -111,6 +111,53 @@ h1 {
 	}
 }
 
+.sub-header {
+	background: url(../img/shattered-dark.png);
+	border-bottom: 2px solid #222;
+	color: #fff;
+	padding: 40px 0;
+	border-bottom: 2px solid #061d20;
+	&.scroll-fixed {
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 9999;
+		margin-top: 0 !important;
+		padding: 20px 0;
+		h1 {
+			font-size: 32px;
+			line-height: 32px;
+		}
+		.header-nav {
+			margin-top: 0;
+		}
+	}
+	h1 {
+		text-transform: uppercase;
+		margin: 0;
+		padding: 0;
+	}
+	.header-nav {
+		float: right;
+		margin-top: 12px;
+		a {
+			display: inline-block;
+			margin: 0 5px 0 0;
+			color: rgba(255,255,255,0.6);
+			text-decoration: none;
+			padding: 3px 5px;
+			.box-sizing(border-box);
+			border: 1px solid transparent;
+			.border-radius(4px);
+			&:hover,
+			&.active {
+				color: #fff;
+				border: 1px solid rgba(255,255,255,0.2);
+			}
+		}
+	}
+}
+
 #home {
 	#about {
 		background: url(../img/shattered-dark.png);
@@ -225,50 +272,6 @@ h1 {
 
 #sensor {
 	#sensor-header {
-		background: url(../img/shattered-dark.png);
-		border-bottom: 2px solid #222;
-		color: #fff;
-		padding: 40px 0;
-		border-bottom: 2px solid #061d20;
-		&.scroll-fixed {
-			top: 0;
-			left: 0;
-			right: 0;
-			z-index: 9999;
-			margin-top: 0 !important;
-			padding: 20px 0;
-			h1 {
-				font-size: 32px;
-				line-height: 32px;
-			}
-			#sensor-nav {
-				margin-top: 0;
-			}
-		}
-		h1 {
-			text-transform: uppercase;
-			margin: 0;
-			padding: 0;
-		}
-		#sensor-nav {
-			float: right;
-			margin-top: 12px;
-			a {
-				display: inline-block;
-				margin: 0 5px 0 0;
-				color: rgba(255,255,255,0.6);
-				text-decoration: none;
-				padding: 3px 5px;
-				.box-sizing(border-box);
-				border: 1px solid transparent;
-				.border-radius(4px);
-				&:hover,
-				&.active {
-					color: #fff;
-					border: 1px solid rgba(255,255,255,0.2);
-				}
-			}
-		}
 	}
 	#sensor-main {
 		padding: 40px 0;
@@ -703,5 +706,13 @@ h1 {
 	}
 	.chart {
 		padding: 0 20px;
+	}
+}
+
+#lab-login,
+#lab-form {
+	input {
+		width: 100%;
+		display: block;
 	}
 }

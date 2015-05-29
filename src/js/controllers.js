@@ -282,4 +282,32 @@ angular.module('rede')
 			}
 		});
 	}
+])
+
+.controller('LabCtrl', [
+	'$scope',
+	'$state',
+	'RedeLab',
+	function($scope, $state, Lab) {
+
+		$scope.$watch(function() {
+			return Lab.getToken();
+		}, function(token) {
+			$scope.token = token;
+			if(token && $state.current.name == 'lab') {
+				$state.go('lab.form');
+			} else if(!token && $state.current.name == 'lab.form') {
+				$state.go('lab');
+			}
+		});
+
+		$scope.logout = function() {
+			Lab.setToken('');
+		};
+
+		$scope.login = function(token) {
+			Lab.setToken(token);
+		};
+
+	}
 ]);

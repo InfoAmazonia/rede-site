@@ -1,0 +1,17 @@
+section
+	header#lab-header.sub-header.anti-row.row(scroll-fixed use-width="0")
+		.container
+			.six.columns
+				h1 Análise de laboratório
+			.six.columns
+				nav#lab-nav.header-nav
+					a(href="javascript:void(0);" ng-click="logout()" ng-show="token") Sair
+	section#form.ui-view(autoscroll='false')
+		.container
+			.six.columns.offset-by-three
+				form#lab-login(ng-submit="login(token)")
+					h2 Insira sua chave de acesso
+					p
+						input(type="password" id="token_input" name="token" ng-model="token")
+					p
+						input(type="submit" value="Acessar")

@@ -12,9 +12,11 @@ require('angular-leaflet-directive');
 require('angular-google-chart');
 require('angular-ui-router');
 require('angular-resource');
+require('angular-cookies');
 
 var app = angular.module('rede', [
 	'ui.router', 
+	'ngCookies',
 	'ngAnimate',
 	'ngResource',
 	'googlechart',
@@ -52,6 +54,15 @@ app
 				url: '/sensors/:sensorId/',
 				controller: 'SensorCtrl',
 				templateUrl: '/views/sensor.html'
+			})
+			.state('lab', {
+				url: '/lab/',
+				controller: 'LabCtrl',
+				templateUrl: '/views/lab.html'
+			})
+			.state('lab.form', {
+				url: 'form/',
+				templateUrl: '/views/lab-form.html'
 			});
 
 		/*

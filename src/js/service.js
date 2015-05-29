@@ -26,4 +26,32 @@ angular.module('rede')
 		}
 
 	}
-]);
+])
+
+.factory('RedeLab', [
+	'$window',
+	'$cookies',
+	function($window, $cookies) {
+
+		$window.labToken = $cookies.labToken;
+
+		// try {
+		// 	$window.labToken = JSON.parse($cookies.labToken);
+		// } catch(err) {
+		// 	$window.labToken = false;
+		// }
+
+		return {
+			setToken: function(data) {
+				$window.labToken = $cookies.labToken = data;
+				// try {
+				// 	$cookies.labToken = JSON.stringify(data);
+				// } catch(err) {
+				// 	$cookies.labToken = '';
+				// }
+			},
+			getToken: function() {
+				return $window.labToken;
+			}
+		}
+	}]);
