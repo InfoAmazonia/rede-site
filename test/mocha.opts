@@ -1,0 +1,6 @@
+--require should
+--reporter spec
+--ui bdd
+--recursive
+--check-leaks
+--bail
