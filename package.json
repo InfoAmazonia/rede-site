@@ -32,8 +32,11 @@
     "angular-leaflet-directive": "tombatossals/angular-leaflet-directive#v0.7.15",
     "angular-resource": "^1.3.15",
     "angular-ui-router": "^0.2.13",
+    "async": "^1.3.0",
+    "body-parser": "^1.13.2",
     "browserify": "^9.0.8",
     "browserify-shim": "^3.8.5",
+    "compression": "^1.5.1",
     "express": "^4.12.3",
     "grunt": "^0.4.5",
     "grunt-browserify": "^3.7.0",
@@ -46,6 +49,7 @@
     "jquery": "^2.1.4",
     "leaflet": "^0.7.3",
     "mapbox.js": "mapbox/mapbox.js#v2.1.8",
+    "method-override": "^2.3.3",
     "moment": "^2.10.2",
     "mongoose": "^4.0.6",
     "napa": "latest",
@@ -68,6 +72,7 @@
   "devDependencies": {
     "mocha": "^2.2.5",
     "nodemon": "^1.3.7",
-    "should": "^7.0.2"
+    "should": "^7.0.2",
+    "supertest": "^1.0.1"
   }
 }
