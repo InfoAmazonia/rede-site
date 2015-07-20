@@ -260,12 +260,52 @@ h1 {
 		}
 		.close {
 			position: absolute;
-			top: 25px;
+			top: 20px;
 			right: 10px;
 			font-size: 30px;
 			line-height: 100%;
 			text-align: right;
 			cursor: pointer;
+		}
+		.current {
+			width: 25%;
+			float: left;
+			padding: 0 40px 0 0;
+			.box-sizing(border-box);
+			margin-top: 30px;
+			h3 {
+				span {
+					margin: 20px 0 0;
+					font-weight: bold;
+					float: none;
+					display:block;
+					font-size: 32px;
+					width: 100%;
+					padding: 33% 0 67% 0;
+					height: 0;
+					color: #fff;
+					.border-radius(100%);
+					text-align: center;
+					&.green {
+						background: lighten(green, 10%);
+					}
+				}
+			}
+			.button {
+				line-height: 30px;
+				height: 30px;
+				margin: 0 8px;
+				padding: 0;
+				text-align: center;
+				border: 1px solid #ccc;
+				&:hover {
+					border-color: #bbb;
+				}
+			}
+		}
+		.readings {
+			width: 75%;
+			float: left;
 		}
 	}
 }
@@ -318,7 +358,7 @@ h1 {
 					text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 					font-weight: bold;
 					display: block;
-					font-size: 38px;
+					font-size: 42px;
 					&.green {
 						color: lighten(green, 10%);
 					}
@@ -347,6 +387,7 @@ h1 {
 			height: auto;
 			float: right;
 			margin: 0 0 40px 40px;
+			.border-radius(4px);
 		}
 		p {
 			font-size: 20px;
@@ -525,10 +566,12 @@ h1 {
 		padding: 20px 20px;
 		border-bottom: 1px solid #ccc;
 		h2 {
+			font-family: "Open Sans Condensed";
+			font-weight: 200;
 			margin: 0;
 			padding: 0;
 			text-transform: uppercase;
-			font-size: 30px;
+			font-size: 32px;
 			float: left;
 		}
 		h3 {
@@ -639,12 +682,12 @@ h1 {
 				text-transform: uppercase;
 				.quality-3 {
 					content: '';
-					float: right;
 					display: inline-block;
 					width: 10px;
 					height: 10px;
 					background: green;
 					margin-top: 5px;
+					margin-left: 5px;
 					.border-radius(100%);
 					.box-shadow(0 0 3px lighten(green, 10%));
 				}

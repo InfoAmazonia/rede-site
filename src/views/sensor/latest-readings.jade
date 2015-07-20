@@ -9,11 +9,11 @@
 					span Hora
 				th(title="Qualidade")
 					span Qualidade
-				th(title="Condutividade")
+				th(title="Condutividade" ng-show="hasParam('water_conductivity')")
 					span Condutividade
-				th(title="Turbidez")
+				th(title="Turbidez" ng-show="hasParam('turbidity')")
 					span Turbidez
-				th(title="ORP")
+				th(title="ORP" ng-show="hasParam('orp')")
 					span ORP
 		tbody
 			tr(ng-repeat="reading in latest | limitTo: amount")
@@ -21,11 +21,11 @@
 					span {{fromNow(reading)}}
 				td.quality(title="Boa")
 					span
+						| Boa 
 						span.quality-3
-						| Boa
-				td(title="{{reading.water_conductivity}}")
+				td(title="{{reading.water_conductivity}}" ng-show="hasParam('water_conductivity')")
 					span {{reading.water_conductivity}}
-				td(title="{{reading.turbidity}}")
+				td(title="{{reading.turbidity}}" ng-show="hasParam('turbidity')")
 					span {{reading.turbidity}}
-				td(title="{{reading.orp}}")
+				td(title="{{reading.orp}}" ng-show="hasParam('orp')")
 					span {{reading.orp}}

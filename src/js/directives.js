@@ -161,10 +161,17 @@ angular.module('rede')
 			restrict: 'E',
 			scope: {
 				'sensor': '=',
-				'amount': '='
+				'amount': '=',
+				'params': '='
 			},
 			templateUrl: '/views/sensor/latest-readings.html',
 			link: function(scope, element, attrs) {
+
+				scope.params = scope.params || ['water_conductivity', 'turbidity', 'orp'];
+
+				scope.hasParam = function(param) {
+					return _.find(scope.params, function(p) { return p == param; });
+				};
 
 				scope.fromNow = function(reading) {
 					return moment(reading.timestamp).fromNow();

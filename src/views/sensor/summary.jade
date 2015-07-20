@@ -2,8 +2,13 @@ article.sensor-summary
 	header
 		.clearfix
 			h2 Belterra #1
-			span.status.ok Recebendo dados
-		section
-			latest-readings(amount="'3'" sensor="sensorId")
+			//- span.status.ok Recebendo dados
+		section.clearfix
+			.current
+				h3 Qualidade agora 
+					span.green BOA
+				a.button(ui-sref="sensor({sensorId: sensorId})") Saiba mais
+			.readings
+				latest-readings(amount="'3'" sensor="sensorId" params="[]")
 	section
 		sensor-chart-summary(sensor="sensorId")
