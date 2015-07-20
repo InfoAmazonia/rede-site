@@ -25,10 +25,7 @@ var Sensor = mongoose.model('Sensor');
  * Helpers
  */
 
-var expressHelper = require('../helpers/express');
-var clearDb = require('../helpers/clearDb');
-// var factory = require('../helpers/factory');
-// var messaging = require('../../lib/messaging')
+var mongodb = require('../../lib/helpers/mongodb');
 
 /* Config */
 
@@ -45,8 +42,8 @@ describe('API: Measurements', function(){
      * Init database
      */
 
-    expressHelper.whenReady(function(){
-      clearDb.all(function(err){
+    mongodb.whenReady(function(){
+      mongodb.clearDb(function(err){
         should.not.exist(err);
         doneBefore();
       });
@@ -111,7 +108,7 @@ describe('API: Measurements', function(){
    */
 
   after(function (done) {
-    clearDb.all(function(err){
+    mongodb.clearDb(function(err){
       should.not.exist(err);
       done(err);
     });
