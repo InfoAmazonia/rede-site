@@ -1,16 +1,29 @@
 article#sensor
-	header#sensor-header.sub-header.anti-row(scroll-fixed use-width="0")
+	header#sensor-header.sub-header.anti-row.row(scroll-fixed use-width="0")
+		.sensor-map(ng-controller="MapCtrl")
+			leaflet#map(center="map.center" layers="map.layers" legend="legend" markers="map.markers" geojson="geojson" defaults="map.options")
+		.header-content
+			.container
+				.four.columns
+					h1 Belterra #1
+					.header-summary
+						.quality
+							h2 Qualidade agora
+								span.green Boa
+							p.detail Última medição: 1 hora atrás
+				.eight.columns
+					nav#sensor-nav.header-nav
+						a(href="#") Últimas medições
+						a(href="#") Dados históricos
+						a(href="#") Análises
+						a(href="#") Belterra
+						a(href="#") API
+	section#sensor-community
 		.container
-			.four.columns
-				h1 Belterra #1
-			.eight.columns
-				nav#sensor-nav.header-nav
-					a(href="#") Últimas medições
-					a(href="#") Localização
-					a(href="#") Dados históricos
-					a(href="#") Análises
-					a(href="#") Belterra
-					a(href="#") API
+			.twelve.columns
+				img.cmm-pic(src="http://lorempixum.com/700/700")
+				h2 Comunidade deste sensor
+				p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut malesuada dui nulla, ac aliquam tellus tempor at. Duis sit amet finibus nibh. Nam pellentesque ipsum ac lorem elementum cursus. Integer dictum ligula vitae ligula mattis, et pretium risus rutrum. Curabitur at nibh leo. Integer eget magna luctus, maximus nibh at, congue nisi. Suspendisse non lobortis leo. In varius vel ipsum id porttitor. Donec at tincidunt purus, id auctor massa. Vivamus pulvinar, nisi sed venenatis facilisis, dui nulla porttitor leo, id molestie ligula diam ut mauris. Nulla facilisi. Donec congue eros lorem, eget porta sapien sodales nec. 
 	section#sensor-main
 		.container
 			.six.columns
@@ -43,8 +56,8 @@ article#sensor
 							p 120
 			.six.columns
 				latest-readings(sensor="sensor" amount="'5'")
-	section#sensor-map(ng-controller="MapCtrl")
-		leaflet#map(center="map.center" layers="map.layers" legend="legend" markers="map.markers" geojson="geojson" defaults="map.options")
+	//- section#sensor-map(ng-controller="MapCtrl")
+	//- 	leaflet#map(center="map.center" layers="map.layers" legend="legend" markers="map.markers" geojson="geojson" defaults="map.options")
 	section#sensor-charts.row
 		.sensor-chart
 			header#sensor-charts-header

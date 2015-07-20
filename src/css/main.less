@@ -28,7 +28,7 @@ h1 {
 }
 
 .scroll-fixed {
-	position: fixed;
+	position: fixed !important;
 }
 
 .realtime {
@@ -100,7 +100,7 @@ h1 {
 				float: left;
 				a {
 					display: block;
-					text-align: center;			
+					text-align: center;
 					color: #999;
 					text-decoration: none;
 					text-transform: uppercase;
@@ -272,6 +272,86 @@ h1 {
 
 #sensor {
 	#sensor-header {
+		position: relative;
+		.sensor-map {
+			opacity: 0.3;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+		.header-content {
+			pointer-events: none;
+			a {
+				pointer-events: auto;
+			}
+		}
+		.header-nav {
+			a {
+				background: rgba(0,0,0,0.5);
+			}
+		}
+		&.scroll-fixed {
+			h1 {
+				margin-bottom: 0;
+			}
+			.sensor-map {
+				display: none;
+			}
+			.header-summary {
+				display: none;
+			}
+			.header-nav a {
+				background: transparent;
+			}
+		}
+		h1 {
+			margin-bottom: 40px;
+		}
+		.header-summary {
+			h2 {
+				font-size: 14px;
+				text-transform: uppercase;
+				margin: 0;
+				span {
+					text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+					font-weight: bold;
+					display: block;
+					font-size: 38px;
+					&.green {
+						color: lighten(green, 10%);
+					}
+				}
+			}
+			.detail {
+				font-size: 14px;
+				font-style: italic;
+				color: rgba(255,255,255,0.5);
+			}
+		}
+	}
+	#sensor-community {
+		h2 {
+			font-family: "Open Sans";
+			color: #999;
+			text-transform: uppercase;
+			font-size: 14px;
+			font-weight: 600;
+			border-bottom: 2px solid #ccc;
+			margin: 0 0 10px;
+			padding: 0 0 10px;
+		}
+		img {
+			max-width: 400px;
+			height: auto;
+			float: right;
+			margin: 0 0 40px 40px;
+		}
+		p {
+			font-size: 20px;
+			line-height: 36px;
+		}
 	}
 	#sensor-main {
 		padding: 40px 0;

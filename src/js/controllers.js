@@ -6,19 +6,38 @@ angular.module('rede')
 	'$scope',
 	'CartoDBService',
 	'leafletData',
-	function($scope, CartoDB, leafletData) {
+	'$state',
+	function($scope, CartoDB, leafletData, $state) {
 
-		/* 
+		/*
 		 * Map
 		 */
 
 		$scope.map = {
+			options: {
+				scrollWheelZoom: false,
+				zoomControl: $state.current.name == 'sensor' ? false : true,
+				attributionControl: $state.current.name == 'sensor' ? false : true,
+				controls: {
+					layers: {
+						visible: $state.current.name == 'sensor' ? false : true
+					},
+					zoom: {
+						visible: $state.current.name == 'sensor' ? false : true
+					},
+					attribution: {
+						visible: $state.current.name == 'sensor' ? false : true
+					}
+				}
+			},
 			center: {
 				lat: 0,
 				lng: 0,
 				zoom: 2
 			}
 		};
+
+		console.log($scope.map.options);
 
 		$scope.map.layerData = [
 			{
