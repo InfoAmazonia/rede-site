@@ -12,8 +12,8 @@ var parser = require('../../lib/measurementParser')
  */
 
 var SensorSchema = new Schema({
-  phoneNumber: {type: String},
-  macAdress: {type: String}
+  identifier: {type: String},
+  description: {type: String}
 });
 
 /*

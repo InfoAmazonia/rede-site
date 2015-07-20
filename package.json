@@ -50,7 +50,7 @@
     "leaflet": "^0.7.3",
     "mapbox.js": "mapbox/mapbox.js#v2.1.8",
     "method-override": "^2.3.3",
-    "moment": "^2.10.2",
+    "moment": "^2.10.3",
     "mongoose": "^4.0.6",
     "napa": "latest",
     "underscore": "^1.8.3"
@@ -72,6 +72,7 @@
   "devDependencies": {
     "mocha": "^2.2.5",
     "nodemon": "^1.3.7",
+    "rosie": "^0.4.2",
     "should": "^7.0.2",
     "supertest": "^1.0.1"
   }

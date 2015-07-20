@@ -1,3 +1,11 @@
+/*
+ * Load config
+ */
+var env = process.env.NODE_ENV || 'development';
+var config = require('./config')[env];
+/*
+ * Export module
+ */
 module.exports = function(grunt) {
 
 	grunt.initConfig({
@@ -97,6 +105,24 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-browserify');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+
+	grunt.registerTask('populate','Populate application with mock data',function(){
+		var done = this.async();
+
+		var mongoose = require('mongoose');
+		mongoose.connect(config.db);
+
+		require('./app/models/sensor');
+		require('./app/models/measurement');
+
+		var factory = require('./lib/helpers/factory');
+
+		var sensorCount = 10;
+		var daysOfObservation = 20;
+
+		console.log('Populating database with '+daysOfObservation+' days of data for '+sensorCount+' sensors, please wait...');
+		factory.createSensorsAndMeasurements(sensorCount, daysOfObservation, done);
+	});
 
 	grunt.registerTask(
 		'javascript',
