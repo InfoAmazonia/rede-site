@@ -12,14 +12,17 @@ var parser = require('../../lib/measurementParser')
  */
 
 var SensorSchema = new Schema({
-  phoneNumber: {type: String},
-  macAdress: {type: String}
+  identifier: {type: String},
+  description: {type: String},
+	geometry: { type: {type: String}, coordinates: []},
+  createdAt: {type: Date, default: Date.now}
 });
 
 /*
  * Methos
  */
 SensorSchema.static({
+
   loadByPhoneNumber: function(phoneNumber, done){
     var self = this;
 
@@ -34,11 +37,21 @@ SensorSchema.static({
         });
       }
     })
-  }
+  },
+
+  list: function (options, cb) {
+      var criteria = options.criteria || {}
+
+      this.find(criteria)
+        .sort('identifier')
+        .limit(options.perPage)
+        .skip(options.perPage * options.page)
+        .exec(cb);
+    }
 });
 
 /*
- * Statics
+ * Methods
  */
 SensorSchema.methods = {
   saveMeasurementBatch: function(batchString, doneSaveMeasurementBatch){

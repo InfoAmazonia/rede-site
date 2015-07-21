@@ -3,8 +3,29 @@ A platform of water quality sensors.
 
 Please read documentation on the [wiki](https://github.com/InfoAmazonia/rede).
 
+## Getting started
+Clone this repository locally and run:
+
+```
+npm install
+```
+
+Run task build to compile client app and load parameters:
+
+```
+grunt build
+```
+
+Load initial data into databases (change `rede_dev` to your db name):
+
+```
+ mongoimport --db rede_dev --file=data/parameters.json --type=json --jsonArray --upsert --upsertFields name
+```
+
+Run `npm start`.
+
 ## API
-### Send measurement batch
+### Send measurements in batch
 
 ```
 POST /api/v1/measurements
