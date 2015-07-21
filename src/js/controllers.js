@@ -37,8 +37,6 @@ angular.module('rede')
 			}
 		};
 
-		console.log($scope.map.options);
-
 		$scope.map.layerData = [
 			{
 				name: 'Limite dos municípios',
@@ -88,11 +86,8 @@ angular.module('rede')
 	'CartoDBService',
 	'leafletData',
 	'$interval',
-	function($scope, Rede, CartoDB, leafletData, $interval) {
-
-		// Rede.user.query(function(data) {
-		// 	console.log(data);
-		// });
+	'SensorsData',
+	function($scope, Rede, CartoDB, leafletData, $interval, sensors) {
 
 		Rede.stories
 			.success(function(data) {
@@ -186,7 +181,9 @@ angular.module('rede')
 			$scope.sensor = sensor;
 		};
 
-		$scope.sensors = Rede.sample.sensors.features;
+		// $scope.sensors = Rede.sample.sensors.features;
+
+		$scope.sensors = sensors.sensors;
 
 		console.log($scope.sensors);
 

@@ -18,6 +18,15 @@ angular.module('rede')
 					method: 'PUT'
 				}
 			}),
+			sensors: $resource(apiUrl + '/sensors/:id', { id: '@id' }, {
+				query: {
+					method: 'GET',
+					isArray: false
+				},
+				update: {
+					method: 'PUT'
+				}
+			}),
 			stories: $http.get('http://infoamazonia.org/?publisher=infoamazonia&geojson=1'),
 			data: {
 				states: $http.get('http://visaguas.infoamazonia.org/api?query=estados')

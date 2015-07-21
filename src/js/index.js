@@ -15,7 +15,7 @@ require('angular-resource');
 require('angular-cookies');
 
 var app = angular.module('rede', [
-	'ui.router', 
+	'ui.router',
 	'ngCookies',
 	'ngAnimate',
 	'ngResource',
@@ -48,7 +48,15 @@ app
 			.state('home', {
 				url: '/',
 				controller: 'HomeCtrl',
-				templateUrl: '/views/home.html'
+				templateUrl: '/views/home.html',
+				resolve: {
+					SensorsData: [
+						'RedeService',
+						function(Rede) {
+							return Rede.sensors.query().$promise;
+						}
+					]
+				}
 			})
 			.state('sensor', {
 				url: '/sensors/:sensorId/',
@@ -88,7 +96,7 @@ app
 			angular.forEach(search, function(v, k){
 				params.push(k + '=' + v);
 			});
-			
+
 			return path + '/?' + params.join('&');
 		});
 	}
