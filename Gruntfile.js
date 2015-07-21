@@ -121,7 +121,7 @@ module.exports = function(grunt) {
 		var daysOfObservation = 20;
 
 		console.log('Populating database with '+daysOfObservation+' days of data for '+sensorCount+' sensors, please wait...');
-		factory.createSensorsAndMeasurements(sensorCount, daysOfObservation, done);
+		factory.createSensorsWithMeasurements(sensorCount, daysOfObservation, done);
 	});
 
 	grunt.registerTask(
@@ -149,8 +149,8 @@ module.exports = function(grunt) {
 	);
 
 	grunt.registerTask(
-		'default', 
-		'Build, start server and watch.', 
+		'default',
+		'Build, start server and watch.',
 		['build', 'watch']
 	);
 
