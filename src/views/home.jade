@@ -37,13 +37,13 @@ section#home.anti-row
 		.sensor-map-info(ng-hide="sensor")
 			h2 Sensores
 			ul.sensor-list
-				li.sensor-item(ng-repeat="(i, sensor) in sensors" ng-click="setSensor(1)")
+				li.sensor-item(ng-repeat="(i, sensor) in sensors" ng-click="setSensor(sensor._id)")
 					.sensor-content
-						h3 Sensor # {{i+1}}
+						h3 {{sensor.identifier}}
 		#sensor-summary(ng-show="sensor")
 			span.icon-cross.close(ng-click="setSensor(false)")
 			sensor-summary(sensor="sensor")
-			a.button(ui-sref="sensor({sensorId: '1'})") Ver detalhes deste sensor
+			a.button(ui-sref="sensor({sensorId: sensor._id})") Ver detalhes deste sensor
 	section#city-data.row
 		header.city-data-header
 			.container

@@ -27,11 +27,41 @@ angular.module('rede')
 					method: 'PUT'
 				}
 			}),
+			measurements: $resource(apiUrl + '/measurements/:id', { id: '@id' }, {
+				query: {
+					method: 'GET',
+					isArray: false
+				},
+				update: {
+					method: 'PUT'
+				}
+			}),
 			stories: $http.get('http://infoamazonia.org/?publisher=infoamazonia&geojson=1'),
 			data: {
 				states: $http.get('http://visaguas.infoamazonia.org/api?query=estados')
 			},
-			sample: sampleData
+			sample: sampleData,
+			sensorToGeoJSON: function(sensors) {
+
+				var geojson = {
+					type: 'FeatureCollection',
+					features: []
+				};
+				_.each(sensors, function(sensor) {
+					var feature = {type: 'Feature'};
+					for(key in sensor) {
+						if(key == 'geometry') {
+							feature.geometry = sensor[key];
+						} else {
+							if(!feature.properties)
+								feature.properties = {};
+							feature.properties[key] = sensor[key];
+						}
+					}
+					geojson.features.push(feature);
+				});
+				return geojson;
+			}
 		}
 
 	}

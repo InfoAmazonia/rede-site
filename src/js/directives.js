@@ -270,7 +270,8 @@ angular.module('rede')
 ])
 
 .directive('sensorSummary', [
-	function() {
+	'RedeService',
+	function(Rede) {
 		return {
 			restrict: 'E',
 			scope: {
@@ -278,7 +279,15 @@ angular.module('rede')
 			},
 			templateUrl: '/views/sensor/summary.html',
 			link: function(scope, element, attrs) {
-
+				scope.$watch('sensorId', function(sensorId) {
+					if(typeof sensorId == 'object')
+						scope.sensor = sensorId;
+					else if(typeof sensorId == 'string') {
+						Rede.sensors.get({id: sensorId}, function(sensor) {
+							scope.sensor = sensor;
+						});
+					}
+				});
 			}
 		}
 	}

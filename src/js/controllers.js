@@ -18,22 +18,20 @@ angular.module('rede')
 				scrollWheelZoom: false,
 				zoomControl: $state.current.name == 'sensor' ? false : true,
 				attributionControl: $state.current.name == 'sensor' ? false : true,
-				controls: {
-					layers: {
-						visible: $state.current.name == 'sensor' ? false : true
-					},
-					zoom: {
-						visible: $state.current.name == 'sensor' ? false : true
-					},
-					attribution: {
-						visible: $state.current.name == 'sensor' ? false : true
-					}
-				}
 			},
 			center: {
 				lat: 0,
 				lng: 0,
 				zoom: 2
+			}
+		};
+
+		if($state.current.name == 'sensor') {
+			$scope.map.controls = {
+				layers: {
+					visible: $state.current.name == 'sensor' ? false : true,
+					position: 'topright'
+				}
 			}
 		};
 
@@ -89,17 +87,17 @@ angular.module('rede')
 	'SensorsData',
 	function($scope, Rede, CartoDB, leafletData, $interval, sensors) {
 
-		Rede.stories
-			.success(function(data) {
-				console.log(data);
-			})
-			.error(function(data, status, headers, config) {
-				console.log(data);
-			});
+		// Rede.stories
+		// 	.success(function(data) {
+		// 		console.log(data);
+		// 	})
+		// 	.error(function(data, status, headers, config) {
+		// 		console.log(data);
+		// 	});
 
-		Rede.data.states.success(function(data) {
-			console.log(data);
-		});
+		// Rede.data.states.success(function(data) {
+		// 	console.log(data);
+		// });
 
 		/*
 		 * About
@@ -128,8 +126,10 @@ angular.module('rede')
 
 		var sCount = 1;
 
+		$scope.sensors = sensors.sensors;
+
 		$scope.geojson = {
-			data: Rede.sample.sensors,
+			data: Rede.sensorToGeoJSON($scope.sensors),
 			pointToLayer: function(f, latlng) {
 				return new L.Marker(latlng, {
 					icon: L.icon({
@@ -162,7 +162,7 @@ angular.module('rede')
 		};
 
 		var latLngs = [];
-		_.each(Rede.sample.sensors.features, function(feature) {
+		_.each($scope.sensors, function(feature) {
 			latLngs.push(
 				[
 					feature.geometry.coordinates[1],
@@ -183,9 +183,7 @@ angular.module('rede')
 
 		// $scope.sensors = Rede.sample.sensors.features;
 
-		$scope.sensors = sensors.sensors;
-
-		console.log($scope.sensors);
+		// console.log($scope.sensors);
 
 	}
 ])
