@@ -143,7 +143,7 @@ angular.module('rede')
 				});
 			},
 			onEachFeature: function(f, layer) {
-				layer.bindPopup("Sensor #" + sCount);
+				layer.bindPopup(f.properties.identifier);
 				layer.on('mouseover', function() {
 					layer.openPopup();
 					layer.setZIndexOffset(1000);
@@ -154,7 +154,7 @@ angular.module('rede')
 				});
 				layer.on('click', function() {
 					$scope.$apply(function() {
-						$scope.sensor = 1;
+						$scope.sensor = f.properties._id;
 					});
 				});
 				sCount++;
