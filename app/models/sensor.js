@@ -12,14 +12,14 @@ var parser = require('../../lib/measurementParser')
  */
 
 var SensorSchema = new Schema({
-  identifier: {type: String},
+  _id: {type: String, require: true},
   description: {type: String},
 	geometry: { type: {type: String}, coordinates: []},
   createdAt: {type: Date, default: Date.now}
 });
 
 /*
- * Methos
+ * Methods
  */
 SensorSchema.static({
 
@@ -43,7 +43,7 @@ SensorSchema.static({
       var criteria = options.criteria || {}
 
       this.find(criteria)
-        .sort('identifier')
+        .sort('_id')
         .limit(options.perPage)
         .skip(options.perPage * options.page)
         .exec(cb);

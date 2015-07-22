@@ -18,7 +18,6 @@ var app = require('../../app');
  * Models
  */
 
-var Measurement = mongoose.model('Measurement');
 var Sensor = mongoose.model('Sensor');
 
 /*
@@ -104,32 +103,99 @@ describe('API: Sensors', function(){
         /* Check data */
         var data = body.sensors;
         data.should.have.lengthOf(defaultPerPage);
-        mongoose.model('Sensor').find({}).sort('identifier').limit(defaultPerPage).lean().exec(function(err, sensors){
-          if (err) return doneIt(err);
-          for (var i = 0; i < defaultPerPage; i++) {
+        mongoose.model('Sensor')
+          .find({})
+          .sort('_id')
+          .limit(defaultPerPage)
+          .lean()
+          .exec(function(err, sensors){
+            if (err) return doneIt(err);
+            for (var i = 0; i < defaultPerPage; i++) {
 
-            var sensor = sensors[i];
-            data[i].should.have.property('_id', sensor._id.toHexString());
-            data[i].should.have.property('identifier', sensor.identifier);
-            data[i].should.have.property('description', sensor.description);
-            data[i].should.have.property('createdAt');
+              var sensor = sensors[i];
+              data[i].should.have.property('_id', sensor._id);
+              data[i].should.have.property('description', sensor.description);
+              data[i].should.have.property('createdAt');
 
-            var createdAt = moment(data[i].createdAt).format();
-            createdAt.should.equal(moment(sensor.createdAt).format());
+              var createdAt = moment(data[i].createdAt).format();
+              createdAt.should.equal(moment(sensor.createdAt).format());
 
-            var geometry = sensor.geometry;
-            data[i].should.have.property('geometry');
-            data[i]['geometry'].should.have.property('type', geometry.type);
+              var geometry = sensor.geometry;
+              data[i].should.have.property('geometry');
+              data[i]['geometry'].should.have.property('type', geometry.type);
 
-            var coordinates = geometry.coordinates;
-            data[i]['geometry'].should.have.property('coordinates');
-            data[i]['geometry']['coordinates'].should.containDeepOrdered(coordinates);
-          }
-          doneIt();
+              var coordinates = geometry.coordinates;
+              data[i]['geometry'].should.have.property('coordinates');
+              data[i]['geometry']['coordinates'].should.containDeepOrdered(coordinates);
+            }
+            doneIt();
         });
       }
     });
+
+    it('return 200 and proper page when parameters are passed', function(doneIt){
+
+      var payload = {
+        page: 3,
+        perPage: 14
+      }
+
+      /* The request */
+      request(app)
+        .get(apiPrefix + '/sensors')
+        .query(payload)
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end(onResponse);
+
+      /* Verify response */
+      function onResponse(err, res) {
+        if (err) return doneIt(err);
+
+        /* Check pagination */
+        var body = res.body;
+        body.should.have.property('count', numberOfSensors);
+        body.should.have.property('perPage', payload.perPage);
+        body.should.have.property('page', payload.page);
+        body.should.have.property('sensors');
+
+        /* Check data */
+        var data = body.sensors;
+        data.should.have.lengthOf(payload.perPage);
+        mongoose.model('Sensor')
+          .find({})
+          .sort('_id')
+          .limit(payload.perPage)
+          .skip(payload.perPage*(payload.page-1))
+          .lean()
+          .exec(function(err, sensors){
+            if (err) return doneIt(err);
+            for (var i = 0; i < payload.perPage; i++) {
+
+              var sensor = sensors[i];
+              data[i].should.have.property('_id', sensor._id);
+              data[i].should.have.property('description', sensor.description);
+              data[i].should.have.property('createdAt');
+
+              var createdAt = moment(data[i].createdAt).format();
+              createdAt.should.equal(moment(sensor.createdAt).format());
+
+              var geometry = sensor.geometry;
+              data[i].should.have.property('geometry');
+              data[i]['geometry'].should.have.property('type', geometry.type);
+
+              var coordinates = geometry.coordinates;
+              data[i]['geometry'].should.have.property('coordinates');
+              data[i]['geometry']['coordinates'].should.containDeepOrdered(coordinates);
+
+            }
+             doneIt();
+          });
+      }
+    });
   });
+
+
 
   /*
    * After tests, clear database

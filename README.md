@@ -16,30 +16,60 @@ Run task build to compile client app and load parameters:
 grunt build
 ```
 
-Load initial data into databases (change `rede_dev` to your db name):
-
-```
- mongoimport --db rede_dev --file=data/parameters.json --type=json --jsonArray --upsert --upsertFields name
-```
-
 Run `npm start`.
 
 ## API
-### Send measurements in batch
+### Get one sensor
 
 ```
-POST /api/v1/measurements
+GET /api/v1/sensors/:sensor_id
 ```
-
-Sensors should use [measurement data protocol] to send measurements in batch.
 
 Parameters:
-- `phoneNumber`: Sensor's phone number, if exists (_string_);
-- `macAdress`: Sensor [mac address](https://en.wikipedia.org/wiki/MAC_address) (_string_), required if `phoneNumber` doesn't exist ;
-- `data`: A batch of measurements following [measurement data protocol] (_string_)
+- `:sensor_id`: _string_ (required)
 
 Possible responses:
-- `201` Created successfully and array of measurements as JSON;
+- `200` Success + sensor json:
+- `400` Bad request;
+- `404` Not four.
+
+### Get list of sensors
+
+```
+GET /api/v1/sensors
+```
+
+Parameters:
+- `perPage`: _number_ (default: 20)
+- `page`: _number_ (optional)
+
+Possible responses:
+- `200` Success and list of sensors:
+- `400` Bad request.
+
+### Get list of parameters
+
+```
+GET /api/v1/parameters
+```
+
+Response:
+- `200` Success status and parameters as json:
+
+### Get list of measurements
+
+```
+GET /api/v1/measurements
+```
+
+Parameters:
+- `sensor_id`: _string_ (required)
+- `parameter_id`: _string_ (required)
+- `perPage`: _number_ (default: 20)
+- `page`: _number_ (optional)
+
+Possible responses:
+- `200` Success and list of measurements:
 - `400` Bad request.
 
 ## Measurement data protocol
@@ -60,7 +90,7 @@ Accepted values for `paramX`:
 - `AP`: [Atmospheric pressure];
 - `EC`: [Electrical conductivity];
 - `pH`: [Potential hidrogen][pH];
-- `ORP`: [Reduction potencial];
+- `ORP`: [Oxi-reduction potencial];
 - `Tw`: Water temperature;
 - `Ta`: Ambiental temperature;
 - `RH`: [Relative humidity];
@@ -74,9 +104,9 @@ Example:
 
 [measurement data protocol]: #measurement-data-protocol
 [iso 8601]: https://en.wikipedia.org/wiki/ISO_8601
-[ph]: (https://en.wikipedia.org/wiki/PH)
-[reduction potencial]: https://en.wikipedia.org/wiki/Reduction_potential
-[electrical conductivity]: https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity
-[relative humidity]: https://en.wikipedia.org/wiki/Relative_humidity
 [atmospheric pressure]: https://en.wikipedia.org/wiki/Atmospheric_pressure
+[electrical conductivity]: https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity
+[ph]: (https://en.wikipedia.org/wiki/PH)
+[oxi-reduction potencial]: https://en.wikipedia.org/wiki/Reduction_potential
+[relative humidity]: https://en.wikipedia.org/wiki/Relative_humidity
 [illuminance]: https://en.wikipedia.org/wiki/Illuminance
