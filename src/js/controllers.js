@@ -143,7 +143,7 @@ angular.module('rede')
 				});
 			},
 			onEachFeature: function(f, layer) {
-				layer.bindPopup(f.properties.identifier);
+				layer.bindPopup(f.properties.name);
 				layer.on('mouseover', function() {
 					layer.openPopup();
 					layer.setZIndexOffset(1000);
