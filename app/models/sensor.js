@@ -13,6 +13,7 @@ var parser = require('../../lib/measurementParser')
 
 var SensorSchema = new Schema({
   _id: {type: String, require: true},
+  name: {type: String, require: true},
   description: {type: String},
 	geometry: { type: {type: String}, coordinates: []},
   createdAt: {type: Date, default: Date.now}
