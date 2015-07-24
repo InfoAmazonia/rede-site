@@ -40,6 +40,7 @@ module.exports = function (app, config) {
   apiRoutes.param('sensor_id', sensors.load)
   apiRoutes.get('/sensors', sensors.list);
   apiRoutes.get('/sensors/:sensor_id', sensors.show);
+  apiRoutes.post('/sensors', [auth.isLogged, sensors.create]);
   // apiRoutes.put('/sensors', sensors.update);
   // apiRoutes.del('/sensors', sensors.remove);
 

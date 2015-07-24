@@ -74,7 +74,7 @@ describe('API: Measurements', function(){
   describe('GET /api/v1/measurements', function(){
     it('return 200 and first page when no parameters are passed', function(doneIt){
       var payload = {
-        sensor_id: sensor1._id,
+        sensor_id: sensor1._id.toHexString(),
         parameter_id: 'atmospheric_pressure'
       }
 
@@ -98,7 +98,7 @@ describe('API: Measurements', function(){
 
       // Check sensor data
       body.should.have.property('sensor');
-      body.sensor.should.have.property('_id', sensor1._id);
+      body.sensor.should.have.property('_id', sensor1._id.toHexString());
 
       // Check parameter data
       body.should.have.property('parameter');
@@ -137,7 +137,7 @@ describe('API: Measurements', function(){
     it('return 200 and proper page when parameters are passed', function(doneIt){
 
       var payload = {
-        sensor_id: sensor1._id,
+        sensor_id: sensor1._id.toHexString(),
         parameter_id: 'atmospheric_pressure',
         page: 3,
         perPage: 14
@@ -201,7 +201,7 @@ describe('API: Measurements', function(){
   describe('POST /api/v1/measurements/batch', function(){
     it('should return 200 for valid data', function(doneIt){
       var payload = {
-        sensor_id: sensor1._id,
+        sensor_id: sensor1._id.toHexString(),
         data: '2015-07-14T10:08:15-03:00;Tw=20.3;Ta:F=78.29;pH=6.9'
       }
 
@@ -272,10 +272,5 @@ describe('API: Measurements', function(){
    * After tests, clear database
    */
 
-  // after(function (done) {
-  //   mongodb.clearDb(function(err){
-  //     should.not.exist(err);
-  //     done(err);
-  //   });
-  // });
+  after(mongodb.clearDb);
 })

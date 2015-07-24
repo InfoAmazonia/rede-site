@@ -39,6 +39,21 @@ Possible responses:
 - `500` Internal error.
 
 ## Sensors routes
+### Create sensor
+
+```
+POST /api/v1/sensors
+```
+
+Parameters:
+- `identifier`: _string_ phone number or mac address (required)
+- `name`: _string_ sensor's name (required)
+- `description`: _string_ sensor's description
+
+Possible responses:
+- `201` Success + sensor object json;
+- `400` Bad request.
+
 ### Get sensor
 
 ```

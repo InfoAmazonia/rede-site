@@ -31,6 +31,18 @@ exports.loadByQueryString = function(req, res, next){
   exports.load(req, res, next, req.query['sensor_id']);
 }
 
+/*
+ * Create new sensor
+ */
+exports.create = function(req, res, next) {
+  var sensor = new Sensor(req.body);
+
+  sensor.save(function(err) {
+    if (err) res.status(400).json(messaging.mongooseErrors(err, 'sensors'));
+    else res.status(201).json(sensor);
+  });
+}
+
 exports.show = function(req, res) {
   return res.status(200).json(req.sensor);
 }
