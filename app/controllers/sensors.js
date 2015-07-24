@@ -16,7 +16,7 @@ exports.load = function (req, res, next, id){
   Sensor.findById(id, function (err, sensor) {
     if (err) return res.sendStatus(500);
     else if (!sensor)
-      return res.status(404).json(messaging.error('sensor_not_found'));
+      return res.status(404).json(messaging.error('sensors.not_found'));
     else {
       req.sensor = sensor;
       next();
@@ -43,7 +43,9 @@ exports.create = function(req, res, next) {
   });
 }
 
-/* Update sensor */
+/*
+ * Update sensor
+ */
 exports.update = function(req, res, next) {
   var sensor = _.extend(req.sensor, req.body);
 
@@ -53,6 +55,18 @@ exports.update = function(req, res, next) {
   });
 }
 
+
+/*
+ * Remove
+ */
+exports.remove = function(req, res) {
+  var sensor = req.sensor;
+
+  sensor.remove(function(err) {
+    if (err) return res.sendStatus(500);
+    else res.sendStatus(200);
+  });
+}
 
 exports.show = function(req, res) {
   return res.status(200).json(req.sensor);

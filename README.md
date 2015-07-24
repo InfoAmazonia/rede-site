@@ -74,6 +74,23 @@ Possible responses:
 - `401` Unauthorized;
 - `404` Not found.
 
+### Remove sensor
+
+```
+DEL /api/v1/sensors/:sensor_id
+```
+
+This will **destroy all measurements** related to the sensor.
+
+Parameters:
+- `:sensor_id` _string_
+
+Possible responses:
+- `200` Success;
+- `400` Bad request;
+- `401` Unauthorized;
+- `404` Not found.
+
 ### Get sensor
 
 ```

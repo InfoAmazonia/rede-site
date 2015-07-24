@@ -19,6 +19,14 @@ var SensorSchema = new Schema({
   createdAt: {type: Date, default: Date.now}
 });
 
+/**
+ * Post middleware
+ */
+SensorSchema.pre('remove', function(next){
+  var self = this;
+  mongoose.model('Measurement').remove({sensor: self}, next);
+});
+
 /*
  * Methods
  */

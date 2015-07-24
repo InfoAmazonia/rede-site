@@ -42,7 +42,7 @@ module.exports = function (app, config) {
   apiRoutes.get('/sensors/:sensor_id', sensors.show);
   apiRoutes.post('/sensors', [auth.isLogged, sensors.create]);
   apiRoutes.put('/sensors/:sensor_id', [auth.isLogged, sensors.update]);
-  // apiRoutes.del('/sensors', sensors.remove);
+  apiRoutes.delete('/sensors/:sensor_id', [auth.isLogged, sensors.remove]);
 
   // measurement route
   apiRoutes.post('/measurements/batch', measurements.saveBatch);

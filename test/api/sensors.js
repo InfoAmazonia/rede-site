@@ -45,7 +45,7 @@ var daysOfMeasurements = 3;
 var user1;
 var user1AccessToken;
 var user1Sensor1;
-var allSensors;
+var sensorsWithMeasurements;
 
 /*
  * The tests
@@ -83,11 +83,11 @@ describe('API: Sensors', function(){
           }, function(doneEach){
             factory.createSensorsWithMeasurements(numberOfSensorsWithData, daysOfMeasurements, function(err, sensors){
               if (err) doneBefore(err);
+              sensorsWithMeasurements = sensors;
               doneEach(err, sensors);
             });
           }], function(err, sensors){
             if (err) return doneBefore(err);
-            allSensors = sensors;
             doneBefore();
         });
       });
@@ -377,6 +377,72 @@ describe('API: Sensors', function(){
       });
     });
 
+    /*
+     *  DEL /api/v1/sensors/:id
+     */
+    describe('DEL /api/v1/sensors/:id', function(){
+      context('not logged in', function(){
+        it('should return 401 (Unauthorized)', function(doneIt){
+          var sensor = sensorsWithMeasurements[0];
+
+          request(app)
+            .del(apiPrefix + '/sensors/'+sensor._id.toHexString())
+            .expect(401)
+            .end(function(err,res){
+              if (err) doneIt(err);
+              res.body.messages.should.have.lengthOf(1);
+              messaging.hasValidMessages(res.body).should.be.true;
+              res.body.messages[0].should.have.property('text', 'access_token.unauthorized');
+              doneIt();
+            });
+        });
+      });
+
+      context('when logged as user1', function(){
+        it('delete and return 200 (Success)', function(doneIt){
+          var sensorToDelete = sensorsWithMeasurements[0];
+
+          request(app)
+            .del(apiPrefix + '/sensors/'+sensorToDelete._id.toHexString())
+            .set('Authorization', user1AccessToken)
+            .expect(200)
+            .end(function(err, res){
+              if (err) doneIt(err);
+              var body = res.body;
+
+              // sensor should not exist
+              Sensor.findById(sensorToDelete._id, function(err, sensor){
+                if (err) return doneIt(err);
+                should.not.exist(sensor);
+
+                // sensor measurements should not exist
+                mongoose.model('Measurement').count({sensor: sensorToDelete._id}, function(err, count){
+                  if (err) return doneIt(err);
+                  count.should.be.equal(0);
+                  doneIt();
+                });
+            });
+          });
+        });
+
+        it('return 404 (Not found) for id not found', function(doneIt){
+          request(app)
+            .get(apiPrefix + '/sensors/556899153f90be8f422f3d3f')
+            .expect(404)
+            .expect('Content-Type', /json/)
+            .end(function(err, res){
+              if (err) return doneIt(err);
+              var body = res.body;
+
+              res.body.messages.should.have.lengthOf(1);
+              messaging.hasValidMessages(res.body).should.be.true;
+              res.body.messages[0].should.have.property('text', 'sensors.not_found');
+
+              doneIt();
+            });
+        });
+      });
+    });
 
   /*
    * After tests, clear database
