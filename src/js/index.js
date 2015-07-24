@@ -61,7 +61,16 @@ app
 			.state('sensor', {
 				url: '/sensors/:sensorId/',
 				controller: 'SensorCtrl',
-				templateUrl: '/views/sensor.html'
+				templateUrl: '/views/sensor.html',
+				resolve: {
+					SensorData: [
+						'RedeService',
+						'$stateParams',
+						function(Rede, $stateParams) {
+							return Rede.sensors.get({id: $stateParams.sensorId}).$promise;
+						}
+					]
+				}
 			})
 			.state('lab', {
 				url: '/lab/',

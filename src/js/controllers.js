@@ -15,6 +15,7 @@ angular.module('rede')
 
 		$scope.map = {
 			options: {
+				maxZoom: 12,
 				scrollWheelZoom: false,
 				zoomControl: $state.current.name == 'sensor' ? false : true,
 				attributionControl: $state.current.name == 'sensor' ? false : true,
@@ -191,13 +192,16 @@ angular.module('rede')
 	'$scope',
 	'RedeService',
 	'leafletData',
-	function($scope, Rede, leafletData) {
-		$scope.sensor = 1;
+	'SensorData',
+	function($scope, Rede, leafletData, Sensor) {
+
+		console.log(Sensor);
+		$scope.sensor = Sensor;
 
 		var sCount = 1;
 
 		$scope.geojson = {
-			data: Rede.sample.sensors,
+			data: Rede.sensorToGeoJSON([$scope.sensor]),
 			pointToLayer: function(f, latlng) {
 				return new L.Marker(latlng, {
 					icon: L.icon({
@@ -216,7 +220,7 @@ angular.module('rede')
 		};
 
 		var latLngs = [];
-		_.each(Rede.sample.sensors.features, function(feature) {
+		_.each([$scope.sensor], function(feature) {
 			latLngs.push(
 				[
 					feature.geometry.coordinates[1],
