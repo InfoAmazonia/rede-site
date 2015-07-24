@@ -27,12 +27,11 @@ angular.module('rede')
 		};
 
 		if($state.current.name == 'sensor') {
-			$scope.map.controls = {
+			$scope.map.options.controls = {
 				layers: {
-					visible: $state.current.name == 'sensor' ? false : true,
-					position: 'topright'
+					visible: false
 				}
-			}
+			};
 		};
 
 		$scope.map.layerData = [
