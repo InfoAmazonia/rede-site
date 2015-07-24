@@ -1,4 +1,9 @@
 /*
+ * Module dependencies
+ */
+var async = require('async');
+
+/*
  * Load config
  */
 var dotenv = require('dotenv').load();
@@ -117,12 +122,16 @@ module.exports = function(grunt) {
 		require('./app/models/measurement');
 
 		var factory = require('./lib/helpers/factory');
+		var mongodb = require('./lib/helpers/mongodb');
 
 		var sensorCount = 10;
 		var daysOfObservation = 20;
 
 		console.log('Populating database with '+daysOfObservation+' days of data for '+sensorCount+' sensors, please wait...');
-		factory.createSensorsWithMeasurements(sensorCount, daysOfObservation, done);
+		mongodb.clearDb(function(err){
+			if (err) return done(err);
+			else factory.createSensorsWithMeasurements(sensorCount, daysOfObservation, done);
+		});
 	});
 
 	grunt.registerTask(
