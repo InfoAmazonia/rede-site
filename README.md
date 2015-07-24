@@ -10,7 +10,9 @@ Clone this repository locally and run:
 npm install
 ```
 
-Run task build to compile client app and load parameters:
+To setup environment variables, create a `.env` file based on `.env.example`.
+
+Run task build to compile client app:
 
 ```
 grunt build

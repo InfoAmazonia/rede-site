@@ -1,6 +1,7 @@
 /*
  * Load config
  */
+var dotenv = require('dotenv').load();
 var env = process.env.NODE_ENV || 'development';
 var config = require('./config')[env];
 /*
