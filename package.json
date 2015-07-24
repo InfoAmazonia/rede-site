@@ -54,6 +54,9 @@
     "moment": "^2.10.3",
     "mongoose": "^4.0.6",
     "napa": "latest",
+    "passport": "^0.2.2",
+    "passport-http-bearer": "^1.0.1",
+    "passport-local": "^1.0.0",
     "underscore": "^1.8.3",
     "validator": "^3.41.2"
   },

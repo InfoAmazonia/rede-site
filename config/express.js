@@ -4,7 +4,7 @@ var methodOverride = require('method-override');
 
 var env = process.env.NODE_ENV || 'development';
 
-module.exports = function (app, config) {
+module.exports = function (app, config, passport) {
 
   // bodyParser should be above methodOverride
   app.use(bodyParser.json({limit: '50mb'}));
@@ -17,5 +17,9 @@ module.exports = function (app, config) {
   		return method;
   	}
   }));
+
+  // use passport session
+  app.use(passport.initialize());
+  app.use(passport.session());
 
 }

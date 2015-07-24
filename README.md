@@ -1,9 +1,7 @@
 # Rede InfoAmazonia
-A platform of water quality sensors.
+A platform of water quality sensors made with open source technology.
 
-Please read documentation on the [wiki](https://github.com/InfoAmazonia/rede).
-
-## Getting started
+# Getting started
 Clone this repository locally and run:
 
 ```
@@ -20,8 +18,28 @@ grunt build
 
 Run `npm start`.
 
-## API
-### Get one sensor
+# API Usage
+## User routes
+### Create user
+
+```
+POST /api/v1/users
+```
+
+First user will have `admin` role.
+
+Parameters:
+- `name`: _string_ User name
+- `email`: _string_ User e-mail
+- `password`: _string_ User password
+
+Possible responses:
+- `200` Success + user object json;
+- `400` Bad request;
+- `500` Internal error.
+
+## Sensors routes
+### Get sensor
 
 ```
 GET /api/v1/sensors/:sensor_id
@@ -31,9 +49,9 @@ Parameters:
 - `:sensor_id`: _string_ (required)
 
 Possible responses:
-- `200` Success + sensor json:
+- `200` Success + sensor object json;
 - `400` Bad request;
-- `404` Not four.
+- `404` Not found.
 
 ### Get list of sensors
 
@@ -49,7 +67,8 @@ Possible responses:
 - `200` Success and list of sensors:
 - `400` Bad request.
 
-### Get list of parameters
+## Parameters routes
+### Get list
 
 ```
 GET /api/v1/parameters
@@ -58,7 +77,8 @@ GET /api/v1/parameters
 Response:
 - `200` Success status and parameters as json:
 
-### Get list of measurements
+## Measurements routes
+### Get list
 
 ```
 GET /api/v1/measurements

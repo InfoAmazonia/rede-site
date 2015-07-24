@@ -6,6 +6,8 @@ var express = require('express');
 /*
  * Require controllers
  */
+var auth = require('../app/controllers/auth');
+var users = require('../app/controllers/users');
 var sensors = require('../app/controllers/sensors');
 var measurements = require('../app/controllers/measurements');
 var parameters = require('../app/controllers/parameters');
@@ -19,6 +21,17 @@ module.exports = function (app, config) {
    * API routes
    */
   var apiRoutes = require('express').Router();
+
+  // authorization routes
+  apiRoutes.post('/login', auth.login);
+  apiRoutes.get('/logout', auth.logout);
+
+  // user routes
+  // apiRoutes.param('user_id', users.load);
+  apiRoutes.post('/users', users.new);
+  // apiRoutes.put('/users/:id', [auth.isLogged, auth.canUpdateUser, users.update]);
+  // apiRoutes.get('/users/:id', users.get);
+  // apiRoutes.get('/users', users.list);
 
   // parameter routes
   apiRoutes.get('/parameters', parameters.list);

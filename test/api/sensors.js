@@ -25,6 +25,7 @@ var Sensor = mongoose.model('Sensor');
  */
 var mongodb = require('../../lib/helpers/mongodb');
 var factory = require('../../lib/helpers/factory');
+var express = require('../../lib/helpers/express');
 
 /*
  * Config
@@ -37,6 +38,11 @@ var numberOfSensors = 50;
 var numberOfSensorsWithData = 3;
 var daysOfMeasurements = 3;
 
+/*
+ * Test data
+ */
+var admin1;
+var admin1AccessToken;
 var allSensors = [];
 var sensor1;
 
@@ -57,6 +63,17 @@ describe('API: Sensors', function(){
       mongodb.clearDb(function(err){
         should.not.exist(err);
         async.series([
+          function (doneEach){
+            factory.createUser(function(err,usr){
+              if (err) return doneBefore(err);
+              // first user is admin
+              admin1 = usr;
+              express.login(admin1.email, admin1.password, function(err, token){
+                admin1AccessToken = token;
+                doneEach(err);
+              });
+            });
+          },
           function(doneEach){
             factory.createSensors(numberOfSensors - numberOfSensorsWithData, function(err, sensors){
               should.not.exist(err);
@@ -68,13 +85,16 @@ describe('API: Sensors', function(){
               doneEach(err, sensors);
             });
           }], function(err, sensors){
-            should.not.exist(err);
+            if (err) return doneBefore(err);
             allSensors = sensors;
             doneBefore();
         });
       });
     });
   });
+
+
+
 
   /*
    * GET /api/v1/sensors - Return a list of sensors
