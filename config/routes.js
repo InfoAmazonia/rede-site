@@ -41,7 +41,7 @@ module.exports = function (app, config) {
   apiRoutes.get('/sensors', sensors.list);
   apiRoutes.get('/sensors/:sensor_id', sensors.show);
   apiRoutes.post('/sensors', [auth.isLogged, sensors.create]);
-  // apiRoutes.put('/sensors', sensors.update);
+  apiRoutes.put('/sensors/:sensor_id', [auth.isLogged, sensors.update]);
   // apiRoutes.del('/sensors', sensors.remove);
 
   // measurement route

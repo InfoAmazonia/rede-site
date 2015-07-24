@@ -43,6 +43,17 @@ exports.create = function(req, res, next) {
   });
 }
 
+/* Update sensor */
+exports.update = function(req, res, next) {
+  var sensor = _.extend(req.sensor, req.body);
+
+  sensor.save(function(err) {
+    if (err) return res.status(400).json(messaging.mongooseErrors(err, 'sensors'));
+    else res.status(200).json(sensor);
+  });
+}
+
+
 exports.show = function(req, res) {
   return res.status(200).json(req.sensor);
 }

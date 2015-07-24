@@ -8,9 +8,9 @@ Clone this repository locally and run:
 npm install
 ```
 
-To setup environment variables, create a `.env` file based on `.env.example`.
+For production environments, create a `.env` file based on `.env.example`.
 
-Run task build to compile client app:
+Compile the client application:
 
 ```
 grunt build
@@ -36,6 +36,7 @@ Parameters:
 Possible responses:
 - `200` Success + user object json;
 - `400` Bad request;
+- `401` Unauthorized;
 - `500` Internal error.
 
 ## Sensors routes
@@ -53,6 +54,25 @@ Parameters:
 Possible responses:
 - `201` Success + sensor object json;
 - `400` Bad request.
+- `401` Unauthorized;
+
+### Update sensor
+
+```
+PUT /api/v1/sensors/:sensor_id
+```
+
+Parameters:
+- `:sensor_id` _string_
+- `identifier`: _string_ phone number or mac address (required)
+- `name`: _string_ (required)
+- `description`: _string_
+
+Possible responses:
+- `201` Success + sensor object json;
+- `400` Bad request;
+- `401` Unauthorized;
+- `404` Not found.
 
 ### Get sensor
 

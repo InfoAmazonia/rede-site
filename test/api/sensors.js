@@ -299,14 +299,88 @@ describe('API: Sensors', function(){
               res.body.messages[0].should.have.property('text', 'mongoose.errors.sensors.missing_identifier');
 
               doneIt();
-            });
+          });
         });
       });
     });
+
+    /*
+     *  PUT /api/v1/sensors/:id
+     */
+    describe('PUT /api/v1/sensors/:id', function(){
+      context('not logged in', function(){
+        it('should return 401 (Unauthorized)', function(doneIt){
+          Sensor.findOne(function(err, sensor){
+            if (err) doneIt(err);
+            should.exist(sensor);
+            request(app)
+              .put(apiPrefix + '/sensors/'+sensor._id.toHexString())
+              .expect(401)
+              .end(function(err,res){
+                if (err) doneIt(err);
+                res.body.messages.should.have.lengthOf(1);
+                messaging.hasValidMessages(res.body).should.be.true;
+                res.body.messages[0].should.have.property('text', 'access_token.unauthorized');
+                doneIt();
+              });
+          });
+        });
+      });
+
+      context('when logged as user1', function(){
+        it('return 200 (Success) for valid sensor data', function(doneIt){
+          var payload = {
+            identifier: '+550000000000',
+            name: 'changed name',
+            description: 'changed description',
+            geometry: {
+              type: 'Point',
+              coordinates: [-46.222222, -23.11111]
+            }
+          }
+
+          request(app)
+            .put(apiPrefix + '/sensors/'+ user1Sensor1._id)
+            .set('Authorization', user1AccessToken)
+            .send(payload)
+            .expect(200)
+            .expect('Content-Type', /json/)
+            .end(function(err, res){
+              if (err) doneIt(err);
+              var body = res.body;
+
+              /* User basic info */
+              body.should.have.property('identifier', payload.identifier);
+              body.should.have.property('name', payload.name);
+              body.should.have.property('description', payload.description);
+
+              /* Location geojson */
+              var geometryGeojson = body.geometry;
+              geometryGeojson.should.have.property('type', payload.geometry.type);
+              geometryGeojson.should.have.property('coordinates');
+              geometryGeojson.coordinates.should.be.an.Array;
+
+              /* Coordinates */
+              var coordinates = geometryGeojson.coordinates
+              coordinates[0].should.be.equal(payload.geometry.coordinates[0]);
+              coordinates[1].should.be.equal(payload.geometry.coordinates[1]);
+
+              /* Keep sensor for later usage */
+              user1Sensor1 = res.body;
+
+              doneIt();
+            });
+        });
+
+        it('return 400 (Bad request) for invalid sensor data');
+        it('return 404 (Not found) for id not found');
+      });
+    });
+
 
   /*
    * After tests, clear database
    */
 
   after(mongodb.clearDb);
-})
+});
