@@ -50,6 +50,7 @@ Parameters:
 - `identifier`: _string_ phone number or mac address (required)
 - `name`: _string_ sensor's name (required)
 - `description`: _string_ sensor's description
+- `image`: _string_ an image url
 
 Possible responses:
 - `201` Success + sensor object json;
@@ -67,6 +68,7 @@ Parameters:
 - `identifier`: _string_ phone number or mac address (required)
 - `name`: _string_ (required)
 - `description`: _string_
+- `image`: _string_ an image url
 
 Possible responses:
 - `201` Success + sensor object json;

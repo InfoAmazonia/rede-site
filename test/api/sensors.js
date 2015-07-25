@@ -239,6 +239,8 @@ describe('API: Sensors', function(){
           var payload = {
             identifier: '+55119999999',
             name: 'Sensor 1',
+            description: 'Some description.',
+            image: 'http://imguol.com/blogs/122/files/2015/07/Prototipo-foto-Miguel-PeixeDSCF1515.jpg',
             geometry: {
               type: 'Point',
               coordinates: [-46.63318, -23.55046]
@@ -257,6 +259,8 @@ describe('API: Sensors', function(){
 
               body.should.have.property('identifier', payload.identifier);
               body.should.have.property('name', payload.name);
+              body.should.have.property('description', payload.description);
+              body.should.have.property('image', payload.image);
 
               /* Location geojson */
               var geometryGeojson = body.geometry;

@@ -120,6 +120,7 @@ module.exports = function(grunt) {
 
 		require('./app/models/sensor');
 		require('./app/models/measurement');
+		require('./app/models/user');
 
 		var factory = require('./lib/helpers/factory');
 		var mongodb = require('./lib/helpers/mongodb');
