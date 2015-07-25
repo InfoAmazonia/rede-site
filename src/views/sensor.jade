@@ -5,7 +5,8 @@ article#sensor
 		.header-content
 			.container
 				.four.columns
-					h1 {{sensor.name}}
+					h1 
+						a(ui-sref="sensor"){{sensor.name}}
 					.header-summary
 						.quality
 							h2 Qualidade agora
@@ -18,197 +19,199 @@ article#sensor
 						a(href="#") Análises
 						a(href="#") Belterra
 						a(href="#") API
-	section#sensor-community
-		.container
-			.twelve.columns
-				img.cmm-pic(src="http://lorempixum.com/700/700")
-				h2 Comunidade deste sensor
-				p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut malesuada dui nulla, ac aliquam tellus tempor at. Duis sit amet finibus nibh. Nam pellentesque ipsum ac lorem elementum cursus. Integer dictum ligula vitae ligula mattis, et pretium risus rutrum. Curabitur at nibh leo. Integer eget magna luctus, maximus nibh at, congue nisi. Suspendisse non lobortis leo. In varius vel ipsum id porttitor. Donec at tincidunt purus, id auctor massa. Vivamus pulvinar, nisi sed venenatis facilisis, dui nulla porttitor leo, id molestie ligula diam ut mauris. Nulla facilisi. Donec congue eros lorem, eget porta sapien sodales nec. 
-	section#sensor-main
-		.container
-			.six.columns
-				.sensor-average
-					h2 Média dos últimos 30 dias
-					ul.average-list
-						li.average-item
-							h3 Qualidade
-							p Boa
-						li.average-item
-							h3 Temperatura
-							p 23 C
-						li.average-item
-							h3 pH
-							p 7
-						li.average-item
-							h3 Luminosidade
-							p 100
-						li.average-item
-							h3 Condutividade
-							p 203
-						li.average-item
-							h3 Turbidez
-							p 5
-						li.average-item
-							h3 ORP
-							p 349
-						li.average-item
-							h3 Aceleração
-							p 120
-			.six.columns
-				latest-readings(sensor="sensor" amount="'5'")
-	//- section#sensor-map(ng-controller="MapCtrl")
-	//- 	leaflet#map(center="map.center" layers="map.layers" legend="legend" markers="map.markers" geojson="geojson" defaults="map.options")
-	section#sensor-charts.row
-		.sensor-chart
-			header#sensor-charts-header
-				.container
-					.twelve.columns
-						h2 Dados históricos
-						nav.chart-filters
-							.chart-filter-item
-								select(ng-model="chartDateFilter" ng-options="filter.label for filter in chartDateFilters track by filter.value")
-							.chart-filter-item(ng-show="chartDateFilter.value == 'custom'")
-								input(type="text" placeholder="Data de início")
-							.chart-filter-item(ng-show="chartDateFilter.value == 'custom'")
-								input(type="text" placeholder="Data de fim")
-			nav.chart-nav
-				.container
-					.twelve.columns
-						a(ng-repeat="filter in chartFilters" href="javascript:void(0);" ng-click="chartMeasure(filter.type, filter.label)" ng-class="{active: currentFilter.type == filter.type}") {{filter.label}}  
+					a.button.follow(ui-sref="sensor.follow") Receba atualizações deste sensor
+	#sensor-content(ui-view)
+		section#sensor-community
 			.container
 				.twelve.columns
-					.chart
-						reading-chart(dataset="readings" type="currentFilter.type" label="currentFilter.label")
-					.download
-						a.button(href="#") Baixar estes dados
+					img.cmm-pic(src="http://lorempixum.com/700/700")
+					h2 Comunidade deste sensor
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut malesuada dui nulla, ac aliquam tellus tempor at. Duis sit amet finibus nibh. Nam pellentesque ipsum ac lorem elementum cursus. Integer dictum ligula vitae ligula mattis, et pretium risus rutrum. Curabitur at nibh leo. Integer eget magna luctus, maximus nibh at, congue nisi. Suspendisse non lobortis leo. In varius vel ipsum id porttitor. Donec at tincidunt purus, id auctor massa. Vivamus pulvinar, nisi sed venenatis facilisis, dui nulla porttitor leo, id molestie ligula diam ut mauris. Nulla facilisi. Donec congue eros lorem, eget porta sapien sodales nec. 
+		section#sensor-main
+			.container
+				.six.columns
+					.sensor-average
+						h2 Média dos últimos 30 dias
+						ul.average-list
+							li.average-item
+								h3 Qualidade
+								p Boa
+							li.average-item
+								h3 Temperatura
+								p 23 C
+							li.average-item
+								h3 pH
+								p 7
+							li.average-item
+								h3 Luminosidade
+								p 100
+							li.average-item
+								h3 Condutividade
+								p 203
+							li.average-item
+								h3 Turbidez
+								p 5
+							li.average-item
+								h3 ORP
+								p 349
+							li.average-item
+								h3 Aceleração
+								p 120
+				.six.columns
+					latest-readings(sensor="sensor" amount="'5'")
+		//- section#sensor-map(ng-controller="MapCtrl")
+		//- 	leaflet#map(center="map.center" layers="map.layers" legend="legend" markers="map.markers" geojson="geojson" defaults="map.options")
+		section#sensor-charts.row
+			.sensor-chart
+				header#sensor-charts-header
+					.container
+						.twelve.columns
+							h2 Dados históricos
+							nav.chart-filters
+								.chart-filter-item
+									select(ng-model="chartDateFilter" ng-options="filter.label for filter in chartDateFilters track by filter.value")
+								.chart-filter-item(ng-show="chartDateFilter.value == 'custom'")
+									input(type="text" placeholder="Data de início")
+								.chart-filter-item(ng-show="chartDateFilter.value == 'custom'")
+									input(type="text" placeholder="Data de fim")
+				nav.chart-nav
+					.container
+						.twelve.columns
+							a(ng-repeat="filter in chartFilters" href="javascript:void(0);" ng-click="chartMeasure(filter.type, filter.label)" ng-class="{active: currentFilter.type == filter.type}") {{filter.label}}  
+				.container
+					.twelve.columns
+						.chart
+							reading-chart(dataset="readings" type="currentFilter.type" label="currentFilter.label")
+						.download
+							a.button(href="#") Baixar estes dados
 
-	section#sensor-city.row
-		.container
-			.six.columns
-				h2 Qualidade da água e doenças em 
-					strong Belterra
-				p via 
-					a.visaguas(href="http://visaguas.infoamazonia.org/" rel="external") Visaguas
-			.six.columns
-				p A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda vazão hídrica.
-				p Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país.
-				p Na Amazônia Legal, 60% das residências são atendidas pela rede geral de água. A média nacional é de 82,7%.
-		iframe(src="http://visaguas.infoamazonia.org/uf/15/cidade/150145/?theme=rede&lock=true&hide_title=true" frameborder="0" width="100%" height="800")
+		section#sensor-city.row
+			.container
+				.six.columns
+					h2 Qualidade da água e doenças em 
+						strong Belterra
+					p via 
+						a.visaguas(href="http://visaguas.infoamazonia.org/" rel="external") Visaguas
+				.six.columns
+					p A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda vazão hídrica.
+					p Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país.
+					p Na Amazônia Legal, 60% das residências são atendidas pela rede geral de água. A média nacional é de 82,7%.
+			iframe(src="http://visaguas.infoamazonia.org/uf/15/cidade/150145/?theme=rede&lock=true&hide_title=true" frameborder="0" width="100%" height="800")
 
 
-	section#sensor-api
-		.container
-			.twelve.columns
-				h2 Acessando dados e medições do sensor via API
-		.container
-			.six.columns
-				h3 Dados do sensor
+		section#sensor-api
+			.container
+				.twelve.columns
+					h2 Acessando dados e medições do sensor via API
+			.container
+				.six.columns
+					h3 Dados do sensor
 
-				p
-					code GET /api/v1/sensors/
-						strong 1
+					p
+						code GET /api/v1/sensors/
+							strong 1
 
-				h4 Resposta
+					h4 Resposta
 
-				p Objeto contendo dados do sensor
+					p Objeto contendo dados do sensor
 
-				p Corpo da resposta:
+					p Corpo da resposta:
 
-				ul
-					li 
-						code id
-						i int
-					li 
-						code name
-						i string
-					li 
-						code location
-						i [lon, lat] par de coordenadas de localização
+					ul
+						li 
+							code id
+							i int
+						li 
+							code name
+							i string
+						li 
+							code location
+							i [lon, lat] par de coordenadas de localização
 
-				p Exemplo de resposta:
+					p Exemplo de resposta:
 
-				pre
-					code
-						| {
-						|   "id": 1,
-						|   "name": "Belterra #1",
-						|   "location": [
-						|     -55.05523681640625,
-						|     -2.7811947651144058
-						|   ]
-						| }
+					pre
+						code
+							| {
+							|   "id": 1,
+							|   "name": "Belterra #1",
+							|   "location": [
+							|     -55.05523681640625,
+							|     -2.7811947651144058
+							|   ]
+							| }
 
-				p
-					a.button(href="https://github.com/InfoAmazonia/rede/wiki/api-reference" rel="external") Documentação completa da API
+					p
+						a.button(href="https://github.com/InfoAmazonia/rede/wiki/api-reference" rel="external") Documentação completa da API
 
-			.six.columns
-				h3 Medições do sensor
+				.six.columns
+					h3 Medições do sensor
 
-				p
-					code GET /api/v1/readings?sensor_id=
-						strong 1
+					p
+						code GET /api/v1/readings?sensor_id=
+							strong 1
 
-				h4 Entrada
+					h4 Entrada
 
-				ul
-					li
-						code sensor_id
-						i int
-					li
-						code since_date
-						i string (ISO 8601)
-					li
-						code max_date
-						i string (ISO 8601)
-					li
-						code count
-						i int 
-						| padrão: 20 máximo: 100
-					li
-						code since_id
-						i int
-					li
-						code max_id
-						i int
+					ul
+						li
+							code sensor_id
+							i int
+						li
+							code since_date
+							i string (ISO 8601)
+						li
+							code max_date
+							i string (ISO 8601)
+						li
+							code count
+							i int 
+							| padrão: 20 máximo: 100
+						li
+							code since_id
+							i int
+						li
+							code max_id
+							i int
 
-				h4 Resposta
+					h4 Resposta
 
-				p Códigos de resposta
+					p Códigos de resposta
 
-				ul
-					li 
-						code 200
-						| Ok
-					li
-						code 400
-						| Bad request
+					ul
+						li 
+							code 200
+							| Ok
+						li
+							code 400
+							| Bad request
 
-				p Corpo da resposta:
+					p Corpo da resposta:
 
-				ul
-					li Array de medições
+					ul
+						li Array de medições
 
-				p Exemplo de resposta:
+					p Exemplo de resposta:
 
-				pre
-					code
-						| {
-						|   "data": [
-						|     {
-						|       "id": 2,
-						|       "sensor_id": 59,
-						|       "timestamp": "2015-03-01T13:00:00Z",
-						|       "water_temp": 22,
-						|       "luminosity": null,
-						|       "water_conductivity": null,
-						|       "turbidity": null,
-						|       "ph": 4,
-						|       "orp": null,
-						|       "acceleration": null,
-						|       "barometric_pressure": null
-						|     },
-						|     ...
-						|   ]
-						| }
-				p
-					a.button(href="https://github.com/InfoAmazonia/rede/wiki/api-reference" rel="external") Documentação completa da API
+					pre
+						code
+							| {
+							|   "data": [
+							|     {
+							|       "id": 2,
+							|       "sensor_id": 59,
+							|       "timestamp": "2015-03-01T13:00:00Z",
+							|       "water_temp": 22,
+							|       "luminosity": null,
+							|       "water_conductivity": null,
+							|       "turbidity": null,
+							|       "ph": 4,
+							|       "orp": null,
+							|       "acceleration": null,
+							|       "barometric_pressure": null
+							|     },
+							|     ...
+							|   ]
+							| }
+					p
+						a.button(href="https://github.com/InfoAmazonia/rede/wiki/api-reference" rel="external") Documentação completa da API

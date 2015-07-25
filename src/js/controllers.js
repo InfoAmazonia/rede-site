@@ -17,8 +17,8 @@ angular.module('rede')
 			options: {
 				maxZoom: 12,
 				scrollWheelZoom: false,
-				zoomControl: $state.current.name == 'sensor' ? false : true,
-				attributionControl: $state.current.name == 'sensor' ? false : true,
+				zoomControl: $state.current.name == 'home' ? true : false,
+				attributionControl: $state.current.name == 'home' ? true : false,
 			},
 			center: {
 				lat: 0,
@@ -27,7 +27,7 @@ angular.module('rede')
 			}
 		};
 
-		if($state.current.name == 'sensor') {
+		if($state.current.name !== 'home') {
 			$scope.map.options.controls = {
 				layers: {
 					visible: false
@@ -298,6 +298,13 @@ angular.module('rede')
 				$scope.readings = [];
 			}
 		});
+	}
+])
+
+.controller('SensorFollow', [
+	'$scope',
+	function($scope) {
+
 	}
 ])
 

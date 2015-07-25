@@ -80,6 +80,22 @@ module.exports = function(grunt) {
 						expand: true
 					}
 				]
+			},
+			intlTelInput: {
+				files: [
+					{
+						cwd: 'node_modules/intl-tel-input/build',
+						src: ['**'],
+						dest: 'public/lib/intl-tel-input',
+						expand: true
+					},
+					{
+						cwd: 'node_modules/intl-tel-input/lib/libphonenumber/build',
+						src: 'utils.js',
+						dest: 'public/lib/intl-tel-input',
+						expand: true
+					}
+				]
 			}
 		},
 		watch: {

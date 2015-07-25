@@ -6,6 +6,7 @@ window._ = require('underscore');
 window.moment = require('moment');
 require('moment/locale/pt-br');
 moment.locale('pt-br');
+require('intl-tel-input/build/js/intlTelInput');
 
 require('angular-animate');
 require('angular-leaflet-directive');
@@ -13,14 +14,19 @@ require('angular-google-chart');
 require('angular-ui-router');
 require('angular-resource');
 require('angular-cookies');
+require('ng-dialog');
+
+require('international-phone-number/releases/international-phone-number');
 
 var app = angular.module('rede', [
 	'ui.router',
 	'ngCookies',
 	'ngAnimate',
 	'ngResource',
+	'ngDialog',
 	'googlechart',
-	'leaflet-directive'
+	'leaflet-directive',
+	'internationalPhoneNumber'
 ]);
 
 app
@@ -71,6 +77,11 @@ app
 						}
 					]
 				}
+			})
+			.state('sensor.follow', {
+				url: 'follow/',
+				controller: 'SensorFollow',
+				templateUrl: '/views/sensor/follow.html'
 			})
 			.state('lab', {
 				url: '/lab/',

@@ -1,0 +1,8 @@
+.container
+  .twelve.columns
+    form#follow-sensor
+      h2 Assine as atualizações do sensor
+      p
+        input(type="text" placeholder="Seu email")
+      p
+        input(type="text" placeholder="Seu telefone" international-phone-number ng-model="phone" preferred-countries="br" utils-script="/lib/intl-tel-input/utils.js")
