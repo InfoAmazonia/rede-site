@@ -351,7 +351,9 @@ angular.module('rede')
 
 					var clone = false;
 
-					$(window).resize(function() {
+					var anchorOffset = 0;
+
+					var resize = function() {
 						offset = $element.offset().top;
 						if(clone) {
 							clone.css({
@@ -363,12 +365,9 @@ angular.module('rede')
 								});
 							}
 						}
-					});
+					};
 
-					$(window).scroll(scroll);
-
-					var anchorOffset = 0;
-					function scroll() {
+					var scroll = function() {
 						var scrollTop = $(window).scrollTop();
 						if(scrollTop >= offset) {
 							if(!clone && !clone.length) {
@@ -407,10 +406,14 @@ angular.module('rede')
 						}
 					}
 
+					$(window).bind('resize', resize);
+					$(window).bind('scroll', scroll);
+
 				});
 
 				scope.$on('$destroy', function() {
-					// NEED TO DESTROY SCROLL E WINDOW RESIZE BINDS
+					$(window).unbind('resize');
+					$(window).unbind('scroll');
 				});
 
 			}

@@ -314,12 +314,27 @@ h1 {
 	#sensor-header {
 		position: relative;
 		.sensor-map {
-			opacity: 0.3;
+			z-index: 0;
+			opacity: 1;
 			position: absolute;
 			top: 0;
 			left: 0;
 			right: 0;
 			bottom: 0;
+			overflow: hidden;
+			.highlight-point {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 150px;
+				height: 150px;
+				margin-top: -2000px;
+				margin-left: -2000px;
+				.border-radius(2000px);
+				border: 1925px solid rgba(0,0,0,0.7);
+				pointer-events: none;
+				z-index: 3;
+			}
 		}
 		.header-content {
 			pointer-events: none;
@@ -337,7 +352,13 @@ h1 {
 			float: right;
 			color: #fff;
 			padding: 0 10px;
-			border-color: rgba(255,255,255,0.1);
+			background: rgba(0,0,0,0.2);
+			border-color: rgba(255,255,255,0.2);
+			.box-shadow(2px 2px 1px rgba(0,0,0,0.2));
+			text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+			.icon-rss {
+				color: orange;
+			}
 			&:hover {
 				border-color: rgba(255,255,255,0.5);
 			}
