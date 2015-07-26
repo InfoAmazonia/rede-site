@@ -236,7 +236,7 @@ h1 {
 
 #sensors-map {
 	width: 100%;
-	height: 700px;
+	height: 720px;
 	border-bottom: 1px solid #ddd;
 	position: relative;
 	.sensor-map-container,
@@ -267,6 +267,8 @@ h1 {
 		}
 		.current {
 			width: 25%;
+			max-width: 170px;
+			max-height: 170px;
 			float: left;
 			padding: 0 40px 0 0;
 			.box-sizing(border-box);
@@ -277,7 +279,7 @@ h1 {
 					font-weight: bold;
 					float: none;
 					display:block;
-					font-size: 32px;
+					font-size: 2vw;
 					width: 100%;
 					padding: 33% 0 67% 0;
 					height: 0;
@@ -362,6 +364,7 @@ h1 {
 			a {
 				text-decoration: none;
 				color: inherit;
+				outline: none;
 			}
 		}
 		.header-summary {

@@ -3,7 +3,8 @@ angular.module('rede')
 .factory('RedeService', [
 	'$resource',
 	'$http',
-	function($resource, $http) {
+	'$q',
+	function($resource, $http, $q) {
 
 		var apiUrl = '/api/v1';
 
@@ -11,6 +12,8 @@ angular.module('rede')
 			readings: require('./sample-data/readings'),
 			sensors: require('./sample-data/sensors')
 		};
+
+		var measureParams;
 
 		return {
 			user: $resource(apiUrl + '/users/:id', { id: '@id' }, {
@@ -27,7 +30,7 @@ angular.module('rede')
 					method: 'PUT'
 				}
 			}),
-			measurements: $resource(apiUrl + '/measurements', {
+			measurements: $resource(apiUrl + '/measurements', {}, {
 				query: {
 					method: 'GET',
 					isArray: false
@@ -36,6 +39,18 @@ angular.module('rede')
 					method: 'PUT'
 				}
 			}),
+			getParameters: function() {
+				var deferred = $q.defer();
+				if(measureParams) {
+					deferred.resolve(measureParams);
+				} else {
+					$http.get(apiUrl + '/parameters').success(function(data) {
+						measureParams = data;
+						deferred.resolve(measureParams);
+					});
+				}
+				return deferred.promise;
+			},
 			stories: $http.get('http://infoamazonia.org/?publisher=infoamazonia&geojson=1'),
 			data: {
 				states: $http.get('http://visaguas.infoamazonia.org/api?query=estados')

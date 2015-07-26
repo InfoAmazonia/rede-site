@@ -72,7 +72,7 @@ article#sensor
 							h2 Dados históricos
 							nav.chart-filters
 								.chart-filter-item
-									select(ng-model="chartDateFilter" ng-options="filter.label for filter in chartDateFilters track by filter.value")
+									select(ng-model="chartDateParam" ng-options="dateParam.label for dateParam in chartDateParams track by dateParam.value")
 								.chart-filter-item(ng-show="chartDateFilter.value == 'custom'")
 									input(type="text" placeholder="Data de início")
 								.chart-filter-item(ng-show="chartDateFilter.value == 'custom'")
@@ -80,11 +80,11 @@ article#sensor
 				nav.chart-nav
 					.container
 						.twelve.columns
-							a(ng-repeat="filter in chartFilters" href="javascript:void(0);" ng-click="chartMeasure(filter.type, filter.label)" ng-class="{active: currentFilter.type == filter.type}") {{filter.label}}  
+							a(ng-repeat="param in chartParams" href="javascript:void(0);" ng-click="chartMeasure(param._id)" ng-class="{active: curParam == param._id}") {{param.name.pt}}  
 				.container
 					.twelve.columns
 						.chart
-							reading-chart(dataset="readings" type="currentFilter.type" label="currentFilter.label")
+							reading-chart(dataset="measures" label="param.name.pt")
 						.download
 							a.button(href="#") Baixar estes dados
 

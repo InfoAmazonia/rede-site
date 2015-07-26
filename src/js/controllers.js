@@ -15,7 +15,7 @@ angular.module('rede')
 
 		$scope.map = {
 			options: {
-				maxZoom: 12,
+				maxZoom: 13,
 				scrollWheelZoom: false,
 				zoomControl: $state.current.name == 'home' ? true : false,
 				attributionControl: $state.current.name == 'home' ? true : false,
@@ -195,7 +195,6 @@ angular.module('rede')
 	'SensorData',
 	function($scope, Rede, leafletData, Sensor) {
 
-		console.log(Sensor);
 		$scope.sensor = Sensor;
 
 		var sCount = 1;
@@ -233,7 +232,7 @@ angular.module('rede')
 			m.fitBounds(bounds, {reset: true});
 		});
 
-		$scope.chartDateFilters = [
+		$scope.chartDateParams = [
 			{
 				label: 'Últimas 24 horas',
 				value: '24hours'
@@ -248,56 +247,32 @@ angular.module('rede')
 			}
 		];
 
-		$scope.chartDateFilter = $scope.chartDateFilters[0];
+		$scope.chartDateParam = $scope.chartDateParams[0];
 
-		$scope.chartFilters = [
-			{
-				type: 'ph',
-				label: 'pH'
-			},
-			{
-				type: 'water_temp',
-				label: 'Temperatura'
-			},
-			{
-				type: 'luminosity',
-				label: 'Luminosidade'
-			},
-			{
-				type: 'water_conductivity',
-				label: 'Condutividade'
-			},
-			{
-				type: 'turbidity',
-				label: 'Turbidez'
-			},
-			{
-				type: 'orp',
-				label: 'ORP'
-			},
-			{
-				type: 'acceleration',
-				label: 'Aceleração'
+		Rede.getParameters().then(function(params) {
+
+			$scope.chartParams = params;
+
+			$scope.curParam = $scope.chartParams[Object.keys($scope.chartParams)[0]]._id;
+
+			$scope.chartMeasure = function(id) {
+				$scope.curParam = id;
+			};
+
+			$scope.$watch('curParam', function() {
+				updateChart();
+			});
+
+			var updateChart = function() {
+				if($scope.curParam && $scope.sensor) {
+					Rede.measurements.query({'sensor_id': $scope.sensor._id, 'parameter_id': $scope.curParam}, function(measures) {
+						$scope.measures = measures.measurements;
+					});
+				}
 			}
-		];
 
-		$scope.currentFilter = $scope.chartFilters[0];
-
-		$scope.chartMeasure = function(type, label) {
-			$scope.currentFilter = {
-				type: type,
-				label: label
-			}
-		};
-
-		$scope.$watch('sensor', function(sensor) {
-			if(sensor) {
-				// EXTRACTING SAMPLE
-				$scope.readings = _.sortBy(Rede.sample.readings, function(item) { return new Date(item.timestamp); });
-			} else {
-				$scope.readings = [];
-			}
 		});
+
 	}
 ])
 

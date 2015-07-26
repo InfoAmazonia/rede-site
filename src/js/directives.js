@@ -215,53 +215,28 @@ angular.module('rede')
 			templateUrl: '/views/sensor/chart-summary.html',
 			link: function(scope, element, attrs) {
 
-				scope.chartFilters = [
-					{
-						type: 'ph',
-						label: 'pH'
-					},
-					{
-						type: 'water_temp',
-						label: 'Temperatura'
-					},
-					{
-						type: 'luminosity',
-						label: 'Luminosidade'
-					},
-					{
-						type: 'water_conductivity',
-						label: 'Condutividade'
-					},
-					{
-						type: 'turbidity',
-						label: 'Turbidez'
-					},
-					{
-						type: 'orp',
-						label: 'ORP'
-					},
-					{
-						type: 'acceleration',
-						label: 'Aceleração'
-					}
-				];
+				Rede.getParameters().then(function(params) {
 
-				scope.currentFilter = scope.chartFilters[0];
+					scope.chartParams = params;
 
-				scope.chartMeasure = function(type, label) {
-					scope.currentFilter = {
-						type: type,
-						label: label
-					}
-				};
+					scope.curParam = scope.chartParams[Object.keys(scope.chartParams)[0]]._id;
 
-				scope.$watch('sensor', function(sensor) {
-					if(sensor) {
-						// EXTRACTING SAMPLE
-						scope.readings = _.sortBy(Rede.sample.readings, function(item) { return new Date(item.timestamp); });
-					} else {
-						scope.readings = [];
+					scope.chartMeasure = function(id) {
+						scope.curParam = id;
+					};
+
+					scope.$watchGroup(['sensor', 'curParam'], function() {
+						updateChart();
+					});
+
+					var updateChart = function() {
+						if(scope.curParam && scope.sensor) {
+							Rede.measurements.query({'sensor_id': scope.sensor, 'parameter_id': scope.curParam}, function(measures) {
+								scope.measures = measures.measurements;
+							});
+						}
 					}
+
 				});
 
 			}
@@ -299,7 +274,6 @@ angular.module('rede')
 			restrict: 'E',
 			scope: {
 				'dataset': '=',
-				'type': '=',
 				'label': '='
 			},
 			template: '<div google-chart chart="chart"></div>',
@@ -307,11 +281,10 @@ angular.module('rede')
 
 				function init() {
 
-					var data = [['', scope.label, 'Média']];
+					var data = [['', scope.label || '', 'Média']];
 
 					_.each(scope.dataset, function(d, i) {
-						if(i <= 23)
-							data.push([new Date(d.timestamp), d[scope.type]]);
+						data.push([new Date(d.collectedAt), d.value]);
 					});
 
 					// Extract average
@@ -352,8 +325,8 @@ angular.module('rede')
 
 				};
 
-				scope.$watchGroup(['type', 'dataset'], function() {
-					if(scope.type && scope.dataset) {
+				scope.$watch('dataset', function() {
+					if(scope.dataset) {
 						init();
 					} else {
 						destroy();
@@ -394,7 +367,7 @@ angular.module('rede')
 
 					$(window).scroll(scroll);
 
-					var anchorOffset;
+					var anchorOffset = 0;
 					function scroll() {
 						var scrollTop = $(window).scrollTop();
 						if(scrollTop >= offset) {
@@ -437,7 +410,7 @@ angular.module('rede')
 				});
 
 				scope.$on('$destroy', function() {
-
+					// NEED TO DESTROY SCROLL E WINDOW RESIZE BINDS
 				});
 
 			}
