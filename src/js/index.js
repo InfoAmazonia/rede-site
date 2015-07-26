@@ -78,10 +78,10 @@ app
 					]
 				}
 			})
-			.state('sensor.follow', {
-				url: 'follow/',
-				controller: 'SensorFollow',
-				templateUrl: '/views/sensor/follow.html'
+			.state('sensor.subscribe', {
+				url: 'subscribe/',
+				controller: 'SensorSubscription',
+				templateUrl: '/views/sensor/subscribe.html'
 			})
 			.state('lab', {
 				url: '/lab/',

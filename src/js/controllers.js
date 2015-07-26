@@ -301,7 +301,7 @@ angular.module('rede')
 	}
 ])
 
-.controller('SensorFollow', [
+.controller('SensorSubscription', [
 	'$scope',
 	function($scope) {
 

@@ -1,0 +1,12 @@
+.container
+  .six.columns.offset-by-three
+    form#subscribe-sensor(ng-submit="submit()")
+      h2 Assine as atualizações do sensor
+      p
+        input(type="text" placeholder="Seu nome" ng-model="name")
+        p
+          input(type="text" placeholder="Seu email" ng-model="email")
+      p
+        input(type="text" placeholder="Seu telefone" international-phone-number ng-model="phone" preferred-countries="br" utils-script="/lib/intl-tel-input/utils.js")
+      p
+        input(type="submit" value="Confirmar assinatura")

@@ -394,6 +394,7 @@ angular.module('rede')
 
 					$(window).scroll(scroll);
 
+					var anchorOffset;
 					function scroll() {
 						var scrollTop = $(window).scrollTop();
 						if(scrollTop >= offset) {
@@ -408,11 +409,27 @@ angular.module('rede')
 									});
 								}
 								clone.addClass('scroll-fixed').insertAfter($element);
+								anchorOffset = clone.height() + 42;
+								$('.anchor-section').each(function() {
+									var section = $(this);
+									section.css({
+										'padding-top': '+=' + anchorOffset + 'px',
+										'margin-top': '-=' + anchorOffset + 'px'
+									});
+								});
 							}
 						} else {
 							if(clone && clone.length) {
 								clone.remove();
 								clone = false;
+								$('.anchor-section').each(function() {
+									var section = $(this);
+									console.log(anchorOffset);
+									section.css({
+										'padding-top': '-=' + anchorOffset + 'px',
+										'margin-top': '+=' + anchorOffset + 'px'
+									});
+								});
 							}
 						}
 					}
