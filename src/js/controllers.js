@@ -193,9 +193,20 @@ angular.module('rede')
 	'RedeService',
 	'leafletData',
 	'SensorData',
-	function($scope, Rede, leafletData, Sensor) {
+	'AddressData',
+	'$sce',
+	function($scope, Rede, leafletData, Sensor, Address, $sce) {
 
 		$scope.sensor = Sensor;
+
+		if(Address.data.address) {
+			$scope.city = Address.data.address.city;
+			if($scope.city == 'Santarém') {
+				$scope.visaguasUrl = $sce.trustAsResourceUrl('http://visaguas.infoamazonia.org/uf/15/cidade/150680/?theme=rede&lock=true&hide_title=true');
+			} else if($scope.city == 'Belterra') {
+				$scope.visaguasUrl = $sce.trustAsResourceUrl('http://visaguas.infoamazonia.org/uf/15/cidade/150145/?theme=rede&lock=true&hide_title=true');
+			}
+		}
 
 		var sCount = 1;
 

@@ -19,7 +19,7 @@ article#sensor
 							a(ui-sref="sensor({'#': 'sensor-community'})") Comunidade
 							a(ui-sref="sensor({'#': 'sensor-main'})") Últimas medições
 							a(ui-sref="sensor({'#': 'sensor-charts'})") Dados históricos
-							a(ui-sref="sensor({'#': 'sensor-city'})") Belterra
+							a(ui-sref="sensor({'#': 'sensor-city'})" ng-show="visaguasUrl") {{city}}
 					.clearfix
 						a.button.subscribe(ui-sref="sensor.subscribe") 
 							span.icon-rss 
@@ -74,9 +74,9 @@ article#sensor
 							nav.chart-filters
 								.chart-filter-item
 									select(ng-model="chartDateParam" ng-options="dateParam.label for dateParam in chartDateParams track by dateParam.value")
-								.chart-filter-item(ng-show="chartDateFilter.value == 'custom'")
+								.chart-filter-item(ng-show="chartDateParam.value == 'custom'")
 									input(type="text" placeholder="Data de início")
-								.chart-filter-item(ng-show="chartDateFilter.value == 'custom'")
+								.chart-filter-item(ng-show="chartDateParam.value == 'custom'")
 									input(type="text" placeholder="Data de fim")
 				nav.chart-nav
 					.container
@@ -89,15 +89,15 @@ article#sensor
 						.download
 							a.button(href="#") Baixar estes dados
 
-		section#sensor-city.anchor-section
+		section#sensor-city.anchor-section(ng-show="visaguasUrl")
 			.container
 				.six.columns
 					h2 Qualidade da água e doenças em 
-						strong Belterra
+						strong {{city}}
 					p via 
 						a.visaguas(href="http://visaguas.infoamazonia.org/" rel="external") Visaguas
 				.six.columns
 					p A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda vazão hídrica.
 					p Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país.
 					p Na Amazônia Legal, 60% das residências são atendidas pela rede geral de água. A média nacional é de 82,7%.
-			iframe(src="http://visaguas.infoamazonia.org/uf/15/cidade/150145/?theme=rede&lock=true&hide_title=true" frameborder="0" width="100%" height="800")
+			iframe(ng-src="{{visaguasUrl}}" frameborder="0" width="100%" height="800")

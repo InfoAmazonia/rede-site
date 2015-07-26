@@ -75,6 +75,14 @@ app
 						function(Rede, $stateParams) {
 							return Rede.sensors.get({id: $stateParams.sensorId}).$promise;
 						}
+					],
+					AddressData: [
+						'RedeService',
+						'SensorData',
+						function(Rede, Sensor) {
+							var coords = Sensor.geometry.coordinates
+							return Rede.geocode(coords[1], coords[0]);
+						}
 					]
 				}
 			})

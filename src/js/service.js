@@ -51,6 +51,18 @@ angular.module('rede')
 				}
 				return deferred.promise;
 			},
+			geocode: function(lat, lon) {
+				return $http({
+					'method': 'GET',
+					'url': 'http://nominatim.openstreetmap.org/reverse',
+					'params': {
+						'lon': lon,
+						'lat': lat,
+						'format': 'json',
+						'address_details': 1
+					}
+				});
+			},
 			stories: $http.get('http://infoamazonia.org/?publisher=infoamazonia&geojson=1'),
 			data: {
 				states: $http.get('http://visaguas.infoamazonia.org/api?query=estados')
