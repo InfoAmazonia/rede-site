@@ -96,7 +96,7 @@ describe('API: Sensors', function(){
 
   /*
    * GET /api/v1/sensors - Return a list of sensors
-  */
+   */
   describe('GET /api/v1/sensors', function(){
     it('should return 200 for valid data', function(doneIt){
 
@@ -445,6 +445,38 @@ describe('API: Sensors', function(){
               doneIt();
             });
         });
+      });
+    });
+
+
+    /*
+     * GET /api/v1/sensors/:sensor_id/score - Get water quality score for sensor
+     */
+    describe('GET /api/v1/sensors/:sensor_id/score', function(){
+      it('should return 200 for valid data', function(doneIt){
+
+        var targetSensor = sensorsWithMeasurements[1];
+
+        /* The request */
+        request(app)
+          .get(apiPrefix + '/sensors/'+targetSensor._id+'/score')
+          .expect('Content-Type', /json/)
+          .expect(200)
+          .end(onResponse);
+
+        /* Verify response */
+        function onResponse(err, res) {
+          if (err) return doneIt(err);
+
+          /* Check pagination */
+          var body = res.body;
+          body['sensor'].should.have.property('_id', targetSensor._id.toHexString());
+          body['score'].should.be.an.Number();
+          body['parameters'].should.be.an.Array();
+          body['parameters'].should.not.have.lengthOf(0);
+
+          doneIt();
+        }
       });
     });
 

@@ -8,6 +8,13 @@ var Schema = mongoose.Schema;
 var parser = require('../../lib/measurementParser')
 
 /*
+ * Config
+ */
+var env = process.env.NODE_ENV || 'development'
+var config = require('../../config')[env];
+var allParameters = config.parameters;
+
+/*
  * Schema
  */
 
@@ -29,7 +36,7 @@ SensorSchema.pre('remove', function(next){
 });
 
 /*
- * Methods
+ * Statics
  */
 SensorSchema.static({
 
@@ -77,6 +84,36 @@ SensorSchema.methods = {
         doneEach(err, measurement);
       });
     }, doneSaveMeasurementBatch);
+  },
+  getScore: function(doneGetScore){
+    var self = this;
+
+    async.map(allParameters, function(p, doneEach){
+      mongoose.model('Measurement')
+        .findOne({
+          sensor: self,
+          parameter: p._id
+        })
+        .sort('-collectedAt')
+        .exec(function(err, m){
+          doneEach(err,m._id);
+        })
+    }, function(err, parameters){
+      if (err) return doneGetScore(err);
+
+      var result = {
+        sensor: self,
+        score: Math.random() * 10,
+        parameters: []
+      };
+
+      // fix async strange result
+      _.each(Object.keys(parameters), function (k){
+        result.parameters.push(parameters[k]);
+      })
+
+      doneGetScore(null, result);
+    })
   }
 }
 

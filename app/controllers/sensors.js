@@ -72,6 +72,13 @@ exports.show = function(req, res) {
   return res.status(200).json(req.sensor);
 }
 
+exports.score = function(req, res) {
+  req.sensor.getScore(function(err, score){
+    if (err) res.sendStatus(500);
+    res.status(200).json(score);
+  });
+}
+
 exports.list = function(req, res) {
   var page = req.query['page'];
   var perPage = req.query['perPage'];

@@ -107,6 +107,50 @@ Possible responses:
 - `400` Bad request;
 - `404` Not found.
 
+### Get sensor score
+
+```
+GET /api/v1/sensors/:sensor_id/score
+```
+
+Get water quality score based on latest measurements.
+
+Parameters:
+- `:sensor_id`: _string_ (required)
+
+Possible responses:
+- `200` Success + sensor object json;
+- `404` Not found.
+- `500` Internal error.
+
+Successfull result:
+
+```
+{
+  sensor:
+    {
+      _id: '55b6446c9946ae150ab623de',
+      identifier: '+5511999999949',
+      name: 'Sensor 49',
+      description: 'some description for Sensor 49',
+      image: 'http://imguol.com/blogs/122/files/2015/07/Prototipo-foto-Miguel-PeixeDSCF1515.jpg',
+      __v: 0,
+      createdAt: '2015-07-27T14:47:08.037Z',
+      geometry: { type: 'Point', coordinates: [-21,-34] }
+    },
+  score: 3.265420915558934,
+  parameters: [
+    '55b6446c9946ae150ab625d8',
+    '55b6446d9946ae150ab62740',
+    '55b6446c9946ae150ab62620',
+    '55b6446c9946ae150ab62668',
+    '55b6446c9946ae150ab626b0',
+    '55b6446d9946ae150ab626f8',
+    '55b6446d9946ae150ab62788'
+  ]
+}
+```
+
 ### Get list of sensors
 
 ```
