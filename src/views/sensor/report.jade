@@ -16,4 +16,5 @@
       .container
         .twelve.columns
           h3 {{param.name.pt}}
-          reading-chart(dataset="data[param._id]" label="param.name.pt")
+          div(style="height: 200px;")
+            reading-chart(dataset="data[param._id]" label="param.name.pt")

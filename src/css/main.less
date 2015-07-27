@@ -827,16 +827,26 @@ h1 {
 			&.quality {
 				font-weight: 600;
 				text-transform: uppercase;
-				.quality-3 {
+				.quality-icon {
 					content: '';
 					display: inline-block;
 					width: 10px;
 					height: 10px;
-					background: green;
 					margin-top: 5px;
 					margin-left: 5px;
 					.border-radius(100%);
-					.box-shadow(0 0 3px lighten(green, 10%));
+					&.quality-1 {
+						background: red;
+						.box-shadow(0 0 3px lighten(red, 10%));
+					}
+					&.quality-2 {
+						background: yellow;
+						.box-shadow(0 0 3px lighten(yellow, 10%));
+					}
+					&.quality-3 {
+						background: green;
+						.box-shadow(0 0 3px lighten(green, 10%));
+					}
 				}
 			}
 		}

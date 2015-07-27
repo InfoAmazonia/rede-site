@@ -62,9 +62,7 @@ article#sensor
 								h3 Aceleração
 								p 120
 				.six.columns
-					latest-readings(sensor="sensor" amount="'5'")
-		//- section#sensor-map(ng-controller="MapCtrl")
-		//- 	leaflet#map(center="map.center" layers="map.layers" legend="legend" markers="map.markers" geojson="geojson" defaults="map.options")
+					latest-readings(sensor="sensor._id" amount="'5'" params="['electrical_conductivity', 'oxi-reduction_potential']")
 		section#sensor-charts.anchor-section.row
 			.sensor-chart
 				header#sensor-charts-header
@@ -89,7 +87,7 @@ article#sensor
 				nav.chart-nav
 					.container
 						.twelve.columns
-							a(ng-repeat="param in chart.params.type" href="javascript:void(0);" ng-click="chartMeasure(param._id)" ng-class="{active: curParam == param._id}") {{param.name.pt}}  
+							a(ng-repeat="param in chart.params.type" href="javascript:void(0);" ng-click="chartMeasure(param._id)" ng-class="{active: chart.current.type == param._id}") {{param.name.pt}}  
 				.container
 					.twelve.columns
 						.chart

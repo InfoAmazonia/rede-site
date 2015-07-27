@@ -23,6 +23,11 @@ angular.module('rede')
 				},
 				update: {
 					method: 'PUT'
+				},
+				getScore: {
+					url: apiUrl + '/sensors/:id/score',
+					method: 'GET',
+					isArray: false
 				}
 			}),
 			measurements: $resource(apiUrl + '/measurements', {}, {
