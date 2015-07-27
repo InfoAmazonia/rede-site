@@ -73,15 +73,23 @@ article#sensor
 							h2 Dados históricos
 							nav.chart-filters
 								.chart-filter-item
-									select(ng-model="chartDateParam" ng-options="dateParam.label for dateParam in chartDateParams track by dateParam.value")
-								.chart-filter-item(ng-show="chartDateParam.value == 'custom'")
-									input(type="text" placeholder="Data de início")
-								.chart-filter-item(ng-show="chartDateParam.value == 'custom'")
-									input(type="text" placeholder="Data de fim")
+									select(ng-model="chart.current.date" ng-options="param.label for param in chart.params.date track by param.value")
+								.chart-filter-item(ng-show="chart.current.date.value == 'custom'")
+									span.datepicker-label(ng-click="togglePicker('from')")
+										span.icon-calendar
+										span.label Data de início 
+										span.value(ng-show="picker.from") {{picker.from}}
+									.datepicker(pickadate ng-show="showFrom" ng-model="picker.from" prev-label="'anterior'" next-label="'próximo'")
+								.chart-filter-item(ng-show="chart.current.date.value == 'custom'")
+									span.datepicker-label(ng-click="togglePicker('to')")
+										span.icon-calendar
+										span.label Data de fim 
+										span.value(ng-show="picker.to") {{picker.to}}
+									.datepicker(pickadate ng-show="showTo" ng-model="picker.to" prev-label="'anterior'" next-label="'próximo'" min-date="picker.from")
 				nav.chart-nav
 					.container
 						.twelve.columns
-							a(ng-repeat="param in chartParams" href="javascript:void(0);" ng-click="chartMeasure(param._id)" ng-class="{active: curParam == param._id}") {{param.name.pt}}  
+							a(ng-repeat="param in chart.params.type" href="javascript:void(0);" ng-click="chartMeasure(param._id)" ng-class="{active: curParam == param._id}") {{param.name.pt}}  
 				.container
 					.twelve.columns
 						.chart
@@ -92,7 +100,7 @@ article#sensor
 							a.button(href="#") Baixar estes dados
 					.six.columns
 						.report
-							a.button(ui-sref="sensor.report") Gerar relatório
+							a.button(ui-sref="sensor.report({from: chartDateFrom, to: chartDateTo})") Gerar relatório
 
 		section#sensor-city.anchor-section(ng-show="visaguasUrl")
 			.container

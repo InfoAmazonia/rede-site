@@ -500,6 +500,8 @@ h1 {
 		#sensor-charts-header {
 			background: #444;
 			padding: 30px 0;
+			position: relative;
+			z-index: 1;
 			h2 {
 				font-family: "Open Sans";
 				font-size: 20px;
@@ -515,6 +517,7 @@ h1 {
 				.chart-filter-item {
 					float: left;
 					margin: 0 20px 0 0;
+					position: relative;
 					input,
 					select {
 						background: #444;
@@ -523,9 +526,42 @@ h1 {
 						border: 1px solid #555;
 					}
 					select {
+						outline: none;
 						option {
 							color: #f0f0f0;
 							padding: 10px;
+							outline: none;
+						}
+					}
+					.datepicker-label {
+						color: #fff;
+						padding: 7px 0 0;
+						display: inline-block;
+						cursor: pointer;
+						line-height: 20px;
+						.icon-calendar {
+							font-size: 20px;
+							margin-right: 10px;
+							line-height: 20px;
+						}
+						.label {
+							text-transform: uppercase;
+							color: #888;
+							font-size: 14px;
+							line-height: 20px;
+						}
+					}
+					.datepicker {
+						position: absolute;
+						z-index: 5;
+						width: 300px;
+						padding: 0 10px 10px;
+						.border-radius(4px);
+						top: 40px;
+						left: 0;
+						background: #fff;
+						li {
+							margin: 0;
 						}
 					}
 				}
@@ -666,11 +702,12 @@ h1 {
 	header {
 		background: #f0f0f0;
 		padding: 20px 20px;
+		margin: 0 0 20px;
 		border-bottom: 1px solid #ccc;
 		h2 {
 			font-family: "Open Sans Condensed";
 			font-weight: 200;
-			margin: 0;
+			margin: 0 0 10px;
 			padding: 0;
 			text-transform: uppercase;
 			font-size: 32px;
@@ -709,6 +746,14 @@ h1 {
 		}
 		.latest-readings {
 			margin-top: 30px;
+		}
+		.community {
+			img {
+				max-width: 40%;
+				float: right;
+				.border-radius(4px);
+				margin: 0 0 20px 20px;
+			}
 		}
 	}
 	h3 {

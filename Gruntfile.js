@@ -97,6 +97,16 @@ module.exports = function(grunt) {
 						expand: true
 					}
 				]
+			},
+			pickadate: {
+				files: [
+					{
+						cwd: 'node_modules/angular-pickadate/src',
+						src: ['**'],
+						dest: 'public/lib/angular-pickadate',
+						expand: true
+					}
+				]
 			}
 		},
 		watch: {
