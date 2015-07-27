@@ -468,12 +468,18 @@ describe('API: Sensors', function(){
         function onResponse(err, res) {
           if (err) return doneIt(err);
 
-          /* Check pagination */
           var body = res.body;
+
           body['sensor'].should.have.property('_id', targetSensor._id.toHexString());
           body['score'].should.be.an.Number();
-          body['parameters'].should.be.an.Array();
-          body['parameters'].should.not.have.lengthOf(0);
+
+          var parameters = body.parameters;
+          parameters.should.be.an.Array();
+          parameters.should.not.have.lengthOf(0);
+
+          var parameter = parameters[0];
+          parameter.should.have.property('_id');
+          parameter.should.have.property('value');
 
           doneIt();
         }
