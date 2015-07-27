@@ -262,8 +262,8 @@ h1 {
 		.button {
 			display: block;
 			margin: 0 20px 10px;
-			height: 60px;
-			line-height: 60px;
+			height: 56px;
+			line-height: 56px;
 			&.permalink {
 				background: #0f3137;
 				border-color: darken(#0f3137, 10%);
@@ -768,10 +768,24 @@ h1 {
 		}
 		.community {
 			img {
-				max-width: 40%;
+				max-height: 170px;
 				float: right;
 				.border-radius(4px);
 				margin: 0 0 20px 20px;
+			}
+			p {
+				height: 170px;
+				overflow: hidden;
+				position: relative;
+				// &:after {
+				// 	content: '...';
+				// 	background: #f0f0f0;
+				// 	text-align: right;
+				// 	position: absolute;
+				// 	bottom: 2px;
+				// 	right: 0;
+				// 	padding-right: 5px;
+				// }
 			}
 		}
 	}
