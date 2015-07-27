@@ -111,6 +111,30 @@ app
 			.state('lab.form', {
 				url: 'form/',
 				templateUrl: '/views/lab-form.html'
+			})
+			.state('admin', {
+				url: '/admin/',
+				controller: 'AdminCtrl',
+				templateUrl: '/views/admin/index.html'
+			})
+			.state('admin.sensors', {
+				url: 'sensors/',
+				templateUrl: '/views/admin/sensors.html',
+				controller: 'AdminSensorCtrl',
+				resolve: {
+					SensorData: [
+						'RedeService',
+						'$stateParams',
+						function(Rede, $stateParams) {
+							return Rede.sensors.get({id: $stateParams.sensorId}).$promise;
+						}
+					]
+				}
+			})
+			.state('admin.sensors.edit', {
+				url: 'edit/?id',
+				controller: 'AdminEditSensorCtrl',
+				templateUrl: '/views/admin/sensors-edit.html'
 			});
 
 		/*

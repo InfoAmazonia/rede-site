@@ -435,4 +435,53 @@ angular.module('rede')
 		};
 
 	}
+])
+
+.controller('AdminCtrl', [
+	'RedeService',
+	'$scope',
+	'$state',
+	function(Rede, $scope, $state) {
+		$scope.loggedIn = false;
+		$scope.login = function(data) {
+			$scope.loggedIn = true;
+		};
+		$scope.$watch('loggedIn', function(loggedIn) {
+			if(loggedIn && $state.current.name == 'admin') {
+				$state.go('admin.sensors');
+			}
+		});
+	}
+])
+
+.controller('AdminSensorCtrl', [
+	'$scope',
+	'RedeService',
+	'SensorData',
+	function($scope, Rede, Sensor) {
+		$scope.sensors = Sensor.sensors;
+
+		$scope.deleteSensor = function(sensor) {
+			if(confirm('Você tem certeza?')) {
+				console.log('delete');
+			}
+		}
+	}
+])
+
+.controller('AdminEditSensorCtrl', [
+	'$scope',
+	'RedeService',
+	'$stateParams',
+	'$state',
+	function($scope, Rede, $stateParams, $state) {
+
+		$scope.sensor = {};
+
+		if($state.params.id) {
+			Rede.sensors.get({id: $state.params.id}, function(sensor) {
+				$scope.sensor = sensor;
+			})
+		}
+	}
 ]);

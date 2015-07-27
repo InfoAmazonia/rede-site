@@ -1,0 +1,19 @@
+form(ng-submit="submit(sensor)")
+  h3 Novo sensor
+  p
+    label(for="input_name") Nome 
+    input#input_name(type="text" ng-model="sensor.name")
+  p
+    label(for="input_latitude") Latitude
+    input#input_latitude(type="text" ng-model="sensor.latitude")
+  p
+    label(for="input_longitude") Longitude
+    input#input_longitude(type="text" ng-model="sensor.longitude")
+  p
+    label(for="input_description") Descrição (comunidade)
+    textarea#input_description(type="text" ng-model="sensor.description")
+  p
+    label(for="input_image") URL da imagem
+    input#input_image(type="text" ng-model="sensor.image")
+  p
+    input(type="submit" value="Enviar")

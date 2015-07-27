@@ -1,0 +1,24 @@
+#admin
+  .container.row
+    .twelve.columns
+      header#admin-header
+        h2 Área administrativa
+  .container
+    //- .three.columns
+    //-   nav#admin-nav(ng-show="loggedIn")
+    //-     ul
+    //-       li
+    //-         a(ui-sref="admin.sensors") Sensores
+    //-         ul
+    //-           li
+    //-             a(ui-sref="admin.sensors.new") Criar novo sensor
+    //-   &nbsp;
+    .twelve.columns
+      form#login(ng-submit="login(auth)" ng-show="!loggedIn")
+        p
+          input(type="email" placeholder="Email" ng-model="auth.email")
+        p
+          input(type="password" placeholder="Senha" ng-model="auth.password")
+        p
+          input(type="submit" value="Entrar")
+      div(ui-view autoscroll="false")

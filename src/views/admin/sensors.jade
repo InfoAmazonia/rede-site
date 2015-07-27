@@ -1,0 +1,17 @@
+#admin-sensors(ui-view autoscroll="false")
+  h3 Sensores
+  p
+    a.button(ui-sref="admin.sensors.edit") Novo sensor
+  table
+    thead
+      tr
+        th Nome
+        th Editar
+        th Remover
+    tbody
+      tr(ng-repeat="sensor in sensors")
+        td {{sensor.name}}
+        td
+          a(ui-sref="admin.sensors.edit({id: sensor._id})") Editar
+        td
+          a(href="javascript:void(0);" ng-click="deleteSensor(sensor)") Remover

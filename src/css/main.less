@@ -249,6 +249,7 @@ h1 {
 	}
 	.sensor-map-info {
 		padding: 20px;
+		overflow: auto;
 		h2 {
 			font-size: 16px;
 			text-transform: uppercase;
@@ -672,7 +673,7 @@ h1 {
 		}
 		h3 {
 			font-family: "Open Sans Condensed";
-			font-size: 30px;
+			font-size: 28px;
 			margin: 0 0 5px;
 			text-transform: uppercase;
 			float: left;
@@ -1027,5 +1028,33 @@ h1 {
 	input {
 		width: 100%;
 		display: block;
+	}
+}
+
+#admin {
+	#admin-nav {
+		ul {
+			list-style: none;
+			display: block;
+			margin: 0;
+			padding: 0;
+			li {
+				margin: 0;
+				padding: 0;
+				//border: 1px solid #eee;
+				padding: 5px;
+				ul {
+					margin-top: 5px;
+				}
+			}
+		}
+	}
+	table,
+	input,
+	textarea {
+		width: 100%;
+	}
+	textarea {
+		height: 200px;
 	}
 }
