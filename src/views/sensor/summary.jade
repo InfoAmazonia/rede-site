@@ -3,6 +3,9 @@ article.sensor-summary
 		.clearfix
 			h2 {{sensor.name}}
 			//- span.status.ok Recebendo dados
+		section.community.clearfix
+			img.cmm-pic(ng-src="{{sensor.image}}")
+			p {{sensor.description}} 
 		section.clearfix
 			.current
 				h3 Qualidade agora 
@@ -10,5 +13,5 @@ article.sensor-summary
 				a.button(ui-sref="sensor({sensorId: sensorId})") Saiba mais
 			.readings
 				latest-readings(amount="'3'" sensor="sensorId" params="[]")
-	section
-		sensor-chart-summary(sensor="sensorId")
+	//- section
+	//- 	 sensor-chart-summary(sensor="sensorId")

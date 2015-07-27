@@ -15,7 +15,7 @@ require('angular-ui-router');
 require('angular-resource');
 require('angular-cookies');
 require('ng-dialog');
-
+require('angular-pickadate/src/angular-pickadate');
 require('international-phone-number/releases/international-phone-number');
 
 var app = angular.module('rede', [
@@ -26,6 +26,7 @@ var app = angular.module('rede', [
 	'ngDialog',
 	'googlechart',
 	'leaflet-directive',
+	'pickadate',
 	'internationalPhoneNumber'
 ]);
 
@@ -76,6 +77,12 @@ app
 							return Rede.sensors.get({id: $stateParams.sensorId}).$promise;
 						}
 					],
+					ParametersData: [
+						'RedeService',
+						function(Rede) {
+							return Rede.getParameters();
+						}
+					],
 					AddressData: [
 						'RedeService',
 						'SensorData',
@@ -92,7 +99,7 @@ app
 				templateUrl: '/views/sensor/subscribe.html'
 			})
 			.state('sensor.report', {
-				url: 'report/',
+				url: 'report/?from&to',
 				controller: 'SensorReport',
 				templateUrl: '/views/sensor/report.html'
 			})
