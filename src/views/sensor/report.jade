@@ -1,0 +1,9 @@
+#sensor-report
+  .container
+    .twelve.columns
+      h2 Relatório das últimas 24 horas
+  section.sensor-param.row(ng-repeat="param in params")
+    .container
+      .twelve.columns
+        h3 {{param.name.pt}}
+        reading-chart(dataset="data[param._id]" label="param.name.pt")

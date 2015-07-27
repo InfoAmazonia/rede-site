@@ -268,7 +268,6 @@ h1 {
 		.current {
 			width: 25%;
 			max-width: 170px;
-			max-height: 170px;
 			float: left;
 			padding: 0 40px 0 0;
 			.box-sizing(border-box);
@@ -536,7 +535,8 @@ h1 {
 			padding: 0;
 			margin: 40px 0;
 		}
-		.download {
+		.download,
+		.report {
 			.button {
 				display: block;
 			}
@@ -606,17 +606,58 @@ h1 {
 		width: 50%;
 		.box-sizing(border-box);
 		.sensor-content {
-			.border-radius(3px);
+			.border-radius(4px);
 			border: 1px solid #ccc;
-			padding: 10px;
+			padding: 10px 15px;
 			cursor: pointer;
 			&:hover {
-				.box-shadow(1px 1px 1px rgba(0,0,0,0.1));
+				border-color: #c0c0c0;
+				.box-shadow(1px 1px 2px rgba(0,0,0,0.12));
 			}
 		}
 		h3 {
-			font-size: 14px;
+			font-family: "Open Sans Condensed";
+			font-size: 30px;
+			margin: 0 0 5px;
+			text-transform: uppercase;
+			float: left;
+			line-height: 40px;
+		}
+		p {
 			margin: 0;
+		}
+		p.community {
+			position: relative;
+			height: 46px;
+			overflow: hidden;
+			color: #999;
+			font-size: 14px;
+			line-height: 24px;
+			&:after {
+				content: '...';
+				background: #fff;
+				text-align: right;
+				position: absolute;
+				bottom: -2px;
+				right: 0;
+				padding-right: 5px;
+			}
+		}
+		p.quality {
+			line-height: 40px;
+			float: right;
+			font-size: 12px;
+			text-transform: uppercase;
+			color: #999;
+			span {
+				color: #fff;
+				margin-left: 5px;
+				padding: 2px 5px;
+				.border-radius(4px);
+				&.green {
+					background: lighten(green, 10%);
+				}
+			}
 		}
 	}
 }

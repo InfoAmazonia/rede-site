@@ -86,8 +86,13 @@ article#sensor
 					.twelve.columns
 						.chart
 							reading-chart(dataset="measures" label="param.name.pt")
+				.container
+					.six.columns
 						.download
 							a.button(href="#") Baixar estes dados
+					.six.columns
+						.report
+							a.button(ui-sref="sensor.report") Gerar relatório
 
 		section#sensor-city.anchor-section(ng-show="visaguasUrl")
 			.container

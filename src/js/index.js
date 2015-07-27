@@ -91,6 +91,11 @@ app
 				controller: 'SensorSubscription',
 				templateUrl: '/views/sensor/subscribe.html'
 			})
+			.state('sensor.report', {
+				url: 'report/',
+				controller: 'SensorReport',
+				templateUrl: '/views/sensor/report.html'
+			})
 			.state('lab', {
 				url: '/lab/',
 				controller: 'LabCtrl',

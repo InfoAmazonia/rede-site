@@ -187,13 +187,13 @@ angular.module('rede')
 					}
 					if(sensor) {
 						// EXTRACTING SAMPLE
-						scope.latest = _.sample(Rede.sample.readings, scope.amount);
-						latestInterval = $interval(function() {
-							scope.latest = _.sample(Rede.sample.readings, scope.amount);
-						}, 3 * 1000);
-						scope.$on('$destroy', function() {
-							$interval.cancel(latestInterval);
-						});
+						// scope.latest = _.sample(Rede.sample.readings, scope.amount);
+						// latestInterval = $interval(function() {
+						// 	scope.latest = _.sample(Rede.sample.readings, scope.amount);
+						// }, 3 * 1000);
+						// scope.$on('$destroy', function() {
+						// 	$interval.cancel(latestInterval);
+						// });
 					} else {
 						scope.latest = [];
 					}
@@ -396,7 +396,6 @@ angular.module('rede')
 								clone = false;
 								$('.anchor-section').each(function() {
 									var section = $(this);
-									console.log(anchorOffset);
 									section.css({
 										'padding-top': '-=' + anchorOffset + 'px',
 										'margin-top': '+=' + anchorOffset + 'px'

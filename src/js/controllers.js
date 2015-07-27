@@ -87,18 +87,6 @@ angular.module('rede')
 	'SensorsData',
 	function($scope, Rede, CartoDB, leafletData, $interval, sensors) {
 
-		// Rede.stories
-		// 	.success(function(data) {
-		// 		console.log(data);
-		// 	})
-		// 	.error(function(data, status, headers, config) {
-		// 		console.log(data);
-		// 	});
-
-		// Rede.data.states.success(function(data) {
-		// 	console.log(data);
-		// });
-
 		/*
 		 * About
 		 */
@@ -128,38 +116,60 @@ angular.module('rede')
 
 		$scope.sensors = sensors.sensors;
 
-		$scope.geojson = {
-			data: Rede.sensorToGeoJSON($scope.sensors),
-			pointToLayer: function(f, latlng) {
-				return new L.Marker(latlng, {
-					icon: L.icon({
-						iconUrl: '/img/sensor-icon-white-small.png',
-						iconSize: [20,20],
-						shadowSize: [0,0],
-						iconAnchor: [10,10],
-						shadowAnchor: [0,0],
-						popupAnchor: [0,-10]
-					})
-				});
-			},
-			onEachFeature: function(f, layer) {
-				layer.bindPopup(f.properties.name);
-				layer.on('mouseover', function() {
-					layer.openPopup();
-					layer.setZIndexOffset(1000);
-				});
-				layer.on('mouseout', function() {
-					layer.closePopup();
-					layer.setZIndexOffset(0);
-				});
-				layer.on('click', function() {
-					$scope.$apply(function() {
-						$scope.sensor = f.properties._id;
-					});
-				});
-				sCount++;
-			}
-		};
+		Rede.stories
+			.success(function(data) {
+				$scope.stories = data;
+				$scope.geojson = {
+					data: {
+						type: "FeatureCollection",
+						features: Rede.sensorToGeoJSON($scope.sensors).features.concat($scope.stories.features)
+					},
+					pointToLayer: function(f, latlng) {
+						if(!f.properties.postID) {
+							return new L.Marker(latlng, {
+								icon: L.icon({
+									iconUrl: '/img/sensor-icon-white-small.png',
+									iconSize: [20,20],
+									shadowSize: [0,0],
+									iconAnchor: [10,10],
+									shadowAnchor: [0,0],
+									popupAnchor: [0,-10]
+								})
+							});
+						} else {
+							return new L.Marker(latlng);
+						}
+					},
+					onEachFeature: function(f, layer) {
+						if(f.properties.postID) {
+							layer.bindPopup('Artigo: ' + f.properties.title);
+						} else {
+							layer.bindPopup(f.properties.name);
+						}
+						layer.on('mouseover', function() {
+							layer.openPopup();
+							layer.setZIndexOffset(1000);
+						});
+						layer.on('mouseout', function() {
+							layer.closePopup();
+							layer.setZIndexOffset(0);
+						});
+						layer.on('click', function() {
+							if(f.properties.postID) {
+								window.open(f.properties.url, '_blank');
+							} else {
+								$scope.$apply(function() {
+									$scope.sensor = f.properties._id;
+								});
+							}
+						});
+						sCount++;
+					}
+				};
+			})
+			.error(function(data, status, headers, config) {
+				console.log(data);
+			});
 
 		var latLngs = [];
 		_.each($scope.sensors, function(feature) {
@@ -180,10 +190,6 @@ angular.module('rede')
 		$scope.setSensor = function(sensor) {
 			$scope.sensor = sensor;
 		};
-
-		// $scope.sensors = Rede.sample.sensors.features;
-
-		// console.log($scope.sensors);
 
 	}
 ])
@@ -290,6 +296,47 @@ angular.module('rede')
 .controller('SensorSubscription', [
 	'$scope',
 	function($scope) {
+
+	}
+])
+
+.controller('SensorReport', [
+	'RedeService',
+	'$scope',
+	'$stateParams',
+	'$q',
+	function(Rede, $scope, $stateParams, $q) {
+
+		$scope.data = {};
+
+		Rede.getParameters().then(function(params) {
+
+			$scope.params = params;
+
+			var promises = [];
+			_.each(params, function(param) {
+				promises.push(Rede.measurements.query({sensor_id: $stateParams.sensorId, parameter_id: param._id}).$promise);
+			});
+
+			$q.all(promises).then(function(data) {
+				data.map(function(measurements) {
+					$scope.data[measurements.parameter._id] = measurements.measurements;
+				});
+				setTimeout(function() {
+					window.print();
+				}, 2000);
+			});
+
+		});
+
+		// function(data) {
+		//
+		// }
+
+		$(window).load(function() {
+			alert('should print');
+			window.print();
+		});
 
 	}
 ])

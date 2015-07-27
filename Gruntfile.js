@@ -42,7 +42,8 @@ module.exports = function(grunt) {
 					compress: true
 				},
 				files: {
-					'public/css/app.css': 'src/css/main.less'
+					'public/css/app.css': 'src/css/main.less',
+					'public/css/report.css': 'src/css/report.less'
 				}
 			}
 		},

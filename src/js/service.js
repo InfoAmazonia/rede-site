@@ -8,11 +8,6 @@ angular.module('rede')
 
 		var apiUrl = '/api/v1';
 
-		var sampleData = {
-			readings: require('./sample-data/readings'),
-			sensors: require('./sample-data/sensors')
-		};
-
 		var measureParams;
 
 		return {
@@ -63,11 +58,10 @@ angular.module('rede')
 					}
 				});
 			},
-			stories: $http.get('http://infoamazonia.org/?publisher=infoamazonia&geojson=1'),
+			stories: $http.get('http://infoamazonia.org/?publisher=infoamazonia&posts_per_page=20&lang=pt&geojson=1'),
 			data: {
 				states: $http.get('http://visaguas.infoamazonia.org/api?query=estados')
 			},
-			sample: sampleData,
 			sensorToGeoJSON: function(sensors) {
 
 				var geojson = {
