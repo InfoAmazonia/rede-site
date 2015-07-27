@@ -19,5 +19,5 @@
 					span
 						| {{labelQuality(score.quality)}} 
 						span.quality-icon(class="quality-{{score.quality}}")
-				td(title="{{scoreParam(param, score).value}}" ng-repeat="param in params")
+				td(title="{{scoreParam(param, score).value}} {{getParam(param).defaultUnit}}" ng-repeat="param in params")
 					span {{scoreParam(param, score).value}} {{getParam(param).defaultUnit}}
