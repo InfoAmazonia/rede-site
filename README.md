@@ -18,15 +18,9 @@ grunt build
 
 Run `npm start`.
 
-# API Usage
-## User routes
-### Create user
-
-```
-POST /api/v1/users
-```
-
-First user will have `admin` role.
+# API Documentation
+## POST users/new
+Create an user First user will have `admin` role.
 
 Parameters:
 - `name`: _string_ User name
@@ -39,13 +33,9 @@ Possible responses:
 - `401` Unauthorized;
 - `500` Internal error.
 
-## Sensors routes
-### Create sensor
+:arrow_up: [API index]
 
-```
-POST /api/v1/sensors
-```
-
+## POST sensors/new
 Parameters:
 - `identifier`: _string_ phone number or mac address (required)
 - `name`: _string_ sensor's name (required)
@@ -57,12 +47,9 @@ Possible responses:
 - `400` Bad request.
 - `401` Unauthorized;
 
-### Update sensor
+:arrow_up: [API index]
 
-```
-PUT /api/v1/sensors/:sensor_id
-```
-
+## PUT sensors/:sensor_id
 Parameters:
 - `:sensor_id` _string_
 - `identifier`: _string_ phone number or mac address (required)
@@ -76,13 +63,10 @@ Possible responses:
 - `401` Unauthorized;
 - `404` Not found.
 
-### Remove sensor
+:arrow_up: [API index]
 
-```
-DEL /api/v1/sensors/:sensor_id
-```
-
-This will **destroy all measurements** related to the sensor.
+### DEL sensors/:sensor_id
+Destroy sensor and **all measurements** related to the it.
 
 Parameters:
 - `:sensor_id` _string_
@@ -93,12 +77,9 @@ Possible responses:
 - `401` Unauthorized;
 - `404` Not found.
 
-### Get sensor
+:arrow_up: [API index]
 
-```
-GET /api/v1/sensors/:sensor_id
-```
-
+### GET sensors/:sensor_id
 Parameters:
 - `:sensor_id`: _string_ (required)
 
@@ -107,12 +88,9 @@ Possible responses:
 - `400` Bad request;
 - `404` Not found.
 
-### Get sensor score
+:arrow_up: [API index]
 
-```
-GET /api/v1/sensors/:sensor_id/score
-```
-
+### GET sensors/:sensor_id/score
 Get water quality score based on latest measurements.
 
 Parameters:
@@ -123,40 +101,9 @@ Possible responses:
 - `404` Not found.
 - `500` Internal error.
 
-Successfull result:
+:arrow_up: [API index]
 
-```
-{
-  sensor:
-    {
-      _id: '55b6446c9946ae150ab623de',
-      identifier: '+5511999999949',
-      name: 'Sensor 49',
-      description: 'some description for Sensor 49',
-      image: 'http://imguol.com/blogs/122/files/2015/07/Prototipo-foto-Miguel-PeixeDSCF1515.jpg',
-      __v: 0,
-      createdAt: '2015-07-27T14:47:08.037Z',
-      geometry: { type: 'Point', coordinates: [-21,-34] }
-    },
-  score: 3.265420915558934,
-  parameters: [
-    '55b6446c9946ae150ab625d8',
-    '55b6446d9946ae150ab62740',
-    '55b6446c9946ae150ab62620',
-    '55b6446c9946ae150ab62668',
-    '55b6446c9946ae150ab626b0',
-    '55b6446d9946ae150ab626f8',
-    '55b6446d9946ae150ab62788'
-  ]
-}
-```
-
-### Get list of sensors
-
-```
-GET /api/v1/sensors
-```
-
+### GET sensors
 Parameters:
 - `perPage`: _number_ (default: 20)
 - `page`: _number_ (optional)
@@ -165,22 +112,18 @@ Possible responses:
 - `200` Success and list of sensors:
 - `400` Bad request.
 
-## Parameters routes
-### Get list
+:arrow_up: [API index]
 
-```
-GET /api/v1/parameters
-```
+## GET parameters
+Returns a list of parameters.
 
 Response:
 - `200` Success status and parameters as json:
 
-## Measurements routes
-### Get list
+:arrow_up: [API index]
 
-```
-GET /api/v1/measurements
-```
+## GET measurements
+Returns a list of measurements.
 
 Parameters:
 - `sensor_id`: _string_ (required)
@@ -192,10 +135,13 @@ Possible responses:
 - `200` Success and list of measurements:
 - `400` Bad request.
 
-## Measurement data protocol
+:arrow_up: [API index]
+
+# Measurement data protocol
 Sensors should send data as string, using the pattern:
 
 ```
+
 <timestamp>;<param1:unit1=value1>;<param2:unit2=value2;...>
 ```
 
@@ -219,9 +165,11 @@ Accepted values for `paramX`:
 Example:
 
 ```
+
 2015-07-05T22:16:18+00:00;p:1000;Tw:20;Ta:32
 ```
 
+[api index]: #api-documentation
 [measurement data protocol]: #measurement-data-protocol
 [iso 8601]: https://en.wikipedia.org/wiki/ISO_8601
 [atmospheric pressure]: https://en.wikipedia.org/wiki/Atmospheric_pressure
