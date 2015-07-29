@@ -140,7 +140,7 @@ describe('API: Users', function(){
           body.should.have.property('_id');
           body.should.have.property('name', payload.name);
           body.should.have.property('email', payload.email);
-          body.should.have.property('role', 'subscriptor');
+          body.should.have.property('role', 'subscriber');
           body.should.have.property('registeredAt');
           body.should.not.have.property('password');
           user1 = body;

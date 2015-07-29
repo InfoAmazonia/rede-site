@@ -16,7 +16,7 @@ var validator = require('validator');
  */
 
 var UserSchema = new Schema({
-	role: { type: String, enum: ['admin', 'subscriptor'], default: 'subscriptor'},
+	role: { type: String, enum: ['admin', 'subscriber'], default: 'subscriber'},
 	name: { type: String},
 	email: { type: String, required: 'missing_email', validate: [validator.isEmail, 'invalid_email'] },
 	emailConfirmed: {type: Boolean, default: false},
