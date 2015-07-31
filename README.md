@@ -18,15 +18,44 @@ grunt build
 
 Run `npm start`.
 
-# API Usage
-## User routes
-### Create user
+# API Documentation
 
-```
-POST /api/v1/users
-```
+## Users management
+- [GET users](#get-users)
+- [POST users](#post-userssnew)
 
-First user will have `admin` role.
+## Account management
+
+- [PUT account](#)
+
+## Sensors
+- [GET sensors](#get-sensors)
+- [POST sensors](#post-sensorsnew)
+- [GET sensors/:sensor_id](#get-sensorssensor_id)
+- [PUT sensors/:sensor_id](#put-sensorssensor_id)
+- [DEL sensors/:sensor_id](#del-sensorssensor_id)
+- [GET sensors/:sensor_id/scores](#get-sensorssensor_idscores)
+- [POST sensors/:sensor_id/subscribe](#post-sensorssensor_idsubscribe)
+- [POST sensors/:sensor_id/unsubscribe](#post-sensorssensor_idunsubscribe)
+
+## Measurements
+- [GET measurements](#get-measurements)
+- [POST measurements](#post-measurementsnew)
+- [GET measurements/:measurement_id](#get-measurementssensor_id)
+- [PUT measurements/:measurement_id](#put-measurementssensor_id)
+- [DEL measurements/:measurement_id](#del-measurementssensor_id)
+
+## Users
+
+### GET users
+
+Get a list of users, not implemented yet.
+
+---
+
+### POST users
+
+Creates a user. The first created user will have `admin` role.
 
 Parameters:
 - `name`: _string_ User name
@@ -39,12 +68,25 @@ Possible responses:
 - `401` Unauthorized;
 - `500` Internal error.
 
-## Sensors routes
-### Create sensor
+---
 
-```
-POST /api/v1/sensors
-```
+## Sensors
+
+### GET sensors
+
+Get a list of sensors.
+
+Parameters:
+- `perPage`: _number_ (default: 20)
+- `page`: _number_ (optional)
+
+Possible responses:
+- `200` Success and list of sensors:
+- `400` Bad request.
+
+### POST sensors
+
+Creates a new sensor.
 
 Parameters:
 - `identifier`: _string_ phone number or mac address (required)
@@ -57,11 +99,25 @@ Possible responses:
 - `400` Bad request.
 - `401` Unauthorized;
 
-### Update sensor
+---
 
-```
-PUT /api/v1/sensors/:sensor_id
-```
+### GET sensors/:sensor_id
+
+Get information about a single sensor.
+
+Parameters:
+- `:sensor_id`: _string_ (required)
+
+Possible responses:
+- `200` Success + sensor object json;
+- `400` Bad request;
+- `404` Not found.
+
+---
+
+### PUT sensors/:sensor_id
+
+Updates sensor information.
 
 Parameters:
 - `:sensor_id` _string_
@@ -76,13 +132,11 @@ Possible responses:
 - `401` Unauthorized;
 - `404` Not found.
 
-### Remove sensor
+---
 
-```
-DEL /api/v1/sensors/:sensor_id
-```
+### DEL sensors/:sensor_id
 
-This will **destroy all measurements** related to the sensor.
+Destroy sensor and **all measurements** related to the it.
 
 Parameters:
 - `:sensor_id` _string_
@@ -93,25 +147,9 @@ Possible responses:
 - `401` Unauthorized;
 - `404` Not found.
 
-### Get sensor
+---
 
-```
-GET /api/v1/sensors/:sensor_id
-```
-
-Parameters:
-- `:sensor_id`: _string_ (required)
-
-Possible responses:
-- `200` Success + sensor object json;
-- `400` Bad request;
-- `404` Not found.
-
-### Get sensor score
-
-```
-GET /api/v1/sensors/:sensor_id/score
-```
+### GET sensors/:sensor_id/score
 
 Get water quality score based on latest measurements.
 
@@ -123,64 +161,54 @@ Possible responses:
 - `404` Not found.
 - `500` Internal error.
 
-Successfull result:
+---
 
-```
-{
-  sensor:
-    {
-      _id: '55b6446c9946ae150ab623de',
-      identifier: '+5511999999949',
-      name: 'Sensor 49',
-      description: 'some description for Sensor 49',
-      image: 'http://imguol.com/blogs/122/files/2015/07/Prototipo-foto-Miguel-PeixeDSCF1515.jpg',
-      __v: 0,
-      createdAt: '2015-07-27T14:47:08.037Z',
-      geometry: { type: 'Point', coordinates: [-21,-34] }
-    },
-  score: 3.265420915558934,
-  parameters: [
-    '55b6446c9946ae150ab625d8',
-    '55b6446d9946ae150ab62740',
-    '55b6446c9946ae150ab62620',
-    '55b6446c9946ae150ab62668',
-    '55b6446c9946ae150ab626b0',
-    '55b6446d9946ae150ab626f8',
-    '55b6446d9946ae150ab62788'
-  ]
-}
-```
+### POST sensors/:sensor_id/subscribe
 
-### Get list of sensors
+Subscribes user to sensor.
 
-```
-GET /api/v1/sensors
-```
+Needs authentication.
 
 Parameters:
-- `perPage`: _number_ (default: 20)
-- `page`: _number_ (optional)
+- `:sensor_id`: _string_ (required)
 
 Possible responses:
-- `200` Success and list of sensors:
-- `400` Bad request.
+- `200` Success + user json;
+- `401` Unauthorized;
+- `404` Not found;
+- `500` Internal error.
 
-## Parameters routes
-### Get list
+---
 
-```
-GET /api/v1/parameters
-```
+### POST sensors/:sensor_id/unsubscribe
+
+Unsubscribes user to sensor.
+
+Needs authentication.
+
+Parameters:
+- `:sensor_id`: _string_ (required)
+
+Possible responses:
+- `200` Success + user json;
+- `401` Unauthorized;
+- `404` Not found;
+- `500` Internal error.
+
+---
+
+## GET parameters
+
+Returns a list of parameters.
 
 Response:
 - `200` Success status and parameters as json:
 
-## Measurements routes
-### Get list
+---
 
-```
-GET /api/v1/measurements
-```
+## GET measurements
+
+Returns a list of measurements.
 
 Parameters:
 - `sensor_id`: _string_ (required)
@@ -192,10 +220,14 @@ Possible responses:
 - `200` Success and list of measurements:
 - `400` Bad request.
 
-## Measurement data protocol
+---
+
+# Measurement data protocol
+
 Sensors should send data as string, using the pattern:
 
 ```
+
 <timestamp>;<param1:unit1=value1>;<param2:unit2=value2;...>
 ```
 
@@ -219,6 +251,7 @@ Accepted values for `paramX`:
 Example:
 
 ```
+
 2015-07-05T22:16:18+00:00;p:1000;Tw:20;Ta:32
 ```
 

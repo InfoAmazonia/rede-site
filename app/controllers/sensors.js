@@ -55,7 +55,6 @@ exports.update = function(req, res, next) {
   });
 }
 
-
 /*
  * Remove
  */
@@ -117,5 +116,37 @@ exports.list = function(req, res) {
         sensors: sensors
       });
     });
+  });
+}
+
+/*
+ * Subscribe to sensor
+ */
+exports.subscribe = function(req, res, next) {
+  var sensor = req.sensor;
+  var user = req.user;
+
+  user.subscribedToSensors.push(sensor);
+
+  user.save(function(err) {
+    if (err) return res.status(400).json(messaging.mongooseErrors(err, 'users'));
+    else res.status(200).json({sensor: sensor, user: user});
+  });
+}
+
+/*
+ * Unsubscribe to sensor
+ */
+exports.unsubscribe = function(req, res, next) {
+  var sensor = req.sensor;
+  var user = req.user;
+
+  user.subscribedToSensors = _.filter(user.subscribedToSensors, function(id) {
+    return id == sensor._id;
+  });
+
+  user.save(function(err) {
+    if (err) return res.status(400).json(messaging.mongooseErrors(err, 'users'));
+    else res.status(200).json({sensor: sensor, user: user});
   });
 }

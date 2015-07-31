@@ -16,15 +16,16 @@ var validator = require('validator');
  */
 
 var UserSchema = new Schema({
-	role: { type: String, enum: ['admin', 'moderator', 'user'], default: 'user'},
-	name: { type: String, required: 'missing_name'},
+	role: { type: String, enum: ['admin', 'subscriber'], default: 'subscriber'},
+	name: { type: String},
 	email: { type: String, required: 'missing_email', validate: [validator.isEmail, 'invalid_email'] },
 	emailConfirmed: {type: Boolean, default: false},
 	token: { type: String },
 	hashed_password: {type: String, required: 'missing_password'},
 	salt: { type: String, default: '' },
 	updatedAt: Date,
-	registeredAt: {type: Date, default: Date.now}
+	registeredAt: {type: Date, default: Date.now},
+	subscribedToSensors: [{type: Schema.ObjectId, ref: 'Sensor'}]
 });
 
 /**
