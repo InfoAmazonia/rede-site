@@ -21,29 +21,29 @@ Run `npm start`.
 # API Documentation
 
 ## Users management
-- [GET users](get-users)
-- [POST users](post-userssnew)
+- [GET users](#get-users)
+- [POST users](#post-userssnew)
 
 ## Account management
 
-- [PUT account]()
+- [PUT account](#)
 
 ## Sensors
-- [GET sensors](get-sensors)
-- [POST sensors](post-sensorsnew)
-- [GET sensors/:sensor_id](get-sensorssensor_id)
-- [PUT sensors/:sensor_id](put-sensorssensor_id)
-- [DEL sensors/:sensor_id](del-sensorssensor_id)
-- [GET sensors/:sensor_id/scores](get-sensorssensor_idscores)
-- [POST sensors/:sensor_id/subscribe](post-sensorssensor_idsubscribe)
-- [POST sensors/:sensor_id/unsubscribe](post-sensorssensor_idunsubscribe)
+- [GET sensors](#get-sensors)
+- [POST sensors](#post-sensorsnew)
+- [GET sensors/:sensor_id](#get-sensorssensor_id)
+- [PUT sensors/:sensor_id](#put-sensorssensor_id)
+- [DEL sensors/:sensor_id](#del-sensorssensor_id)
+- [GET sensors/:sensor_id/scores](#get-sensorssensor_idscores)
+- [POST sensors/:sensor_id/subscribe](#post-sensorssensor_idsubscribe)
+- [POST sensors/:sensor_id/unsubscribe](#post-sensorssensor_idunsubscribe)
 
 ## Measurements
-- [GET measurements](get-measurements)
-- [POST measurements](post-measurementsnew)
-- [GET measurements/:measurement_id](get-measurementssensor_id)
-- [PUT measurements/:measurement_id](put-measurementssensor_id)
-- [DEL measurements/:measurement_id](del-measurementssensor_id)
+- [GET measurements](#get-measurements)
+- [POST measurements](#post-measurementsnew)
+- [GET measurements/:measurement_id](#get-measurementssensor_id)
+- [PUT measurements/:measurement_id](#put-measurementssensor_id)
+- [DEL measurements/:measurement_id](#del-measurementssensor_id)
 
 ## Users
 
