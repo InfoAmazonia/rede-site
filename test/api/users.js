@@ -178,11 +178,6 @@ describe('API: Users', function(){
         }
       });
     });
-
-    context('sensor subscriptions', function(){
-      it('should return 200 and data for valid user');
-      it('should return 404 for invalid user');
-    })
   });
 });
 
@@ -197,7 +192,6 @@ describe('PUT /api/v1/users', function(){
   });
 
   context('regular user', function(){
-    it('should be able to subscribe a sensor');
     it('should be able to change telefone address');
   });
 });

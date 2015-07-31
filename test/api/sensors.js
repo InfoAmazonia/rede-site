@@ -42,9 +42,10 @@ var daysOfMeasurements = 3;
 /*
  * Test data
  */
+var nonExistingObjectHash = '556899153f90be8f422f3d3f';
 var user1;
 var user1AccessToken;
-var user1Sensor1;
+var sensor1;
 var sensorsWithMeasurements;
 
 /*
@@ -95,9 +96,9 @@ describe('API: Sensors', function(){
   });
 
   /*
-   * GET /api/v1/sensors - Return a list of sensors
+   * GET sensors - Return a list of sensors
    */
-  describe('GET /api/v1/sensors', function(){
+  describe('GET sensors', function(){
     it('should return 200 for valid data', function(doneIt){
 
       /* The request */
@@ -215,14 +216,16 @@ describe('API: Sensors', function(){
 
 
     /*
-     * POST /api/v1/sensors
+     * POST sensors
      */
 
-    describe('POST /api/v1/sensors', function(){
+    describe('POST sensors', function(){
+      var apiRoute = apiPrefix + '/sensors';
+
       context('not logged in', function(){
         it('should return 401 (Unauthorized)', function(doneIt){
           request(app)
-            .post(apiPrefix + '/sensors')
+            .post(apiRoute)
             .expect(401)
             .end(function(err,res){
               if (err) doneIt(err);
@@ -248,7 +251,7 @@ describe('API: Sensors', function(){
           }
 
           request(app)
-            .post(apiPrefix + '/sensors')
+            .post(apiRoute)
             .set('Authorization', user1AccessToken)
             .send(payload)
             .expect(201)
@@ -273,7 +276,7 @@ describe('API: Sensors', function(){
               coordinates[0].should.be.equal(payload.geometry.coordinates[0]);
               coordinates[1].should.be.equal(payload.geometry.coordinates[1]);
 
-              user1Sensor1 = res.body;
+              sensor1 = res.body;
 
               doneIt();
             })
@@ -289,7 +292,7 @@ describe('API: Sensors', function(){
           }
 
           request(app)
-            .post(apiPrefix + '/sensors')
+            .post(apiRoute)
             .set('Authorization', user1AccessToken)
             .send(payload)
             .expect(400)
@@ -300,7 +303,7 @@ describe('API: Sensors', function(){
 
               res.body.messages.should.have.lengthOf(1);
               messaging.hasValidMessages(res.body).should.be.true;
-              res.body.messages[0].should.have.property('text', 'mongoose.errors.sensors.missing_identifier');
+              res.body.messages[0].should.have.property('text', 'sensors.missing_identifier');
 
               doneIt();
           });
@@ -309,7 +312,7 @@ describe('API: Sensors', function(){
     });
 
     /*
-     *  PUT /api/v1/sensors/:id
+     *  PUT sensors/:id
      */
     describe('PUT /api/v1/sensors/:id', function(){
       context('not logged in', function(){
@@ -344,7 +347,7 @@ describe('API: Sensors', function(){
           }
 
           request(app)
-            .put(apiPrefix + '/sensors/'+ user1Sensor1._id)
+            .put(apiPrefix + '/sensors/'+ sensor1._id)
             .set('Authorization', user1AccessToken)
             .send(payload)
             .expect(200)
@@ -370,7 +373,7 @@ describe('API: Sensors', function(){
               coordinates[1].should.be.equal(payload.geometry.coordinates[1]);
 
               /* Keep sensor for later usage */
-              user1Sensor1 = res.body;
+              sensor1 = res.body;
 
               doneIt();
             });
@@ -384,7 +387,7 @@ describe('API: Sensors', function(){
     /*
      *  DEL /api/v1/sensors/:id
      */
-    describe('DEL /api/v1/sensors/:id', function(){
+    describe('DEL sensors/:id', function(){
       context('not logged in', function(){
         it('should return 401 (Unauthorized)', function(doneIt){
           var sensor = sensorsWithMeasurements[0];
@@ -431,7 +434,7 @@ describe('API: Sensors', function(){
 
         it('return 404 (Not found) for id not found', function(doneIt){
           request(app)
-            .get(apiPrefix + '/sensors/556899153f90be8f422f3d3f')
+            .get(apiPrefix + '/sensors/'+ nonExistingObjectHash)
             .expect(404)
             .expect('Content-Type', /json/)
             .end(function(err, res){
@@ -452,7 +455,7 @@ describe('API: Sensors', function(){
     /*
      * GET /api/v1/sensors/:sensor_id/score - Get water quality score for sensor
      */
-    describe('GET /api/v1/sensors/:sensor_id/score', function(){
+    describe('GET sensors/:sensor_id/score', function(){
       it('should return 200 for valid data', function(doneIt){
 
         var targetSensor = sensorsWithMeasurements[1];
@@ -479,6 +482,58 @@ describe('API: Sensors', function(){
         }
       });
     });
+
+    /*
+     * GET sensors/:sensor_id/subscribe - Get water quality score for sensor
+     */
+    describe('POST sensors/:sensor_id/subscribe', function(){
+      context('logged user', function(){
+        it('should be able to subscribe to sensor', function(doneIt){
+          /* The request */
+          request(app)
+            .post(apiPrefix + '/sensors/'+sensor1._id+'/subscribe')
+            .set('Authorization', user1AccessToken)
+            .expect(200)
+            .end(function(err, res){
+              if (err) return doneIt(err);
+
+              var body = res.body;
+              body.should.have.property('user');
+
+              var user = body.user;
+              user.should.have.property('subscribedToSensors');
+
+              var subscribedToSensors = user['subscribedToSensors'];
+              subscribedToSensors.should.be.an.Array();
+              subscribedToSensors.should.containEql(sensor1._id);
+              doneIt();
+            });
+        });
+
+        it('should get error for non-existing sensor', function(doneIt){
+          /* The request */
+          request(app)
+            .post(apiPrefix + '/sensors/'+nonExistingObjectHash+'/subscribe')
+            .expect(404)
+            .end(doneIt);
+        });
+
+
+      });
+
+      context('non-logged user', function(){
+        it('should not be able to subscribe to sensor', function(doneIt){
+          /* The request */
+          request(app)
+            .post(apiPrefix + '/sensors/'+sensor1._id+'/subscribe')
+            .expect(401)
+            .end(doneIt);
+        });
+      });
+
+    });
+
+
 
   /*
    * After tests, clear database

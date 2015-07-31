@@ -19,8 +19,43 @@ grunt build
 Run `npm start`.
 
 # API Documentation
-## POST users/new
-Create an user First user will have `admin` role.
+
+## Users management
+- [GET users](get-users)
+- [POST users](post-userssnew)
+
+## Account management
+
+- [PUT account]()
+
+## Sensors
+- [GET sensors](get-sensors)
+- [POST sensors](post-sensorsnew)
+- [GET sensors/:sensor_id](get-sensorssensor_id)
+- [PUT sensors/:sensor_id](put-sensorssensor_id)
+- [DEL sensors/:sensor_id](del-sensorssensor_id)
+- [GET sensors/:sensor_id/scores](get-sensorssensor_idscores)
+- [POST sensors/:sensor_id/subscribe]()
+- [POST sensors/:sensor_id/unsubscribe]()
+
+## Measurements
+- [GET measurements](get-measurements)
+- [POST measurements](post-measurementsnew)
+- [GET measurements/:measurement_id](get-measurementssensor_id)
+- [PUT measurements/:measurement_id](put-measurementssensor_id)
+- [DEL measurements/:measurement_id](del-measurementssensor_id)
+
+## Users
+
+### GET users
+
+Get a list of users, not implemented yet.
+
+---
+
+### POST users
+
+Creates a user. The first created user will have `admin` role.
 
 Parameters:
 - `name`: _string_ User name
@@ -33,9 +68,26 @@ Possible responses:
 - `401` Unauthorized;
 - `500` Internal error.
 
-:arrow_up: [API index]
+---
 
-## POST sensors/new
+## Sensors
+
+### GET sensors
+
+Get a list of sensors.
+
+Parameters:
+- `perPage`: _number_ (default: 20)
+- `page`: _number_ (optional)
+
+Possible responses:
+- `200` Success and list of sensors:
+- `400` Bad request.
+
+### POST sensors
+
+Creates a new sensor.
+
 Parameters:
 - `identifier`: _string_ phone number or mac address (required)
 - `name`: _string_ sensor's name (required)
@@ -47,9 +99,26 @@ Possible responses:
 - `400` Bad request.
 - `401` Unauthorized;
 
-:arrow_up: [API index]
+---
 
-## PUT sensors/:sensor_id
+### GET sensors/:sensor_id
+
+Get information about a single sensor.
+
+Parameters:
+- `:sensor_id`: _string_ (required)
+
+Possible responses:
+- `200` Success + sensor object json;
+- `400` Bad request;
+- `404` Not found.
+
+---
+
+### PUT sensors/:sensor_id
+
+Updates sensor information.
+
 Parameters:
 - `:sensor_id` _string_
 - `identifier`: _string_ phone number or mac address (required)
@@ -63,9 +132,10 @@ Possible responses:
 - `401` Unauthorized;
 - `404` Not found.
 
-:arrow_up: [API index]
+---
 
 ### DEL sensors/:sensor_id
+
 Destroy sensor and **all measurements** related to the it.
 
 Parameters:
@@ -77,20 +147,10 @@ Possible responses:
 - `401` Unauthorized;
 - `404` Not found.
 
-:arrow_up: [API index]
-
-### GET sensors/:sensor_id
-Parameters:
-- `:sensor_id`: _string_ (required)
-
-Possible responses:
-- `200` Success + sensor object json;
-- `400` Bad request;
-- `404` Not found.
-
-:arrow_up: [API index]
+---
 
 ### GET sensors/:sensor_id/score
+
 Get water quality score based on latest measurements.
 
 Parameters:
@@ -101,28 +161,35 @@ Possible responses:
 - `404` Not found.
 - `500` Internal error.
 
-:arrow_up: [API index]
+---
 
-### GET sensors
+### POST sensors/:sensor_id/subscribe
+
+Subscribe authenticated user to sensor.
+
+Needs authentication.
+
 Parameters:
-- `perPage`: _number_ (default: 20)
-- `page`: _number_ (optional)
+- `:sensor_id`: _string_ (required)
 
 Possible responses:
-- `200` Success and list of sensors:
-- `400` Bad request.
+- `200` Success + user json;
+- `404` Not found.
+- `500` Internal error.
 
-:arrow_up: [API index]
+---
 
 ## GET parameters
+
 Returns a list of parameters.
 
 Response:
 - `200` Success status and parameters as json:
 
-:arrow_up: [API index]
+---
 
 ## GET measurements
+
 Returns a list of measurements.
 
 Parameters:
@@ -135,9 +202,10 @@ Possible responses:
 - `200` Success and list of measurements:
 - `400` Bad request.
 
-:arrow_up: [API index]
+---
 
 # Measurement data protocol
+
 Sensors should send data as string, using the pattern:
 
 ```
@@ -169,7 +237,6 @@ Example:
 2015-07-05T22:16:18+00:00;p:1000;Tw:20;Ta:32
 ```
 
-[api index]: #api-documentation
 [measurement data protocol]: #measurement-data-protocol
 [iso 8601]: https://en.wikipedia.org/wiki/ISO_8601
 [atmospheric pressure]: https://en.wikipedia.org/wiki/Atmospheric_pressure

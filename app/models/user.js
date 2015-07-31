@@ -24,7 +24,8 @@ var UserSchema = new Schema({
 	hashed_password: {type: String, required: 'missing_password'},
 	salt: { type: String, default: '' },
 	updatedAt: Date,
-	registeredAt: {type: Date, default: Date.now}
+	registeredAt: {type: Date, default: Date.now},
+	subscribedToSensors: [{type: Schema.ObjectId, ref: 'Sensor'}]
 });
 
 /**
