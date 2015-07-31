@@ -484,7 +484,7 @@ describe('API: Sensors', function(){
     });
 
     /*
-     * GET sensors/:sensor_id/subscribe - Get water quality score for sensor
+     * POST sensors/:sensor_id/subscribe
      */
     describe('POST sensors/:sensor_id/subscribe', function(){
       context('logged user', function(){
@@ -517,8 +517,6 @@ describe('API: Sensors', function(){
             .expect(404)
             .end(doneIt);
         });
-
-
       });
 
       context('non-logged user', function(){
@@ -530,7 +528,53 @@ describe('API: Sensors', function(){
             .end(doneIt);
         });
       });
+    });
 
+    /*
+     * POST sensors/:sensor_id/unsubscribe
+     */
+    describe('POST sensors/:sensor_id/unsubscribe', function(){
+      context('logged user', function(){
+        it('should be able to unsubscribe to sensor', function(doneIt){
+          /* The request */
+          request(app)
+            .post(apiPrefix + '/sensors/'+sensor1._id+'/unsubscribe')
+            .set('Authorization', user1AccessToken)
+            .expect(200)
+            .end(function(err, res){
+              if (err) return doneIt(err);
+
+              var body = res.body;
+              body.should.have.property('user');
+
+              var user = body.user;
+              user.should.have.property('subscribedToSensors');
+
+              var subscribedToSensors = user['subscribedToSensors'];
+              subscribedToSensors.should.be.an.Array();
+              subscribedToSensors.should.not.containEql(sensor1._id);
+              doneIt();
+            });
+        });
+
+        it('should get error for non-existing sensor', function(doneIt){
+          /* The request */
+          request(app)
+            .post(apiPrefix + '/sensors/'+nonExistingObjectHash+'/unsubscribe')
+            .expect(404)
+            .end(doneIt);
+        });
+      });
+
+      context('non-logged user', function(){
+        it('should not be able to unsubscribe to sensor', function(doneIt){
+          /* The request */
+          request(app)
+            .post(apiPrefix + '/sensors/'+sensor1._id+'/unsubscribe')
+            .expect(401)
+            .end(doneIt);
+        });
+      });
     });
 
 

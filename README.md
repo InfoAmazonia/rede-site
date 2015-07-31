@@ -35,8 +35,8 @@ Run `npm start`.
 - [PUT sensors/:sensor_id](put-sensorssensor_id)
 - [DEL sensors/:sensor_id](del-sensorssensor_id)
 - [GET sensors/:sensor_id/scores](get-sensorssensor_idscores)
-- [POST sensors/:sensor_id/subscribe]()
-- [POST sensors/:sensor_id/unsubscribe]()
+- [POST sensors/:sensor_id/subscribe](post-sensorssensor_idsubscribe)
+- [POST sensors/:sensor_id/unsubscribe](post-sensorssensor_idunsubscribe)
 
 ## Measurements
 - [GET measurements](get-measurements)
@@ -165,7 +165,7 @@ Possible responses:
 
 ### POST sensors/:sensor_id/subscribe
 
-Subscribe authenticated user to sensor.
+Subscribes user to sensor.
 
 Needs authentication.
 
@@ -174,7 +174,25 @@ Parameters:
 
 Possible responses:
 - `200` Success + user json;
-- `404` Not found.
+- `401` Unauthorized;
+- `404` Not found;
+- `500` Internal error.
+
+---
+
+### POST sensors/:sensor_id/unsubscribe
+
+Unsubscribes user to sensor.
+
+Needs authentication.
+
+Parameters:
+- `:sensor_id`: _string_ (required)
+
+Possible responses:
+- `200` Success + user json;
+- `401` Unauthorized;
+- `404` Not found;
 - `500` Internal error.
 
 ---

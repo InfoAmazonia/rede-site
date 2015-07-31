@@ -45,7 +45,7 @@ module.exports = function (app, config) {
   apiRoutes.delete('/sensors/:sensor_id', [auth.isLogged, sensors.remove]);
   apiRoutes.get('/sensors/:sensor_id/score', sensors.score);
   apiRoutes.post('/sensors/:sensor_id/subscribe', [auth.isLogged, sensors.subscribe]);
-  // apiRoutes.get('/sensors/:sensor_id/unsubscribe', sensors.subscribe);
+  apiRoutes.post('/sensors/:sensor_id/unsubscribe', [auth.isLogged, sensors.unsubscribe]);
 
   // measurement route
   apiRoutes.post('/measurements/batch', measurements.saveBatch);
