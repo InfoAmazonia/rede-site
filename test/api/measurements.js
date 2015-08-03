@@ -26,7 +26,9 @@ var Sensor = mongoose.model('Sensor');
  */
 
 var mongodb = require('../../lib/helpers/mongodb');
+var express = require('../../lib/helpers/express');
 var factory = require('../../lib/helpers/factory');
+var messaging = require('../../lib/helpers/messaging');
 
 /*
  * Config
@@ -41,6 +43,11 @@ var defaultPerPage = 20;
 /*
  * Test data
  */
+var nonExistingObjectHash = '556899153f90be8f422f3d3f';
+var admin1;
+var admin1AccessToken;
+var user1;
+var user1AccessToken;
 var sensor1;
 var parameters = config.parameters;
 
@@ -59,11 +66,34 @@ describe('API: Measurements', function(){
       mongodb.clearDb(function(err){
         if (err) doneBefore(err);
 
-        factory.createSensorsWithMeasurements(numberOfSensors, daysOfMeasurements, function(err, sensor){
-          if (err) doneBefore(err);
-          sensor1 = sensor[0];
-          doneBefore();
-        });
+        async.series([
+          function (doneEach){
+            factory.createAdmin(function(err,usr){
+              if (err) return doneBefore(err);
+              admin1 = usr;
+              express.login(admin1.email, admin1.password, function(err, token){
+                admin1AccessToken = token;
+                doneEach(err);
+              });
+            });
+          },
+          function (doneEach){
+            factory.createUser(function(err,usr){
+              if (err) return doneBefore(err);
+              user1 = usr;
+              express.login(user1.email, user1.password, function(err, token){
+                user1AccessToken = token;
+                doneEach(err);
+              });
+            });
+          },
+          function (doneEach){
+            factory.createSensorsWithMeasurements(numberOfSensors, daysOfMeasurements, function(err, sensor){
+              if (err) doneBefore(err);
+              sensor1 = sensor[0];
+              doneEach();
+            });
+          }], doneBefore);
       });
     });
   });
@@ -269,8 +299,93 @@ describe('API: Measurements', function(){
   });
 
   /*
+   *  DEL measurements/:measurement_id
+   */
+  describe('DEL measurements/:measurement_id', function(){
+    var measurementToDelete;
+
+    before(function(doneBefore){
+      Measurement.findOne(function(err, m){
+        if (err) doneBefore(err);
+        should.exist(m);
+
+        measurementToDelete = m;
+        doneBefore();
+      });
+    });
+
+    context('not logged in', function(){
+      it('should return 401 (Unauthorized)', function(doneIt){
+        request(app)
+          .del(apiPrefix + '/measurements/'+measurementToDelete._id.toHexString())
+          .expect(401)
+          .end(function(err,res){
+            if (err) doneIt(err);
+            res.body.messages.should.have.lengthOf(1);
+            messaging.hasValidMessages(res.body).should.be.true;
+            res.body.messages[0].should.have.property('text', 'access_token.unauthorized');
+            doneIt();
+          });
+      });
+    });
+
+    context('when logged as regular user', function(){
+      it('should return 401 (Unauthorized)', function(doneIt){
+        request(app)
+          .del(apiPrefix + '/measurements/'+measurementToDelete._id.toHexString())
+          .set('Authorization', user1AccessToken)
+          .expect(401)
+          .end(function(err,res){
+            if (err) doneIt(err);
+            res.body.messages.should.have.lengthOf(1);
+            messaging.hasValidMessages(res.body).should.be.true;
+            res.body.messages[0].should.have.property('text', 'access_token.unauthorized');
+            doneIt();
+          });
+      });
+    });
+
+    context('when logged as admin user', function(){
+      it('delete and return 200 (Success)', function(doneIt){
+        request(app)
+          .del(apiPrefix + '/measurements/'+measurementToDelete._id.toHexString())
+          .set('Authorization', admin1AccessToken)
+          .expect(200)
+          .end(function(err, res){
+            if (err) doneIt(err);
+            var body = res.body;
+
+            // sensor should not exist
+            Measurement.findById(measurementToDelete._id, function(err, m){
+              if (err) return doneIt(err);
+              should.not.exist(m);
+              doneIt();
+          });
+        });
+      });
+
+      it('return 404 (Not found) for id not found', function(doneIt){
+        request(app)
+          .get(apiPrefix + '/sensors/'+ nonExistingObjectHash)
+          .expect(404)
+          .expect('Content-Type', /json/)
+          .end(function(err, res){
+            if (err) return doneIt(err);
+            var body = res.body;
+
+            res.body.messages.should.have.lengthOf(1);
+            messaging.hasValidMessages(res.body).should.be.true;
+            res.body.messages[0].should.have.property('text', 'sensors.not_found');
+
+            doneIt();
+          });
+      });
+    });
+  });
+
+
+  /*
    * After tests, clear database
    */
-
   after(mongodb.clearDb);
 })
