@@ -2,17 +2,9 @@
   .container.row
     .twelve.columns
       header#admin-header
-        h2 Área administrativa
+        h2 
+          a(ui-sref="admin.sensors") Área administrativa
   .container
-    //- .three.columns
-    //-   nav#admin-nav(ng-show="loggedIn")
-    //-     ul
-    //-       li
-    //-         a(ui-sref="admin.sensors") Sensores
-    //-         ul
-    //-           li
-    //-             a(ui-sref="admin.sensors.new") Criar novo sensor
-    //-   &nbsp;
     .twelve.columns
       form#login(ng-submit="login(auth)" ng-show="!loggedIn")
         p

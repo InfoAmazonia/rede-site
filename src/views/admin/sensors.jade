@@ -1,17 +1,44 @@
-#admin-sensors(ui-view autoscroll="false")
-  h3 Sensores
+#admin-sensors
   p
-    a.button(ui-sref="admin.sensors.edit") Novo sensor
-  table
-    thead
-      tr
-        th Nome
-        th Editar
-        th Remover
-    tbody
-      tr(ng-repeat="sensor in sensors")
-        td {{sensor.name}}
-        td
-          a(ui-sref="admin.sensors.edit({id: sensor._id})") Editar
-        td
-          a(href="javascript:void(0);" ng-click="deleteSensor(sensor)") Remover
+    a.button(ui-sref="admin.sensors.new")
+      span.icon-plus 
+      | Novo sensor 
+    a.button(ui-sref="admin.sensors")
+      span.icon-plus 
+      | Novo usuário 
+  p
+    a.button(ui-sref="admin.sensors")
+      span.icon-megaphone 
+      | Broadcast 
+    a.button(ui-sref="admin.sensors")
+      span.icon-user 
+      | Usuários 
+  div(ui-view autoscroll="false")
+    h3 Sensores
+    table
+      thead
+        tr
+          th Nome
+          th Ver e editar medições
+          th Enviar broadcast
+          th Editar
+          th Remover
+      tbody
+        tr(ng-repeat="sensor in sensors")
+          td {{sensor.name}}
+          td
+            a.button(ui-sref="admin.sensors.measurements({sensorId: sensor._id})")
+              span.icon-line-graph 
+              | Medições
+          td
+            a.button(ui-sref="admin.sensors.broadcast({sensorId: sensor._id})") 
+              span.icon-megaphone 
+              | Broadcast
+          td
+            a.button(ui-sref="admin.sensors.edit({sensorId: sensor._id})")
+              span.icon-edit 
+              | Editar
+          td
+            a.button.delete(href="javascript:void(0);" ng-click="deleteSensor(sensor)") 
+              span.icon-cross 
+              | Remover

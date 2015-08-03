@@ -52,98 +52,137 @@ app
 		$locationProvider.hashPrefix('!');
 
 		$stateProvider
-			.state('home', {
-				url: '/',
-				controller: 'HomeCtrl',
-				templateUrl: '/views/home.html',
-				resolve: {
-					SensorsData: [
-						'RedeService',
-						function(Rede) {
-							return Rede.sensors.query().$promise;
-						}
-					]
-				}
-			})
-			.state('sensor', {
-				url: '/sensors/:sensorId/',
-				controller: 'SensorCtrl',
-				templateUrl: '/views/sensor.html',
-				resolve: {
-					SensorData: [
-						'RedeService',
-						'$stateParams',
-						function(Rede, $stateParams) {
-							return Rede.sensors.get({id: $stateParams.sensorId}).$promise;
-						}
-					],
-					ParametersData: [
-						'RedeService',
-						function(Rede) {
-							return Rede.getParameters();
-						}
-					],
-					AddressData: [
-						'RedeService',
-						'SensorData',
-						function(Rede, Sensor) {
-							var coords = Sensor.geometry.coordinates
-							return Rede.geocode(coords[1], coords[0]);
-						}
-					]
-				}
-			})
-			.state('sensor.subscribe', {
-				url: 'subscribe/',
-				controller: 'SensorSubscription',
-				templateUrl: '/views/sensor/subscribe.html'
-			})
-			.state('sensor.report', {
-				url: 'report/?from&to',
-				controller: 'SensorReport',
-				templateUrl: '/views/sensor/report.html'
-			})
-			.state('lab', {
-				url: '/lab/',
-				controller: 'LabCtrl',
-				templateUrl: '/views/lab.html'
-			})
-			.state('lab.form', {
-				url: 'form/',
-				templateUrl: '/views/lab-form.html'
-			})
-			.state('admin', {
-				url: '/admin/',
-				controller: 'AdminCtrl',
-				templateUrl: '/views/admin/index.html'
-			})
-			.state('admin.sensors', {
-				url: 'sensors/',
-				templateUrl: '/views/admin/sensors.html',
-				controller: 'AdminSensorCtrl',
-				resolve: {
-					SensorData: [
-						'RedeService',
-						'$stateParams',
-						function(Rede, $stateParams) {
-							return Rede.sensors.get({id: $stateParams.sensorId}).$promise;
-						}
-					]
-				}
-			})
-			.state('admin.sensors.edit', {
-				url: 'edit/?id',
-				controller: 'AdminEditSensorCtrl',
-				templateUrl: '/views/admin/sensors-edit.html'
-			});
+		.state('home', {
+			url: '/',
+			controller: 'HomeCtrl',
+			templateUrl: '/views/home.html',
+			resolve: {
+				SensorsData: [
+					'RedeService',
+					function(Rede) {
+						return Rede.sensors.query().$promise;
+					}
+				]
+			}
+		})
+		.state('sensor', {
+			url: '/sensors/:sensorId/',
+			controller: 'SensorCtrl',
+			templateUrl: '/views/sensor.html',
+			resolve: {
+				SensorData: [
+					'RedeService',
+					'$stateParams',
+					function(Rede, $stateParams) {
+						return Rede.sensors.get({id: $stateParams.sensorId}).$promise;
+					}
+				],
+				ParametersData: [
+					'RedeService',
+					function(Rede) {
+						return Rede.getParameters();
+					}
+				],
+				AddressData: [
+					'RedeService',
+					'SensorData',
+					function(Rede, Sensor) {
+						var coords = Sensor.geometry.coordinates
+						return Rede.geocode(coords[1], coords[0]);
+					}
+				]
+			}
+		})
+		.state('sensor.subscribe', {
+			url: 'subscribe/',
+			controller: 'SensorSubscription',
+			templateUrl: '/views/sensor/subscribe.html'
+		})
+		.state('sensor.report', {
+			url: 'report/?from&to',
+			controller: 'SensorReport',
+			templateUrl: '/views/sensor/report.html'
+		})
+		.state('lab', {
+			url: '/lab/',
+			controller: 'LabCtrl',
+			templateUrl: '/views/lab.html'
+		})
+		.state('lab.form', {
+			url: 'form/',
+			templateUrl: '/views/lab-form.html'
+		})
+		.state('admin', {
+			url: '/admin/',
+			controller: 'AdminCtrl',
+			templateUrl: '/views/admin/index.html'
+		})
+		.state('admin.sensors', {
+			url: 'sensors/',
+			templateUrl: '/views/admin/sensors.html',
+			controller: 'AdminSensorCtrl',
+			resolve: {
+				SensorsData: [
+					'RedeService',
+					'$stateParams',
+					function(Rede, $stateParams) {
+						return Rede.sensors.query().$promise;
+					}
+				]
+			}
+		})
+		.state('admin.sensors.new', {
+			url: 'new/',
+			controller: 'AdminEditSensorCtrl',
+			templateUrl: '/views/admin/sensors-edit.html'
+		})
+		.state('admin.sensors.edit', {
+			url: ':sensorId/edit/',
+			controller: 'AdminEditSensorCtrl',
+			templateUrl: '/views/admin/sensors-edit.html'
+		})
+		.state('admin.sensors.measurements', {
+			url: ':sensorId/measurements/',
+			controller: 'AdminEditMeasurementCtrl',
+			templateUrl: '/views/admin/sensors-measurements.html',
+			resolve: {
+				SensorData: [
+					'RedeService',
+					'$stateParams',
+					function(Rede, $stateParams) {
+						return Rede.sensors.get({id: $stateParams.sensorId}).$promise;
+					}
+				],
+				ParametersData: [
+					'RedeService',
+					function(Rede) {
+						return Rede.getParameters();
+					}
+				],
+			}
+		})
+		.state('admin.sensors.broadcast', {
+			url: ':sensorId/broadcast/',
+			controller: 'AdminBroadcastCtrl',
+			templateUrl: '/views/admin/sensors-broadcast.html',
+			resolve: {
+				SensorData: [
+					'RedeService',
+					'$stateParams',
+					function(Rede, $stateParams) {
+						return Rede.sensors.get({id: $stateParams.sensorId}).$promise;
+					}
+				]
+			}
+		});
 
 		/*
-		 * Trailing slash rule
-		 */
+		* Trailing slash rule
+		*/
 		$urlRouterProvider.rule(function($injector, $location) {
 			var path = $location.path(),
-				search = $location.search(),
-				params;
+			search = $location.search(),
+			params;
 
 			// check to see if the path already ends in '/'
 			if (path[path.length - 1] === '/') {
@@ -170,9 +209,6 @@ app
 	'$location',
 	'$window',
 	function($rootScope, $location, $window) {
-		/*
-		 * Analytics
-		 */
 		$rootScope.$on('$stateChangeSuccess', function(ev, toState, toParams, fromState, fromParams) {
 			if($window._gaq && fromState.name) {
 				$window._gaq.push(['_trackPageview', $location.path()]);

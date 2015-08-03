@@ -457,9 +457,9 @@ angular.module('rede')
 .controller('AdminSensorCtrl', [
 	'$scope',
 	'RedeService',
-	'SensorData',
-	function($scope, Rede, Sensor) {
-		$scope.sensors = Sensor.sensors;
+	'SensorsData',
+	function($scope, Rede, Sensors) {
+		$scope.sensors = Sensors.sensors;
 
 		$scope.deleteSensor = function(sensor) {
 			if(confirm('Você tem certeza?')) {
@@ -478,10 +478,44 @@ angular.module('rede')
 
 		$scope.sensor = {};
 
-		if($state.params.id) {
-			Rede.sensors.get({id: $state.params.id}, function(sensor) {
+		if($state.params.sensorId) {
+			Rede.sensors.get({id: $state.params.sensorId}, function(sensor) {
 				$scope.sensor = sensor;
 			})
 		}
+	}
+])
+
+.controller('AdminEditMeasurementCtrl', [
+	'$scope',
+	'RedeService',
+	'SensorData',
+	'ParametersData',
+	function($scope, Rede, Sensor, Parameters) {
+		$scope.sensor = Sensor;
+		$scope.parameters = Parameters;
+
+		$scope.param = $scope.parameters[Object.keys($scope.parameters)[0]];
+
+		$scope.updateMeasurements = function(paramId) {
+			$scope.param = $scope.parameters[paramId];
+		};
+
+		$scope.getDate = function(measurement) {
+			return moment(measurement.collectedAt).format('LLLL');
+		};
+
+		$scope.deleteMeasurement = function(measurement) {
+			if(confirm('Você tem certeza?')) {
+				console.log('delete');
+			}
+		}
+
+		$scope.$watch('param', function() {
+			Rede.measurements.query({'sensor_id': $scope.sensor._id, 'parameter_id': $scope.param._id}, function(data) {
+				$scope.measurements = data;
+			});
+		});
+
 	}
 ]);

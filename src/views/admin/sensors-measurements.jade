@@ -1,0 +1,22 @@
+#admin-sensor-measurements
+  h3 Medições de {{sensor.name}}
+  ul.tabbed-nav
+    li(ng-repeat="(key,parameter) in parameters" ng-class="{active: param._id==parameter._id}")
+      a(href="#" ng-click="updateMeasurements(key)") {{parameter.name.pt}}
+
+table(ng-show="measurements")
+  thead
+    tr
+      th Data
+      th Valor
+      th Unidade de medida
+      th Remover
+  tbody
+    tr(ng-repeat="measurement in measurements.measurements")
+      td {{getDate(measurement)}}
+      td {{measurement.value}}
+      td {{measurements.parameter.defaultUnit}}
+      td 
+        a.button(href="#" ng-click="deleteMeasurement(measurement)")
+          span.icon-cross 
+          | Remover
