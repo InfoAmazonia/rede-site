@@ -1032,20 +1032,13 @@ h1 {
 }
 
 #admin {
-	#admin-nav {
-		ul {
-			list-style: none;
-			display: block;
-			margin: 0;
-			padding: 0;
-			li {
-				margin: 0;
-				padding: 0;
-				//border: 1px solid #eee;
-				padding: 5px;
-				ul {
-					margin-top: 5px;
-				}
+	h2 {
+		a {
+			text-decoration: none;
+			color: #555;
+			outline: none;
+			&:hover {
+				color: #111;
 			}
 		}
 	}
@@ -1076,8 +1069,10 @@ h1 {
 		list-style: none;
 		display: table;
 		border: 1px solid #ccc;
+		position: relative;
+		z-index: 2;
 		.border-radius(4px);
-		li {
+		> li {
 			display: table-cell;
 			width: 1%;
 			vertical-align: middle;
@@ -1089,6 +1084,7 @@ h1 {
 			text-transform: uppercase;
 			letter-spacing: 1px;
 			font-size: 11px;
+			position: relative;
 			&:last-child {
 				border-right: 0;
 				.border-radius(0 4px 4px 0);
@@ -1103,13 +1099,39 @@ h1 {
 				text-decoration: none;
 				outline: none;
 				&:hover {
-					color: #111;
+					color: #000;
 				}
 			}
 			&.active {
 				background: lighten(#0F3137, 20%);
-				a {
+				> a {
 					color: #fff;
+				}
+			}
+			ul {
+				display: none;
+				position: absolute;
+				top: 36px;
+				left: 0;
+				right: 0;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				border: 1px solid #ccc;
+				.border-radius(0 0 4px 4px);
+				li {
+					margin: 0;
+					padding: 0;
+					a {
+						display: block;
+						background: #fff;
+						padding: 5px 10px;
+					}
+				}
+			}
+			&:hover {
+				ul {
+					display: block;
 				}
 			}
 		}

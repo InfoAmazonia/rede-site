@@ -1,5 +1,5 @@
 #admin-sensor-measurements
-  h3 Medições de {{sensor.name}}
+  h3 Medições em {{sensor.name}}
   ul.tabbed-nav
     li(ng-repeat="(key,parameter) in parameters" ng-class="{active: param._id==parameter._id}")
       a(href="#" ng-click="updateMeasurements(key)") {{parameter.name.pt}}

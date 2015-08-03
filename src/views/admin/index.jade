@@ -1,9 +1,29 @@
 #admin
-  .container.row
+  .container
     .twelve.columns
       header#admin-header
         h2 
           a(ui-sref="admin.sensors") Área administrativa
+        nav(ng-show="loggedIn").row
+          ul.tabbed-nav
+            li(ui-sref-active="active")
+              a(ui-sref="admin.sensors") Sensores
+              ul
+                li
+                  a(ui-sref="admin.sensors.new") 
+                    span.icon-plus 
+                    | Novo sensor
+            li(ui-sref-active="active")
+              a(ui-sref="admin.users") Usuários
+              ul
+                li
+                  a(ui-sref="admin.users") 
+                    span.icon-plus 
+                    | Novo usuário
+            li(ui-sref-active="active")
+              a(href="#") 
+                span.icon-megaphone 
+                | Broadcast
   .container
     .twelve.columns
       form#login(ng-submit="login(auth)" ng-show="!loggedIn")

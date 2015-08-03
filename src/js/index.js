@@ -174,6 +174,19 @@ app
 					}
 				]
 			}
+		})
+		.state('admin.users', {
+			url: 'users/',
+			controller: 'AdminUserCtrl',
+			templateUrl: '/views/admin/users.html',
+			resolve: {
+				UsersData: [
+					'RedeService',
+					function(Rede) {
+						return Rede.users.query().$promise;
+					}
+				]
+			}
 		});
 
 		/*

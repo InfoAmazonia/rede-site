@@ -518,4 +518,12 @@ angular.module('rede')
 		});
 
 	}
+])
+
+.controller('AdminUserCtrl', [
+	'UsersData',
+	'$scope',
+	function(Users, $scope) {
+		console.log(Users);
+	}
 ]);
