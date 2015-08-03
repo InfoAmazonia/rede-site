@@ -6,6 +6,24 @@ var mongoose = require('mongoose');
 var Measurement = mongoose.model('Measurement')
 var Sensor = mongoose.model('Sensor')
 
+/*
+ * Load middleware
+ */
+exports.load = function (req, res, next, id){
+  Measurement.findById(id, function (err, measurement) {
+    if (err) return res.sendStatus(500);
+    else if (!measurement)
+      return res.status(404).json(messaging.error('measurements.not_found'));
+    else {
+      req.measurement = measurement;
+      next();
+    }
+  });
+};
+
+/*
+ * List
+ */
 exports.list = function(req, res) {
   var page = req.query['page'];
   var perPage = req.query['perPage'];
@@ -57,6 +75,21 @@ exports.list = function(req, res) {
   });
 }
 
+/*
+ * Remove
+ */
+exports.remove = function(req, res) {
+  var measurement = req.measurement;
+
+  measurement.remove(function(err) {
+    if (err) return res.sendStatus(500);
+    else res.sendStatus(200);
+  });
+}
+
+/*
+ * Save batch
+ */
 exports.saveBatch = function(req, res) {
   var body = req.body;
 
