@@ -20,6 +20,7 @@ var UserSchema = new Schema({
 	name: { type: String},
 	email: { type: String, required: 'missing_email', validate: [validator.isEmail, 'invalid_email'] },
 	emailConfirmed: {type: Boolean, default: false},
+	phoneNumber: String,
 	token: { type: String },
 	hashed_password: {type: String, required: 'missing_password'},
 	salt: { type: String, default: '' },

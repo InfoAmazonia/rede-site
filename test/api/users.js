@@ -79,6 +79,7 @@ describe('API: Users', function(){
         var payload = {
           name: 'First user',
           email: 'theveryfirstuser@email.com',
+          phoneNumber: '+551102930293',
           password: '+8characthers'
         }
 
@@ -99,6 +100,7 @@ describe('API: Users', function(){
           body.should.have.property('_id');
           body.should.have.property('name', payload.name);
           body.should.have.property('email', payload.email);
+          body.should.have.property('phoneNumber', payload.phoneNumber);
           body.should.have.property('role', 'admin');
           body.should.have.property('registeredAt');
           body.should.not.have.property('password');
@@ -115,7 +117,7 @@ describe('API: Users', function(){
     });
 
     context('regular users', function(){
-      it('should return 201 for valid parameters', function(){
+      it('returns 201 for valid parameters', function(){
         /* User info */
         var payload = {
           name: 'Regular user',
@@ -145,15 +147,21 @@ describe('API: Users', function(){
           body.should.not.have.property('password');
           user1 = body;
 
-          express.login(payload.email, payload.password, function(err, token){
-            if (err) doneIt(err);
-            user11AccessToken = token;
-            doneIt(err);
-          });
+          /* Overrride e-mail confirmation */
+          mongoose.model('User').update({_id: user1._id}, {$set: {emailConfirmed: true}}, function(err){
+            if (err) return doneIt(err);
+
+            /* Get access token */
+            express.login(payload.email, payload.password, function(err, token){
+              if (err) return doneIt(err);
+              user1AccessToken = token;
+              doneIt(err);
+            });
+          })
         }
       });
 
-      it('should return 400 for invalid parameters', function(doneIt){
+      it('returns 400 for invalid parameters', function(doneIt){
         /* User info */
         var payload = {
           email: 'user2@email.com'
@@ -179,19 +187,115 @@ describe('API: Users', function(){
       });
     });
   });
-});
 
-/*
- * PUT /api/v1/users
- */
-describe('PUT /api/v1/users', function(){
-  context('admin', function(){
-    it('should be able to change roles');
-    it('should be able to inactivate users');
-    it('should be able to remove users');
+  /*
+   * PUT account
+   */
+  describe('PUT account', function(){
+    context('is not logged', function(){
+      it('returns 401');
+    });
+
+    context('is logged', function(){
+      it('should be able to change all account info but role and email');
+    });
   });
 
-  context('regular user', function(){
-    it('should be able to change telefone address');
+  /*
+   * PUT users/:user_id
+   */
+  describe('PUT users/:user_id', function(){
+    context('is not logged', function(){
+      it('returns 401', function(doneIt){
+        var payload = {
+          name: 'changed name',
+          telephone: '+51023901293019'
+        }
+
+        request(app)
+          .put(apiPrefix + '/users/' + user1._id)
+          .send(payload)
+          .expect(401)
+          .expect('Content-Type', /json/)
+          .end(function(err,res){
+            if (err) doneIt(err);
+            res.body.messages.should.have.lengthOf(1);
+            messaging.hasValidMessages(res.body).should.be.true;
+            res.body.messages[0].should.have.property('text', 'access_token.unauthorized');
+            doneIt();
+          });
+      });
+    });
+
+    context('is regular user', function(){
+      it('returns 401', function(doneIt){
+        var payload = {
+          name: 'changed name',
+          telephone: '+51023901293019'
+        }
+
+        request(app)
+          .put(apiPrefix + '/users/' + user1._id)
+          .set('Authorization', user1AccessToken)
+          .send(payload)
+          .expect(401)
+          .expect('Content-Type', /json/)
+          .end(function(err,res){
+            if (err) doneIt(err);
+            res.body.messages.should.have.lengthOf(1);
+            messaging.hasValidMessages(res.body).should.be.true;
+            res.body.messages[0].should.have.property('text', 'access_token.unauthorized');
+            doneIt();
+          });
+      });
+    });
+
+    context('is admin', function(){
+      it('should be able to update role, name, phone number, email', function(doneIt){
+        var payload = {
+          role: 'admin',
+          name: 'changed name',
+          password: 'another password',
+          phoneNumber: '+51023901293019',
+          email: 'anotheremail@mailbox.com'
+        }
+
+        request(app)
+          .put(apiPrefix + '/users/' + user1._id)
+          .set('Authorization', admin1AccessToken)
+          .send(payload)
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end(function(err,res){
+            if (err) return doneIt(err);
+
+            var body = res.body;
+
+            /* User basic info */
+            body.should.have.property('_id');
+            body.should.have.property('role', payload.role);
+            body.should.have.property('name', payload.name);
+            body.should.have.property('email', payload.email);
+            body.should.have.property('phoneNumber', payload.phoneNumber);
+            body.should.have.property('email', payload.email);
+            body.should.have.property('registeredAt');
+            body.should.not.have.property('password');
+            user1 = body;
+
+            /* Test if new password works */
+            express.login(payload.email, payload.password, function(err, token){
+              if (err) return doneIt(err);
+              user1AccessToken = token;
+              doneIt(err);
+            });
+          });
+      });
+    });
   });
+
+  /*
+   * After tests, clear database
+   */
+
+  after(mongodb.clearDb);
 });

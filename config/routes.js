@@ -27,9 +27,9 @@ module.exports = function (app, config) {
   apiRoutes.get('/logout', auth.logout);
 
   // user routes
-  // apiRoutes.param('user_id', users.load);
+  apiRoutes.param('user_id', users.load);
   apiRoutes.post('/users', users.new);
-  // apiRoutes.put('/users/:id', [auth.isLogged, auth.canUpdateUser, users.update]);
+  apiRoutes.put('/users/:user_id', [auth.isLogged, auth.isAdmin, users.update]);
   // apiRoutes.get('/users/:id', users.get);
   // apiRoutes.get('/users', users.list);
 

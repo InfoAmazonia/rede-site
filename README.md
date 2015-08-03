@@ -58,9 +58,29 @@ Get a list of users, not implemented yet.
 Creates a user. The first created user will have `admin` role.
 
 Parameters:
-- `name`: _string_ User name
-- `email`: _string_ User e-mail
-- `password`: _string_ User password
+- `name`: _string_
+- `email`: _string_
+- `phoneNumber`: _string_
+- `password`: _string_
+
+Possible responses:
+- `200` Success + user object json;
+- `400` Bad request;
+- `401` Unauthorized;
+- `500` Internal error.
+
+---
+
+### PUT users/:user_id
+
+Route for admins to update account details of another user.
+
+Parameters:
+- `role`: _string_ `admin` or `subscriber`
+- `name`: _string_
+- `email`: _string_
+- `phoneNumber`: _string_
+- `password`: _string_
 
 Possible responses:
 - `200` Success + user object json;

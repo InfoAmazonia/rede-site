@@ -20,7 +20,9 @@ module.exports = function (passport, config) {
     })
   })
 
-  // use these strategies
+  /*
+   * Local strategy
+   */
   passport.use(new LocalStrategy({
       usernameField: 'email',
       passwordField: 'password'
@@ -40,6 +42,9 @@ module.exports = function (passport, config) {
     })
   );
 
+  /*
+   * Bearer strategy
+   */
   passport.use(new BearerStrategy({}, function(token, done) {
 		AccessToken.load({'_id': token}, function(err, token) {
 			if(err)

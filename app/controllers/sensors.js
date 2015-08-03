@@ -124,7 +124,7 @@ exports.list = function(req, res) {
  */
 exports.subscribe = function(req, res, next) {
   var sensor = req.sensor;
-  var user = req.user;
+  var user = req.account;
 
   user.subscribedToSensors.push(sensor);
 
@@ -139,7 +139,7 @@ exports.subscribe = function(req, res, next) {
  */
 exports.unsubscribe = function(req, res, next) {
   var sensor = req.sensor;
-  var user = req.user;
+  var user = req.account;
 
   user.subscribedToSensors = _.filter(user.subscribedToSensors, function(id) {
     return id == sensor._id;

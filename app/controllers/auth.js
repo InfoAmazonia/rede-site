@@ -88,11 +88,6 @@ exports.isLogged = function (req, res, next) {
 
 	passport.authenticate('bearer', { session: false }, function(err, user, info) {
 
-		if (req.isAuthenticated()) {
-			// user is allowed through local strategy
-			return next();
-		}
-
 		if (err) {
 			return res.status(401).send(messaging.error(info));
 		}
@@ -102,7 +97,7 @@ exports.isLogged = function (req, res, next) {
 		}
 
 		if (user) {
-			req.user = user;
+			req.account = user;
 			return next();
 		}
 
@@ -115,27 +110,7 @@ exports.isLogged = function (req, res, next) {
 
 exports.isAdmin = function(req,res,next) {
 
-	if (req.user.role == 'admin')
-		next();
-	else
-		return res.status(401).send(messaging.error('access_token.unauthorized'));
-
-}
-
-exports.canUpdate = function(req,res,next) {
-
-	if ((req.object.creator._id && (req.object.creator._id.toHexString() == req.user._id.toHexString()))
-			|| (req.object.creator == req.user._id.toHexString()) || (req.user.role == 'admin'))
-		next();
-	else
-		return res.status(401).send(messaging.error('access_token.unauthorized'));
-
-}
-
-exports.canUpdateUser = function(req,res,next) {
-
-	if ((req.object._id.toHexString() == req.user._id.toHexString())
-			|| (req.user.role == 'admin'))
+	if (req.account.role == 'admin')
 		next();
 	else
 		return res.status(401).send(messaging.error('access_token.unauthorized'));
