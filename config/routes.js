@@ -48,10 +48,13 @@ module.exports = function (app, config) {
   apiRoutes.post('/sensors/:sensor_id/unsubscribe', [auth.isLogged, sensors.unsubscribe]);
 
   // measurement route
+  apiRoutes.param('measurement_id', measurements.load)
   apiRoutes.post('/measurements/batch', measurements.saveBatch);
-  apiRoutes.get('/measurements', [sensors.loadByQueryString, parameters.loadByQueryString, measurements.list]);
+  apiRoutes.get('/measurements', [sensors.loadByQueryString, parameters.loadByQueryStringIfDefined, measurements.list]);
   // apiRoutes.put('/mueasurements', mueasurements.update);
-  // apiRoutes.del('/mueasurements', mueasurements.remove);
+  apiRoutes.delete('/measurements/:measurement_id', [auth.isLogged, auth.isAdmin, measurements.remove]);
+
+  // set api routes
   app.use(config.apiPrefix, apiRoutes);
 
   /*

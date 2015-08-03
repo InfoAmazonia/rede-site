@@ -18,7 +18,7 @@ MeasurementSchema.static({
 
   list: function (options, cb) {
     this.find(options.criteria)
-      .sort('_id')
+      .sort('-collectedAt')
       .select(options.select)
       .limit(options.perPage)
       .skip(options.perPage * options.page)

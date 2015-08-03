@@ -26,7 +26,9 @@ var Sensor = mongoose.model('Sensor');
  */
 
 var mongodb = require('../../lib/helpers/mongodb');
+var express = require('../../lib/helpers/express');
 var factory = require('../../lib/helpers/factory');
+var messaging = require('../../lib/helpers/messaging');
 
 /*
  * Config
@@ -41,8 +43,14 @@ var defaultPerPage = 20;
 /*
  * Test data
  */
+var nonExistingObjectHash = '556899153f90be8f422f3d3f';
+var admin1;
+var admin1AccessToken;
+var user1;
+var user1AccessToken;
 var sensor1;
 var parameters = config.parameters;
+var parametersCount = Object.keys(parameters).length;
 
 /*
  * The tests
@@ -59,11 +67,34 @@ describe('API: Measurements', function(){
       mongodb.clearDb(function(err){
         if (err) doneBefore(err);
 
-        factory.createSensorsWithMeasurements(numberOfSensors, daysOfMeasurements, function(err, sensor){
-          if (err) doneBefore(err);
-          sensor1 = sensor[0];
-          doneBefore();
-        });
+        async.series([
+          function (doneEach){
+            factory.createAdmin(function(err,usr){
+              if (err) return doneBefore(err);
+              admin1 = usr;
+              express.login(admin1.email, admin1.password, function(err, token){
+                admin1AccessToken = token;
+                doneEach(err);
+              });
+            });
+          },
+          function (doneEach){
+            factory.createUser(function(err,usr){
+              if (err) return doneBefore(err);
+              user1 = usr;
+              express.login(user1.email, user1.password, function(err, token){
+                user1AccessToken = token;
+                doneEach(err);
+              });
+            });
+          },
+          function (doneEach){
+            factory.createSensorsWithMeasurements(numberOfSensors, daysOfMeasurements, function(err, sensor){
+              if (err) doneBefore(err);
+              sensor1 = sensor[0];
+              doneEach();
+            });
+          }], doneBefore);
       });
     });
   });
@@ -72,7 +103,7 @@ describe('API: Measurements', function(){
    * GET /api/v1/measurements
   */
   describe('GET /api/v1/measurements', function(){
-    it('return 200 and first page when no parameters are passed', function(doneIt){
+    it('return 200 and first page when a parameter is defined', function(doneIt){
       var payload = {
         sensor_id: sensor1._id.toHexString(),
         parameter_id: 'atmospheric_pressure'
@@ -86,55 +117,114 @@ describe('API: Measurements', function(){
       .expect(200)
       .end(onResponse);
 
-    /* Verify response */
-    function onResponse(err, res) {
-      if (err) return doneIt(err);
+      /* Verify response */
+      function onResponse(err, res) {
+        if (err) return doneIt(err);
 
-      // Check pagination
-      var body = res.body;
-      body.should.have.property('count', daysOfMeasurements * 24);
-      body.should.have.property('perPage', defaultPerPage);
-      body.should.have.property('page', 1);
+        // Check pagination
+        var body = res.body;
+        body.should.have.property('count', daysOfMeasurements * 24);
+        body.should.have.property('perPage', defaultPerPage);
+        body.should.have.property('page', 1);
 
-      // Check sensor data
-      body.should.have.property('sensor');
-      body.sensor.should.have.property('_id', sensor1._id.toHexString());
+        // Check sensor data
+        body.should.have.property('sensor');
+        body.sensor.should.have.property('_id', sensor1._id.toHexString());
 
-      // Check parameter data
-      body.should.have.property('parameter');
-      body.parameter.should.have.property('_id', payload.parameter_id);
+        // Check parameter data
+        body.should.have.property('parameter');
+        body.parameter.should.have.property('_id', payload.parameter_id);
 
-      /* Check data */
-      var data = body.measurements;
-      data.should.have.lengthOf(defaultPerPage);
-      mongoose.model('Measurement')
-        .find({
-          sensor: payload.sensor_id,
-          parameter: payload.parameter_id
-        })
-        .sort('-collectedAt')
-        .limit(defaultPerPage)
-        .lean()
-        .exec(function(err, measurements){
-          if (err) return doneIt(err);
+        /* Check data */
+        var data = body.measurements;
+        data.should.have.lengthOf(defaultPerPage);
+        mongoose.model('Measurement')
+          .find({
+            sensor: payload.sensor_id,
+            parameter: payload.parameter_id
+          })
+          .sort('-collectedAt')
+          .limit(defaultPerPage)
+          .lean()
+          .exec(function(err, measurements){
+            if (err) return doneIt(err);
 
-          for (var i = 0; i < defaultPerPage; i++) {
+            for (var i = 0; i < defaultPerPage; i++) {
 
-            var measurement = measurements[i];
-            data[i].should.have.property('_id', measurement._id.toHexString());
-            data[i].should.have.property('value', measurement.value);
-            data[i].should.not.have.property('parameter');
-            data[i].should.not.have.property('sensor');
+              var measurement = measurements[i];
+              data[i].should.have.property('_id', measurement._id.toHexString());
+              data[i].should.have.property('value', measurement.value);
+              data[i].should.not.have.property('parameter');
+              data[i].should.not.have.property('sensor');
 
-            var collectedAt = moment(data[i].collectedAt).format();
-            collectedAt.should.equal(moment(measurement.collectedAt).format());
-          }
-          doneIt();
-      });
-    }
+              var collectedAt = moment(data[i].collectedAt).format();
+              collectedAt.should.equal(moment(measurement.collectedAt).format());
+            }
+            doneIt();
+        });
+      }
     });
 
-    it('return 200 and proper page when parameters are passed', function(doneIt){
+    it('return 200 and first page when a parameter is NOT defined', function(doneIt){
+      var payload = {
+        sensor_id: sensor1._id.toHexString()
+      }
+
+      /* The request */
+    request(app)
+      .get(apiPrefix + '/measurements')
+      .query(payload)
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end(onResponse);
+
+      /* Verify response */
+      function onResponse(err, res) {
+        if (err) return doneIt(err);
+
+        // Check pagination
+        var body = res.body;
+        body.should.have.property('count', parametersCount * daysOfMeasurements * 24);
+        body.should.have.property('perPage', defaultPerPage);
+        body.should.have.property('page', 1);
+
+        // Check sensor data
+        body.should.have.property('sensor');
+        body.sensor.should.have.property('_id', sensor1._id.toHexString());
+
+        // Check parameter data
+        body.should.not.have.property('parameter');
+
+        /* Check data */
+        var data = body.measurements;
+        data.should.have.lengthOf(defaultPerPage);
+        mongoose.model('Measurement')
+          .find({
+            sensor: payload.sensor_id
+          })
+          .sort('-collectedAt')
+          .limit(defaultPerPage)
+          .lean()
+          .exec(function(err, measurements){
+            if (err) return doneIt(err);
+
+            for (var i = 0; i < defaultPerPage; i++) {
+
+              var measurement = measurements[i];
+              data[i].should.have.property('_id', measurement._id.toHexString());
+              data[i].should.have.property('value', measurement.value);
+              data[i].should.have.property('parameter');
+              data[i].should.not.have.property('sensor');
+
+              var collectedAt = moment(data[i].collectedAt).format();
+              collectedAt.should.equal(moment(measurement.collectedAt).format());
+            }
+            doneIt();
+        });
+      }
+    });
+
+    it('return 200 and valid data for correct pagination parameters', function(doneIt){
 
       var payload = {
         sensor_id: sensor1._id.toHexString(),
@@ -265,12 +355,97 @@ describe('API: Measurements', function(){
               });
             }], doneIt);
         });
-      });
+    });
   });
+
+  /*
+   *  DEL measurements/:measurement_id
+   */
+  describe('DEL measurements/:measurement_id', function(){
+    var measurementToDelete;
+
+    before(function(doneBefore){
+      Measurement.findOne(function(err, m){
+        if (err) doneBefore(err);
+        should.exist(m);
+
+        measurementToDelete = m;
+        doneBefore();
+      });
+    });
+
+    context('not logged in', function(){
+      it('should return 401 (Unauthorized)', function(doneIt){
+        request(app)
+          .del(apiPrefix + '/measurements/'+measurementToDelete._id.toHexString())
+          .expect(401)
+          .end(function(err,res){
+            if (err) doneIt(err);
+            res.body.messages.should.have.lengthOf(1);
+            messaging.hasValidMessages(res.body).should.be.true;
+            res.body.messages[0].should.have.property('text', 'access_token.unauthorized');
+            doneIt();
+          });
+      });
+    });
+
+    context('when logged as regular user', function(){
+      it('should return 401 (Unauthorized)', function(doneIt){
+        request(app)
+          .del(apiPrefix + '/measurements/'+measurementToDelete._id.toHexString())
+          .set('Authorization', user1AccessToken)
+          .expect(401)
+          .end(function(err,res){
+            if (err) doneIt(err);
+            res.body.messages.should.have.lengthOf(1);
+            messaging.hasValidMessages(res.body).should.be.true;
+            res.body.messages[0].should.have.property('text', 'access_token.unauthorized');
+            doneIt();
+          });
+      });
+    });
+
+    context('when logged as admin user', function(){
+      it('delete and return 200 (Success)', function(doneIt){
+        request(app)
+          .del(apiPrefix + '/measurements/'+measurementToDelete._id.toHexString())
+          .set('Authorization', admin1AccessToken)
+          .expect(200)
+          .end(function(err, res){
+            if (err) doneIt(err);
+            var body = res.body;
+
+            // sensor should not exist
+            Measurement.findById(measurementToDelete._id, function(err, m){
+              if (err) return doneIt(err);
+              should.not.exist(m);
+              doneIt();
+          });
+        });
+      });
+
+      it('return 404 (Not found) for id not found', function(doneIt){
+        request(app)
+          .get(apiPrefix + '/sensors/'+ nonExistingObjectHash)
+          .expect(404)
+          .expect('Content-Type', /json/)
+          .end(function(err, res){
+            if (err) return doneIt(err);
+            var body = res.body;
+
+            res.body.messages.should.have.lengthOf(1);
+            messaging.hasValidMessages(res.body).should.be.true;
+            res.body.messages[0].should.have.property('text', 'sensors.not_found');
+
+            doneIt();
+          });
+      });
+    });
+  });
+
 
   /*
    * After tests, clear database
    */
-
   after(mongodb.clearDb);
 })

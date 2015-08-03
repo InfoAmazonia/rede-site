@@ -6,6 +6,24 @@ var mongoose = require('mongoose');
 var Measurement = mongoose.model('Measurement')
 var Sensor = mongoose.model('Sensor')
 
+/*
+ * Load middleware
+ */
+exports.load = function (req, res, next, id){
+  Measurement.findById(id, function (err, measurement) {
+    if (err) return res.sendStatus(500);
+    else if (!measurement)
+      return res.status(404).json(messaging.error('measurements.not_found'));
+    else {
+      req.measurement = measurement;
+      next();
+    }
+  });
+};
+
+/*
+ * List
+ */
 exports.list = function(req, res) {
   var page = req.query['page'];
   var perPage = req.query['perPage'];
@@ -31,13 +49,18 @@ exports.list = function(req, res) {
     page: page
   };
 
+  /* Filter criteria */
   options.criteria = {
-    sensor: req.sensor._id,
-    parameter: req.parameter._id
+    sensor: req.sensor._id
   }
 
-  // properties to return
-  options.select = '_id value collectedAt';
+  /* If filtering by parameter, do not include it in results */
+  if (req.parameter) {
+    options.criteria.parameter = req.parameter._id;
+    options.select = '_id value collectedAt';
+  } else
+    options.select = '_id value collectedAt parameter';
+
 
   Measurement.list(options, function (err, measurements) {
     if (err)
@@ -57,6 +80,21 @@ exports.list = function(req, res) {
   });
 }
 
+/*
+ * Remove
+ */
+exports.remove = function(req, res) {
+  var measurement = req.measurement;
+
+  measurement.remove(function(err) {
+    if (err) return res.sendStatus(500);
+    else res.sendStatus(200);
+  });
+}
+
+/*
+ * Save batch
+ */
 exports.saveBatch = function(req, res) {
   var body = req.body;
 
