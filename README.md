@@ -43,7 +43,7 @@ Run `npm start`.
 - [POST measurements](#post-measurementsnew)
 - [GET measurements/:measurement_id](#get-measurementssensor_id)
 - [PUT measurements/:measurement_id](#put-measurementssensor_id)
-- [DEL measurements/:measurement_id](#del-measurementssensor_id)
+- [DEL measurements/:measurement_id](#del-measurementsmeasurement_id)
 
 ## Users
 
