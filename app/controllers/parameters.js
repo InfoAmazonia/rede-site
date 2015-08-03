@@ -25,10 +25,11 @@ exports.load = function load(req, res, next, id){
 }
 
 /*
- * Load by query string
+ * Load by query string, if defined
  */
-exports.loadByQueryString = function(req, res, next){
-  exports.load(req, res, next, req.query['parameter_id']);
+exports.loadByQueryStringIfDefined = function(req, res, next){
+  if (req.query['parameter_id']) exports.load(req, res, next, req.query['parameter_id']);
+  else next();
 }
 
 

@@ -227,7 +227,7 @@ Returns a list of measurements.
 
 Parameters:
 - `sensor_id`: _string_ (required)
-- `parameter_id`: _string_ (required)
+- `parameter_id`: _string_ (optional)
 - `perPage`: _number_ (default: 20)
 - `page`: _number_ (optional)
 

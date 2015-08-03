@@ -50,7 +50,7 @@ module.exports = function (app, config) {
   // measurement route
   apiRoutes.param('measurement_id', measurements.load)
   apiRoutes.post('/measurements/batch', measurements.saveBatch);
-  apiRoutes.get('/measurements', [sensors.loadByQueryString, parameters.loadByQueryString, measurements.list]);
+  apiRoutes.get('/measurements', [sensors.loadByQueryString, parameters.loadByQueryStringIfDefined, measurements.list]);
   // apiRoutes.put('/mueasurements', mueasurements.update);
   apiRoutes.delete('/measurements/:measurement_id', [auth.isLogged, auth.isAdmin, measurements.remove]);
 
