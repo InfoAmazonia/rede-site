@@ -206,6 +206,21 @@ Response:
 
 ---
 
+### DEL measurements/:measurement_id
+
+Destroy measurement.
+
+Parameters:
+- `:measurement_id` _string_
+
+Possible responses:
+- `200` Success;
+- `400` Bad request;
+- `401` Unauthorized;
+- `404` Not found.
+
+---
+
 ## GET measurements
 
 Returns a list of measurements.
