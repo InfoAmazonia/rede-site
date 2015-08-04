@@ -4,6 +4,7 @@
 
 var _ = require('underscore');
 var messaging = require('../../lib/helpers/messaging')
+var validator = require('validator');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
@@ -77,5 +78,49 @@ exports.account = function(req, res, next) {
   user.save(function(err) {
     if (err) return res.status(400).json(messaging.mongooseErrors(err, 'users'));
     else res.status(200).json(user);
+  });
+}
+
+/*
+ * User list
+ */
+exports.list = function(req, res) {
+  var page = req.query['page'];
+  var perPage = req.query['perPage'];
+
+  /* Validate query parameters */
+  if (page) {
+    if (!validator.isInt(page))
+      return res.status(400).json(messaging.error('invalid_pagination'));
+    else
+      page = parseInt(page) - 1;
+  } else page = 0;
+
+  if (perPage){
+    if (!validator.isInt(perPage))
+      return res.status(400).json(messaging.error('invalid_pagination'));
+    else
+      perPage = parseInt(perPage);
+  } else perPage = 20;
+
+  /* Mongoose Options */
+  var options = {
+    perPage: perPage,
+    page: page
+  };
+
+  User.list(options, function (err, users) {
+    if (err)
+      return res.status(500).json(messaging.error('internal_error'));
+
+    /* Send response */
+    User.count().exec(function (err, count) {
+      res.status(200).json({
+        count: count,
+        perPage: perPage,
+        page: page + 1,
+        users: users
+      });
+    });
   });
 }

@@ -28,11 +28,11 @@ module.exports = function (app, config) {
 
   // user routes
   apiRoutes.param('user_id', users.load);
+  apiRoutes.get('/users', [auth.isLogged, auth.isAdmin, users.list]);
   apiRoutes.post('/users', users.new);
   apiRoutes.put('/users/:user_id', [auth.isLogged, auth.isAdmin, users.update]);
   apiRoutes.put('/account', [auth.isLogged, users.account]);
   // apiRoutes.get('/users/:id', users.get);
-  // apiRoutes.get('/users', users.list);
 
   // parameter routes
   apiRoutes.get('/parameters', parameters.list);

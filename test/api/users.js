@@ -423,6 +423,174 @@ describe('API: Users', function(){
   });
 
   /*
+   * GET users
+   */
+  describe('GET users', function(){
+
+    var userCount;
+    var regularUser;
+
+    // create some users
+    before(function(doneBefore){
+      factory.createUsers(35, function(err, users){
+        if (err) return doneBefore(err);
+
+        async.series([
+          function(doneEach){
+            // change user1 role back to 'subscriber'
+            mongoose.model('User').update({_id: user1._id}, {$set: {role: 'subscriber'}}, function(err){
+              doneEach(err);
+            });
+          },function(doneEach){
+            mongoose.model('User').count(function(err, count){
+              if (err) return doneBefore(err);
+              userCount = count;
+              doneEach();
+            });
+          }
+        ], doneBefore);
+
+      });
+    });
+
+    it('status 401 when not logged in', function(doneIt){
+      request(app)
+        .get(apiPrefix + '/users')
+        .expect(401)
+        .expect('Content-Type', /json/)
+        .end(function(err,res){
+          if (err) doneIt(err);
+          res.body.messages.should.have.lengthOf(1);
+          messaging.hasValidMessages(res.body).should.be.true;
+          res.body.messages[0].should.have.property('text', 'access_token.unauthorized');
+          doneIt();
+      });
+    });
+
+    it('status 401 for non-admin users', function(doneIt){
+      request(app)
+        .get(apiPrefix + '/users')
+        .set('Authorization', user1AccessToken)
+        .expect(401)
+        .expect('Content-Type', /json/)
+        .end(function(err,res){
+          if (err) doneIt(err);
+          res.body.messages.should.have.lengthOf(1);
+          messaging.hasValidMessages(res.body).should.be.true;
+          res.body.messages[0].should.have.property('text', 'access_token.unauthorized');
+          doneIt();
+      });
+    });
+
+
+    it('status 200 for valid data', function(doneIt){
+
+      /* The request */
+      request(app)
+        .get(apiPrefix + '/users')
+        .set('Authorization', admin1AccessToken)
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end(onResponse);
+
+      /* Verify response */
+      function onResponse(err, res) {
+        if (err) return doneIt(err);
+
+        /* Check pagination */
+        var body = res.body;
+        body.should.have.property('count', userCount);
+        body.should.have.property('perPage', defaultPerPage);
+        body.should.have.property('page', 1);
+        body.should.have.property('users');
+
+        /* Check data */
+        var data = body.users;
+        data.should.have.lengthOf(defaultPerPage);
+        mongoose.model('User')
+          .find({})
+          .sort('name')
+          .limit(defaultPerPage)
+          .lean()
+          .exec(function(err, users){
+            if (err) return doneIt(err);
+            for (var i = 0; i < defaultPerPage; i++) {
+
+              var user = users[i];
+
+              /* User basic info */
+              data[i].should.have.property('_id', user._id.toHexString());
+              data[i].should.have.property('name', user.name);
+              data[i].should.have.property('email', user.email);
+              data[i].should.have.property('role', user.role);
+              data[i].should.have.property('registeredAt');
+              data[i].should.not.have.property('password');
+              data[i].should.not.have.property('salt');
+            }
+            doneIt();
+        });
+      }
+    });
+
+    it('return 200 and proper page when parameters are passed', function(doneIt){
+
+      var payload = {
+        page: 2,
+        perPage: 10
+      }
+
+      /* The request */
+      request(app)
+        .get(apiPrefix + '/users')
+        .query(payload)
+        .set('Authorization', admin1AccessToken)
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end(onResponse);
+
+      /* Verify response */
+      function onResponse(err, res) {
+        if (err) return doneIt(err);
+
+        /* Check pagination */
+        var body = res.body;
+        body.should.have.property('count', userCount);
+        body.should.have.property('perPage', payload.perPage);
+        body.should.have.property('page', payload.page);
+        body.should.have.property('users');
+
+        /* Check data */
+        var data = body.users;
+        data.should.have.lengthOf(payload.perPage);
+        mongoose.model('User')
+          .find({})
+          .sort('name')
+          .limit(payload.perPage)
+          .skip(payload.perPage*(payload.page-1))
+          .lean()
+          .exec(function(err, users){
+            if (err) return doneIt(err);
+            for (var i = 0; i < payload.perPage; i++) {
+
+              var user = users[i];
+
+              /* User basic info */
+              data[i].should.have.property('_id', user._id.toHexString());
+              data[i].should.have.property('name', user.name);
+              data[i].should.have.property('email', user.email);
+              data[i].should.have.property('role', user.role);
+              data[i].should.have.property('registeredAt');
+              data[i].should.not.have.property('password');
+              data[i].should.not.have.property('salt');
+            }
+            doneIt();
+          });
+      }
+    });
+  });
+
+
+  /*
    * After tests, clear database
    */
 
