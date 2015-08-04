@@ -1,0 +1,19 @@
+#admin-users
+  header.section-header.clearfix
+    .one.column
+      h3
+        span.icon-user 
+    .three.columns
+      h3 
+        a(ui-sref="admin.users")
+          | Usuários 
+    .eight.columns
+      a.button(ui-sref="admin.users.new") 
+        span.icon-plus 
+        | Novo usuário
+  div.eleven.columns.offset-by-one(ui-view autoscroll="false")
+    table
+      thead
+        tr
+          th Nome
+          th Email

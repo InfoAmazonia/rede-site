@@ -50,6 +50,7 @@ var user1;
 var user1AccessToken;
 var sensor1;
 var parameters = config.parameters;
+var parametersCount = Object.keys(parameters).length;
 
 /*
  * The tests
@@ -102,7 +103,7 @@ describe('API: Measurements', function(){
    * GET /api/v1/measurements
   */
   describe('GET /api/v1/measurements', function(){
-    it('return 200 and first page when no parameters are passed', function(doneIt){
+    it('return 200 and first page when a parameter is defined', function(doneIt){
       var payload = {
         sensor_id: sensor1._id.toHexString(),
         parameter_id: 'atmospheric_pressure'
@@ -116,55 +117,114 @@ describe('API: Measurements', function(){
       .expect(200)
       .end(onResponse);
 
-    /* Verify response */
-    function onResponse(err, res) {
-      if (err) return doneIt(err);
+      /* Verify response */
+      function onResponse(err, res) {
+        if (err) return doneIt(err);
 
-      // Check pagination
-      var body = res.body;
-      body.should.have.property('count', daysOfMeasurements * 24);
-      body.should.have.property('perPage', defaultPerPage);
-      body.should.have.property('page', 1);
+        // Check pagination
+        var body = res.body;
+        body.should.have.property('count', daysOfMeasurements * 24);
+        body.should.have.property('perPage', defaultPerPage);
+        body.should.have.property('page', 1);
 
-      // Check sensor data
-      body.should.have.property('sensor');
-      body.sensor.should.have.property('_id', sensor1._id.toHexString());
+        // Check sensor data
+        body.should.have.property('sensor');
+        body.sensor.should.have.property('_id', sensor1._id.toHexString());
 
-      // Check parameter data
-      body.should.have.property('parameter');
-      body.parameter.should.have.property('_id', payload.parameter_id);
+        // Check parameter data
+        body.should.have.property('parameter');
+        body.parameter.should.have.property('_id', payload.parameter_id);
 
-      /* Check data */
-      var data = body.measurements;
-      data.should.have.lengthOf(defaultPerPage);
-      mongoose.model('Measurement')
-        .find({
-          sensor: payload.sensor_id,
-          parameter: payload.parameter_id
-        })
-        .sort('-collectedAt')
-        .limit(defaultPerPage)
-        .lean()
-        .exec(function(err, measurements){
-          if (err) return doneIt(err);
+        /* Check data */
+        var data = body.measurements;
+        data.should.have.lengthOf(defaultPerPage);
+        mongoose.model('Measurement')
+          .find({
+            sensor: payload.sensor_id,
+            parameter: payload.parameter_id
+          })
+          .sort('-collectedAt')
+          .limit(defaultPerPage)
+          .lean()
+          .exec(function(err, measurements){
+            if (err) return doneIt(err);
 
-          for (var i = 0; i < defaultPerPage; i++) {
+            for (var i = 0; i < defaultPerPage; i++) {
 
-            var measurement = measurements[i];
-            data[i].should.have.property('_id', measurement._id.toHexString());
-            data[i].should.have.property('value', measurement.value);
-            data[i].should.not.have.property('parameter');
-            data[i].should.not.have.property('sensor');
+              var measurement = measurements[i];
+              data[i].should.have.property('_id', measurement._id.toHexString());
+              data[i].should.have.property('value', measurement.value);
+              data[i].should.not.have.property('parameter');
+              data[i].should.not.have.property('sensor');
 
-            var collectedAt = moment(data[i].collectedAt).format();
-            collectedAt.should.equal(moment(measurement.collectedAt).format());
-          }
-          doneIt();
-      });
-    }
+              var collectedAt = moment(data[i].collectedAt).format();
+              collectedAt.should.equal(moment(measurement.collectedAt).format());
+            }
+            doneIt();
+        });
+      }
     });
 
-    it('return 200 and proper page when parameters are passed', function(doneIt){
+    it('return 200 and first page when a parameter is NOT defined', function(doneIt){
+      var payload = {
+        sensor_id: sensor1._id.toHexString()
+      }
+
+      /* The request */
+    request(app)
+      .get(apiPrefix + '/measurements')
+      .query(payload)
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end(onResponse);
+
+      /* Verify response */
+      function onResponse(err, res) {
+        if (err) return doneIt(err);
+
+        // Check pagination
+        var body = res.body;
+        body.should.have.property('count', parametersCount * daysOfMeasurements * 24);
+        body.should.have.property('perPage', defaultPerPage);
+        body.should.have.property('page', 1);
+
+        // Check sensor data
+        body.should.have.property('sensor');
+        body.sensor.should.have.property('_id', sensor1._id.toHexString());
+
+        // Check parameter data
+        body.should.not.have.property('parameter');
+
+        /* Check data */
+        var data = body.measurements;
+        data.should.have.lengthOf(defaultPerPage);
+        mongoose.model('Measurement')
+          .find({
+            sensor: payload.sensor_id
+          })
+          .sort('-collectedAt')
+          .limit(defaultPerPage)
+          .lean()
+          .exec(function(err, measurements){
+            if (err) return doneIt(err);
+
+            for (var i = 0; i < defaultPerPage; i++) {
+
+              var measurement = measurements[i];
+              data[i].should.have.property('_id', measurement._id.toHexString());
+              data[i].should.have.property('value', measurement.value);
+              data[i].should.have.property('parameter');
+              data[i].should.not.have.property('sensor');
+
+              var collectedAt = moment(data[i].collectedAt).format();
+              collectedAt.should.equal(moment(measurement.collectedAt).format());
+            }
+            doneIt();
+        });
+      }
+    });
+
+    it('return 200 and valid data for correct pagination parameters', function(doneIt){
 
       var payload = {
         sensor_id: sensor1._id.toHexString(),
@@ -295,7 +355,7 @@ describe('API: Measurements', function(){
               });
             }], doneIt);
         });
-      });
+    });
   });
 
   /*

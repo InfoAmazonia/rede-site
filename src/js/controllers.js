@@ -200,8 +200,9 @@ angular.module('rede')
 	'leafletData',
 	'SensorData',
 	'AddressData',
+	'ParametersData',
 	'$sce',
-	function($scope, Rede, leafletData, Sensor, Address, $sce) {
+	function($scope, Rede, leafletData, Sensor, Address, Parameters, $sce) {
 
 		$scope.sensor = Sensor;
 
@@ -249,45 +250,99 @@ angular.module('rede')
 			m.fitBounds(bounds, {reset: true});
 		});
 
-		$scope.chartDateParams = [
-			{
-				label: 'Últimas 24 horas',
-				value: '24hours'
-			},
-			{
-				label: 'Últimos 30 dias',
-				value: '30days'
-			},
-			{
-				label: 'Customizado',
-				value: 'custom'
+		$scope.chart = {
+			params: {
+				type: Parameters,
+				date: [
+					{
+						label: 'Últimas 24 horas',
+						value: '24hours'
+					},
+					{
+						label: 'Últimos 30 dias',
+						value: '30days'
+					},
+					{
+						label: 'Customizado',
+						value: 'custom'
+					}
+				]
 			}
-		];
+		};
 
-		$scope.chartDateParam = $scope.chartDateParams[0];
+		$scope.chart.current = {
+			type: $scope.chart.params.type[Object.keys($scope.chart.params.type)[0]]._id,
+			date: $scope.chart.params.date[0]
+		};
 
-		Rede.getParameters().then(function(params) {
-
-			$scope.chartParams = params;
-
-			$scope.curParam = $scope.chartParams[Object.keys($scope.chartParams)[0]]._id;
-
-			$scope.chartMeasure = function(id) {
-				$scope.curParam = id;
-			};
-
-			$scope.$watch('curParam', function() {
-				updateChart();
-			});
-
-			var updateChart = function() {
-				if($scope.curParam && $scope.sensor) {
-					Rede.measurements.query({'sensor_id': $scope.sensor._id, 'parameter_id': $scope.curParam}, function(measures) {
-						$scope.measures = measures.measurements;
-					});
-				}
+		var updateChart = function() {
+			if($scope.chart.current.type && $scope.sensor && $scope.chartDateFrom) {
+				Rede.measurements.query({
+					'sensor_id': $scope.sensor._id,
+					'parameter_id': $scope.chart.current.type,
+					'from': $scope.chartDateFrom,
+					'to': $scope.chartDateTo
+				}, function(measures) {
+					$scope.measures = measures.measurements;
+				});
 			}
+		}
 
+		$scope.chartMeasure = function(id) {
+			$scope.chart.current.type = id;
+		};
+
+		$scope.picker = {
+			from: '',
+			to: ''
+		};
+
+		$scope.togglePicker = function(picker) {
+			if(picker == 'from') {
+				if($scope.showFrom)
+					$scope.showFrom = false;
+				else
+					$scope.showFrom = true;
+				$scope.showTo = false;
+			} else if(picker == 'to') {
+				if($scope.showTo)
+					$scope.showTo = false;
+				else
+					$scope.showTo = true;
+				$scope.showFrom = false;
+			}
+		};
+
+		$scope.$watch('picker', function(picker) {
+			if(picker.from > picker.to) {
+				picker.to = '';
+			}
+			$scope.showFrom = false;
+			$scope.showTo = false;
+			$scope.chartDateFrom = moment(picker.from).format();
+			$scope.chartDateTo = moment(picker.to).format();
+		}, true);
+
+		$scope.$watch('chart.current.date.value', function(val) {
+			switch(val) {
+				case '24hours':
+					$scope.chartDateFrom = moment().subtract(1, 'day').format();
+					$scope.chartDateTo = moment().format();
+					break;
+				case '30days':
+					$scope.chartDateFrom = moment().subtract(30, 'days').format();
+					$scope.chartDateTo = moment().format();
+					break;
+				case 'custom':
+					$scope.chartDateFrom = '';
+					$scope.chartDateTo = '';
+					break;
+			}
+			updateChart();
+		}, true);
+
+		$scope.$watch('chart.current.type', function() {
+			updateChart();
 		});
 
 	}
@@ -313,9 +368,22 @@ angular.module('rede')
 
 			$scope.params = params;
 
+			if($stateParams.from) {
+				$scope.formattedFrom = moment($stateParams.from).format('L');
+			}
+
+			if($stateParams.to) {
+				$scope.formattedTo = moment($stateParams.to).format('L');
+			}
+
 			var promises = [];
 			_.each(params, function(param) {
-				promises.push(Rede.measurements.query({sensor_id: $stateParams.sensorId, parameter_id: param._id}).$promise);
+				promises.push(Rede.measurements.query({
+					sensor_id: $stateParams.sensorId,
+					parameter_id: param._id,
+					from: $stateParams.from,
+					to: $stateParams.to
+				}).$promise);
 			});
 
 			$q.all(promises).then(function(data) {
@@ -366,5 +434,108 @@ angular.module('rede')
 			Lab.setToken(token);
 		};
 
+	}
+])
+
+.controller('AdminCtrl', [
+	'RedeService',
+	'$scope',
+	'$state',
+	function(Rede, $scope, $state) {
+		$scope.loggedIn = false;
+		$scope.login = function(data) {
+			$scope.loggedIn = true;
+		};
+		$scope.$watch('loggedIn', function(loggedIn) {
+			if(loggedIn && $state.current.name == 'admin') {
+				$state.go('admin.sensors');
+			}
+		});
+
+		$scope.broadcast = function(msg) {
+			if(confirm('Você tem certeza que deseja enviar "' + msg + '" para todos os assinantes?')) {
+				console.log('enviando', msg, $scope.sensor._id);
+			}
+		}
+	}
+])
+
+.controller('AdminSensorCtrl', [
+	'$scope',
+	'RedeService',
+	'SensorsData',
+	function($scope, Rede, Sensors) {
+		$scope.sensors = Sensors.sensors;
+
+		$scope.deleteSensor = function(sensor) {
+			if(confirm('Você tem certeza?')) {
+				console.log('delete');
+			}
+		}
+	}
+])
+
+.controller('AdminEditSensorCtrl', [
+	'$scope',
+	'RedeService',
+	'$stateParams',
+	'$state',
+	function($scope, Rede, $stateParams, $state) {
+
+		if($state.params.sensorId) {
+			Rede.sensors.get({id: $state.params.sensorId}, function(sensor) {
+				$scope.sensor = sensor;
+			})
+		}
+
+		$scope.broadcast = function(msg) {
+			if($scope.sensor) {
+				if(confirm('Você tem certeza que deseja enviar "' + msg + '" para os assinantes de ' + $scope.sensor.name + '?')) {
+					console.log('enviando', msg, $scope.sensor._id);
+				}
+			}
+		}
+	}
+])
+
+.controller('AdminEditMeasurementCtrl', [
+	'$scope',
+	'RedeService',
+	'SensorData',
+	'ParametersData',
+	function($scope, Rede, Sensor, Parameters) {
+		$scope.sensor = Sensor;
+		$scope.parameters = Parameters;
+
+		$scope.param = $scope.parameters[Object.keys($scope.parameters)[0]];
+
+		$scope.updateMeasurements = function(paramId) {
+			$scope.param = $scope.parameters[paramId];
+		};
+
+		$scope.getDate = function(measurement) {
+			return moment(measurement.collectedAt).format('LLLL');
+		};
+
+		$scope.deleteMeasurement = function(measurement) {
+			if(confirm('Você tem certeza?')) {
+				console.log('delete');
+			}
+		}
+
+		$scope.$watch('param', function() {
+			Rede.measurements.query({'sensor_id': $scope.sensor._id, 'parameter_id': $scope.param._id}, function(data) {
+				$scope.measurements = data;
+			});
+		});
+
+	}
+])
+
+.controller('AdminUserCtrl', [
+	'UsersData',
+	'$scope',
+	function(Users, $scope) {
+		console.log(Users);
 	}
 ]);

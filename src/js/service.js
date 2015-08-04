@@ -11,7 +11,11 @@ angular.module('rede')
 		var measureParams;
 
 		return {
-			user: $resource(apiUrl + '/users/:id', { id: '@id' }, {
+			users: $resource(apiUrl + '/users/:id', { id: '@id' }, {
+				query: {
+					method: 'GET',
+					isArray: false
+				},
 				update: {
 					method: 'PUT'
 				}
@@ -23,6 +27,11 @@ angular.module('rede')
 				},
 				update: {
 					method: 'PUT'
+				},
+				getScore: {
+					url: apiUrl + '/sensors/:id/score',
+					method: 'GET',
+					isArray: false
 				}
 			}),
 			measurements: $resource(apiUrl + '/measurements', {}, {

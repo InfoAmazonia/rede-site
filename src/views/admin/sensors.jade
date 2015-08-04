@@ -1,0 +1,41 @@
+#admin-sensors
+  header.section-header.clearfix
+    .one.column
+      h3
+        span.icon-signal 
+    .three.columns
+      h3 
+        a(ui-sref="admin.sensors")
+          | Sensores 
+    .eight.columns
+      a.button(ui-sref="admin.sensors.new") 
+        span.icon-plus 
+        | Novo sensor
+  div.eleven.columns.offset-by-one(ui-view autoscroll="false")
+    table
+      thead
+        tr
+          th Nome
+          th Ver e editar medições
+          th Enviar broadcast
+          th Editar
+          th Remover
+      tbody
+        tr(ng-repeat="sensor in sensors")
+          td {{sensor.name}}
+          td
+            a.button(ui-sref="admin.sensors.measurements({sensorId: sensor._id})")
+              span.icon-line-graph 
+              | Medições
+          td
+            a.button(ui-sref="admin.sensors.broadcast({sensorId: sensor._id})") 
+              span.icon-megaphone 
+              | Broadcast
+          td
+            a.button(ui-sref="admin.sensors.edit({sensorId: sensor._id})")
+              span.icon-edit 
+              | Editar
+          td
+            a.button.delete(href="javascript:void(0);" ng-click="deleteSensor(sensor)") 
+              span.icon-cross 
+              | Remover

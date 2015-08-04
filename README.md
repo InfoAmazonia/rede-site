@@ -43,7 +43,7 @@ Run `npm start`.
 - [POST measurements](#post-measurementsnew)
 - [GET measurements/:measurement_id](#get-measurementssensor_id)
 - [PUT measurements/:measurement_id](#put-measurementssensor_id)
-- [DEL measurements/:measurement_id](#del-measurementssensor_id)
+- [DEL measurements/:measurement_id](#del-measurementsmeasurement_id)
 
 ## Users
 
@@ -226,13 +226,28 @@ Response:
 
 ---
 
+### DEL measurements/:measurement_id
+
+Destroy measurement.
+
+Parameters:
+- `:measurement_id` _string_
+
+Possible responses:
+- `200` Success;
+- `400` Bad request;
+- `401` Unauthorized;
+- `404` Not found.
+
+---
+
 ## GET measurements
 
 Returns a list of measurements.
 
 Parameters:
 - `sensor_id`: _string_ (required)
-- `parameter_id`: _string_ (required)
+- `parameter_id`: _string_ (optional)
 - `perPage`: _number_ (default: 20)
 - `page`: _number_ (optional)
 

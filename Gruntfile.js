@@ -97,6 +97,16 @@ module.exports = function(grunt) {
 						expand: true
 					}
 				]
+			},
+			pickadate: {
+				files: [
+					{
+						cwd: 'node_modules/angular-pickadate/src',
+						src: ['**'],
+						dest: 'public/lib/angular-pickadate',
+						expand: true
+					}
+				]
 			}
 		},
 		watch: {
@@ -142,7 +152,7 @@ module.exports = function(grunt) {
 		var factory = require('./lib/helpers/factory');
 		var mongodb = require('./lib/helpers/mongodb');
 
-		var sensorCount = 10;
+		var sensorCount = 20;
 		var daysOfObservation = 20;
 
 		console.log('Populating database with '+daysOfObservation+' days of data for '+sensorCount+' sensors, please wait...');

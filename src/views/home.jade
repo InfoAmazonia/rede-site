@@ -47,7 +47,12 @@ section#home.anti-row
 		#sensor-summary(ng-show="sensor")
 			span.icon-cross.close(ng-click="setSensor(false)")
 			sensor-summary(sensor="sensor")
-			a.button(ui-sref="sensor({sensorId: sensor})") Ver detalhes deste sensor
+			a.button.permalink(ui-sref="sensor({sensorId: sensor})") 
+				span.icon-magnifying-glass 
+				| Ver detalhes deste sensor
+			a.button.subscribe(ui-sref="sensor.subscribe({sensorId: sensor})") 
+				span.icon-rss 
+				| Assine as atualizações deste sensor
 	section#city-data.row
 		header.city-data-header
 			.container

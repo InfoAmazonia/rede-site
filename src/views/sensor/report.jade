@@ -1,9 +1,20 @@
 #sensor-report
-  .container
-    .twelve.columns
-      h2 Relatório das últimas 24 horas
-  section.sensor-param.row(ng-repeat="param in params")
+  .report-header.row
     .container
       .twelve.columns
-        h3 {{param.name.pt}}
-        reading-chart(dataset="data[param._id]" label="param.name.pt")
+        h2 Localização
+        p Latitude: {{sensor.geometry.coordinates[1]}}
+        p Longitude: {{sensor.geometry.coordinates[0]}}
+  .report-content.row
+    .container
+      .twelve.columns
+        h2 Relatório de 
+          span {{formattedFrom}} 
+          | à 
+          span {{formattedTo}}
+    section.sensor-param.row(ng-repeat="param in params")
+      .container
+        .twelve.columns
+          h3 {{param.name.pt}}
+          div(style="height: 200px;")
+            reading-chart(dataset="data[param._id]" label="param.name.pt")

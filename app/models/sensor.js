@@ -96,7 +96,7 @@ SensorSchema.methods = {
         })
         .sort('-collectedAt')
         .exec(function(err, m){
-          doneEach(err,m._id);
+          doneEach(err,m);
         })
     }, function(err, parameters){
       if (err) return doneGetScore(err);

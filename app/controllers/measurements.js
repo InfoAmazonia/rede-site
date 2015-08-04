@@ -49,13 +49,18 @@ exports.list = function(req, res) {
     page: page
   };
 
+  /* Filter criteria */
   options.criteria = {
-    sensor: req.sensor._id,
-    parameter: req.parameter._id
+    sensor: req.sensor._id
   }
 
-  // properties to return
-  options.select = '_id value collectedAt';
+  /* If filtering by parameter, do not include it in results */
+  if (req.parameter) {
+    options.criteria.parameter = req.parameter._id;
+    options.select = '_id value collectedAt';
+  } else
+    options.select = '_id value collectedAt parameter';
+
 
   Measurement.list(options, function (err, measurements) {
     if (err)
