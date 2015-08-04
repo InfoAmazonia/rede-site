@@ -42,6 +42,7 @@ var admin1;
 var admin1AccessToken;
 var user1;
 var user1AccessToken;
+var user1Password = '+8characthers';
 var sensor1;
 var sensor2;
 var sensor3;
@@ -117,12 +118,13 @@ describe('API: Users', function(){
     });
 
     context('regular users', function(){
-      it('returns 201 for valid parameters', function(){
+      it('returns 201 for valid parameters', function(doneIt){
         /* User info */
         var payload = {
           name: 'Regular user',
           email: 'regularuser@email.com',
-          password: '+8characthers'
+          phoneNumber: '+5511111111111',
+          password: user1Password
         }
 
         /* The request */
@@ -142,6 +144,7 @@ describe('API: Users', function(){
           body.should.have.property('_id');
           body.should.have.property('name', payload.name);
           body.should.have.property('email', payload.email);
+          body.should.have.property('phoneNumber', payload.phoneNumber);
           body.should.have.property('role', 'subscriber');
           body.should.have.property('registeredAt');
           body.should.not.have.property('password');
@@ -193,11 +196,137 @@ describe('API: Users', function(){
    */
   describe('PUT account', function(){
     context('is not logged', function(){
-      it('returns 401');
+      it('returns 401', function(doneIt){
+        var payload = {
+          name: 'changed name',
+          telephone: '+51023901293019'
+        }
+
+        request(app)
+          .put(apiPrefix + '/account')
+          .send(payload)
+          .expect(401)
+          .expect('Content-Type', /json/)
+          .end(function(err,res){
+            if (err) doneIt(err);
+            res.body.messages.should.have.lengthOf(1);
+            messaging.hasValidMessages(res.body).should.be.true;
+            res.body.messages[0].should.have.property('text', 'access_token.unauthorized');
+            doneIt();
+          });
+      });
     });
 
     context('is logged', function(){
-      it('should be able to change all account info but role and email');
+      it('should be able to change all account fields, but not role and email', function(doneIt){
+        var payload = {
+          role: 'admin',
+          name: 'changed name for user 1',
+          phoneNumber: '+51023901293019',
+          email: 'anotheremail@mailbox.com'
+        }
+
+        request(app)
+          .put(apiPrefix + '/account')
+          .set('Authorization', user1AccessToken)
+          .send(payload)
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end(function(err,res){
+            if (err) return doneIt(err);
+
+            var body = res.body;
+
+            /* User basic info */
+            body.should.have.property('_id');
+            body.should.have.property('role', 'subscriber');
+            body.should.have.property('email', user1.email);
+            body.should.have.property('name', payload.name);
+            body.should.have.property('phoneNumber', payload.phoneNumber);
+            body.should.have.property('registeredAt');
+            body.should.not.have.property('password');
+            user1 = body;
+
+            doneIt();
+        });
+      });
+
+      it('should require old password to change password', function(doneIt){
+        var payload = {
+          password: 'newpassword',
+        }
+        request(app)
+          .put(apiPrefix + '/account')
+          .set('Authorization', user1AccessToken)
+          .send(payload)
+          .expect(400)
+          .expect('Content-Type', /json/)
+          .end(function(err,res){
+            if (err) doneIt(err);
+            res.body.messages.should.have.lengthOf(1);
+            messaging.hasValidMessages(res.body).should.be.true;
+            res.body.messages[0].should.have.property('text', 'account.old_password_missing');
+            doneIt();
+          });
+      });
+
+      it('old password should be correct to change password', function(doneIt){
+        var payload = {
+          oldPassword: 'incorrect password',
+          password: 'new password'
+        }
+        request(app)
+          .put(apiPrefix + '/account')
+          .set('Authorization', user1AccessToken)
+          .send(payload)
+          .expect(400)
+          .expect('Content-Type', /json/)
+          .end(function(err,res){
+            if (err) doneIt(err);
+            res.body.messages.should.have.lengthOf(1);
+            messaging.hasValidMessages(res.body).should.be.true;
+            res.body.messages[0].should.have.property('text', 'account.old_password_wrong');
+            doneIt();
+          });
+      });
+
+      it('should change password when parameters are correct', function(doneIt){
+        var payload = {
+          oldPassword: user1Password,
+          password: 'new password'
+        }
+
+        request(app)
+          .put(apiPrefix + '/account')
+          .set('Authorization', user1AccessToken)
+          .send(payload)
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end(function(err,res){
+            if (err) return doneIt(err);
+
+            var body = res.body;
+
+            /* User basic info */
+            body.should.have.property('_id');
+            body.should.have.property('role', 'subscriber');
+            body.should.have.property('email', user1.email);
+            body.should.have.property('name', user1.name);
+            body.should.have.property('phoneNumber', user1.phoneNumber);
+            body.should.have.property('registeredAt');
+            body.should.not.have.property('password');
+            user1 = body;
+
+            mongoose.model('User').findOne({_id: user1._id}, function(err, u){
+              if (err) return doneIt(err);
+
+              u.authenticate(payload.password).should.be.true;
+
+              doneIt();
+            });
+
+          });
+      });
     });
   });
 
