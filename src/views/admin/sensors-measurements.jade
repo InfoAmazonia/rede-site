@@ -1,24 +1,29 @@
 #admin-sensor-measurements
-  h4
-    span.icon-line-graph 
-    | Medições em {{sensor.name}}
-  ul.tabbed-nav
-    li(ng-repeat="(key,parameter) in parameters" ng-class="{active: param._id==parameter._id}")
-      a(href="#" ng-click="updateMeasurements(key)") {{parameter.name.pt}}
+  header.sub-section-header
+    h4
+      span.icon-line-graph 
+      | Medições em {{sensor.name}}
+    ul.tabbed-nav
+      li(ng-repeat="(key,parameter) in parameters" ui-sref-active="active")
+        a(ui-sref="admin.sensors.measurements({parameter_id: key, measurement_page: null})") {{parameter.name.pt}}
 
-table(ng-show="measurements")
-  thead
-    tr
-      th Data
-      th Valor
-      th Unidade de medida
-      th Remover
-  tbody
-    tr(ng-repeat="measurement in measurements.measurements")
-      td {{getDate(measurement)}}
-      td {{measurement.value}}
-      td {{measurements.parameter.defaultUnit}}
-      td 
-        a.button(href="#" ng-click="deleteMeasurement(measurement)")
-          span.icon-cross 
-          | Remover
+  table(ng-show="measurements")
+    thead
+      tr
+        th Data
+        th Valor
+        th Unidade de medida
+        th Remover
+    tbody
+      tr(ng-repeat="measurement in measurements.measurements")
+        td {{getDate(measurement)}}
+        td {{measurement.value}}
+        td {{measurements.parameter.defaultUnit}}
+        td 
+          a.button(href="#" ng-click="deleteMeasurement(measurement)")
+            span.icon-cross 
+            | Remover
+    
+  p.pagination.clearfix.row(ng-show="showPrev || showNext")
+    a.button.prev(ui-sref="admin.sensors.measurements({measurement_page: page-1})" ng-show="showPrev") Página anterior
+    a.button.next(ui-sref="admin.sensors.measurements({measurement_page: page+1})" ng-show="showNext") Próxima página

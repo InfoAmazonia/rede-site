@@ -5,7 +5,7 @@
         span.icon-signal 
     .three.columns
       h3 
-        a(ui-sref="admin.sensors")
+        a(ui-sref="admin.sensors({})")
           | Sensores 
     .eight.columns
       a.button(ui-sref="admin.sensors.new") 
@@ -38,4 +38,7 @@
           td
             a.button.delete(href="javascript:void(0);" ng-click="deleteSensor(sensor)") 
               span.icon-cross 
-              | Remo
+              | Remover
+    p.pagination.clearfix.row(ng-show="showPrev || showNext")
+      a.button.prev(ui-sref="admin.sensors({page: page-1})" ng-show="showPrev") Página anterior
+      a.button.next(ui-sref="admin.sensors({page: page+1})" ng-show="showNext") Próxima página

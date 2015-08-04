@@ -467,6 +467,25 @@ angular.module('rede')
 	function($scope, Rede, Sensors) {
 		$scope.sensors = Sensors.sensors;
 
+		var updatePaging = function(data) {
+			$scope.page = data.page;
+			$scope.count = data.count;
+			$scope.perPage = data.perPage;
+			$scope.showNext = $scope.count > $scope.page * $scope.perPage;
+			$scope.showPrev = $scope.page > 1;
+		};
+
+		var query = {};
+
+		$scope.$on('$stateChangeSuccess', function(event, toState, toParams) {
+			$scope.page = toParams.page || 1;
+			query = _.extend({'page': $scope.page}, query);
+			Rede.sensors.query(query, function(data) {
+				$scope.sensors = data.sensors;
+				updatePaging(data);
+			});
+		});
+
 		$scope.deleteSensor = function(sensor) {
 			if(confirm('Você tem certeza?')) {
 				console.log('delete');
@@ -531,8 +550,6 @@ angular.module('rede')
 		$scope.sensor = Sensor;
 		$scope.parameters = Parameters;
 
-		$scope.param = $scope.parameters[Object.keys($scope.parameters)[0]];
-
 		$scope.updateMeasurements = function(paramId) {
 			$scope.param = $scope.parameters[paramId];
 		};
@@ -547,9 +564,28 @@ angular.module('rede')
 			}
 		}
 
-		$scope.$watch('param', function() {
-			Rede.measurements.query({'sensor_id': $scope.sensor._id, 'parameter_id': $scope.param._id}, function(data) {
+		var updatePaging = function(data) {
+			$scope.page = data.page;
+			$scope.count = data.count;
+			$scope.perPage = data.perPage;
+			$scope.showNext = $scope.count > $scope.page * $scope.perPage;
+			$scope.showPrev = $scope.page > 1;
+		};
+
+		var query = {
+			'sensor_id': $scope.sensor._id
+		};
+
+		$scope.$on('$stateChangeSuccess', function(event, toState, toParams) {
+
+			$scope.page = toParams.measurement_page || 1;
+
+			$scope.param = toParams.parameter_id || $scope.parameters[Object.keys($scope.parameters)[0]]._id;
+
+			query = _.extend({'page': $scope.page, 'parameter_id': $scope.param}, query);
+			Rede.measurements.query(query, function(data) {
 				$scope.measurements = data;
+				updatePaging(data);
 			});
 		});
 

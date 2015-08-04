@@ -122,7 +122,7 @@ app
 			templateUrl: '/views/admin/broadcast.html'
 		})
 		.state('admin.sensors', {
-			url: 'sensors/',
+			url: 'sensors/?page',
 			templateUrl: '/views/admin/sensors.html',
 			controller: 'AdminSensorCtrl',
 			resolve: {
@@ -146,7 +146,7 @@ app
 			templateUrl: '/views/admin/sensors-edit.html'
 		})
 		.state('admin.sensors.measurements', {
-			url: ':sensorId/measurements/',
+			url: ':sensorId/measurements/?parameter_id&measurement_page',
 			controller: 'AdminEditMeasurementCtrl',
 			templateUrl: '/views/admin/sensors-measurements.html',
 			resolve: {
