@@ -1,6 +1,17 @@
 #admin-sensors
-  div(ui-view autoscroll="false")
-    h3 Sensores
+  header.section-header.clearfix
+    .one.column
+      h3
+        span.icon-signal 
+    .three.columns
+      h3 
+        a(ui-sref="admin.sensors")
+          | Sensores 
+    .eight.columns
+      a.button(ui-sref="admin.sensors.new") 
+        span.icon-plus 
+        | Novo sensor
+  div.eleven.columns.offset-by-one(ui-view autoscroll="false")
     table
       thead
         tr

@@ -451,6 +451,12 @@ angular.module('rede')
 				$state.go('admin.sensors');
 			}
 		});
+
+		$scope.broadcast = function(msg) {
+			if(confirm('Você tem certeza que deseja enviar "' + msg + '" para todos os assinantes?')) {
+				console.log('enviando', msg, $scope.sensor._id);
+			}
+		}
 	}
 ])
 
@@ -476,12 +482,18 @@ angular.module('rede')
 	'$state',
 	function($scope, Rede, $stateParams, $state) {
 
-		$scope.sensor = {};
-
 		if($state.params.sensorId) {
 			Rede.sensors.get({id: $state.params.sensorId}, function(sensor) {
 				$scope.sensor = sensor;
 			})
+		}
+
+		$scope.broadcast = function(msg) {
+			if($scope.sensor) {
+				if(confirm('Você tem certeza que deseja enviar "' + msg + '" para os assinantes de ' + $scope.sensor.name + '?')) {
+					console.log('enviando', msg, $scope.sensor._id);
+				}
+			}
 		}
 	}
 ])

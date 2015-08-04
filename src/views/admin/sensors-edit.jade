@@ -1,9 +1,8 @@
 form(ng-submit="submit(sensor)")
-  h3 
+  h4 
+    span.icon-edit 
     span(ng-hide="sensor._id") Novo sensor
     span(ng-show="sensor._id") Editar sensor
-  p
-    a(ui-sref="admin.sensors") Voltar à lista de sensores
   p
     label(for="input_name") Nome 
     input#input_name(type="text" ng-model="sensor.name")

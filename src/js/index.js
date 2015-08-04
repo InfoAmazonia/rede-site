@@ -117,6 +117,10 @@ app
 			controller: 'AdminCtrl',
 			templateUrl: '/views/admin/index.html'
 		})
+		.state('admin.broadcast', {
+			url: 'broadcast/',
+			templateUrl: '/views/admin/broadcast.html'
+		})
 		.state('admin.sensors', {
 			url: 'sensors/',
 			templateUrl: '/views/admin/sensors.html',
@@ -163,17 +167,8 @@ app
 		})
 		.state('admin.sensors.broadcast', {
 			url: ':sensorId/broadcast/',
-			controller: 'AdminBroadcastCtrl',
-			templateUrl: '/views/admin/sensors-broadcast.html',
-			resolve: {
-				SensorData: [
-					'RedeService',
-					'$stateParams',
-					function(Rede, $stateParams) {
-						return Rede.sensors.get({id: $stateParams.sensorId}).$promise;
-					}
-				]
-			}
+			controller: 'AdminEditSensorCtrl',
+			templateUrl: '/views/admin/sensors-broadcast.html'
 		})
 		.state('admin.users', {
 			url: 'users/',
