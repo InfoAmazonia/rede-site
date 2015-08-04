@@ -182,6 +182,16 @@ app
 					}
 				]
 			}
+		})
+		.state('admin.users.new', {
+			url: 'new/',
+			controller: 'AdminEditUserCtrl',
+			templateUrl: '/views/admin/users-edit.html'
+		})
+		.state('admin.users.edit', {
+			url: ':userId/edit/',
+			controller: 'AdminEditUserCtrl',
+			templateUrl: '/views/admin/users-edit.html'
 		});
 
 		/*

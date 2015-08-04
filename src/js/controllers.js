@@ -498,6 +498,30 @@ angular.module('rede')
 	}
 ])
 
+.controller('AdminEditUserCtrl', [
+	'$scope',
+	'RedeService',
+	'$stateParams',
+	'$state',
+	function($scope, Rede, $stateParams, $state) {
+
+		if($state.params.userId) {
+			Rede.sensors.get({id: $state.params.userId}, function(sensor) {
+				$scope.user = user;
+			})
+		}
+
+		$scope.broadcast = function(msg) {
+			if($scope.user) {
+				if(confirm('Você tem certeza que deseja enviar "' + msg + '" para para ' + $scope.user.name + '?')) {
+					console.log('enviando', msg, $scope.user._id);
+				}
+			}
+		}
+
+	}
+])
+
 .controller('AdminEditMeasurementCtrl', [
 	'$scope',
 	'RedeService',

@@ -17,3 +17,19 @@
         tr
           th Nome
           th Email
+          th Telefone
+          th Editar
+          th Remover
+      tbody
+        tr(ng-repeat="user in users")
+          td {{user.name}}
+          td {{user.email}}
+          td {{user.phone}}
+          td
+            a.button(ui-sref="admin.users.edit({userId: user._id})")
+              span.icon-edit 
+              | Editar
+          td
+            a.button.delete(href="javascript:void(0);" ng-click="deleteUser(user)") 
+              span.icon-cross 
+              | Remover
