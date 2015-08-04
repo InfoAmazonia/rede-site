@@ -198,7 +198,7 @@ UserSchema.static({
 
     this.find(criteria)
       .sort('name') // sort by date
-			.select('_id name')
+			.select('_id name email phoneNumber role registeredAt')
       .limit(options.perPage)
       .skip(options.perPage * options.page)
       .exec(cb);

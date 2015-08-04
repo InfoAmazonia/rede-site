@@ -69,7 +69,17 @@ Possible responses:
 
 ### GET users
 
-Get a list of users, not implemented yet.
+Get a list of sensors, needs authentication and `admin` role.
+
+Parameters:
+- `perPage`: _number_ (default: 20)
+- `page`: _number_ (optional)
+
+Possible responses:
+- `200` Success and list of users:
+- `400` Bad request.
+- `401` Unauthorized.
+
 
 ---
 
