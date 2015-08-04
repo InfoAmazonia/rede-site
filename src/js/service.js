@@ -32,6 +32,16 @@ angular.module('rede')
 					url: apiUrl + '/sensors/:id/score',
 					method: 'GET',
 					isArray: false
+				},
+				subscribe: {
+					url: apiUrl + '/sensors/:id/subscribe',
+					method: 'POST',
+					isArray: false
+				},
+				unsubscribe: {
+					url: apiUrl + '/sensors/:id/unsubscribe',
+					method: 'POST',
+					isArray: false
 				}
 			}),
 			measurements: $resource(apiUrl + '/measurements', {}, {
@@ -97,30 +107,132 @@ angular.module('rede')
 	}
 ])
 
-.factory('RedeLab', [
+.factory('RedeAuth', [
+	'RedeService',
+	'$q',
 	'$window',
 	'$cookies',
-	function($window, $cookies) {
+	'MessageService',
+	'RedeMsgs',
+	'$http',
+	function(Rede, $q, $window, $cookies, Message, Msgs, $http) {
 
-		$window.labToken = $cookies.labToken;
+		var apiUrl = '/api/v1';
 
-		// try {
-		// 	$window.labToken = JSON.parse($cookies.labToken);
-		// } catch(err) {
-		// 	$window.labToken = false;
-		// }
+		$window.auth = '';
+
+		try {
+			$window.auth = JSON.parse($cookies.get('auth'));
+		} catch(err) {
+			$window.auth = false;
+		}
 
 		return {
+			register: function(data) {
+				var self = this;
+				var deferred = $q.defer();
+				Rede.users.save(data, function(user) {
+					self.login({
+						email: data.email,
+						password: data.password
+					});
+					deferred.resolve(user);
+				}, function(res) {
+					var data = res.data;
+					if(data.messages) {
+						_.each(data.messages, function(msg) {
+							console.log(Msgs.get(msg.text));
+							Message.add(Msgs.get(msg.text));
+						});
+					}
+					deferred.reject(data);
+				});
+				return deferred.promise;
+			},
+			login: function(credentials) {
+				var self = this;
+				var deferred = $q.defer();
+				$http.post(apiUrl + '/login', credentials)
+				.success(function(data) {
+					self.setToken(data);
+					deferred.resolve(data);
+				})
+				.error(function(data) {
+					deferred.reject(data);
+					if(data.messages) {
+						_.each(data.messages, function(msg) {
+							Message.add(Msgs.get(msg.text));
+						});
+					}
+				});
+				return deferred.promise;
+			},
+			logout: function() {
+				var self = this;
+				if(auth) {
+					var deferred = $q.defer();
+					$http.get(apiUrl + '/logout')
+					.success(function(data) {
+						self.setToken('');
+						deferred.resolve(true);
+					})
+					.error(function() {
+						self.setToken('');
+						deferred.resolve(true);
+					});
+					return deferred.promise;
+				} else {
+					return false;
+				}
+			},
 			setToken: function(data) {
-				$window.labToken = $cookies.labToken = data;
-				// try {
-				// 	$cookies.labToken = JSON.stringify(data);
-				// } catch(err) {
-				// 	$cookies.labToken = '';
-				// }
+				$window.auth = data;
+				try {
+					$cookies.put('auth', JSON.stringify(data));
+				} catch(err) {
+					$cookies.remove('auth');
+				}
 			},
 			getToken: function() {
-				return $window.labToken;
+				return $window.auth;
 			}
 		}
-	}]);
+	}
+])
+
+.factory('RedeMsgs', [
+	function() {
+		return {
+			get: function(txt) {
+				var msg = txt;
+				switch(txt) {
+					case 'mongoose.errors.areas.missing_address':
+						msg = 'Você deve preencher o campo de endereço';
+						break;
+					case 'access_token.local.email_not_confirmed':
+						msg = 'Verifique seu email para ativar sua conta.';
+						break;
+					case 'email_confirmed':
+						msg = 'Seu email foi confirmado.';
+						break;
+					case 'token_expired':
+						msg = 'A chave de acesso expirou.';
+						break;
+					case 'internal_error':
+						msg = 'Ocorreu um erro interno. Pora favor, tente novamente.';
+						break;
+					case 'token_not_found':
+						msg = 'Chave de acesso não encontrada.';
+						break;
+					case 'users.missing_password':
+						msg = 'Preencha o campo de senha';
+						break;
+					case 'users.missing_email':
+						msg = 'Preencha o campo de email';
+						break;
+				}
+				return msg;
+			}
+		}
+	}
+]);

@@ -1,12 +1,21 @@
 .container
   .six.columns.offset-by-three
-    form#subscribe-sensor(ng-submit="submit()")
+    #subscribe-sensor
       h2 Assine as atualizações do sensor
-      p
-        input(type="text" placeholder="Seu nome" ng-model="name")
+      form#register-form(ng-controller="AuthFormCtrl" ng-submit="auth(user, subscribe)")
+        p(ng-show="form == 'register'")
+          a.button.bold(ng-click="switch('login')" href="#") Eu já tenho uma conta
+        p(ng-show="form == 'login'")
+          a.button.bold(ng-click="switch('register')" href="#") Ainda não tenho uma conta
+        p(ng-show="form == 'register'")
+          input(type="text" placeholder="Seu nome" ng-model="user.name")
         p
-          input(type="text" placeholder="Seu email" ng-model="email")
-      p
-        input(type="text" placeholder="Seu telefone" ng-model="phone" international-phone-number preferred-countries="br" utils-script="/lib/intl-tel-input/utils.js")
-      p
-        input(type="submit" value="Confirmar assinatura")
+          input(type="text" placeholder="Seu email" ng-model="user.email")
+        p(ng-show="form == 'register'")
+          input(type="text" placeholder="Seu telefone" ng-model="user.phoneNumber" international-phone-number preferred-countries="br" utils-script="/lib/intl-tel-input/utils.js")
+        p
+          input(type="password" placeholder="Senha" ng-model="user.password")
+        p(ng-show="form == 'register'")
+          input(type="password" placeholder="Repetir senha" ng-model="user.password_repeat")
+        p
+          input(type="submit" value="Confirmar assinatura")

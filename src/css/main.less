@@ -11,6 +11,15 @@ h1 {
 	font-family: "Open Sans Condensed";
 }
 
+button,
+.button,
+a.button,
+input[type=submit] {
+	&.bold {
+		font-weight: 800;
+	}
+}
+
 .clearfix:after {
 	content: "";
   display: table;
@@ -643,7 +652,9 @@ h1 {
 		.intl-tel-input {
 			display: block;
 		}
-		input {
+		input,
+		button,
+		.button {
 			margin: 0;
 			width: 100%;
 			.box-sizing(border-box);
@@ -1158,5 +1169,51 @@ h1 {
 				}
 			}
 		}
+	}
+}
+
+.message-notification {
+	position: fixed;
+	top: -4px;
+	left: 0;
+	right: 0;
+	text-align: center;
+	font-size: 14px;
+	color: #333;
+	z-index: 999999;
+	a,
+	strong {
+		color:#333;
+	}
+	.message-item {
+		display: block;
+		pointer-events: none;
+		margin-bottom: 5px;
+	}
+	.message-content {
+		display: inline-block;
+		background: #f0f0f0;
+		border: 1px solid #fff;
+		.box-shadow(0 0 20px rgba(0,0,0,0.1));
+		border-bottom: 1px solid #fff;
+		padding: 10px 30px 10px 10px;
+		pointer-events: auto;
+		.border-radius(6px);
+		position: relative;
+	}
+	p {
+		margin: 0;
+	}
+	.close-button {
+		position: absolute;
+		top: 50%;
+		margin-top: -8px;
+		right: 10px;
+		font-family: "Helvetica", "Arial", sans-serif;
+		color: #666;
+		font-size: 12px;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: 600;
 	}
 }

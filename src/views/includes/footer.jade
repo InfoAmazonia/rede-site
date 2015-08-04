@@ -1,0 +1,5 @@
+.message-notification(ng-controller="MessageCtrl")
+  .message-item(ng-repeat="message in messages" ng-show="message.text")
+    .message-content
+      a.close-button(ng-click="close(message)" href="javascript:void(0);") x
+      p(ng-class="message.status" ng-bind-html="getMessage(message)")

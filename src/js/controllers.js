@@ -350,7 +350,12 @@ angular.module('rede')
 
 .controller('SensorSubscription', [
 	'$scope',
-	function($scope) {
+	'MessageService',
+	function($scope, MessageService) {
+
+		$scope.subscribe = function(user) {
+			console.log('login');
+		}
 
 	}
 ])
@@ -397,42 +402,46 @@ angular.module('rede')
 
 		});
 
-		// function(data) {
-		//
-		// }
-
-		$(window).load(function() {
-			alert('should print');
-			window.print();
-		});
-
 	}
 ])
 
-.controller('LabCtrl', [
+.controller('AuthFormCtrl', [
 	'$scope',
-	'$state',
-	'RedeLab',
-	function($scope, $state, Lab) {
+	'RedeService',
+	'RedeAuth',
+	'MessageService',
+	function($scope, Rede, Auth, Message) {
 
-		$scope.$watch(function() {
-			return Lab.getToken();
-		}, function(token) {
-			$scope.token = token;
-			if(token && $state.current.name == 'lab') {
-				$state.go('lab.form');
-			} else if(!token && $state.current.name == 'lab.form') {
-				$state.go('lab');
+		$scope.form = 'register';
+
+		$scope.switch = function(form) {
+			$scope.form = form;
+		};
+
+		$scope.register = function(user, cb) {
+			if(user.password !== user.password_repeat) {
+				Message.add('Verifique se as senhas digitadas são iguais');
+			} else {
+				Auth.register(user).then(function(data) {
+					if(typeof cb == 'function') {
+						cb(data);
+					}
+				});
 			}
-		});
+		}
 
-		$scope.logout = function() {
-			Lab.setToken('');
-		};
+		$scope.login = function(credentials, cb) {
+			Auth.login(credentials).then(function(data) {
+				if(typeof cb == 'function') {
+					cb(data);
+				}
+			});
+		}
 
-		$scope.login = function(token) {
-			Lab.setToken(token);
-		};
+		$scope.auth = function(user) {
+			if($scope[$scope.form])
+				$scope[$scope.form](user);
+		}
 
 	}
 ])
