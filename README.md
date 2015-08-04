@@ -20,13 +20,14 @@ Run `npm start`.
 
 # API Documentation
 
-## Users management
+## Users
 - [GET users](#get-users)
-- [POST users](#post-userssnew)
+- [POST users](#post-users)
+- [PUT users/:user_id](#put-usersuser_id)
 
-## Account management
+## Account
 
-- [PUT account](#)
+- [PUT account](#put-account)
 
 ## Sensors
 - [GET sensors](#get-sensors)
@@ -46,6 +47,25 @@ Run `npm start`.
 - [DEL measurements/:measurement_id](#del-measurementsmeasurement_id)
 
 ## Users
+
+### PUT account
+
+Updates account information.
+
+Parameters:
+- `name`: _string_
+- `email`: _string_
+- `phoneNumber`: _string_
+- `password`: _string_
+- `oldPassword`: _string_ (required when `password` is provided)
+
+Possible responses:
+- `200` Success + user object json;
+- `400` Bad request;
+- `401` Unauthorized;
+- `500` Internal error.
+
+---
 
 ### GET users
 
