@@ -171,7 +171,6 @@ angular.module('rede')
 				Rede.getParameters().then(function(params) {
 					scope.availableParams = params;
 					scope.params = scope.params || Object.keys(params);
-					console.log(scope.params);
 				});
 
 				scope.hasParam = function(param) {
@@ -468,5 +467,58 @@ angular.module('rede')
 			}
 		}
 
+	}
+])
+
+.directive('authForm', [
+	'RedeService',
+	'RedeAuth',
+	'MessageService',
+	'$timeout',
+	function(Rede, Auth, Message, $timeout) {
+		return  {
+			restrict: 'E',
+			scope: {
+				cb: '=callback',
+				submitLabel: '='
+			},
+			templateUrl: '/views/auth.html',
+			link: function(scope, element, attrs) {
+
+				scope.form = 'register';
+
+				scope.switch = function(form) {
+					scope.form = form;
+				};
+
+				scope.register = function(user, cb) {
+					if(user.password !== user.password_repeat) {
+						Message.add('Verifique se as senhas digitadas são iguais');
+					} else {
+						Auth.register(user).then(function(data) {
+							if(typeof cb == 'function') {
+								cb(data);
+							}
+						});
+					}
+				}
+
+				scope.login = function(credentials) {
+					Auth.login(credentials).then(function(data) {
+						if(typeof scope.cb == 'function') {
+							$timeout(function() {
+								scope.cb(data);
+							}, 50);
+						}
+					});
+				}
+
+				scope.auth = function(user) {
+					if(scope[scope.form])
+						scope[scope.form](user);
+				}
+
+			}
+		}
 	}
 ]);

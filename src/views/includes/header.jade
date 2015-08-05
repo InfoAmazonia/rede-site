@@ -1,11 +1,11 @@
 header#masthead.row
 	.container
-		.six.columns
+		.four.columns
 			h1 
 				a(ui-sref='home')
 					span Rede
 					| InfoAmazonia
-		.six.columns
+		.eight.columns
 			nav#mastnav
 				ul
 					li
@@ -14,3 +14,15 @@ header#masthead.row
 						a(href="#") Metodologia
 					li
 						a(href="#") Parceiros
+					li(ng-controller="AuthCtrl")
+						a(ui-sref="login" ng-hide="token") Entrar
+						a(ui-sref="account" ng-show="token") 
+							| Minha conta 
+							span.icon-chevron-down
+						ul.account(ng-show="token")
+							li 
+								a(ui-sref="account") Editar minha conta
+							li 
+								a(ui-sref="account.sensors") Sensores assinados
+							li 
+								a(href="#" ng-click="logout()") Sair 

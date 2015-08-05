@@ -4,7 +4,9 @@ angular.module('rede')
 	'$resource',
 	'$http',
 	'$q',
-	function($resource, $http, $q) {
+	'MessageService',
+	'RedeMsgs',
+	function($resource, $http, $q, Message, Msgs) {
 
 		var apiUrl = '/api/v1';
 
@@ -18,6 +20,20 @@ angular.module('rede')
 				},
 				update: {
 					method: 'PUT'
+				},
+				updateAccount: {
+					url: apiUrl + '/account',
+					method: 'PUT',
+					transformResponse: function(data) {
+						if(typeof data == 'string')
+							data = JSON.parse(data);
+						if(data.messages) {
+							_.each(data.messages, function(msg) {
+								Message.add(Msgs.get(msg.text));
+							});
+						}
+						return data;
+					}
 				}
 			}),
 			sensors: $resource(apiUrl + '/sensors/:id', { id: '@id' }, {
@@ -78,9 +94,6 @@ angular.module('rede')
 				});
 			},
 			stories: $http.get('http://infoamazonia.org/?publisher=infoamazonia&posts_per_page=20&lang=pt&geojson=1'),
-			data: {
-				states: $http.get('http://visaguas.infoamazonia.org/api?query=estados')
-			},
 			sensorToGeoJSON: function(sensors) {
 
 				var geojson = {
@@ -128,6 +141,17 @@ angular.module('rede')
 		}
 
 		return {
+			setToken: function(data) {
+				$window.auth = data;
+				try {
+					$cookies.put('auth', JSON.stringify(data));
+				} catch(err) {
+					$cookies.remove('auth');
+				}
+			},
+			getToken: function() {
+				return $window.auth;
+			},
 			register: function(data) {
 				var self = this;
 				var deferred = $q.defer();
@@ -141,7 +165,6 @@ angular.module('rede')
 					var data = res.data;
 					if(data.messages) {
 						_.each(data.messages, function(msg) {
-							console.log(Msgs.get(msg.text));
 							Message.add(Msgs.get(msg.text));
 						});
 					}
@@ -169,7 +192,7 @@ angular.module('rede')
 			},
 			logout: function() {
 				var self = this;
-				if(auth) {
+				if($window.auth) {
 					var deferred = $q.defer();
 					$http.get(apiUrl + '/logout')
 					.success(function(data) {
@@ -184,17 +207,6 @@ angular.module('rede')
 				} else {
 					return false;
 				}
-			},
-			setToken: function(data) {
-				$window.auth = data;
-				try {
-					$cookies.put('auth', JSON.stringify(data));
-				} catch(err) {
-					$cookies.remove('auth');
-				}
-			},
-			getToken: function() {
-				return $window.auth;
 			}
 		}
 	}
@@ -229,6 +241,21 @@ angular.module('rede')
 						break;
 					case 'users.missing_email':
 						msg = 'Preencha o campo de email';
+						break;
+					case 'users.email_already_registered':
+						msg = 'Email já cadastrado';
+						break;
+					case 'users.short_password':
+						msg = 'Senha muito curta';
+						break;
+					case 'users.invalid_email':
+						msg = 'Email inválido';
+						break;
+					case 'Unknown user':
+						msg = 'Usuário não encontrado';
+						break;
+					case 'account.old_password_wrong':
+						msg = 'Senha atual incorreta';
 						break;
 				}
 				return msg;

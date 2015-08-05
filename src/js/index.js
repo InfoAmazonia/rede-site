@@ -65,6 +65,40 @@ app
 				]
 			}
 		})
+		.state('login', {
+			url: '/login/',
+			templateUrl: '/views/login.html',
+			controller: [
+				'$state',
+				'$scope',
+				'RedeAuth',
+				'MessageService',
+				function($state, $scope, Auth, Message) {
+
+					if(Auth.getToken()) {
+						$state.go('home');
+						Message.add('Você já está logado.');
+					}
+
+					var fromState;
+					$scope.$on('$stateStateSuccess', function(ev, to, toParams, from) {
+						fromState = from;
+					});
+					$scope.return = function() {
+						$state.go(fromState || 'home');
+					}
+				}
+			]
+		})
+		.state('account', {
+			url: '/account/',
+			templateUrl: '/views/account.html',
+			controller: 'AccountCtrl'
+		})
+		.state('account.sensors', {
+			url: 'sensors/',
+			templateUrl: '/views/account-sensors.html'
+		})
 		.state('sensor', {
 			url: '/sensors/:sensorId/',
 			controller: 'SensorCtrl',
