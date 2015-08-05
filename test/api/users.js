@@ -191,6 +191,59 @@ describe('API: Users', function(){
     });
   });
 
+
+  /*
+   * GET account
+   */
+  describe('PUT account', function(){
+    context('is not logged', function(){
+      it('returns 401', function(doneIt){
+
+        request(app)
+          .get(apiPrefix + '/account')
+          .expect(401)
+          .expect('Content-Type', /json/)
+          .end(function(err,res){
+            if (err) doneIt(err);
+            res.body.messages.should.have.lengthOf(1);
+            messaging.hasValidMessages(res.body).should.be.true;
+            res.body.messages[0].should.have.property('text', 'access_token.unauthorized');
+            doneIt();
+          });
+      });
+    });
+
+    context('is logged', function(){
+      it('should be able to get account info', function(doneIt){
+
+        request(app)
+          .get(apiPrefix + '/account')
+          .set('Authorization', user1AccessToken)
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end(function(err,res){
+            if (err) return doneIt(err);
+
+            var body = res.body;
+
+            /* User basic info */
+            body.should.have.property('_id');
+            body.should.have.property('role', 'subscriber');
+            body.should.have.property('email', user1.email);
+            body.should.have.property('name', user1.name);
+            body.should.have.property('phoneNumber', user1.phoneNumber);
+            body.should.have.property('subscribedToSensors');
+            body.should.have.property('registeredAt');
+            body.should.not.have.property('password');
+            user1 = body;
+
+            doneIt();
+        });
+      });
+    });
+  });
+
+
   /*
    * PUT account
    */

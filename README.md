@@ -27,6 +27,7 @@ Run `npm start`.
 
 ## Account
 
+- [GET account](#get-account)
 - [PUT account](#put-account)
 
 ## Sensors
@@ -47,6 +48,17 @@ Run `npm start`.
 - [DEL measurements/:measurement_id](#del-measurementsmeasurement_id)
 
 ## Users
+
+### PUT account
+
+Gets account information.
+
+Possible responses:
+- `200` Success + user object json;
+- `401` Unauthorized;
+- `500` Internal error.
+
+---
 
 ### PUT account
 

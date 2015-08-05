@@ -8,6 +8,7 @@ var express = require('express');
  */
 var auth = require('../app/controllers/auth');
 var users = require('../app/controllers/users');
+var account = require('../app/controllers/account');
 var sensors = require('../app/controllers/sensors');
 var measurements = require('../app/controllers/measurements');
 var parameters = require('../app/controllers/parameters');
@@ -31,8 +32,11 @@ module.exports = function (app, config) {
   apiRoutes.get('/users', [auth.isLogged, auth.isAdmin, users.list]);
   apiRoutes.post('/users', users.new);
   apiRoutes.put('/users/:user_id', [auth.isLogged, auth.isAdmin, users.update]);
-  apiRoutes.put('/account', [auth.isLogged, users.account]);
-  // apiRoutes.get('/users/:id', users.get);
+  apiRoutes.get('/users/:id', [auth.isLogged, auth.isAdmin, users.show]);
+
+  // account routes
+  apiRoutes.get('/account', [auth.isLogged, account.show]);
+  apiRoutes.put('/account', [auth.isLogged, account.update]);
 
   // parameter routes
   apiRoutes.get('/parameters', parameters.list);
@@ -52,7 +56,6 @@ module.exports = function (app, config) {
   apiRoutes.param('measurement_id', measurements.load)
   apiRoutes.post('/measurements/batch', measurements.saveBatch);
   apiRoutes.get('/measurements', [sensors.loadByQueryString, parameters.loadByQueryStringIfDefined, measurements.list]);
-  // apiRoutes.put('/mueasurements', mueasurements.update);
   apiRoutes.delete('/measurements/:measurement_id', [auth.isLogged, auth.isAdmin, measurements.remove]);
 
   // set api routes
