@@ -7,7 +7,8 @@ angular.module('rede')
 	'RedeService',
 	'RedeAuth',
 	'MessageService',
-	function($scope, Rede, Auth, Message) {
+	'$state',
+	function($scope, Rede, Auth, Message, $state) {
 
 		$scope.updateProfile = function(user) {
 			Rede.users.updateAccount(user, function(user) {
@@ -34,14 +35,17 @@ angular.module('rede')
 		$scope.$watch(function() {
 			return Auth.getToken();
 		}, function() {
-			$scope.user = Auth.getToken();
-			$scope.sensors = [];
-			console.log($scope.user);
-			_.each($scope.user.subscribedToSensors, function(sensor) {
-				Rede.sensors.get({id: sensor}, function(data) {
-					$scope.sensors.push(data);
+			if(!Auth.getToken()) {
+				$state.go('home');
+			} else {
+				$scope.user = Auth.getToken();
+				$scope.sensors = [];
+				_.each($scope.user.subscribedToSensors, function(sensor) {
+					Rede.sensors.get({id: sensor}, function(data) {
+						$scope.sensors.push(data);
+					});
 				});
-			});
+			}
 		}, true);
 	}
 ])
