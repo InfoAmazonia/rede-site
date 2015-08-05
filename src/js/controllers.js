@@ -10,9 +10,20 @@ angular.module('rede')
 	'$state',
 	function($scope, Rede, Auth, Message, $state) {
 
-		$scope.updateProfile = function(user) {
-			Rede.users.updateAccount(user, function(user) {
-				Auth.setToken(_.extend(Auth.getToken(), user));
+		$scope.user = {};
+
+		$scope.updateProfile = function() {
+			var user = $scope.user;
+			Rede.users.updateAccount({
+				name: user.name,
+				email: user.email,
+				phoneNumber: user.phoneNumber
+			}, function(data) {
+				Auth.setToken(_.extend(Auth.getToken(), {
+					name: data.name,
+					phoneNumber: data.phoneNumber,
+					email: data.email
+				}));
 				Message.add('Informações atualizadas!');
 			});
 		};
