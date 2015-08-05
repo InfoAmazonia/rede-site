@@ -496,8 +496,10 @@ angular.module('rede')
 						Message.add('Verifique se as senhas digitadas são iguais');
 					} else {
 						Auth.register(user).then(function(data) {
-							if(typeof cb == 'function') {
-								cb(data);
+							if(typeof scope.cb == 'function') {
+								$timeout(function() {
+									scope.cb(data);
+								}, 50);
 							}
 						});
 					}
