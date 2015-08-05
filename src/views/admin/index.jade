@@ -4,7 +4,7 @@
       header#admin-header
         h2 
           a(ui-sref="admin.sensors") Área administrativa
-        nav(ng-show="user").row
+        nav(ng-show="token").row
           ul.tabbed-nav
             li(ui-sref-active="active")
               a(ui-sref="admin.sensors") 
@@ -21,7 +21,7 @@
                 | Usuários
               ul
                 li
-                  a(ui-sref="admin.users") 
+                  a(ui-sref="admin.users.new") 
                     span.icon-plus 
                     | Novo usuário
             li(ui-sref-active="active")

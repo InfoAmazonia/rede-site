@@ -523,7 +523,7 @@ angular.module('rede')
 		$scope.$watch(function() {
 			return Auth.getToken();
 		}, function(user) {
-			$scope.user = user;
+			$scope.token = user;
 			if(user && user.role == 'admin') {
 				if($state.current.name == 'admin') {
 					$state.go('admin.sensors');
@@ -545,7 +545,8 @@ angular.module('rede')
 	'$scope',
 	'RedeService',
 	'SensorsData',
-	function($scope, Rede, Sensors) {
+	'MessageService',
+	function($scope, Rede, Sensors, Message) {
 		$scope.sensors = Sensors.sensors;
 
 		var updatePaging = function(data) {
@@ -569,7 +570,10 @@ angular.module('rede')
 
 		$scope.deleteSensor = function(sensor) {
 			if(confirm('Você tem certeza?')) {
-				console.log('delete');
+				Rede.sensors.delete({id: sensor._id}, function() {
+					Message.add('Sensor removido.');
+					$scope.sensors = _.filter($scope.sensors, function(s) { return s._id !== sensor._id; });
+				});
 			}
 		}
 	}
@@ -616,13 +620,34 @@ angular.module('rede')
 	'RedeService',
 	'$stateParams',
 	'$state',
-	function($scope, Rede, $stateParams, $state) {
+	'MessageService',
+	function($scope, Rede, $stateParams, $state, Message) {
 
 		if($state.params.userId) {
 			Rede.sensors.get({id: $state.params.userId}, function(sensor) {
 				$scope.user = user;
 			})
 		}
+
+		$scope.user = {};
+
+		$scope.submit = function(user) {
+			if(user.password !== user.password_repeat) {
+				Message.add('Senhas não coincidem');
+			} else {
+				if(user._id) {
+					Rede.users.update(user, function(u) {
+						$scope.user = u;
+						Message.add('Usuário atualizado.');
+					});
+				} else {
+					Rede.users.save(user, function(u) {
+						$scope.user = u;
+						Message.add('Usuário criado.');
+					});
+				}
+			}
+		};
 
 		$scope.broadcast = function(msg) {
 			if($scope.user) {
