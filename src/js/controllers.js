@@ -2,6 +2,50 @@
 
 angular.module('rede')
 
+.controller('AccountCtrl', [
+	'$scope',
+	'RedeService',
+	'RedeAuth',
+	'MessageService',
+	function($scope, Rede, Auth, Message) {
+
+		$scope.updateProfile = function(user) {
+			Rede.users.updateAccount(user, function(user) {
+				Auth.setToken(_.extend(Auth.getToken(), user));
+				Message.add('Informações atualizadas!');
+			});
+		};
+
+		$scope.pwd = {};
+
+		$scope.updatePwd = function(pwd) {
+			if(!pwd.password) {
+				Message.add('Você deve inserir uma senha');
+			} else if(pwd.password !== pwd.password_repeat) {
+				Message.add('Verifique se as senhas digitadas são identicas');
+			} else {
+				Rede.users.updateAccount(pwd, function(user) {
+					Message.add('Senha atualizada');
+					$scope.pwd = {};
+				});
+			}
+		};
+
+		$scope.$watch(function() {
+			return Auth.getToken();
+		}, function() {
+			$scope.user = Auth.getToken();
+			$scope.sensors = [];
+			console.log($scope.user);
+			_.each($scope.user.subscribedToSensors, function(sensor) {
+				Rede.sensors.get({id: sensor}, function(data) {
+					$scope.sensors.push(data);
+				});
+			});
+		}, true);
+	}
+])
+
 .controller('MapCtrl', [
 	'$scope',
 	'CartoDBService',
@@ -168,7 +212,7 @@ angular.module('rede')
 				};
 			})
 			.error(function(data, status, headers, config) {
-				console.log(data);
+				// console.log(data);
 			});
 
 		var latLngs = [];
@@ -351,10 +395,45 @@ angular.module('rede')
 .controller('SensorSubscription', [
 	'$scope',
 	'MessageService',
-	function($scope, MessageService) {
+	'RedeAuth',
+	'RedeService',
+	'$state',
+	function($scope, Message, Auth, Rede, $state) {
 
-		$scope.subscribe = function(user) {
-			console.log('login');
+		$scope.token = Auth.getToken();
+
+		$scope.subscribed = function() {
+			if(Auth.getToken() && _.find(Auth.getToken().subscribedToSensors, function(sensor) { return sensor == $state.params.sensorId; })) {
+				return true;
+			}
+			return false;
+		}
+
+		$scope.subscribe = function() {
+			if(!$scope.subscribed()) {
+				Rede.sensors.subscribe({id: $state.params.sensorId}, function(data) {
+					Message.add('Você está assinando este sensor!');
+					$state.go('sensor', {sensorId: $state.params.sensorId});
+					Auth.setToken(_.extend(Auth.getToken(), data.user));
+				}, function(data) {
+					console.log(data);
+				});
+			} else if(Auth.getToken()) {
+				Message.add('Você já assina este sensor!');
+				$state.go('sensor', {sensorId: $state.params.sensorId});
+			}
+		}
+
+		$scope.unsubscribe = function(sensorId) {
+			sensorId = sensorId || $state.params.sensorId;
+			if(Auth.getToken()) {
+				Rede.sensors.unsubscribe({id: sensorId}, function(data) {
+					Message.add('Você deixou de assinar este sensor!');
+					Auth.setToken(_.extend(Auth.getToken(), data.user));
+				}, function(data) {
+					console.log(data);
+				});
+			}
 		}
 
 	}
@@ -405,43 +484,22 @@ angular.module('rede')
 	}
 ])
 
-.controller('AuthFormCtrl', [
+.controller('AuthCtrl', [
 	'$scope',
 	'RedeService',
 	'RedeAuth',
-	'MessageService',
-	function($scope, Rede, Auth, Message) {
+	function($scope, Rede, Auth) {
 
-		$scope.form = 'register';
+		$scope.$watch(function() {
+			return Auth.getToken();
+		}, function(token) {
+			console.log(token);
+			$scope.token = token;
+		});
 
-		$scope.switch = function(form) {
-			$scope.form = form;
+		$scope.logout = function() {
+			Auth.logout();
 		};
-
-		$scope.register = function(user, cb) {
-			if(user.password !== user.password_repeat) {
-				Message.add('Verifique se as senhas digitadas são iguais');
-			} else {
-				Auth.register(user).then(function(data) {
-					if(typeof cb == 'function') {
-						cb(data);
-					}
-				});
-			}
-		}
-
-		$scope.login = function(credentials, cb) {
-			Auth.login(credentials).then(function(data) {
-				if(typeof cb == 'function') {
-					cb(data);
-				}
-			});
-		}
-
-		$scope.auth = function(user) {
-			if($scope[$scope.form])
-				$scope[$scope.form](user);
-		}
 
 	}
 ])

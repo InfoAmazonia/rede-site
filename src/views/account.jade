@@ -1,0 +1,26 @@
+#account
+  .container
+    .six.columns.offset-by-three
+      h2 
+        a(ui-sref="account") Meu perfil
+      div(ui-view autoscroll="false")
+        form#profile(ng-submit="updateProfile(user)")
+          p
+            input(type="text" placeholder="Seu nome" ng-model="user.name")
+          p
+            input(type="text" placeholder="Seu email" ng-model="user.email")
+          p
+            input(type="text" placeholder="Seu telefone" ng-model="user.phoneNumber" international-phone-number preferred-countries="br" utils-script="/lib/intl-tel-input/utils.js")
+          p
+            input(type="submit" value="Atualizar")
+            
+        form#password(ng-submit="updatePwd(pwd)")
+          h3 Atualizar senha
+          p
+            input(type="password" placeholder="Senha atual" ng-model="pwd.oldPassword")
+          p
+            input(type="password" placeholder="Nova senha" ng-model="pwd.password")
+          p
+            input(type="password" placeholder="Repetir nova senha" ng-model="pwd.password_repeat")
+          p
+            input(type="submit" value="Atualizar")

@@ -20,10 +20,13 @@ article#sensor
 							a(ui-sref="sensor({'#': 'sensor-main'})") Últimas medições
 							a(ui-sref="sensor({'#': 'sensor-charts'})") Dados históricos
 							a(ui-sref="sensor({'#': 'sensor-city'})" ng-show="visaguasUrl") {{city}}
-					.clearfix
-						a.button.subscribe(ui-sref="sensor.subscribe") 
+					.clearfix(ng-controller="SensorSubscription")
+						a.button.subscribe(ui-sref="sensor.subscribe" ng-hide="subscribed()") 
 							span.icon-rss 
 							| Receba atualizações deste sensor
+						a.button.subscribe(href="#" ng-click="unsubscribe()" ng-show="subscribed()") 
+							span.icon-cross 
+							| Cancelar assinatura deste sensor
 	#sensor-content(ui-view)
 		section#sensor-community.anchor-section
 			.container
