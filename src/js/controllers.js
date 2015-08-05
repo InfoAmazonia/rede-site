@@ -593,13 +593,17 @@ angular.module('rede')
 			})
 		}
 
+		$scope.sensor = {};
+
 		$scope.submit = function(sensor) {
 			if(sensor._id) {
-				Rede.sensors.update(sensor, function() {
+				Rede.sensors.update(sensor, function(s) {
+					$scope.sensor = s;
 					Message.add('Sensor atualizado.');
 				});
 			} else {
-				Rede.sensors.save(sensor, function() {
+				Rede.sensors.save(sensor, function(s) {
+					$scope.sensor = s;
 					Message.add('Sensor criado.');
 				});
 			}
