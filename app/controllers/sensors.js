@@ -141,10 +141,8 @@ exports.unsubscribe = function(req, res, next) {
   var sensor = req.sensor;
   var user = req.account;
 
-  user.subscribedToSensors = _.filter(user.subscribedToSensors, function(id) {
-    return id == sensor._id;
-  });
-
+  user.subscribedToSensors.pull(sensor);
+  
   user.save(function(err) {
     if (err) return res.status(400).json(messaging.mongooseErrors(err, 'users'));
     else res.status(200).json({sensor: sensor, user: user});

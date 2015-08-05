@@ -47,6 +47,7 @@ var user1;
 var user1AccessToken;
 var sensor1;
 var sensorsWithMeasurements;
+var sensor2;
 
 /*
  * The tests
@@ -79,6 +80,7 @@ describe('API: Sensors', function(){
           function(doneEach){
             factory.createSensors(numberOfSensors - numberOfSensorsWithData, function(err, sensors){
               if (err) doneBefore(err);
+              sensor2 = sensors[0];
               doneEach(err, sensors);
             })
           }, function(doneEach){
@@ -540,6 +542,30 @@ describe('API: Sensors', function(){
             });
         });
 
+        it('adds more than one sensor properly', function(doneIt){
+          /* The request */
+          request(app)
+            .post(apiPrefix + '/sensors/'+sensor2._id+'/subscribe')
+            .set('Authorization', user1AccessToken)
+            .expect(200)
+            .end(function(err, res){
+              if (err) return doneIt(err);
+
+              var body = res.body;
+              body.should.have.property('user');
+
+              var user = body.user;
+              user.should.have.property('subscribedToSensors');
+
+              var subscribedToSensors = user['subscribedToSensors'];
+              subscribedToSensors.should.be.an.Array();
+              subscribedToSensors.should.have.length(2);
+              subscribedToSensors.should.containEql(sensor1._id);
+              subscribedToSensors.should.containEql(sensor2._id.toHexString());
+              doneIt();
+            });
+        });
+
         it('should get error for non-existing sensor', function(doneIt){
           /* The request */
           request(app)
@@ -582,7 +608,9 @@ describe('API: Sensors', function(){
 
               var subscribedToSensors = user['subscribedToSensors'];
               subscribedToSensors.should.be.an.Array();
+              subscribedToSensors.should.have.length(1);
               subscribedToSensors.should.not.containEql(sensor1._id);
+              subscribedToSensors.should.containEql(sensor2._id.toHexString());
               doneIt();
             });
         });
