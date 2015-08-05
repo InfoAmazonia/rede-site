@@ -126,7 +126,7 @@ exports.subscribe = function(req, res, next) {
   var sensor = req.sensor;
   var user = req.account;
 
-  user.subscribedToSensors.push(sensor);
+  user.subscribedToSensors.addToSet(sensor);
 
   user.save(function(err) {
     if (err) return res.status(400).json(messaging.mongooseErrors(err, 'users'));

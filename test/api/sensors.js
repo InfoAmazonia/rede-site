@@ -511,6 +511,30 @@ describe('API: Sensors', function(){
 
               var subscribedToSensors = user['subscribedToSensors'];
               subscribedToSensors.should.be.an.Array();
+              subscribedToSensors.should.have.length(1);
+              subscribedToSensors.should.containEql(sensor1._id);
+              doneIt();
+            });
+        });
+
+        it('does not duplicate subscriptions', function(doneIt){
+          /* The request */
+          request(app)
+            .post(apiPrefix + '/sensors/'+sensor1._id+'/subscribe')
+            .set('Authorization', user1AccessToken)
+            .expect(200)
+            .end(function(err, res){
+              if (err) return doneIt(err);
+
+              var body = res.body;
+              body.should.have.property('user');
+
+              var user = body.user;
+              user.should.have.property('subscribedToSensors');
+
+              var subscribedToSensors = user['subscribedToSensors'];
+              subscribedToSensors.should.be.an.Array();
+              subscribedToSensors.should.have.length(1);
               subscribedToSensors.should.containEql(sensor1._id);
               doneIt();
             });
