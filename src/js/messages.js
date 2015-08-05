@@ -152,4 +152,27 @@ angular.module('rede')
 		};
 
 	}
-]);
+])
+.factory('messageAuthInterceptor', [
+	'$q',
+	'MessageService',
+	'RedeMsgs',
+	function($q, Message, Msgs) {
+		return {
+			responseError: function(rejection) {
+				if(rejection.data.messages) {
+					_.each(rejection.data.messages, function(msg) {
+						Message.add(Msgs.get(msg.text));
+					});
+				}
+				return $q.reject(rejection);
+			}
+		};
+	}
+])
+.config([
+	'$httpProvider',
+	function($httpProvider) {
+		$httpProvider.interceptors.push('messageAuthInterceptor');
+	}
+]);;

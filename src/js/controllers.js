@@ -430,8 +430,6 @@ angular.module('rede')
 					Message.add('Você está assinando este sensor!');
 					$state.go('sensor', {sensorId: $state.params.sensorId});
 					Auth.setToken(_.extend(Auth.getToken(), data.user));
-				}, function(data) {
-					console.log(data);
 				});
 			} else if(Auth.getToken()) {
 				Message.add('Você já assina este sensor!');
@@ -445,8 +443,6 @@ angular.module('rede')
 				Rede.sensors.unsubscribe({id: sensorId}, function(data) {
 					Message.add('Você deixou de assinar este sensor!');
 					Auth.setToken(_.extend(Auth.getToken(), data.user));
-				}, function(data) {
-					console.log(data);
 				});
 			}
 		}
@@ -508,7 +504,6 @@ angular.module('rede')
 		$scope.$watch(function() {
 			return Auth.getToken();
 		}, function(token) {
-			console.log(token);
 			$scope.token = token;
 		});
 
@@ -585,13 +580,26 @@ angular.module('rede')
 	'RedeService',
 	'$stateParams',
 	'$state',
-	function($scope, Rede, $stateParams, $state) {
+	'MessageService',
+	function($scope, Rede, $stateParams, $state, Message) {
 
 		if($state.params.sensorId) {
 			Rede.sensors.get({id: $state.params.sensorId}, function(sensor) {
 				$scope.sensor = sensor;
 			})
 		}
+
+		$scope.submit = function(sensor) {
+			if(sensor._id) {
+				Rede.sensors.update(sensor, function() {
+					Message.add('Sensor atualizado.');
+				});
+			} else {
+				Rede.sensors.save(sensor, function() {
+					Message.add('Sensor criado.');
+				});
+			}
+		};
 
 		$scope.broadcast = function(msg) {
 			if($scope.sensor) {

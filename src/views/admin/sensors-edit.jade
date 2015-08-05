@@ -7,6 +7,9 @@ form(ng-submit="submit(sensor)")
     label(for="input_name") Nome 
     input#input_name(type="text" ng-model="sensor.name")
   p
+    label(for="input_name") Identificador 
+    input#input_name(type="text" ng-model="sensor.identifier")
+  p
     label(for="input_latitude") Latitude
     input#input_latitude(type="text" ng-model="sensor.geometry.coordinates[1]")
   p

@@ -4,9 +4,7 @@ angular.module('rede')
 	'$resource',
 	'$http',
 	'$q',
-	'MessageService',
-	'RedeMsgs',
-	function($resource, $http, $q, Message, Msgs) {
+	function($resource, $http, $q, Msgs) {
 
 		var apiUrl = '/api/v1';
 
@@ -23,17 +21,7 @@ angular.module('rede')
 				},
 				updateAccount: {
 					url: apiUrl + '/account',
-					method: 'PUT',
-					transformResponse: function(data) {
-						if(typeof data == 'string')
-							data = JSON.parse(data);
-						if(data.messages) {
-							_.each(data.messages, function(msg) {
-								Message.add(Msgs.get(msg.text));
-							});
-						}
-						return data;
-					}
+					method: 'PUT'
 				}
 			}),
 			sensors: $resource(apiUrl + '/sensors/:id', { id: '@id' }, {
@@ -42,7 +30,10 @@ angular.module('rede')
 					isArray: false
 				},
 				update: {
-					method: 'PUT'
+					method: 'PUT',
+					params: {
+						id: '@_id'
+					}
 				},
 				getScore: {
 					url: apiUrl + '/sensors/:id/score',
@@ -125,10 +116,8 @@ angular.module('rede')
 	'$q',
 	'$window',
 	'$cookies',
-	'MessageService',
-	'RedeMsgs',
 	'$http',
-	function(Rede, $q, $window, $cookies, Message, Msgs, $http) {
+	function(Rede, $q, $window, $cookies, $http) {
 
 		var apiUrl = '/api/v1';
 
@@ -161,14 +150,6 @@ angular.module('rede')
 						password: data.password
 					});
 					deferred.resolve(user);
-				}, function(res) {
-					var data = res.data;
-					if(data.messages) {
-						_.each(data.messages, function(msg) {
-							Message.add(Msgs.get(msg.text));
-						});
-					}
-					deferred.reject(data);
 				});
 				return deferred.promise;
 			},
@@ -179,14 +160,6 @@ angular.module('rede')
 				.success(function(data) {
 					self.setToken(data);
 					deferred.resolve(data);
-				})
-				.error(function(data) {
-					deferred.reject(data);
-					if(data.messages) {
-						_.each(data.messages, function(msg) {
-							Message.add(Msgs.get(msg.text));
-						});
-					}
 				});
 				return deferred.promise;
 			},
