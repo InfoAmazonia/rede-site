@@ -4,7 +4,7 @@
       header#admin-header
         h2 
           a(ui-sref="admin.sensors") Área administrativa
-        nav(ng-show="loggedIn").row
+        nav(ng-show="user").row
           ul.tabbed-nav
             li(ui-sref-active="active")
               a(ui-sref="admin.sensors") 
@@ -30,11 +30,4 @@
                 | Broadcast
   .container
     .twelve.columns
-      form#login(ng-submit="login(auth)" ng-show="!loggedIn")
-        p
-          input(type="email" placeholder="Email" ng-model="auth.email")
-        p
-          input(type="password" placeholder="Senha" ng-model="auth.password")
-        p
-          input(type="submit" value="Entrar")
       div(ui-view autoscroll="false")

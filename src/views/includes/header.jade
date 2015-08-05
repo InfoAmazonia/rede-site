@@ -20,6 +20,8 @@ header#masthead.row
 							| Minha conta 
 							span.icon-chevron-down
 						ul.account(ng-show="token")
+							li
+								a(ui-sref="admin" ng-show="token.role == 'admin'") Área administrativa
 							li 
 								a(ui-sref="account") Editar minha conta
 							li 

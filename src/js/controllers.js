@@ -520,17 +520,21 @@ angular.module('rede')
 ])
 
 .controller('AdminCtrl', [
+	'RedeAuth',
 	'RedeService',
 	'$scope',
 	'$state',
-	function(Rede, $scope, $state) {
-		$scope.loggedIn = false;
-		$scope.login = function(data) {
-			$scope.loggedIn = true;
-		};
-		$scope.$watch('loggedIn', function(loggedIn) {
-			if(loggedIn && $state.current.name == 'admin') {
-				$state.go('admin.sensors');
+	function(Auth, Rede, $scope, $state) {
+		$scope.$watch(function() {
+			return Auth.getToken();
+		}, function(user) {
+			$scope.user = user;
+			if(user && user.role == 'admin') {
+				if($state.current.name == 'admin') {
+					$state.go('admin.sensors');
+				}
+			} else {
+				$state.go('home');
 			}
 		});
 
