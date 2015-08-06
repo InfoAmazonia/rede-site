@@ -31,8 +31,8 @@ module.exports = function (app, config) {
   apiRoutes.param('user_id', users.load);
   apiRoutes.get('/users', [auth.isLogged, auth.isAdmin, users.list]);
   apiRoutes.post('/users', users.new);
+  apiRoutes.get('/users/:user_id', [auth.isLogged, auth.isAdmin, users.show]);
   apiRoutes.put('/users/:user_id', [auth.isLogged, auth.isAdmin, users.update]);
-  apiRoutes.get('/users/:id', [auth.isLogged, auth.isAdmin, users.show]);
 
   // account routes
   apiRoutes.get('/account', [auth.isLogged, account.show]);

@@ -133,57 +133,18 @@ UserSchema.methods = {
 		}
 	},
 
-	/**
-	 * Send reset password token if not using OAuth
-	 */
+	privateInfo: function() {
+		var info = {
+			_id: this._id,
+			name: this.name,
+			email: this.email,
+			emailConfirmed: this.emailConfirmed,
+			role: this.role,
+			registeredAt: this.registeredAt
+		};
 
-	sendResetToken: function() {
-		var
-			Token = mongoose.model('Token'),
-			self = this,
-			token;
-
-
-		if (self.doesNotRequireValidation){
-			var seed = crypto.randomBytes(20);
-			var id = crypto.createHash('sha1').update(seed).digest('hex');
-
-			token = new Token({
-				_id: id,
-				user: self,
-				expiresAt: moment().add('hour', 1).toDate()
-			}).save();
-		}
-	},
-
-	sendEmailConfirmation: function(newEmail) {
-		// TODO: Expire all prior e-mail confirmations
-
-		var self = this;
-		var Token = mongoose.model('Token');
-		var seed = crypto.randomBytes(20);
-		var token = new Token({user: self._id, type: 'email_confirmation'});
-		token._id = crypto.createHash('sha1').update(seed).digest('hex');
-
-		// keep new e-mail address for e-mail changes
-		if (newEmail) token.data = {newEmail: newEmail};
-
-		token.save(function(err) {
-			if (err)
-				return res.json(401, messaging.mongooseErrors('access_token.error'));
-
-			client.sendEmail({
-				"From": 'cidadescomestiveis@muda.org.br',
-				"ReplyTo": 'naoresponda@muda.org.br',
-				"To": self.email,
-				"Subject": 'Confirme seu e-mail',
-				"TextBody": 'Para acessar o Cidades Comestíveis, confirmar seu e-mail no visitando o link:\n\n'
-											+ process.env.APP_URL + '/token/' + token._id
-			}, function(err, success){
-				if (err) console.log('error while sending e-mail confirmation');
-			})
-		})
-	},
+		return info;
+	}
 }
 
 

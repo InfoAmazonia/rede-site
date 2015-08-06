@@ -81,7 +81,7 @@ Possible responses:
 
 ### GET users
 
-Get a list of sensors, needs authentication and `admin` role.
+Get a list of users, needs authentication and `admin` role.
 
 Parameters:
 - `perPage`: _number_ (default: 20)
@@ -91,7 +91,6 @@ Possible responses:
 - `200` Success and list of users:
 - `400` Bad request.
 - `401` Unauthorized.
-
 
 ---
 
@@ -110,6 +109,20 @@ Possible responses:
 - `400` Bad request;
 - `401` Unauthorized;
 - `500` Internal error.
+
+---
+
+### GET users/:user_id
+
+Get user details.
+
+Parameters:
+- `:user_id`: _string_ (required)
+
+Possible responses:
+- `200` Success and JSON:
+- `400` Bad request.
+- `401` Unauthorized.
 
 ---
 

@@ -195,7 +195,7 @@ describe('API: Users', function(){
   /*
    * GET account
    */
-  describe('PUT account', function(){
+  describe('GET account', function(){
     context('is not logged', function(){
       it('returns 401', function(doneIt){
 
@@ -382,6 +382,72 @@ describe('API: Users', function(){
       });
     });
   });
+
+  /*
+   * GET users/:user_id
+   */
+  describe('GET users/:user_id', function(){
+
+    it('status 401 when not logged in', function(doneIt){
+      request(app)
+        .get(apiPrefix + '/users/'+user1._id)
+        .expect(401)
+        .expect('Content-Type', /json/)
+        .end(function(err,res){
+          if (err) doneIt(err);
+          res.body.messages.should.have.lengthOf(1);
+          messaging.hasValidMessages(res.body).should.be.true;
+          res.body.messages[0].should.have.property('text', 'access_token.unauthorized');
+          doneIt();
+      });
+    });
+
+    it('status 401 for non-admin users', function(doneIt){
+      request(app)
+        .get(apiPrefix + '/users/'+user1._id)
+        .set('Authorization', user1AccessToken)
+        .expect(401)
+        .expect('Content-Type', /json/)
+        .end(function(err,res){
+          if (err) doneIt(err);
+          res.body.messages.should.have.lengthOf(1);
+          messaging.hasValidMessages(res.body).should.be.true;
+          res.body.messages[0].should.have.property('text', 'access_token.unauthorized');
+          doneIt();
+      });
+    });
+
+
+    it('return user info when user is admin', function(doneIt){
+
+      /* The request */
+      request(app)
+        .get(apiPrefix + '/users/'+user1._id)
+        .set('Authorization', admin1AccessToken)
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end(onResponse);
+
+      /* Verify response */
+      function onResponse(err, res) {
+        if (err) return doneIt(err);
+
+        /* Check pagination */
+        var user = res.body;
+
+        /* User basic info */
+        user.should.have.property('_id', user1._id);
+        user.should.have.property('name', user1.name);
+        user.should.have.property('email', user1.email);
+        user.should.have.property('role', user1.role);
+        user.should.have.property('registeredAt');
+        user.should.not.have.property('password');
+        user.should.not.have.property('salt');
+        doneIt();
+      }
+    });
+  });
+
 
   /*
    * PUT users/:user_id
