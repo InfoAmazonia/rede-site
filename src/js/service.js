@@ -84,7 +84,6 @@ angular.module('rede')
 					}
 				});
 			},
-			stories: $http.get('http://infoamazonia.org/?publisher=infoamazonia&posts_per_page=20&lang=pt&geojson=1'),
 			sensorToGeoJSON: function(sensors) {
 
 				var geojson = {

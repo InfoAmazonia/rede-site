@@ -8,7 +8,25 @@ angular.module('rede')
 .config([
 	'$httpProvider',
 	function($httpProvider) {
-		$httpProvider.interceptors.push('MessageInterceptor');
+		$httpProvider.interceptors.push('messageInterceptor');
+	}
+])
+
+.factory('messageInterceptor', [
+	'$q',
+	'MessageService',
+	'RedeMsgs',
+	function($q, Message, Msgs) {
+		return {
+			responseError: function(rejection) {
+				if(rejection.data && rejection.data.messages) {
+					_.each(rejection.data.messages, function(msg) {
+						Message.add(Msgs.get(msg.text));
+					});
+				}
+				return $q.reject(rejection);
+			}
+		};
 	}
 ])
 
@@ -71,34 +89,6 @@ angular.module('rede')
 	}
 ])
 
-.factory('MessageInterceptor', [
-	'$q',
-	'$rootScope',
-	'$timeout',
-	'MessageService',
-	function($q, $rootScope, $timeout, Message) {
-
-		return {
-			request: function(config) {
-				return config || $q.when(config);
-			},
-			response: function(response) {
-				if(response.data.length && response.data[0].message) {
-					Message.add(response.data[0].message);
-				}
-				return response || $q.when(response);
-			},
-			responseError: function(rejection) {
-				if(rejection.data.length && rejection.data[0].message) {
-					Message.add(rejection.data[0].message);
-				}
-				return $q.reject(rejection);
-			}
-		}
-
-	}
-])
-
 .run([
 	'$rootScope',
 	'MessageService',
@@ -152,27 +142,4 @@ angular.module('rede')
 		};
 
 	}
-])
-.factory('messageAuthInterceptor', [
-	'$q',
-	'MessageService',
-	'RedeMsgs',
-	function($q, Message, Msgs) {
-		return {
-			responseError: function(rejection) {
-				if(rejection.data.messages) {
-					_.each(rejection.data.messages, function(msg) {
-						Message.add(Msgs.get(msg.text));
-					});
-				}
-				return $q.reject(rejection);
-			}
-		};
-	}
-])
-.config([
-	'$httpProvider',
-	function($httpProvider) {
-		$httpProvider.interceptors.push('messageAuthInterceptor');
-	}
-]);;
+]);

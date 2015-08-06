@@ -175,60 +175,46 @@ angular.module('rede')
 
 		$scope.sensors = sensors.sensors;
 
-		Rede.stories
-			.success(function(data) {
-				$scope.stories = data;
-				$scope.geojson = {
-					data: {
-						type: "FeatureCollection",
-						features: Rede.sensorToGeoJSON($scope.sensors).features.concat($scope.stories.features)
-					},
-					pointToLayer: function(f, latlng) {
-						if(!f.properties.postID) {
-							return new L.Marker(latlng, {
-								icon: L.icon({
-									iconUrl: '/img/sensor-icon-white-small.png',
-									iconSize: [20,20],
-									shadowSize: [0,0],
-									iconAnchor: [10,10],
-									shadowAnchor: [0,0],
-									popupAnchor: [0,-10]
-								})
-							});
-						} else {
-							return new L.Marker(latlng);
-						}
-					},
-					onEachFeature: function(f, layer) {
-						if(f.properties.postID) {
-							layer.bindPopup('Artigo: ' + f.properties.title);
-						} else {
-							layer.bindPopup(f.properties.name);
-						}
-						layer.on('mouseover', function() {
-							layer.openPopup();
-							layer.setZIndexOffset(1000);
+		$scope.geojson = {
+			data: Rede.sensorToGeoJSON($scope.sensors),
+			pointToLayer: function(f, latlng) {
+				return new L.Marker(latlng, {
+					icon: L.icon({
+						iconUrl: '/img/sensor-icon-white-small.png',
+						iconSize: [20,20],
+						shadowSize: [0,0],
+						iconAnchor: [10,10],
+						shadowAnchor: [0,0],
+						popupAnchor: [0,-10]
+					})
+				});
+			},
+			onEachFeature: function(f, layer) {
+				if(f.properties.postID) {
+					layer.bindPopup('Artigo: ' + f.properties.title);
+				} else {
+					layer.bindPopup(f.properties.name);
+				}
+				layer.on('mouseover', function() {
+					layer.openPopup();
+					layer.setZIndexOffset(1000);
+				});
+				layer.on('mouseout', function() {
+					layer.closePopup();
+					layer.setZIndexOffset(0);
+				});
+				layer.on('click', function() {
+					if(f.properties.postID) {
+						window.open(f.properties.url, '_blank');
+					} else {
+						$scope.$apply(function() {
+							$scope.sensor = f.properties._id;
 						});
-						layer.on('mouseout', function() {
-							layer.closePopup();
-							layer.setZIndexOffset(0);
-						});
-						layer.on('click', function() {
-							if(f.properties.postID) {
-								window.open(f.properties.url, '_blank');
-							} else {
-								$scope.$apply(function() {
-									$scope.sensor = f.properties._id;
-								});
-							}
-						});
-						sCount++;
 					}
-				};
-			})
-			.error(function(data, status, headers, config) {
-				// console.log(data);
-			});
+				});
+				sCount++;
+			}
+		};
 
 		var latLngs = [];
 		_.each($scope.sensors, function(feature) {
@@ -619,6 +605,44 @@ angular.module('rede')
 	}
 ])
 
+.controller('AdminUserCtrl', [
+	'RedeService',
+	'MessageService',
+	'UsersData',
+	'$scope',
+	function(Rede, Message, Users, $scope) {
+		$scope.users = Users.users;
+
+		var updatePaging = function(data) {
+			$scope.page = data.page;
+			$scope.count = data.count;
+			$scope.perPage = data.perPage;
+			$scope.showNext = $scope.count > $scope.page * $scope.perPage;
+			$scope.showPrev = $scope.page > 1;
+		};
+
+		var query = {};
+
+		$scope.$on('$stateChangeSuccess', function(event, toState, toParams) {
+			$scope.page = toParams.page || 1;
+			query = _.extend({'page': $scope.page}, query);
+			Rede.users.query(query, function(data) {
+				$scope.users = data.users;
+				updatePaging(data);
+			});
+		});
+
+		$scope.deleteUser = function(user) {
+			if(confirm('Você tem certeza?')) {
+				Rede.users.delete({id: user._id}, function() {
+					Message.add('Usuário removido.');
+					$scope.users = _.filter($scope.users, function(s) { return s._id !== user._id; });
+				});
+			}
+		}
+	}
+])
+
 .controller('AdminEditUserCtrl', [
 	'$scope',
 	'RedeService',
@@ -627,13 +651,13 @@ angular.module('rede')
 	'MessageService',
 	function($scope, Rede, $stateParams, $state, Message) {
 
+		$scope.user = {};
+
 		if($state.params.userId) {
-			Rede.sensors.get({id: $state.params.userId}, function(sensor) {
+			Rede.users.get({id: $state.params.userId}, function(user) {
 				$scope.user = user;
 			})
 		}
-
-		$scope.user = {};
 
 		$scope.submit = function(user) {
 			if(user.password !== user.password_repeat) {
@@ -712,13 +736,5 @@ angular.module('rede')
 			});
 		});
 
-	}
-])
-
-.controller('AdminUserCtrl', [
-	'UsersData',
-	'$scope',
-	function(Users, $scope) {
-		console.log(Users);
 	}
 ]);

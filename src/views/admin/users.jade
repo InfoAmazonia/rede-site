@@ -17,6 +17,7 @@
         tr
           th Nome
           th Email
+          th Função
           th Telefone
           th Editar
           th Remover
@@ -24,7 +25,8 @@
         tr(ng-repeat="user in users")
           td {{user.name}}
           td {{user.email}}
-          td {{user.phone}}
+          td {{user.role}}
+          td {{user.phoneNumber}}
           td
             a.button(ui-sref="admin.users.edit({userId: user._id})")
               span.icon-edit 
@@ -33,3 +35,6 @@
             a.button.delete(href="javascript:void(0);" ng-click="deleteUser(user)") 
               span.icon-cross 
               | Remover
+    p.pagination.clearfix.row(ng-show="showPrev || showNext")
+      a.button.prev(ui-sref="admin.sensors({page: page-1})" ng-show="showPrev") Página anterior
+      a.button.next(ui-sref="admin.sensors({page: page+1})" ng-show="showNext") Próxima página
