@@ -11,7 +11,7 @@ form(ng-submit="submit(user)")
     input#input_email(type="text" ng-model="user.email")
   p
     label(for="input_phone") Telefone
-    input#input_phone(type="text" ng-model="user.phone" international-phone-number preferred-countries="br" utils-script="/lib/intl-tel-input/utils.js")
+    input#input_phone(type="text" ng-model="user.phoneNumber" international-phone-number preferred-countries="br" utils-script="/lib/intl-tel-input/utils.js")
   p
     label(for="input_role") Função
     select#input_role(ng-model="user.role")
