@@ -138,7 +138,9 @@ UserSchema.methods = {
 			_id: this._id,
 			name: this.name,
 			email: this.email,
+			phoneNumber: this.phoneNumber,
 			emailConfirmed: this.emailConfirmed,
+			subscribedToSensors: this.subscribedToSensors,
 			role: this.role,
 			registeredAt: this.registeredAt
 		};
