@@ -22,6 +22,28 @@ exports.load = function (req, res, next, id){
 };
 
 /*
+ * New measurements
+ */
+exports.new = function(req, res) {
+  var body = req.body;
+
+  var data = req.body.data;
+  if (!data) return res.status(400).json({messages: ['missing data parameter']});
+
+  var sensorIdentifier = req.body.sensorIdentifier;
+  if (!sensorIdentifier) return res.status(400).json({messages: ['missing sensor identifier']});
+
+  Sensor.findOne({identifier: sensorIdentifier}, function(err, sensor){
+    if (err) return res.sendStatus(500);
+    if (!sensor) return res.status(404).json({messages: ['sensor not found']});
+    sensor.saveMeasurementBatch(body.data, function(err, measurements){
+      if (err) return res.sendStatus(500);
+      else res.status(200).json({measurements: measurements});
+    });
+  });
+}
+
+/*
  * List
  */
 exports.list = function(req, res) {
@@ -89,23 +111,5 @@ exports.remove = function(req, res) {
   measurement.remove(function(err) {
     if (err) return res.sendStatus(500);
     else res.sendStatus(200);
-  });
-}
-
-/*
- * Save batch
- */
-exports.saveBatch = function(req, res) {
-  var body = req.body;
-
-  var data = req.body.data;
-  if (!data) return res.status(400).json({messages: ['missing data parameter']});
-
-  Sensor.findOne(body.sensor_id, function(err, sensor){
-    if (err) return res.sendStatus(500);
-    sensor.saveMeasurementBatch(body.data, function(err, measurements){
-      if (err) return res.sendStatus(500);
-      else res.status(200).json({measurements: measurements});
-    });
   });
 }

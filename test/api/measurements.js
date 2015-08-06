@@ -100,9 +100,9 @@ describe('API: Measurements', function(){
   });
 
   /*
-   * GET /api/v1/measurements
+   * GET measurements
   */
-  describe('GET /api/v1/measurements', function(){
+  describe('GET measurements', function(){
     it('return 200 and first page when a parameter is defined', function(doneIt){
       var payload = {
         sensor_id: sensor1._id.toHexString(),
@@ -286,26 +286,26 @@ describe('API: Measurements', function(){
 
 
   /*
-   * POST /api/v1/measurements/batch
+   * POST measurements/new
   */
-  describe('POST /api/v1/measurements/batch', function(){
+  describe('POST measurements/new', function(){
     it('should return 200 for valid data', function(doneIt){
       var payload = {
-        sensor_id: sensor1._id.toHexString(),
+        sensorIdentifier: sensor1.identifier,
         data: '2015-07-14T10:08:15-03:00;Tw=20.3;Ta:F=78.29;pH=6.9'
       }
 
       var time = new Date('2015-07-14T10:08:15-03:00');
 
       request(app)
-        .post(apiPrefix + '/measurements/batch')
+        .post(apiPrefix + '/measurements/new')
         .send(payload)
         .expect(200)
         .expect('Content-Type', /json/)
         .end(function(err, res){
           if (err) return doneIt(err);
           var body = res.body;
-
+          
           // Verify each parameter sent
           async.parallel([
             function(doneEach){
