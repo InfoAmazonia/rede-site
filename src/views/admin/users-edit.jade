@@ -13,15 +13,15 @@ form(ng-submit="submit(user)")
     label(for="input_phone") Telefone
     input#input_phone(type="text" ng-model="user.phone" international-phone-number preferred-countries="br" utils-script="/lib/intl-tel-input/utils.js")
   p
-    label(for="input_pwd") Senha
-    input#input_pwd(type="password" ng-model="user.password")
-  p
-    label(for="input_pwd_2") Repetir senha
-    input#input_pwd_2(type="password" ng-model="user.repeat_password")
-  p
     label(for="input_role") Função
     select#input_role(ng-model="user.role")
       option(value="admin") Administrador
       option(value="subscriber") Assinante
+  p
+    label(for="input_pwd") Senha
+    input#input_pwd(type="password" ng-model="user.password")
+  p
+    label(for="input_pwd_2") Repetir senha
+    input#input_pwd_2(type="password" ng-model="user.password_repeat")
   p
     input(type="submit" value="Enviar")

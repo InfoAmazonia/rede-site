@@ -17,7 +17,10 @@ angular.module('rede')
 					isArray: false
 				},
 				update: {
-					method: 'PUT'
+					method: 'PUT',
+					params: {
+						id: '@_id'
+					}
 				},
 				updateAccount: {
 					url: apiUrl + '/account',
