@@ -312,6 +312,98 @@ Possible responses:
 
 ---
 
+## POST measurements/new
+
+Send one or more measurements using [measurement data protocol].
+
+Parameters:
+- `sensorIdentifier`: _string_ (required)
+- `data`: _string_ (optional)
+
+Possible responses:
+- `200` Success and list of measurements:
+- `400` Bad request.
+
+Example request for a sensor with '5555' as identifier:
+
+```
+curl 'http://localhost:3000/api/v1/measurements/new' \
+     -H "Content-Type: application/json" \
+     --data-binary \
+      '{"sensorIdentifier":"5555","data":"2015-08-01T10:08:15-03:00;Tw=20.3;Ta:F=78.29;pH=6.9"}' \
+     --compressed
+```
+
+A list of measurements will be return as JSON, with HTTP status code 200 (success):
+
+```
+{
+    "measurements": [{
+        "__v": 0,
+        "sensor": {
+            "_id": "55c3af3e8037a34d53461da8",
+            "name": "Sensor de teste",
+            "identifier": "5555",
+            "__v": 0,
+            "createdAt": "2015-08-06T19:02:22.989Z",
+            "geometry": {
+                "coordinates": [{
+                    "0": "1",
+                    "1": "1"
+                }]
+            }
+        },
+        "collectedAt": "2015-08-01T13:08:15.000Z",
+        "parameter": "water_temperature",
+        "unit": null,
+        "value": 20.3,
+        "_id": "55c4ba47b01be2cb5b3c76b0"
+    }, {
+        "__v": 0,
+        "sensor": {
+            "_id": "55c3af3e8037a34d53461da8",
+            "name": "Sensor de teste",
+            "identifier": "5555",
+            "__v": 0,
+            "createdAt": "2015-08-06T19:02:22.989Z",
+            "geometry": {
+                "coordinates": [{
+                    "0": "1",
+                    "1": "1"
+                }]
+            }
+        },
+        "collectedAt": "2015-08-01T13:08:15.000Z",
+        "parameter": "ambient_temperature",
+        "unit": "F",
+        "value": 78.29,
+        "_id": "55c4ba47b01be2cb5b3c76b1"
+    }, {
+        "__v": 0,
+        "sensor": {
+            "_id": "55c3af3e8037a34d53461da8",
+            "name": "Sensor de teste",
+            "identifier": "5555",
+            "__v": 0,
+            "createdAt": "2015-08-06T19:02:22.989Z",
+            "geometry": {
+                "coordinates": [{
+                    "0": "1",
+                    "1": "1"
+                }]
+            }
+        },
+        "collectedAt": "2015-08-01T13:08:15.000Z",
+        "parameter": "ph",
+        "unit": null,
+        "value": 6.9,
+        "_id": "55c4ba47b01be2cb5b3c76b2"
+    }]
+}
+```
+
+---
+
 # Measurement data protocol
 
 Sensors should send data as string, using the pattern:
