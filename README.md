@@ -42,7 +42,7 @@ Run `npm start`.
 
 ## Measurements
 - [GET measurements](#get-measurements)
-- [POST measurements](#post-measurementsnew)
+- [POST measurements/new](#post-measurementsnew)
 - [GET measurements/:measurement_id](#get-measurementssensor_id)
 - [PUT measurements/:measurement_id](#put-measurementssensor_id)
 - [DEL measurements/:measurement_id](#del-measurementsmeasurement_id)
@@ -318,11 +318,12 @@ Send one or more measurements using [measurement data protocol].
 
 Parameters:
 - `sensorIdentifier`: _string_ (required)
-- `data`: _string_ (optional)
+- `data`: _string_ (required)
 
 Possible responses:
 - `200` Success and list of measurements:
 - `400` Bad request.
+- `404` Sensor not found.
 
 Example request for a sensor with '5555' as identifier:
 
