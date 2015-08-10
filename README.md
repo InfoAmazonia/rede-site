@@ -24,6 +24,7 @@ Run `npm start`.
 - [GET users](#get-users)
 - [POST users](#post-users)
 - [PUT users/:user_id](#put-usersuser_id)
+- [DEL users/:user_id](#del-usersuser_id)
 
 ## Account
 
@@ -49,7 +50,7 @@ Run `npm start`.
 
 ## Users
 
-### PUT account
+### GET account
 
 Gets account information.
 
@@ -141,6 +142,20 @@ Possible responses:
 - `200` Success + user object json;
 - `400` Bad request;
 - `401` Unauthorized;
+- `500` Internal error.
+
+---
+
+### DEL users/:user_id
+
+Delete user.
+
+Needs authentication and "admin" role.
+
+Possible responses:
+- `200` Success;
+- `401` Unauthorized;
+- `404` Not found;
 - `500` Internal error.
 
 ---
