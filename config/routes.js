@@ -33,6 +33,7 @@ module.exports = function (app, config) {
   apiRoutes.post('/users', users.new);
   apiRoutes.get('/users/:user_id', [auth.isLogged, auth.isAdmin, users.show]);
   apiRoutes.put('/users/:user_id', [auth.isLogged, auth.isAdmin, users.update]);
+  apiRoutes.delete('/users/:user_id', [auth.isLogged, auth.isAdmin, users.remove]);
 
   // account routes
   apiRoutes.get('/account', [auth.isLogged, account.show]);

@@ -60,6 +60,18 @@ exports.update = function(req, res, next) {
 }
 
 /*
+ * Remove
+ */
+exports.remove = function(req, res) {
+  var user = req.user;
+
+  user.remove(function(err) {
+    if (err) return res.sendStatus(500);
+    else res.sendStatus(200);
+  });
+}
+
+/*
  * User list
  */
 exports.list = function(req, res) {

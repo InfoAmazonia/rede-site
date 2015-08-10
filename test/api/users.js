@@ -708,6 +708,62 @@ describe('API: Users', function(){
     });
   });
 
+  /*
+   * DEL users/:user_id
+   */
+  describe('DEL users/:user_id', function(){
+    context('is not logged', function(){
+      it('returns 401', function(doneIt){
+        request(app)
+          .del(apiPrefix + '/users/' + user1._id)
+          .expect(401)
+          .expect('Content-Type', /json/)
+          .end(function(err,res){
+            if (err) doneIt(err);
+            res.body.messages.should.have.lengthOf(1);
+            messaging.hasValidMessages(res.body).should.be.true;
+            res.body.messages[0].should.have.property('text', 'access_token.unauthorized');
+            doneIt();
+          });
+      });
+    });
+
+    context('is regular user', function(){
+      it('returns 401', function(doneIt){
+        request(app)
+          .del(apiPrefix + '/users/' + user1._id)
+          .set('Authorization', user1AccessToken)
+          .expect(401)
+          .expect('Content-Type', /json/)
+          .end(function(err,res){
+            if (err) doneIt(err);
+            res.body.messages.should.have.lengthOf(1);
+            messaging.hasValidMessages(res.body).should.be.true;
+            res.body.messages[0].should.have.property('text', 'access_token.unauthorized');
+            doneIt();
+          });
+      });
+    });
+
+    context('is admin', function(){
+      it('should be able to delete user', function(doneIt){
+        request(app)
+          .del(apiPrefix + '/users/' + user1._id)
+          .set('Authorization', admin1AccessToken)
+          .expect(200)
+          .end(function(err,res){
+            if (err) return doneIt(err);
+            mongoose.model('User').findById(user1._id, function(err, u){
+              if (err) return doneIt(err);
+              should.not.exist(u);
+              doneIt()
+            });
+          });
+      });
+    });
+  });
+
+
 
   /*
    * After tests, clear database
