@@ -23,7 +23,8 @@ MeasurementSchema.static({
       .limit(options.perPage)
       .skip(options.perPage * options.page)
       .exec(cb);
-  }
+  }  
+
 });
 
 /* Register */

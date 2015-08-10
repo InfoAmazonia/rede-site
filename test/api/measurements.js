@@ -2,6 +2,7 @@
  * Module dependencies
  */
 
+var _ = require('underscore');
 var request = require('supertest');
 var async = require('async');
 var should = require('should');
@@ -305,7 +306,7 @@ describe('API: Measurements', function(){
         .end(function(err, res){
           if (err) return doneIt(err);
           var body = res.body;
-          
+
           // Verify each parameter sent
           async.parallel([
             function(doneEach){
@@ -443,6 +444,179 @@ describe('API: Measurements', function(){
     });
   });
 
+
+  /*
+   * GET measurements/aggregate
+  */
+  describe('GET measurements/aggregate', function(){
+    it('aggregates by hour', function(doneIt){
+      var payload = {
+        sensor_id: sensor1._id.toHexString(),
+        parameter_id: 'atmospheric_pressure',
+        resolution: 'hour'
+      }
+
+      /* The request */
+    request(app)
+      .get(apiPrefix + '/measurements/aggregate')
+      .query(payload)
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end(onResponse);
+
+    /* Verify response */
+    function onResponse(err, res) {
+      if (err) return doneIt(err);
+
+      // Check general data
+      var body = res.body;
+      body.should.have.property('sensor_id', sensor1._id.toHexString());
+      body.should.have.property('parameter_id', payload.parameter_id);
+      body['aggregates'].should.be.Array();
+
+      // Check aggregation
+      var aggregates = res.body.aggregates;
+      _.each(aggregates, function(aggregate){
+        aggregate['_id'].should.have.property('year');
+        aggregate['_id'].should.have.property('month');
+        aggregate['_id'].should.not.have.property('week');
+        aggregate['_id'].should.have.property('day');
+        aggregate['_id'].should.have.property('hour');
+        aggregate['max'].should.be.Number();
+        aggregate['avg'].should.be.Number();
+        aggregate['min'].should.be.Number();
+      });
+
+      doneIt();
+    }
+    });
+
+    it('aggregates by day', function(doneIt){
+      var payload = {
+        sensor_id: sensor1._id.toHexString(),
+        parameter_id: 'atmospheric_pressure'
+      }
+
+      /* The request */
+    request(app)
+      .get(apiPrefix + '/measurements/aggregate')
+      .query(payload)
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end(onResponse);
+
+    /* Verify response */
+    function onResponse(err, res) {
+      if (err) return doneIt(err);
+
+      // Check general data
+      var body = res.body;
+      body.should.have.property('sensor_id', sensor1._id.toHexString());
+      body.should.have.property('parameter_id', payload.parameter_id);
+      body.should.have.property('start');
+      body.should.have.property('end');
+      body['aggregates'].should.be.Array();
+
+      // Check aggregation
+      var aggregates = res.body.aggregates;
+      _.each(aggregates, function(aggregate){
+        aggregate['_id'].should.have.property('year');
+        aggregate['_id'].should.have.property('month');
+        aggregate['_id'].should.not.have.property('week');
+        aggregate['_id'].should.have.property('day');
+        aggregate['_id'].should.not.have.property('hour');
+        aggregate['max'].should.be.Number();
+        aggregate['avg'].should.be.Number();
+        aggregate['min'].should.be.Number();
+      });
+
+      doneIt();
+    }
+    });
+
+    it('aggregates by week', function(doneIt){
+      var payload = {
+        sensor_id: sensor1._id.toHexString(),
+        parameter_id: 'atmospheric_pressure',
+        resolution: 'week'
+      }
+
+      /* The request */
+    request(app)
+      .get(apiPrefix + '/measurements/aggregate')
+      .query(payload)
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end(onResponse);
+
+    /* Verify response */
+    function onResponse(err, res) {
+      if (err) return doneIt(err);
+
+      // Check general data
+      var body = res.body;
+      body.should.have.property('sensor_id', sensor1._id.toHexString());
+      body.should.have.property('parameter_id', payload.parameter_id);
+      body['aggregates'].should.be.Array();
+
+      // Check aggregation
+      var aggregates = res.body.aggregates;
+      _.each(aggregates, function(aggregate){
+        aggregate['_id'].should.have.property('year');
+        aggregate['_id'].should.have.property('month');
+        aggregate['_id'].should.have.property('week');
+        aggregate['_id'].should.not.have.property('day');
+        aggregate['_id'].should.not.have.property('hour');
+        aggregate['max'].should.be.Number();
+        aggregate['avg'].should.be.Number();
+        aggregate['min'].should.be.Number();
+      });
+
+      doneIt();
+    }
+    });
+
+    it('aggregates by month', function(doneIt){
+      var payload = {
+        sensor_id: sensor1._id.toHexString(),
+        parameter_id: 'atmospheric_pressure',
+        resolution: 'month'
+      }
+
+      /* The request */
+    request(app)
+      .get(apiPrefix + '/measurements/aggregate')
+      .query(payload)
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end(onResponse);
+
+    /* Verify response */
+    function onResponse(err, res) {
+      if (err) return doneIt(err);
+
+      // Check general data
+      var body = res.body;
+      body.should.have.property('sensor_id', sensor1._id.toHexString());
+      body.should.have.property('parameter_id', payload.parameter_id);
+      body['aggregates'].should.be.Array();
+
+      // Check aggregation
+      var aggregates = res.body.aggregates;
+      _.each(aggregates, function(aggregate){
+        aggregate['_id'].should.have.property('year');
+        aggregate['_id'].should.have.property('month');
+        aggregate['_id'].should.not.have.property('week');
+        aggregate['_id'].should.not.have.property('day');
+        aggregate['_id'].should.not.have.property('hour');
+        aggregate['max'].should.be.Number();
+        aggregate['avg'].should.be.Number();
+        aggregate['min'].should.be.Number();
+      });
+      doneIt();
+    }
+    });
+  });
 
   /*
    * After tests, clear database

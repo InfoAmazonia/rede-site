@@ -43,6 +43,7 @@ Run `npm start`.
 
 ## Measurements
 - [GET measurements](#get-measurements)
+- [GET measurements/aggregate](#get-measurementsaggregate)
 - [POST measurements/new](#post-measurementsnew)
 - [GET measurements/:measurement_id](#get-measurementssensor_id)
 - [PUT measurements/:measurement_id](#put-measurementssensor_id)
@@ -324,6 +325,71 @@ Parameters:
 Possible responses:
 - `200` Success and list of measurements:
 - `400` Bad request.
+
+---
+
+## GET measurements/aggregate
+
+Returns a measurements aggregate.
+
+Parameters:
+- `sensor_id`: _string_ (required)
+- `parameter_id`: _string_ (required)
+- `resolution`: _'month','week', 'day' or 'hour'_  (optional, default: 'day')
+- `start`: _string_ [ISO 8601] (optional, default: 10 days from now)
+- `end`: _string_ [ISO 8601] (optional, default: now)
+
+Possible responses:
+- `200` Success and list of measurements:
+- `400` Bad request.
+
+Example response:
+
+```json
+{
+    "sensor_id": "55c9152f2e11aa7f1248125a",
+    "parameter_id": "atmospheric_pressure",
+    "start": "2015-07-31T21:18:40.142Z",
+    "end": "2015-08-10T21:18:40.142Z",
+    "aggregates": [{
+        "_id": {
+            "year": 2015,
+            "month": 8,
+            "day": 7
+        },
+        "max": 79270.70534555241,
+        "avg": 79270.70534555241,
+        "min": 79270.70534555241
+    }, {
+        "_id": {
+            "year": 2015,
+            "month": 8,
+            "day": 8
+        },
+        "max": 102476.60015244037,
+        "avg": 52827.800702361856,
+        "min": 871.2151763029397
+    }, {
+        "_id": {
+            "year": 2015,
+            "month": 8,
+            "day": 9
+        },
+        "max": 99783.68117124774,
+        "avg": 56159.60560477106,
+        "min": 3322.4598434753716
+    }, {
+        "_id": {
+            "year": 2015,
+            "month": 8,
+            "day": 10
+        },
+        "max": 101622.79594223946,
+        "avg": 47760.78379411378,
+        "min": 1971.235773526132
+    }]
+}
+```
 
 ---
 

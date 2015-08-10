@@ -57,6 +57,7 @@ module.exports = function (app, config) {
   apiRoutes.param('measurement_id', measurements.load)
   apiRoutes.post('/measurements/new', measurements.new);
   apiRoutes.get('/measurements', [sensors.loadByQueryString, parameters.loadByQueryStringIfDefined, measurements.list]);
+  apiRoutes.get('/measurements/aggregate', [sensors.loadByQueryString, parameters.loadByQueryStringIfDefined, measurements.aggregate]);
   apiRoutes.delete('/measurements/:measurement_id', [auth.isLogged, auth.isAdmin, measurements.remove]);
 
   // set api routes

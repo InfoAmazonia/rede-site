@@ -103,6 +103,79 @@ exports.list = function(req, res) {
 }
 
 /*
+ * Aggregate
+ */
+exports.aggregate = function(req, res) {
+
+  // verify existence of sensor
+  var sensor = req.sensor;
+  if (!sensor) return res.status(400).json(messaging.error('measurements.aggregate.missing_sensor'));
+
+  // verify existence of parameter
+  var parameter = req.parameter;
+  if (!parameter) return res.status(400).json(messaging.error('measurements.aggregate.missing_parameter'));
+
+  // verify existence of start timestamp, defaults to 10 days from now
+  var start = req.query['start'];
+  if (!start) start = moment().subtract(10, 'day');
+
+  // verify existence of end timestamp, defaults to now
+  var end = req.query['start'];
+  if (!end) end = new Date();
+
+  // Aggregation criteria
+  var match = {
+    $match: {
+      sensor: req.sensor._id,
+      parameter: req.parameter._id,
+      collectedAt: {
+        $gte: start.toDate(),
+        $lte: end
+      }
+    }
+  }
+
+  var group = {
+    $group: {
+      _id : {
+        year: { $year: "$collectedAt" },
+        month: { $month: "$collectedAt" },
+      },
+      max: { $max: "$value" },
+      avg: { $avg: "$value" },
+      min: { $min: "$value" }
+    }
+  }
+
+  // Sets aggregation resolution, default to daily
+  var resolution = req.query['resolution'];
+
+  if (resolution == 'hour') {
+    group['$group']['_id']['day'] = { $dayOfMonth: "$collectedAt" }
+    group['$group']['_id']['hour'] = { $hour: "$collectedAt" }
+  } else if (!resolution || resolution == 'day') {
+    group['$group']['_id']['day'] = { $dayOfMonth: "$collectedAt" }
+  } else if (resolution == 'week') {
+    group['$group']['_id']['week'] = { $week: "$collectedAt" }
+  } else if (resolution != 'month') {
+    // client passed wrong resolution
+    return res.status(400).json(messaging.error('measurements.aggregate.wrong_resolution'));
+  }
+
+  Measurement.aggregate([match, group], function (err, aggregates) {
+    if (err) return res.status(500).json(messaging.error('internal_error'));
+
+    res.status(200).json({
+      sensor_id: sensor._id.toHexString(),
+      parameter_id: parameter._id,
+      start: start,
+      end: end,
+      aggregates: aggregates
+    });
+  });
+}
+
+/*
  * Remove
  */
 exports.remove = function(req, res) {
