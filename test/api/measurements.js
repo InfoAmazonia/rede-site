@@ -450,45 +450,63 @@ describe('API: Measurements', function(){
   */
   describe('GET measurements/aggregate', function(){
     it('aggregates by hour', function(doneIt){
+
       var payload = {
         sensor_id: sensor1._id.toHexString(),
         parameter_id: 'atmospheric_pressure',
-        resolution: 'hour'
+        resolution: 'hour',
+        startTimestamp: moment().subtract(30, 'hour').toISOString(),
+        endTimestamp: moment().subtract(5, 'hour').toISOString()
+      }
+
+      var start = {
+        year: moment(payload.startTimestamp).year(),
+        month: moment(payload.startTimestamp).month() + 1,
+        day: moment(payload.startTimestamp).date(),
+        hour: moment(payload.startTimestamp).hour() + 1
+      }
+
+      var end = {
+        year: moment(payload.endTimestamp).year(),
+        month: moment(payload.endTimestamp).month() + 1,
+        day: moment(payload.endTimestamp).date(),
+        hour: moment(payload.endTimestamp).hour() + 1
       }
 
       /* The request */
-    request(app)
-      .get(apiPrefix + '/measurements/aggregate')
-      .query(payload)
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .end(onResponse);
+      request(app)
+        .get(apiPrefix + '/measurements/aggregate')
+        .query(payload)
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end(onResponse);
 
-    /* Verify response */
-    function onResponse(err, res) {
-      if (err) return doneIt(err);
+      /* Verify response */
+      function onResponse(err, res) {
+        if (err) return doneIt(err);
 
-      // Check general data
-      var body = res.body;
-      body.should.have.property('sensor_id', sensor1._id.toHexString());
-      body.should.have.property('parameter_id', payload.parameter_id);
-      body['aggregates'].should.be.Array();
+        // Check general data
+        var body = res.body;
+        body.should.have.property('sensor_id', sensor1._id.toHexString());
+        body.should.have.property('parameter_id', payload.parameter_id);
+        body['aggregates'].should.be.Array();
 
-      // Check aggregation
-      var aggregates = res.body.aggregates;
-      _.each(aggregates, function(aggregate){
-        aggregate['_id'].should.have.property('year');
-        aggregate['_id'].should.have.property('month');
-        aggregate['_id'].should.not.have.property('week');
-        aggregate['_id'].should.have.property('day');
-        aggregate['_id'].should.have.property('hour');
-        aggregate['max'].should.be.Number();
-        aggregate['avg'].should.be.Number();
-        aggregate['min'].should.be.Number();
-      });
+        // Check aggregation
+        var aggregates = res.body.aggregates;
+        _.each(aggregates, function(aggregate){
+          var _id = aggregate['_id'];
+          should.exist(_id);
+          _id['year'].should.be.within(start.year, end.year);
+          _id['month'].should.be.within(start.month, end.month);
+          _id['day'].should.be.within(start.day, end.day);
+          _id['hour'].should.be.within(start.hour, end.hour);
+          aggregate['max'].should.be.Number();
+          aggregate['avg'].should.be.Number();
+          aggregate['min'].should.be.Number();
+        });
 
-      doneIt();
-    }
+        doneIt();
+      }
     });
 
     it('aggregates by day', function(doneIt){
@@ -616,6 +634,9 @@ describe('API: Measurements', function(){
       doneIt();
     }
     });
+
+
+
   });
 
   /*

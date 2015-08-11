@@ -116,11 +116,11 @@ exports.aggregate = function(req, res) {
   if (!parameter) return res.status(400).json(messaging.error('measurements.aggregate.missing_parameter'));
 
   // verify existence of start timestamp, defaults to 10 days from now
-  var start = req.query['start'];
+  var start = moment(req.query['start']);
   if (!start) start = moment().subtract(10, 'day');
 
   // verify existence of end timestamp, defaults to now
-  var end = req.query['start'];
+  var end = moment(req.query['start']);
   if (!end) end = new Date();
 
   // Aggregation criteria
@@ -129,7 +129,7 @@ exports.aggregate = function(req, res) {
       sensor: req.sensor._id,
       parameter: req.parameter._id,
       collectedAt: {
-        $gte: start.toDate(),
+        $gte: start,
         $lte: end
       }
     }
