@@ -120,8 +120,8 @@ exports.aggregate = function(req, res) {
   if (!start) start = moment().subtract(10, 'day');
 
   // verify existence of end timestamp, defaults to now
-  var end = moment(req.query['start']);
-  if (!end) end = new Date();
+  var end = moment(req.query['end']);
+  if (!end) end = moment();
 
   // Aggregation criteria
   var match = {
