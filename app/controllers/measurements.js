@@ -107,21 +107,26 @@ exports.list = function(req, res) {
  */
 exports.aggregate = function(req, res) {
 
-  // verify existence of sensor
+  // read parameters
   var sensor = req.sensor;
-  if (!sensor) return res.status(400).json(messaging.error('measurements.aggregate.missing_sensor'));
+  var parameter = req.parameter;
+  var resolution = req.query['resolution'] || 'day';
 
   // verify existence of parameter
-  var parameter = req.parameter;
-  if (!parameter) return res.status(400).json(messaging.error('measurements.aggregate.missing_parameter'));
+  if (!sensor) { return res.status(400).json(messaging.error('measurements.aggregate.missing_sensor')); }
+  if (!parameter) { return res.status(400).json(messaging.error('measurements.aggregate.missing_parameter')); }
 
   // verify existence of start timestamp, defaults to 10 days from now
-  var start = moment(req.query['start']);
-  if (!start) start = moment().subtract(10, 'day');
+  var startTimestamp = req.query['startTimestamp'];
+  if (!startTimestamp) startTimestamp = moment().subtract(10, 'day');
+  else if (!moment(startTimestamp).isValid()) return res.status(400).json(messaging.error('measurements.aggregate.invalid_timestamp'));
+  else startTimestamp = moment(startTimestamp);
 
-  // verify existence of end timestamp, defaults to now
-  var end = moment(req.query['end']);
-  if (!end) end = moment();
+  // verify existence of end timestamp
+  var endTimestamp = req.query['endTimestamp'];
+  if (!endTimestamp) endTimestamp = moment();
+  else if (!moment(endTimestamp).isValid()) return res.status(400).json(messaging.error('measurements.aggregate.invalid_timestamp'));
+  else endTimestamp = moment(endTimestamp);
 
   // Aggregation criteria
   var match = {
@@ -129,8 +134,8 @@ exports.aggregate = function(req, res) {
       sensor: req.sensor._id,
       parameter: req.parameter._id,
       collectedAt: {
-        $gte: start,
-        $lte: end
+        $gte: startTimestamp.toDate(),
+        $lte: endTimestamp.toDate()
       }
     }
   }
@@ -138,8 +143,7 @@ exports.aggregate = function(req, res) {
   var group = {
     $group: {
       _id : {
-        year: { $year: "$collectedAt" },
-        month: { $month: "$collectedAt" },
+        year: { $year: "$collectedAt" }
       },
       max: { $max: "$value" },
       avg: { $avg: "$value" },
@@ -147,31 +151,38 @@ exports.aggregate = function(req, res) {
     }
   }
 
-  // Sets aggregation resolution, default to daily
-  var resolution = req.query['resolution'];
-
   if (resolution == 'hour') {
+    group['$group']['_id']['month'] = { $month: "$collectedAt" }
     group['$group']['_id']['day'] = { $dayOfMonth: "$collectedAt" }
     group['$group']['_id']['hour'] = { $hour: "$collectedAt" }
-  } else if (!resolution || resolution == 'day') {
+  } else if (resolution == 'day') {
+    group['$group']['_id']['month'] = { $month: "$collectedAt" }
     group['$group']['_id']['day'] = { $dayOfMonth: "$collectedAt" }
   } else if (resolution == 'week') {
     group['$group']['_id']['week'] = { $week: "$collectedAt" }
-  } else if (resolution != 'month') {
-    // client passed wrong resolution
+  } else if (resolution = 'month') {
+    group['$group']['_id']['month'] = { $month: "$collectedAt" }
+  } else {
     return res.status(400).json(messaging.error('measurements.aggregate.wrong_resolution'));
   }
 
   Measurement.aggregate([match, group], function (err, aggregates) {
     if (err) return res.status(500).json(messaging.error('internal_error'));
 
-    res.status(200).json({
-      sensor_id: sensor._id.toHexString(),
-      parameter_id: parameter._id,
-      start: start,
-      end: end,
-      aggregates: aggregates
+    Measurement.count(match['$match'], function(err, count){
+      if (err) return res.status(500).json(messaging.error('internal_error'));
+
+      res.status(200).json({
+        sensor_id: sensor._id.toHexString(),
+        parameter_id: parameter._id,
+        startTimestamp: startTimestamp,
+        endTimestamp: endTimestamp,
+        resolution: resolution,
+        count: count,
+        aggregates: aggregates
+      });
     });
+
   });
 }
 

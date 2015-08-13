@@ -36,10 +36,11 @@ var messaging = require('../../lib/helpers/messaging');
  */
 var config = require('../../config')['test'];
 var apiPrefix = config.apiPrefix;
-
 var numberOfSensors = 1;
-var daysOfMeasurements = 3;
+var daysOfMeasurements = 90;
+var measurementsInterval = 6;
 var defaultPerPage = 20;
+
 
 /*
  * Test data
@@ -50,6 +51,7 @@ var admin1AccessToken;
 var user1;
 var user1AccessToken;
 var sensor1;
+var sensorWith90DaysOfData;
 var parameters = config.parameters;
 var parametersCount = Object.keys(parameters).length;
 
@@ -90,7 +92,7 @@ describe('API: Measurements', function(){
             });
           },
           function (doneEach){
-            factory.createSensorsWithMeasurements(numberOfSensors, daysOfMeasurements, function(err, sensor){
+            factory.createSensorsWithMeasurements({numberOfSensors: numberOfSensors, days: daysOfMeasurements, interval: measurementsInterval}, function(err, sensor){
               if (err) doneBefore(err);
               sensor1 = sensor[0];
               doneEach();
@@ -124,7 +126,7 @@ describe('API: Measurements', function(){
 
         // Check pagination
         var body = res.body;
-        body.should.have.property('count', daysOfMeasurements * 24);
+        body.should.have.property('count', daysOfMeasurements * 24 / measurementsInterval);
         body.should.have.property('perPage', defaultPerPage);
         body.should.have.property('page', 1);
 
@@ -185,7 +187,7 @@ describe('API: Measurements', function(){
 
         // Check pagination
         var body = res.body;
-        body.should.have.property('count', parametersCount * daysOfMeasurements * 24);
+        body.should.have.property('count', parametersCount * daysOfMeasurements * 24 / measurementsInterval);
         body.should.have.property('perPage', defaultPerPage);
         body.should.have.property('page', 1);
 
@@ -248,7 +250,7 @@ describe('API: Measurements', function(){
 
         /* Check pagination */
         var body = res.body;
-        body.should.have.property('count', daysOfMeasurements * 24);
+        body.should.have.property('count', daysOfMeasurements * 24 / measurementsInterval);
         body.should.have.property('perPage', payload.perPage);
         body.should.have.property('page', payload.page);
         body.should.have.property('measurements');
@@ -451,12 +453,16 @@ describe('API: Measurements', function(){
   describe('GET measurements/aggregate', function(){
     it('aggregates by hour', function(doneIt){
 
+      var startTimestamp = moment.utc().subtract(30, 'hour');
+      var endTimestamp = moment.utc().subtract(5, 'hour');
+
+
       var payload = {
         sensor_id: sensor1._id.toHexString(),
         parameter_id: 'atmospheric_pressure',
         resolution: 'hour',
-        startTimestamp: moment().subtract(30, 'hour').toISOString(),
-        endTimestamp: moment().subtract(5, 'hour').toISOString()
+        startTimestamp: startTimestamp.toISOString(),
+        endTimestamp: endTimestamp.toISOString()
       }
 
       var start = {
@@ -489,154 +495,117 @@ describe('API: Measurements', function(){
         var body = res.body;
         body.should.have.property('sensor_id', sensor1._id.toHexString());
         body.should.have.property('parameter_id', payload.parameter_id);
-        body['aggregates'].should.be.Array();
+        body.should.have.property('startTimestamp', startTimestamp.toISOString());
+        body.should.have.property('endTimestamp', endTimestamp.toISOString());
+        body.should.have.property('resolution', payload.resolution);
+        body['aggregates'].length.should.be.above(0);
 
         // Check aggregation
         var aggregates = res.body.aggregates;
         _.each(aggregates, function(aggregate){
+          should.exist(aggregate['_id']);
+
           var _id = aggregate['_id'];
-          should.exist(_id);
-          _id['year'].should.be.within(start.year, end.year);
-          _id['month'].should.be.within(start.month, end.month);
-          _id['day'].should.be.within(start.day, end.day);
-          _id['hour'].should.be.within(start.hour, end.hour);
+
+          var date = moment().utc()
+                      .year(_id.year)
+                      .month(_id.month-1)
+                      .date(_id.day)
+                      .hour(_id.hour-1)
+                      .toISOString();
+
+          date.should.be.within(startTimestamp.toISOString(), endTimestamp.toISOString());
           aggregate['max'].should.be.Number();
           aggregate['avg'].should.be.Number();
           aggregate['min'].should.be.Number();
         });
 
-        doneIt();
+        mongoose
+          .model('Measurement')
+          .count({
+            sensor: payload.sensor_id,
+            parameter: payload.parameter_id,
+            collectedAt: {
+              $gte: startTimestamp.toDate(),
+              $lte: endTimestamp.toDate()
+            }
+          }, function (err, dbCount) {
+            should.not.exist(err);
+            body.should.have.property('count', dbCount);
+            doneIt();
+        });
       }
     });
 
     it('aggregates by day', function(doneIt){
-      var payload = {
-        sensor_id: sensor1._id.toHexString(),
-        parameter_id: 'atmospheric_pressure'
-      }
 
-      /* The request */
-    request(app)
-      .get(apiPrefix + '/measurements/aggregate')
-      .query(payload)
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .end(onResponse);
+      var startTimestamp = moment.utc().subtract(45, 'day').hours(0).minutes(0).seconds(0);
+      var endTimestamp = moment.utc().subtract(5, 'day').hours(23).minutes(59).seconds(59);
 
-    /* Verify response */
-    function onResponse(err, res) {
-      if (err) return doneIt(err);
 
-      // Check general data
-      var body = res.body;
-      body.should.have.property('sensor_id', sensor1._id.toHexString());
-      body.should.have.property('parameter_id', payload.parameter_id);
-      body.should.have.property('start');
-      body.should.have.property('end');
-      body['aggregates'].should.be.Array();
-
-      // Check aggregation
-      var aggregates = res.body.aggregates;
-      _.each(aggregates, function(aggregate){
-        aggregate['_id'].should.have.property('year');
-        aggregate['_id'].should.have.property('month');
-        aggregate['_id'].should.not.have.property('week');
-        aggregate['_id'].should.have.property('day');
-        aggregate['_id'].should.not.have.property('hour');
-        aggregate['max'].should.be.Number();
-        aggregate['avg'].should.be.Number();
-        aggregate['min'].should.be.Number();
-      });
-
-      doneIt();
-    }
-    });
-
-    it('aggregates by week', function(doneIt){
       var payload = {
         sensor_id: sensor1._id.toHexString(),
         parameter_id: 'atmospheric_pressure',
-        resolution: 'week'
+        resolution: 'day',
+        startTimestamp: startTimestamp.toISOString(),
+        endTimestamp: endTimestamp.toISOString()
+      }
+
+      var start = {
+        year: moment(payload.startTimestamp).year(),
+        month: moment(payload.startTimestamp).month() + 1,
+        day: moment(payload.startTimestamp).date()
+      }
+
+      var end = {
+        year: moment(payload.endTimestamp).year(),
+        month: moment(payload.endTimestamp).month() + 1,
+        day: moment(payload.endTimestamp).date()
       }
 
       /* The request */
-    request(app)
-      .get(apiPrefix + '/measurements/aggregate')
-      .query(payload)
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .end(onResponse);
+      request(app)
+        .get(apiPrefix + '/measurements/aggregate')
+        .query(payload)
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end(onResponse);
 
-    /* Verify response */
-    function onResponse(err, res) {
-      if (err) return doneIt(err);
+      /* Verify response */
+      function onResponse(err, res) {
+        if (err) return doneIt(err);
 
-      // Check general data
-      var body = res.body;
-      body.should.have.property('sensor_id', sensor1._id.toHexString());
-      body.should.have.property('parameter_id', payload.parameter_id);
-      body['aggregates'].should.be.Array();
+        // Check general data
+        var body = res.body;
+        body.should.have.property('sensor_id', sensor1._id.toHexString());
+        body.should.have.property('parameter_id', payload.parameter_id);
+        body.should.have.property('startTimestamp');
+        body.should.have.property('endTimestamp');
+        body.should.have.property('resolution', payload.resolution);
+        body['aggregates'].length.should.be.above(0);
 
-      // Check aggregation
-      var aggregates = res.body.aggregates;
-      _.each(aggregates, function(aggregate){
-        aggregate['_id'].should.have.property('year');
-        aggregate['_id'].should.have.property('month');
-        aggregate['_id'].should.have.property('week');
-        aggregate['_id'].should.not.have.property('day');
-        aggregate['_id'].should.not.have.property('hour');
-        aggregate['max'].should.be.Number();
-        aggregate['avg'].should.be.Number();
-        aggregate['min'].should.be.Number();
-      });
+        // Check aggregation
+        var aggregates = res.body.aggregates;
+        _.each(aggregates, function(aggregate){
 
-      doneIt();
-    }
-    });
+          should.exist(aggregate['_id']);
 
-    it('aggregates by month', function(doneIt){
-      var payload = {
-        sensor_id: sensor1._id.toHexString(),
-        parameter_id: 'atmospheric_pressure',
-        resolution: 'month'
+          var _id = aggregate['_id'];
+
+          var date = moment.utc()
+                      .year(_id.year)
+                      .month(_id.month-1)
+                      .date(_id.day)
+                      .toISOString();
+
+          date.should.be.within(startTimestamp.toISOString(), endTimestamp.toISOString());
+          aggregate['max'].should.be.Number();
+          aggregate['avg'].should.be.Number();
+          aggregate['min'].should.be.Number();
+        });
+        doneIt();
       }
-
-      /* The request */
-    request(app)
-      .get(apiPrefix + '/measurements/aggregate')
-      .query(payload)
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .end(onResponse);
-
-    /* Verify response */
-    function onResponse(err, res) {
-      if (err) return doneIt(err);
-
-      // Check general data
-      var body = res.body;
-      body.should.have.property('sensor_id', sensor1._id.toHexString());
-      body.should.have.property('parameter_id', payload.parameter_id);
-      body['aggregates'].should.be.Array();
-
-      // Check aggregation
-      var aggregates = res.body.aggregates;
-      _.each(aggregates, function(aggregate){
-        aggregate['_id'].should.have.property('year');
-        aggregate['_id'].should.have.property('month');
-        aggregate['_id'].should.not.have.property('week');
-        aggregate['_id'].should.not.have.property('day');
-        aggregate['_id'].should.not.have.property('hour');
-        aggregate['max'].should.be.Number();
-        aggregate['avg'].should.be.Number();
-        aggregate['min'].should.be.Number();
-      });
-      doneIt();
-    }
     });
-
-
-
   });
 
   /*

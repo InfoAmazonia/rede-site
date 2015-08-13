@@ -38,6 +38,7 @@ var defaultPerPage = 20;
 var numberOfSensors = 50;
 var numberOfSensorsWithData = 3;
 var daysOfMeasurements = 3;
+var measurementsInterval = 1;
 
 /*
  * Test data
@@ -84,7 +85,7 @@ describe('API: Sensors', function(){
               doneEach(err, sensors);
             })
           }, function(doneEach){
-            factory.createSensorsWithMeasurements(numberOfSensorsWithData, daysOfMeasurements, function(err, sensors){
+            factory.createSensorsWithMeasurements({numberOfSensors: numberOfSensorsWithData, days: daysOfMeasurements, interval: measurementsInterval}, function(err, sensors){
               if (err) doneBefore(err);
               sensorsWithMeasurements = sensors;
               doneEach(err, sensors);
