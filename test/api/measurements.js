@@ -359,6 +359,66 @@ describe('API: Measurements', function(){
             }], doneIt);
         });
     });
+
+    it('should return 400 for invalid timestamp', function(doneIt){
+      var payload = {
+        sensorIdentifier: sensor1.identifier,
+        data: '2015-07-14T10:08:15-03:00Tw=20.3;Ta:F=78.29;pH=6.9'
+      }
+
+      request(app)
+        .post(apiPrefix + '/measurements/new')
+        .send(payload)
+        .expect(400)
+        .expect('Content-Type', /json/)
+        .end(function(err, res){
+          if (err) doneIt(err);
+          res.body.messages.should.have.lengthOf(1);
+          messaging.hasValidMessages(res.body).should.be.true;
+          res.body.messages[0].should.have.property('text', 'measurements.data_string.invalid_timestamp');
+          doneIt();
+        });
+    });
+
+    it('should return 400 for missing measurements', function(doneIt){
+      var payload = {
+        sensorIdentifier: sensor1.identifier,
+        data: '2015-07-14T10:08:15-03:00;'
+      }
+
+      request(app)
+        .post(apiPrefix + '/measurements/new')
+        .send(payload)
+        .expect(400)
+        .expect('Content-Type', /json/)
+        .end(function(err, res){
+          if (err) doneIt(err);
+          res.body.messages.should.have.lengthOf(1);
+          messaging.hasValidMessages(res.body).should.be.true;
+          res.body.messages[0].should.have.property('text', 'measurements.data_string.missing_measurements');
+          doneIt();
+        });
+    });
+
+    it('should return 400 for malformed measurements', function(doneIt){
+      var payload = {
+        sensorIdentifier: sensor1.identifier,
+        data: '2015-07-14T10:08:15-03:00;Tw=20.3;Ta:F=78.29;pH'
+      }
+
+      request(app)
+        .post(apiPrefix + '/measurements/new')
+        .send(payload)
+        .expect(400)
+        .expect('Content-Type', /json/)
+        .end(function(err, res){
+          if (err) doneIt(err);
+          res.body.messages.should.have.lengthOf(1);
+          messaging.hasValidMessages(res.body).should.be.true;
+          res.body.messages[0].should.have.property('text', 'measurements.data_string.malformed_measurement');
+          doneIt();
+        });
+    });
   });
 
   /*

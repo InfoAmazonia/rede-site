@@ -75,15 +75,19 @@ SensorSchema.methods = {
     var self = this;
     var Measurement = mongoose.model('Measurement');
 
-    var measurements = parser.parseBatch(batchString);
+    try {
+      var measurements = parser.parseBatch(batchString);
 
-    async.map(measurements, function(measurement, doneEach){
-      measurement = new Measurement(measurement);
-      measurement.sensor = self;
-      measurement.save(function(err){
-        doneEach(err, measurement);
-      });
-    }, doneSaveMeasurementBatch);
+      async.map(measurements, function(measurement, doneEach){
+        measurement = new Measurement(measurement);
+        measurement.sensor = self;
+        measurement.save(function(err){
+          doneEach(err, measurement);
+        });
+      }, doneSaveMeasurementBatch);
+    } catch (err) {
+      doneSaveMeasurementBatch({messages: [err]});
+    }
   },
   getScore: function(doneGetScore){
     var self = this;

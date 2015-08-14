@@ -53,7 +53,7 @@
     "leaflet": "^0.7.3",
     "mapbox.js": "mapbox/mapbox.js#v2.1.8",
     "method-override": "^2.3.3",
-    "moment": "^2.10.3",
+    "moment": "^2.10.6",
     "mongoose": "^4.1.0",
     "napa": "latest",
     "ng-dialog": "^0.3.12",
@@ -61,7 +61,7 @@
     "passport-http-bearer": "^1.0.1",
     "passport-local": "^1.0.0",
     "underscore": "^1.8.3",
-    "validator": "^3.41.2"
+    "validator": "^4.0.2"
   },
   "napa": {
     "angular-pickadate": "miguelpeixe/angular-pickadate"

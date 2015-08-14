@@ -403,7 +403,7 @@ Parameters:
 
 Possible responses:
 - `200` Success and list of measurements:
-- `400` Bad request.
+- `400` Bad request and errors JSON;
 - `404` Sensor not found.
 
 Example request for a sensor with '5555' as identifier:

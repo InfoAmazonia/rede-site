@@ -37,8 +37,12 @@ exports.new = function(req, res) {
     if (err) return res.sendStatus(500);
     if (!sensor) return res.status(404).json({messages: ['sensor not found']});
     sensor.saveMeasurementBatch(body.data, function(err, measurements){
-      if (err) return res.sendStatus(500);
-      else res.status(200).json({measurements: measurements});
+      if (err && err.messages)
+        return res.status(400).json({messages: messaging.errorsArray(err.messages)});
+      else if (err)
+        return res.status(400).json(messaging.mongooseErrors(err, 'measurements'));
+      else
+        res.status(200).json({measurements: measurements});
     });
   });
 }
