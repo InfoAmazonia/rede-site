@@ -339,6 +339,8 @@ Parameters:
 - `parameter_id`: _string_ (optional)
 - `perPage`: _number_ (default: 20)
 - `page`: _number_ (optional)
+- `fromDate`: _string_ [ISO 8601] timestamp
+- `toDate`: _string_ [ISO8601] timestamp
 
 Possible responses:
 - `200` Success and list of measurements:

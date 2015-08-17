@@ -285,6 +285,78 @@ describe('API: Measurements', function(){
           });
       }
     });
+
+    it('can filter by date range', function(doneIt){
+      var fromDate = moment.utc().subtract(23, 'day').toISOString();
+      var toDate = moment.utc().subtract(10, 'day').toISOString();
+
+      var payload = {
+        sensor_id: sensor1._id.toHexString(),
+        parameter_id: 'atmospheric_pressure',
+        fromDate: fromDate,
+        toDate: toDate
+      }
+
+      /* The request */
+    request(app)
+      .get(apiPrefix + '/measurements')
+      .query(payload)
+      .expect(200)
+      // .expect('Content-Type', /json/)
+      .end(onResponse);
+
+      /* Verify response */
+      function onResponse(err, res) {
+        if (err) return doneIt(err);
+
+        // Check pagination
+        var body = res.body;
+        body.should.have.property('perPage', defaultPerPage);
+        body.should.have.property('page', 1);
+
+        // Check sensor data
+        body.should.have.property('sensor');
+        body.sensor.should.have.property('_id', sensor1._id.toHexString());
+
+        // Check parameter data
+        body.should.have.property('parameter');
+        body.parameter.should.have.property('_id', payload.parameter_id);
+
+        /* Check data */
+        var data = body.measurements;
+        data.should.have.lengthOf(defaultPerPage);
+        mongoose.model('Measurement')
+          .find({
+            sensor: payload.sensor_id,
+            parameter: payload.parameter_id,
+            collectedAt: {
+              $gte: fromDate,
+              $lte: toDate
+            }
+          })
+          .sort('-collectedAt')
+          .lean()
+          .exec(function(err, measurements){
+            if (err) return doneIt(err);
+
+            body.should.have.property('count', measurements.length);
+
+
+            for (var i = 0; i < defaultPerPage; i++) {
+
+              var measurement = measurements[i];
+              data[i].should.have.property('_id', measurement._id.toHexString());
+              data[i].should.have.property('value', measurement.value);
+              data[i].should.not.have.property('parameter');
+              data[i].should.not.have.property('sensor');
+
+              var collectedAt = moment(data[i].collectedAt).format();
+              collectedAt.should.equal(moment(measurement.collectedAt).format());
+            }
+            doneIt();
+        });
+      }
+    });
   });
 
 

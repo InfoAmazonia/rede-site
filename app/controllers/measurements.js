@@ -53,6 +53,8 @@ exports.new = function(req, res) {
 exports.list = function(req, res) {
   var page = req.query['page'];
   var perPage = req.query['perPage'];
+  var fromDate = req.query['fromDate'];
+  var toDate = req.query['toDate'];
 
   /* Validate query parameters */
   if (page) {
@@ -80,13 +82,27 @@ exports.list = function(req, res) {
     sensor: req.sensor._id
   }
 
+  if (fromDate) {
+    if (!validator.isISO8601(fromDate))
+      return res.status(400).json(messaging.error('invalid_from_date'));
+    options.criteria['collectedAt'] = {$gte: fromDate};
+  }
+
+  if (toDate) {
+    if (!validator.isISO8601(toDate))
+      return res.status(400).json(messaging.error('invalid_to_date'));
+
+    if (!options.criteria['collectedAt']) {
+      options.criteria['collectedAt'] = {$lte: toDate};
+    } else options.criteria['collectedAt']['$lte'] = toDate;
+  }
+
   /* If filtering by parameter, do not include it in results */
   if (req.parameter) {
     options.criteria.parameter = req.parameter._id;
     options.select = '_id value collectedAt';
   } else
     options.select = '_id value collectedAt parameter';
-
 
   Measurement.list(options, function (err, measurements) {
     if (err)
