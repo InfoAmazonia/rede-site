@@ -641,7 +641,7 @@ describe('API: Sensors', function(){
     /*
      * GET sensor/:sensor_id/measurements/:parameter_id.csv
     */
-    describe('GET measurements', function(){
+    describe('GET measurements as CSV', function(){
       it('return valid csv file', function(doneIt){
         var sensor = sensorsWithMeasurements[2];
 
