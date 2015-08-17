@@ -43,7 +43,7 @@ All routes should be prefixed with 'api/v1'.
 - [POST sensors/:sensor_id/subscribe](#post-sensorssensor_idsubscribe)
 - [POST sensors/:sensor_id/unsubscribe](#post-sensorssensor_idunsubscribe)
 - [POST sensors/:sensor_id/unsubscribe](#post-sensorssensor_idunsubscribe)
-- [GET sensors/:sensor_id/measurements/:parameter_id.csv](#get-sensorssensor_id_measurements_parameter_id.csv)
+- [GET sensors/:sensor_id/measurements/:parameter_id.csv](#get-sensorssensor_idmeasurementsparameter_idcsv)
 
 
 ## Measurements
