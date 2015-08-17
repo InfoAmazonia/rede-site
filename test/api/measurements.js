@@ -585,30 +585,30 @@ describe('API: Measurements', function(){
   describe('GET measurements/aggregate', function(){
     it('aggregates by hour', function(doneIt){
 
-      var startTimestamp = moment.utc().subtract(30, 'hour');
-      var endTimestamp = moment.utc().subtract(5, 'hour');
+      var fromDate = moment.utc().subtract(30, 'hour');
+      var toDate = moment.utc().subtract(5, 'hour');
 
 
       var payload = {
         sensor_id: sensor1._id.toHexString(),
         parameter_id: 'atmospheric_pressure',
         resolution: 'hour',
-        startTimestamp: startTimestamp.toISOString(),
-        endTimestamp: endTimestamp.toISOString()
+        fromDate: fromDate.toISOString(),
+        toDate: toDate.toISOString()
       }
 
       var start = {
-        year: moment(payload.startTimestamp).year(),
-        month: moment(payload.startTimestamp).month() + 1,
-        day: moment(payload.startTimestamp).date(),
-        hour: moment(payload.startTimestamp).hour() + 1
+        year: moment(payload.fromDate).year(),
+        month: moment(payload.fromDate).month() + 1,
+        day: moment(payload.fromDate).date(),
+        hour: moment(payload.fromDate).hour() + 1
       }
 
       var end = {
-        year: moment(payload.endTimestamp).year(),
-        month: moment(payload.endTimestamp).month() + 1,
-        day: moment(payload.endTimestamp).date(),
-        hour: moment(payload.endTimestamp).hour() + 1
+        year: moment(payload.toDate).year(),
+        month: moment(payload.toDate).month() + 1,
+        day: moment(payload.toDate).date(),
+        hour: moment(payload.toDate).hour() + 1
       }
 
       /* The request */
@@ -627,8 +627,8 @@ describe('API: Measurements', function(){
         var body = res.body;
         body.should.have.property('sensor_id', sensor1._id.toHexString());
         body.should.have.property('parameter_id', payload.parameter_id);
-        body.should.have.property('startTimestamp', startTimestamp.toISOString());
-        body.should.have.property('endTimestamp', endTimestamp.toISOString());
+        body.should.have.property('fromDate', fromDate.toISOString());
+        body.should.have.property('toDate', toDate.toISOString());
         body.should.have.property('resolution', payload.resolution);
         body['aggregates'].length.should.be.above(0);
 
@@ -646,7 +646,7 @@ describe('API: Measurements', function(){
                       .hour(_id.hour-1)
                       .toISOString();
 
-          date.should.be.within(startTimestamp.toISOString(), endTimestamp.toISOString());
+          date.should.be.within(fromDate.toISOString(), toDate.toISOString());
           aggregate['max'].should.be.Number();
           aggregate['avg'].should.be.Number();
           aggregate['min'].should.be.Number();
@@ -658,8 +658,8 @@ describe('API: Measurements', function(){
             sensor: payload.sensor_id,
             parameter: payload.parameter_id,
             collectedAt: {
-              $gte: startTimestamp.toDate(),
-              $lte: endTimestamp.toDate()
+              $gte: fromDate.toDate(),
+              $lte: toDate.toDate()
             }
           }, function (err, dbCount) {
             should.not.exist(err);
@@ -671,28 +671,28 @@ describe('API: Measurements', function(){
 
     it('aggregates by day', function(doneIt){
 
-      var startTimestamp = moment.utc().subtract(45, 'day').hours(0).minutes(0).seconds(0);
-      var endTimestamp = moment.utc().subtract(5, 'day').hours(23).minutes(59).seconds(59);
+      var fromDate = moment.utc().subtract(45, 'day').hours(0).minutes(0).seconds(0);
+      var toDate = moment.utc().subtract(5, 'day').hours(23).minutes(59).seconds(59);
 
 
       var payload = {
         sensor_id: sensor1._id.toHexString(),
         parameter_id: 'atmospheric_pressure',
         resolution: 'day',
-        startTimestamp: startTimestamp.toISOString(),
-        endTimestamp: endTimestamp.toISOString()
+        fromDate: fromDate.toISOString(),
+        toDate: toDate.toISOString()
       }
 
       var start = {
-        year: moment(payload.startTimestamp).year(),
-        month: moment(payload.startTimestamp).month() + 1,
-        day: moment(payload.startTimestamp).date()
+        year: moment(payload.fromDate).year(),
+        month: moment(payload.fromDate).month() + 1,
+        day: moment(payload.fromDate).date()
       }
 
       var end = {
-        year: moment(payload.endTimestamp).year(),
-        month: moment(payload.endTimestamp).month() + 1,
-        day: moment(payload.endTimestamp).date()
+        year: moment(payload.toDate).year(),
+        month: moment(payload.toDate).month() + 1,
+        day: moment(payload.toDate).date()
       }
 
       /* The request */
@@ -711,8 +711,8 @@ describe('API: Measurements', function(){
         var body = res.body;
         body.should.have.property('sensor_id', sensor1._id.toHexString());
         body.should.have.property('parameter_id', payload.parameter_id);
-        body.should.have.property('startTimestamp');
-        body.should.have.property('endTimestamp');
+        body.should.have.property('fromDate');
+        body.should.have.property('toDate');
         body.should.have.property('resolution', payload.resolution);
         body['aggregates'].length.should.be.above(0);
 
@@ -730,7 +730,7 @@ describe('API: Measurements', function(){
                       .date(_id.day)
                       .toISOString();
 
-          date.should.be.within(startTimestamp.toISOString(), endTimestamp.toISOString());
+          date.should.be.within(fromDate.toISOString(), toDate.toISOString());
           aggregate['max'].should.be.Number();
           aggregate['avg'].should.be.Number();
           aggregate['min'].should.be.Number();

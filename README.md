@@ -356,8 +356,8 @@ Parameters:
 - `sensor_id`: _string_ (required)
 - `parameter_id`: _string_ (required)
 - `resolution`: _'month','week', 'day' or 'hour'_  (optional, default: 'day')
-- `start`: _string_ [ISO 8601] (optional, default: 10 days from now)
-- `end`: _string_ [ISO 8601] (optional, default: now)
+- `fromDate`: _string_ [ISO 8601] (optional, default: 10 days from now)
+- `toDate`: _string_ [ISO 8601] (optional, default: now)
 
 Possible responses:
 - `200` Success and list of measurements:

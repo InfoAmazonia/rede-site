@@ -137,16 +137,16 @@ exports.aggregate = function(req, res) {
   if (!parameter) { return res.status(400).json(messaging.error('measurements.aggregate.missing_parameter')); }
 
   // verify existence of start timestamp, defaults to 10 days from now
-  var startTimestamp = req.query['startTimestamp'];
-  if (!startTimestamp) startTimestamp = moment().subtract(10, 'day');
-  else if (!moment(startTimestamp).isValid()) return res.status(400).json(messaging.error('measurements.aggregate.invalid_timestamp'));
-  else startTimestamp = moment(startTimestamp);
+  var fromDate = req.query['fromDate'];
+  if (!fromDate) fromDate = moment().subtract(10, 'day');
+  else if (!moment(fromDate).isValid()) return res.status(400).json(messaging.error('measurements.aggregate.invalid_timestamp'));
+  else fromDate = moment(fromDate);
 
   // verify existence of end timestamp
-  var endTimestamp = req.query['endTimestamp'];
-  if (!endTimestamp) endTimestamp = moment();
-  else if (!moment(endTimestamp).isValid()) return res.status(400).json(messaging.error('measurements.aggregate.invalid_timestamp'));
-  else endTimestamp = moment(endTimestamp);
+  var toDate = req.query['toDate'];
+  if (!toDate) toDate = moment();
+  else if (!moment(toDate).isValid()) return res.status(400).json(messaging.error('measurements.aggregate.invalid_timestamp'));
+  else toDate = moment(toDate);
 
   // Aggregation criteria
   var match = {
@@ -154,8 +154,8 @@ exports.aggregate = function(req, res) {
       sensor: req.sensor._id,
       parameter: req.parameter._id,
       collectedAt: {
-        $gte: startTimestamp.toDate(),
-        $lte: endTimestamp.toDate()
+        $gte: fromDate.toDate(),
+        $lte: toDate.toDate()
       }
     }
   }
@@ -195,8 +195,8 @@ exports.aggregate = function(req, res) {
       res.status(200).json({
         sensor_id: sensor._id.toHexString(),
         parameter_id: parameter._id,
-        startTimestamp: startTimestamp,
-        endTimestamp: endTimestamp,
+        fromDate: fromDate,
+        toDate: toDate,
         resolution: resolution,
         count: count,
         aggregates: aggregates
