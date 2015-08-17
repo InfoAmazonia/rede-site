@@ -1,13 +1,14 @@
-
 /*
  * Module dependencies
  */
 var _ = require('underscore');
+var csv = require('csv');
 var moment = require('moment');
 var validator = require('validator');
 var messaging = require('../../lib/helpers/messaging');
 var mongoose = require('mongoose');
-var Sensor = mongoose.model('Sensor')
+var Sensor = mongoose.model('Sensor');
+var Measurement = mongoose.model('Measurement');
 
 /*
  * Load middleware
@@ -142,9 +143,34 @@ exports.unsubscribe = function(req, res, next) {
   var user = req.account;
 
   user.subscribedToSensors.pull(sensor);
-  
+
   user.save(function(err) {
     if (err) return res.status(400).json(messaging.mongooseErrors(err, 'users'));
     else res.status(200).json({sensor: sensor, user: user});
   });
+}
+
+/*
+ * Download sensor's measurements as csv
+ */
+exports.csv = function(req, res) {
+  var sensor = req.sensor;
+  var parameter = req.parameter;
+
+  Measurement
+    .find({sensor: sensor, parameter: parameter})
+    .sort('collectedAt')
+    .exec(function(err, measurements){
+      if (err) return res.status(500).json(messaging.mongooseErrors(err, 'measurements'));
+
+      var csvFile = 'timestamp,sensor_id,measurement_id,parameter_id,value\n';
+
+      _.each(measurements, function(m){
+        var timestamp = moment.utc(m.collectedAt).toISOString();
+        csvFile += [timestamp, m.sensor.toHexString(), m._id.toHexString(), m.parameter, m.value].join(',') + '\n';
+      });
+
+      res.set('Content-Type', 'text/csv').send(csvFile);
+  });
+
 }

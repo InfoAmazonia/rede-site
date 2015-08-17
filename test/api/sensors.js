@@ -2,6 +2,7 @@
  * Module dependencies
  */
 
+var csv = require('csv');
 var request = require('supertest');
 var async = require('async');
 var should = require('should');
@@ -19,6 +20,7 @@ var app = require('../../app');
  */
 
 var Sensor = mongoose.model('Sensor');
+var Measurement = mongoose.model('Measurement');
 
 /*
  * Helpers
@@ -635,6 +637,53 @@ describe('API: Sensors', function(){
         });
       });
     });
+
+    /*
+     * GET sensor/:sensor_id/measurements/:parameter_id.csv
+    */
+    describe('GET measurements', function(){
+      it('return valid csv file', function(doneIt){
+        var sensor = sensorsWithMeasurements[2];
+
+        /* The request */
+        request(app)
+          .get(apiPrefix + '/sensors/'+sensor._id.toHexString()+'/measurements/atmospheric_pressure.csv')
+          .expect(200)
+          .expect('Content-Type', /csv/)
+          .end(onResponse);
+
+          /* Verify response */
+          function onResponse(err, res) {
+            if (err) return doneIt(err);
+
+            Measurement
+              .find({sensor: sensor, parameter: 'atmospheric_pressure'})
+              .sort('collectedAt')
+              .exec(function(err, measurements){
+
+                csv.parse(res.text, function(err,data){
+                  if (err) doneIt(err);
+
+                  var header = data.shift();
+                  header.join(',').should.eql('timestamp,sensor_id,measurement_id,parameter_id,value');
+
+                  measurements.should.have.length(data.length);
+                  for (var i = 0; i < data.length; i++) {
+                    var collectedAt = moment.utc(measurements[i]['collectedAt']).toISOString();
+                    collectedAt.should.eql(data[i][0]);
+
+                    measurements[i]['sensor'].toHexString().should.eql(data[i][1]);
+                    measurements[i]['_id'].toHexString().should.eql(data[i][2]);
+                    measurements[i]['parameter'].should.eql(data[i][3]);
+                    measurements[i]['value'].should.eql(parseFloat(data[i][4]));
+
+                  }
+                  doneIt();
+                })
+              });
+        }
+      });
+  });
 
 
 

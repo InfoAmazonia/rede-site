@@ -40,6 +40,7 @@ module.exports = function (app, config) {
   apiRoutes.put('/account', [auth.isLogged, account.update]);
 
   // parameter routes
+  apiRoutes.param('parameter_id', parameters.load);
   apiRoutes.get('/parameters', parameters.list);
 
   // sensor routes
@@ -52,6 +53,7 @@ module.exports = function (app, config) {
   apiRoutes.get('/sensors/:sensor_id/score', sensors.score);
   apiRoutes.post('/sensors/:sensor_id/subscribe', [auth.isLogged, sensors.subscribe]);
   apiRoutes.post('/sensors/:sensor_id/unsubscribe', [auth.isLogged, sensors.unsubscribe]);
+  apiRoutes.get('/sensors/:sensor_id/measurements/:parameter_id.csv', sensors.csv);
 
   // measurement route
   apiRoutes.param('measurement_id', measurements.load)

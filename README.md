@@ -20,6 +20,8 @@ Run `npm start`.
 
 # API Documentation
 
+All routes should be prefixed with 'api/v1'.
+
 ## Users
 - [GET users](#get-users)
 - [POST users](#post-users)
@@ -40,6 +42,9 @@ Run `npm start`.
 - [GET sensors/:sensor_id/scores](#get-sensorssensor_idscores)
 - [POST sensors/:sensor_id/subscribe](#post-sensorssensor_idsubscribe)
 - [POST sensors/:sensor_id/unsubscribe](#post-sensorssensor_idunsubscribe)
+- [POST sensors/:sensor_id/unsubscribe](#post-sensorssensor_idunsubscribe)
+- [GET sensors/:sensor_id/measurements/:parameter_id.csv](#get-sensorssensor_id_measurements_parameter_id.csv)
+
 
 ## Measurements
 - [GET measurements](#get-measurements)
@@ -283,6 +288,19 @@ Parameters:
 Possible responses:
 - `200` Success + user json;
 - `401` Unauthorized;
+- `404` Not found;
+- `500` Internal error.
+
+---
+
+### GET sensors/:sensor_id/measurements/:parameter_id.csv
+
+Download all measurements as CSV file. Example:
+
+    http://rede.infoamazonia.org/sensor/1203910293029/measurements/atmospheric_pressure.csv
+
+Possible responses:
+- `200` Success + CSV file;
 - `404` Not found;
 - `500` Internal error.
 
