@@ -316,25 +316,28 @@ angular.module('rede')
 		};
 
 		$scope.chart.current = {
-			type: $scope.chart.params.type[Object.keys($scope.chart.params.type)[0]]._id,
-			date: $scope.chart.params.date[0]
+			type: $scope.chart.params.type[Object.keys($scope.chart.params.type)[0]],
+			date: $scope.chart.params.date[1]
 		};
 
 		var updateChart = function() {
-			if($scope.chart.current.type && $scope.sensor && $scope.chartDateFrom) {
-				Rede.measurements.query({
+			var from = $scope.chartDateFrom;
+			var to = $scope.chartDateTo;
+			if($scope.chart.current.type && $scope.sensor && from && to) {
+				Rede.measurements.aggregate({
 					'sensor_id': $scope.sensor._id,
-					'parameter_id': $scope.chart.current.type,
-					'from': $scope.chartDateFrom,
-					'to': $scope.chartDateTo
-				}, function(measures) {
-					$scope.measures = measures.measurements;
+					'parameter_id': $scope.chart.current.type._id,
+					'fromDate': from,
+					'toDate': to,
+					'resolution': 'day'
+				}, function(aggregates) {
+					$scope.aggregates = aggregates.aggregates;
 				});
 			}
 		}
 
-		$scope.chartMeasure = function(id) {
-			$scope.chart.current.type = id;
+		$scope.chartMeasure = function(param) {
+			$scope.chart.current.type = param;
 		};
 
 		$scope.picker = {
@@ -366,6 +369,7 @@ angular.module('rede')
 			$scope.showTo = false;
 			$scope.chartDateFrom = moment(picker.from).format();
 			$scope.chartDateTo = moment(picker.to).format();
+			updateChart();
 		}, true);
 
 		$scope.$watch('chart.current.date.value', function(val) {

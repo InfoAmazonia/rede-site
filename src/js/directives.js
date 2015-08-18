@@ -330,25 +330,34 @@ angular.module('rede')
 
 				function init() {
 
-					var data = [['', scope.label || '', 'Média']];
+					var label = scope.label || '';
+
+					var data = [['', label + ' (média)', label + ' (máximo)', label + ' (mínimo)']];
 
 					_.each(scope.dataset, function(d, i) {
-						data.push([new Date(d.collectedAt), d.value]);
+						var date = new Date(d._id.year, 0, 1);
+						if(d._id.week) {
+							var offset = date.getTimezoneOffset();
+							date.setDate(date.getDate() + 4 - (date.getDay() || 7));
+							date.setTime(date.getTime() + 7 * 24 * 60 * 60 * 1000 * (d._id.week + (d._id.year == date.getFullYear() ? -1 : 0 )));
+							// daylight savings fix
+							date.setTime(date.getTime() + (date.getTimezoneOffset() - offset) * 60 * 1000);
+							// back to Monday (from Thursday)
+							date.setDate(date.getDate() - 3);
+						}
+						if(d._id.month) {
+							date.setMonth(d._id.month-1);
+						}
+						if(d._id.day) {
+							date.setDate(d._id.day);
+						}
+						if(d._id.hour) {
+							date.setHours(d._id.hour);
+						}
+						data.push([date, d.avg, d.max, d.min]);
 					});
 
-					// Extract average
-					var total = 0;
-					_.each(data, function(d, i) {
-						if(i != 0)
-							total = total + d[1];
-					});
-
-					var average = total / (data.length-1);
-
-					_.each(data, function(d, i) {
-						if(i != 0)
-							d.push(average);
-					});
+					data = _.sortBy(data, function(d) { return d[0]; });
 
 					// See https://google-developers.appspot.com/chart/interactive/docs/gallery/linechart
 					scope.chart = {

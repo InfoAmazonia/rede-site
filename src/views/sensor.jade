@@ -90,11 +90,11 @@ article#sensor
 				nav.chart-nav
 					.container
 						.twelve.columns
-							a(ng-repeat="param in chart.params.type" href="javascript:void(0);" ng-click="chartMeasure(param._id)" ng-class="{active: chart.current.type == param._id}") {{param.name.pt}}  
+							a(ng-repeat="param in chart.params.type" href="javascript:void(0);" ng-click="chartMeasure(param)" ng-class="{active: chart.current.type._id == param._id}") {{param.name.pt}}  
 				.container
 					.twelve.columns
 						.chart
-							reading-chart(dataset="measures" label="param.name.pt")
+							reading-chart(dataset="aggregates" label="chart.current.type.name.pt")
 				.container
 					.six.columns
 						.download

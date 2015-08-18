@@ -61,6 +61,10 @@ angular.module('rede')
 				},
 				update: {
 					method: 'PUT'
+				},
+				aggregate: {
+					method: 'GET',
+					url: apiUrl + '/measurements/aggregate'
 				}
 			}),
 			getParameters: function() {
