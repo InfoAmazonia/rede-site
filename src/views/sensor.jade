@@ -40,30 +40,9 @@ article#sensor
 					.sensor-average
 						h2 Média dos últimos 30 dias
 						ul.average-list
-							li.average-item
-								h3 Qualidade
-								p Boa
-							li.average-item
-								h3 Temperatura
-								p 23 C
-							li.average-item
-								h3 pH
-								p 7
-							li.average-item
-								h3 Luminosidade
-								p 100
-							li.average-item
-								h3 Condutividade
-								p 203
-							li.average-item
-								h3 Turbidez
-								p 5
-							li.average-item
-								h3 ORP
-								p 349
-							li.average-item
-								h3 Aceleração
-								p 120
+							li.average-item(ng-repeat="(key, average) in averages")
+								h3 {{params[key].name.pt}}
+								p {{average[0].avg.toFixed(2)}}
 				.six.columns
 					latest-readings(sensor="sensor._id" amount="'5'" params="['electrical_conductivity', 'oxi-reduction_potential']")
 		section#sensor-charts.anchor-section.row

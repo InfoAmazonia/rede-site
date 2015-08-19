@@ -240,6 +240,7 @@ angular.module('rede')
 ])
 
 .controller('SensorCtrl', [
+	'$q',
 	'$scope',
 	'RedeService',
 	'leafletData',
@@ -247,7 +248,7 @@ angular.module('rede')
 	'AddressData',
 	'ParametersData',
 	'$sce',
-	function($scope, Rede, leafletData, Sensor, Address, Parameters, $sce) {
+	function($q, $scope, Rede, leafletData, Sensor, Address, Parameters, $sce) {
 
 		$scope.sensor = Sensor;
 
@@ -295,6 +296,34 @@ angular.module('rede')
 			m.fitBounds(bounds, {reset: true});
 		});
 
+		/*
+		 * Average
+		 */
+		$scope.params = Parameters;
+		$scope.averages = {};
+
+		console.log($scope.params);
+
+		var promises = [];
+		_.each($scope.params, function(param) {
+			promises.push(Rede.measurements.aggregate({
+				sensor_id: $scope.sensor._id,
+				parameter_id: param._id,
+				fromDate: moment().subtract(1, 'month').format(),
+				toDate: moment().format(),
+				resolution: 'month'
+			}).$promise);
+		});
+		$q.all(promises).then(function(data) {
+			data.map(function(aggregates) {
+				$scope.averages[aggregates.parameter_id] = aggregates.aggregates;
+			});
+			console.log($scope.averages);
+		});
+
+		/*
+		 * Chart
+		 */
 		$scope.chart = {
 			params: {
 				type: Parameters,
@@ -461,9 +490,6 @@ angular.module('rede')
 
 			var from = moment(new Date($stateParams.from));
 			var to = moment(new Date($stateParams.to));
-
-			console.log(from);
-			console.log(to);
 
 			if($stateParams.from) {
 				$scope.formattedFrom = from.format('L');
