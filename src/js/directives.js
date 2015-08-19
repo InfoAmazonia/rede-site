@@ -182,7 +182,7 @@ angular.module('rede')
 				}
 
 				scope.scoreParam = function(param, score) {
-					return _.find(score.parameters, function(sP) { return sP.parameter == param; });
+					return _.find(score.parameters, function(sP) { if(sP && sP.parameter) return sP.parameter == param; else return false; });
 				};
 
 				scope.fromNow = function(reading) {

@@ -371,8 +371,10 @@ angular.module('rede')
 			}
 			$scope.showFrom = false;
 			$scope.showTo = false;
-			$scope.chartDateFrom = moment(picker.from);
-			$scope.chartDateTo = moment(picker.to);
+			if(picker.from)
+				$scope.chartDateFrom = moment(picker.from);
+			if(picker.to)
+				$scope.chartDateTo = moment(picker.to);
 			updateChart();
 		}, true);
 
