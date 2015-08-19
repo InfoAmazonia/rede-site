@@ -317,19 +317,23 @@ angular.module('rede')
 
 		$scope.chart.current = {
 			type: $scope.chart.params.type[Object.keys($scope.chart.params.type)[0]],
-			date: $scope.chart.params.date[1]
+			date: $scope.chart.params.date[0]
 		};
 
 		var updateChart = function() {
 			var from = $scope.chartDateFrom;
 			var to = $scope.chartDateTo;
-			if($scope.chart.current.type && $scope.sensor && from && to) {
+			if($scope.chart.current.type && moment.isMoment(from) && moment.isMoment(to)) {
+				var resolution = 'hour';
+				if(from.isBefore(moment(to).subtract(5, 'days'))) {
+					resolution = 'day';
+				}
 				Rede.measurements.aggregate({
 					'sensor_id': $scope.sensor._id,
 					'parameter_id': $scope.chart.current.type._id,
-					'fromDate': from,
-					'toDate': to,
-					'resolution': 'day'
+					'fromDate': from.format(),
+					'toDate': to.format(),
+					'resolution': resolution
 				}, function(aggregates) {
 					$scope.aggregates = aggregates.aggregates;
 				});
@@ -367,20 +371,20 @@ angular.module('rede')
 			}
 			$scope.showFrom = false;
 			$scope.showTo = false;
-			$scope.chartDateFrom = moment(picker.from).format();
-			$scope.chartDateTo = moment(picker.to).format();
+			$scope.chartDateFrom = moment(picker.from);
+			$scope.chartDateTo = moment(picker.to);
 			updateChart();
 		}, true);
 
 		$scope.$watch('chart.current.date.value', function(val) {
 			switch(val) {
 				case '24hours':
-					$scope.chartDateFrom = moment().subtract(1, 'day').format();
-					$scope.chartDateTo = moment().format();
+					$scope.chartDateFrom = moment().subtract(1, 'day');
+					$scope.chartDateTo = moment();
 					break;
 				case '30days':
-					$scope.chartDateFrom = moment().subtract(30, 'days').format();
-					$scope.chartDateTo = moment().format();
+					$scope.chartDateFrom = moment().subtract(30, 'days');
+					$scope.chartDateTo = moment();
 					break;
 				case 'custom':
 					$scope.chartDateFrom = '';
