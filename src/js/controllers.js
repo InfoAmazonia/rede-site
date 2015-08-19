@@ -457,27 +457,39 @@ angular.module('rede')
 
 			$scope.params = params;
 
+			var from = moment(new Date($stateParams.from));
+			var to = moment(new Date($stateParams.to));
+
+			console.log(from);
+			console.log(to);
+
 			if($stateParams.from) {
-				$scope.formattedFrom = moment($stateParams.from).format('L');
+				$scope.formattedFrom = from.format('L');
 			}
 
 			if($stateParams.to) {
-				$scope.formattedTo = moment($stateParams.to).format('L');
+				$scope.formattedTo = to.format('L');
+			}
+
+			var resolution = 'hour';
+			if(from.isBefore(moment(to).subtract(5, 'days'))) {
+				resolution = 'day';
 			}
 
 			var promises = [];
 			_.each(params, function(param) {
-				promises.push(Rede.measurements.query({
+				promises.push(Rede.measurements.aggregate({
 					sensor_id: $stateParams.sensorId,
 					parameter_id: param._id,
-					from: $stateParams.from,
-					to: $stateParams.to
+					fromDate: from.format(),
+					toDate: to.format(),
+					resolution: resolution
 				}).$promise);
 			});
 
 			$q.all(promises).then(function(data) {
-				data.map(function(measurements) {
-					$scope.data[measurements.parameter._id] = measurements.measurements;
+				data.map(function(aggregates) {
+					$scope.data[aggregates.parameter_id] = aggregates.aggregates;
 				});
 				setTimeout(function() {
 					window.print();
