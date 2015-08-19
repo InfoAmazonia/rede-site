@@ -65,8 +65,18 @@ var parameters = {
       "en": "Relative humidity",
       "pt": "Humidade relativa"
     },
-    "abbreviations": ["Tw"],
+    "abbreviations": ["RH"],
     "defaultUnit": "%",
+    "wikipedia": "https://en.wikipedia.org/wiki/Relative_humidity"
+  },
+  "illuminance": {
+    "_id": "illuminance",
+    "name": {
+      "en": "Illuminance",
+      "pt": "Iluminância"
+    },
+    "abbreviations": ["E"],
+    "defaultUnit": "lx",
     "wikipedia": "https://en.wikipedia.org/wiki/Relative_humidity"
   }
 };
