@@ -302,7 +302,7 @@ describe('API: Measurements', function(){
       .get(apiPrefix + '/measurements')
       .query(payload)
       .expect(200)
-      // .expect('Content-Type', /json/)
+      .expect('Content-Type', /json/)
       .end(onResponse);
 
       /* Verify response */
@@ -585,30 +585,34 @@ describe('API: Measurements', function(){
   describe('GET measurements/aggregate', function(){
     it('aggregates by hour', function(doneIt){
 
-      var fromDate = moment.utc().subtract(30, 'hour');
-      var toDate = moment.utc().subtract(5, 'hour');
+      // get current timestamp as it were in UTC
+      var fromDate = moment().subtract(30, 'hour').format('YYYY-MM-DDTHH:mm:ss');
+      var toDate = moment().subtract(5, 'hour').format('YYYY-MM-DDTHH:mm:ss');
 
+      // construct Date object in UTC from string
+      fromDate = moment.utc(fromDate, moment.ISO_8601);
+      toDate = moment.utc(toDate, moment.ISO_8601);
 
       var payload = {
         sensor_id: sensor1._id.toHexString(),
         parameter_id: 'atmospheric_pressure',
         resolution: 'hour',
-        fromDate: fromDate.toISOString(),
-        toDate: toDate.toISOString()
+        fromDate: fromDate.format(),
+        toDate: toDate.format()
       }
 
       var start = {
-        year: moment(payload.fromDate).year(),
-        month: moment(payload.fromDate).month() + 1,
-        day: moment(payload.fromDate).date(),
-        hour: moment(payload.fromDate).hour() + 1
+        year: fromDate.year(),
+        month: fromDate.month() + 1,
+        day: fromDate.date(),
+        hour: fromDate.hour() + 1
       }
 
       var end = {
-        year: moment(payload.toDate).year(),
-        month: moment(payload.toDate).month() + 1,
-        day: moment(payload.toDate).date(),
-        hour: moment(payload.toDate).hour() + 1
+        year: toDate.year(),
+        month: toDate.month() + 1,
+        day: toDate.date(),
+        hour: toDate.hour() + 1
       }
 
       /* The request */
@@ -658,8 +662,8 @@ describe('API: Measurements', function(){
             sensor: payload.sensor_id,
             parameter: payload.parameter_id,
             collectedAt: {
-              $gte: fromDate.toDate(),
-              $lte: toDate.toDate()
+              $gte: fromDate,
+              $lte: toDate
             }
           }, function (err, dbCount) {
             should.not.exist(err);
@@ -679,8 +683,8 @@ describe('API: Measurements', function(){
         sensor_id: sensor1._id.toHexString(),
         parameter_id: 'atmospheric_pressure',
         resolution: 'day',
-        fromDate: fromDate.toISOString(),
-        toDate: toDate.toISOString()
+        fromDate: fromDate.format(),
+        toDate: toDate.format()
       }
 
       var start = {

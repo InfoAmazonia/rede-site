@@ -127,26 +127,31 @@ exports.list = function(req, res) {
  */
 exports.aggregate = function(req, res) {
 
-  // read parameters
   var sensor = req.sensor;
   var parameter = req.parameter;
   var resolution = req.query['resolution'] || 'day';
 
-  // verify existence of parameter
+  // Validate parameter
   if (!sensor) { return res.status(400).json(messaging.error('measurements.aggregate.missing_sensor')); }
   if (!parameter) { return res.status(400).json(messaging.error('measurements.aggregate.missing_parameter')); }
 
-  // verify existence of start timestamp, defaults to 10 days from now
+  // Validate start date timestamp
   var fromDate = req.query['fromDate'];
-  if (!fromDate) fromDate = moment().subtract(10, 'day');
-  else if (!moment(fromDate).isValid()) return res.status(400).json(messaging.error('measurements.aggregate.invalid_timestamp'));
-  else fromDate = moment(fromDate);
+  if (!fromDate)
+    fromDate = moment().subtract(10, 'day').format('YYYY-MM-DDTHH:mm:ss');
+  else if (!validator.isISO8601(fromDate))
+    return res.status(400).json(messaging.error('measurements.aggregate.invalid_timestamp'));
 
-  // verify existence of end timestamp
+  // Validate end date timestamp
   var toDate = req.query['toDate'];
-  if (!toDate) toDate = moment();
-  else if (!moment(toDate).isValid()) return res.status(400).json(messaging.error('measurements.aggregate.invalid_timestamp'));
-  else toDate = moment(toDate);
+  if (!toDate)
+    toDate = moment().format('YYYY-MM-DDTHH:mm:ss');
+  else if (!validator.isISO8601(toDate))
+    return res.status(400).json(messaging.error('measurements.aggregate.invalid_timestamp'));
+
+  // Generate date objects
+  fromDate = moment.utc(fromDate).toDate();
+  toDate = moment.utc(toDate).toDate();
 
   // Aggregation criteria
   var match = {
@@ -154,8 +159,8 @@ exports.aggregate = function(req, res) {
       sensor: req.sensor._id,
       parameter: req.parameter._id,
       collectedAt: {
-        $gte: fromDate.toDate(),
-        $lte: toDate.toDate()
+        $gte: fromDate,
+        $lte: toDate
       }
     }
   }
@@ -195,8 +200,8 @@ exports.aggregate = function(req, res) {
       res.status(200).json({
         sensor_id: sensor._id.toHexString(),
         parameter_id: parameter._id,
-        fromDate: fromDate,
-        toDate: toDate,
+        fromDate: fromDate.toISOString(),
+        toDate: toDate.toISOString(),
         resolution: resolution,
         count: count,
         aggregates: aggregates
