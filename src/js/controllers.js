@@ -302,8 +302,6 @@ angular.module('rede')
 		$scope.params = Parameters;
 		$scope.averages = {};
 
-		console.log($scope.params);
-
 		var promises = [];
 		_.each($scope.params, function(param) {
 			promises.push(Rede.measurements.aggregate({
@@ -318,7 +316,6 @@ angular.module('rede')
 			data.map(function(aggregates) {
 				$scope.averages[aggregates.parameter_id] = aggregates.aggregates;
 			});
-			console.log($scope.averages);
 		});
 
 		/*
@@ -360,8 +357,8 @@ angular.module('rede')
 				Rede.measurements.aggregate({
 					'sensor_id': $scope.sensor._id,
 					'parameter_id': $scope.chart.current.type._id,
-					'fromDate': from.format(),
-					'toDate': to.format(),
+					'fromDate': from.utc().format(),
+					'toDate': to.utc().format(),
 					'resolution': resolution
 				}, function(aggregates) {
 					$scope.aggregates = aggregates.aggregates;
@@ -509,8 +506,8 @@ angular.module('rede')
 				promises.push(Rede.measurements.aggregate({
 					sensor_id: $stateParams.sensorId,
 					parameter_id: param._id,
-					fromDate: from.format(),
-					toDate: to.format(),
+					fromDate: from.utc().format(),
+					toDate: to.utc().format(),
 					resolution: resolution
 				}).$promise);
 			});
