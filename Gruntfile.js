@@ -152,14 +152,25 @@ module.exports = function(grunt) {
 		var factory = require('./lib/helpers/factory');
 		var mongodb = require('./lib/helpers/mongodb');
 
-		var sensorCount = 20;
-		var daysOfObservation = 20;
+		var sensorCount = 10;
+		var daysOfObservation = 90;
+		var measurementsInterval = 1;
 
-		console.log('Populating database with '+daysOfObservation+' days of data for '+sensorCount+' sensors, please wait...');
-		mongodb.clearDb(function(err){
-			if (err) return done(err);
-			else factory.createSensorsWithMeasurements(sensorCount, daysOfObservation, done);
-		});
+		if (env == 'production') {
+			console.log('Populate task on production environments is not allowed.');
+			done();
+		} else {
+			console.log('Populating database with '+daysOfObservation+' days of data for '+sensorCount+' sensors, please wait...');
+			mongodb.clearDb(function(err){
+				if (err) return done(err);
+				else factory.createSensorsWithMeasurements({
+					numberOfSensors: sensorCount,
+					days: daysOfObservation,
+					interval: measurementsInterval
+				}, done);
+			});
+		}
+
 	});
 
 	grunt.registerTask(
