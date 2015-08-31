@@ -7,7 +7,7 @@
     "postinstall": "napa && mkdir -p public && ./node_modules/.bin/grunt build",
     "start": "node app.js",
     "watch": "NODE_ENV=development ./node_modules/.bin/nodemon --watch app.js",
-    "test": "NODE_ENV=test ./node_modules/.bin/mocha test/api/measurements"
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha test/api"
   },
   "repository": {
     "type": "git",
@@ -55,6 +55,7 @@
     "mapbox.js": "mapbox/mapbox.js#v2.1.8",
     "method-override": "^2.3.3",
     "moment": "^2.10.6",
+    "moment-timezone": "^0.4.0",
     "mongoose": "^4.1.0",
     "napa": "latest",
     "ng-dialog": "^0.3.12",

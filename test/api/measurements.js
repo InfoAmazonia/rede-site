@@ -51,6 +51,7 @@ var admin1AccessToken;
 var user1;
 var user1AccessToken;
 var sensor1;
+var sensor2;
 var sensorWith90DaysOfData;
 var parameters = config.parameters;
 var parametersCount = Object.keys(parameters).length;
@@ -95,6 +96,13 @@ describe('API: Measurements', function(){
             factory.createSensorsWithMeasurements({numberOfSensors: numberOfSensors, days: daysOfMeasurements, interval: measurementsInterval}, function(err, sensor){
               if (err) doneBefore(err);
               sensor1 = sensor[0];
+              doneEach();
+            });
+          },
+          function (doneEach){
+            factory.createSensor(function(err, sensor){
+              if (err) doneBefore(err);
+              sensor2 = sensor;
               doneEach();
             });
           }], doneBefore);
@@ -433,7 +441,83 @@ describe('API: Measurements', function(){
     });
 
     it('keeps measurements with not known parameter');
-    it('set server time to collected at if timestamp is too old');
+    it('set server time to collected at if timestamp is too old', function(doneIt){
+      var payload = {
+        sensorIdentifier: sensor2.identifier,
+        data: '2004-01-01T10:08:15-03:00;Tw=20.3;Ta:F=78.29;pH=6.9'
+      }
+
+      request(app)
+        .post(apiPrefix + '/measurements/new')
+        .send(payload)
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end(function(err, res){
+          if (err) return doneIt(err);
+          var body = res.body;
+
+          // Verify each parameter sent
+          async.series([
+            function(doneEach){
+              Measurement
+                .find({
+                  sensor: sensor2._id,
+                  parameter: 'water_temperature'
+                })
+                .sort('-collectedAt')
+                .limit(1)
+                .exec(function(err, measurement){
+                  if (err) return doneIt(err);
+                  measurement = measurement[0];
+                  should.exist(measurement);
+
+                  var year = moment(measurement.collectedAt).year();
+                  should(year).not.be.equal(2004);
+
+                  measurement.should.have.property('value', 20.3);
+                  doneEach();
+              });
+            },function(doneEach){
+              Measurement
+                .find({
+                  sensor: sensor2._id,
+                  parameter: 'ambient_temperature'
+                })
+                .sort('-collectedAt')
+                .limit(1)
+                .exec(function(err, measurement){
+                  if (err) return doneIt(err);
+                  measurement = measurement[0];
+                  should.exist(measurement);
+
+                  var year = moment(measurement.collectedAt).year();
+                  should(year).not.be.equal(2004);
+
+                  measurement.should.have.property('value', 78.29);
+                  doneEach();
+              });
+            },function(doneEach){
+              Measurement
+                .find({
+                  sensor: sensor2._id,
+                  parameter: 'ph'
+                })
+                .sort('-collectedAt')
+                .limit(1)
+                .exec(function(err, measurement){
+                  if (err) return doneIt(err);
+                  measurement = measurement[0];
+                  should.exist(measurement);
+
+                  var year = moment(measurement.collectedAt).year();
+                  should(year).not.be.equal(2004);
+
+                  measurement.should.have.property('value', 6.9);
+                  doneEach();
+              });
+            }], doneIt);
+        });
+    });
 
     it('returns 200 for zero values', function(doneIt){
       var payload = {

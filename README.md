@@ -415,7 +415,7 @@ Example response:
 
 ## POST measurements/new
 
-Send one or more measurements using [measurement data protocol].
+Send one or more measurements using [measurement data protocol]. If timestamp is equal to 2004-01-01, it will be ignored and measurement's `collectedAt` property will be set as current local time in `Brazil/East` timezone.
 
 Parameters:
 - `sensorIdentifier`: _string_ (required)
