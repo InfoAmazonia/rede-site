@@ -370,7 +370,7 @@ describe('API: Measurements', function(){
         data: '2015-07-14T10:08:15-03:00;Tw=20.3;Ta:F=78.29;pH=6.9'
       }
 
-      var time = new Date('2015-07-14T10:08:15-03:00');
+      var time = moment('2015-07-14T10:08:15Z', moment.ISO_8601).toDate();
 
       request(app)
         .post(apiPrefix + '/measurements/new')
@@ -382,7 +382,7 @@ describe('API: Measurements', function(){
           var body = res.body;
 
           // Verify each parameter sent
-          async.parallel([
+          async.series([
             function(doneEach){
               Measurement
                 .findOne({
@@ -432,6 +432,193 @@ describe('API: Measurements', function(){
         });
     });
 
+    it('keeps measurements with not known parameter');
+    it('set server time to collected at if timestamp is too old');
+
+    it('returns 200 for zero values', function(doneIt){
+      var payload = {
+        sensorIdentifier: sensor1.identifier,
+        data: '2014-08-20T08:55:47-03:00;RH=48.0;Ta:C=25.0;AP:Pa=7159;E=455;pH=5.45;ORP:mV=-387.70;EC:S/m=11.0;Tw:C=0.0;XX=32;ZZ:YY=-100'
+      }
+
+      var time = moment('2014-08-20T08:55:47Z', moment.ISO_8601).toDate();
+
+
+      request(app)
+        .post(apiPrefix + '/measurements/new')
+        .send(payload)
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end(function(err, res){
+          if (err) return doneIt(err);
+          var body = res.body;
+
+          // Verify each parameter sent
+          async.series([
+            function(doneEach){
+              Measurement
+                .findOne({
+                  sensor: sensor1._id,
+                  parameter: 'relative_humidity',
+                  collectedAt: {
+                    $gte: time,
+                    $lte: time
+                  }
+                }, function(err, measurement){
+                  if (err) return doneIt(err);
+                  should.exist(measurement);
+                  measurement.should.have.property('value', 48.0);
+                  measurement.should.have.property('unit', '%');
+                  doneEach();
+              });
+            },function(doneEach){
+              Measurement
+                .findOne({
+                  sensor: sensor1._id,
+                  parameter: 'ambient_temperature',
+                  collectedAt: {
+                    $gte: time,
+                    $lte: time
+                  }
+                }, function(err, measurement){
+                  if (err) return doneIt(err);
+                  should.exist(measurement);
+                  measurement.should.have.property('value', 25.0);
+                  measurement.should.have.property('unit', 'C');
+                  doneEach();
+              });
+            },function(doneEach){
+              Measurement
+                .findOne({
+                  sensor: sensor1._id,
+                  parameter: 'atmospheric_pressure',
+                  collectedAt: {
+                    $gte: time,
+                    $lte: time
+                  }
+                }, function(err, measurement){
+                  if (err) return doneIt(err);
+                  should.exist(measurement);
+                  measurement.should.have.property('value', 7159);
+                  measurement.should.have.property('unit', 'Pa');
+                  doneEach();
+                });
+            },function(doneEach){
+              Measurement
+                .findOne({
+                  sensor: sensor1._id,
+                  parameter: 'illuminance',
+                  collectedAt: {
+                    $gte: time,
+                    $lte: time
+                  }
+                }, function(err, measurement){
+                  if (err) return doneIt(err);
+                  should.exist(measurement);
+                  measurement.should.have.property('value', 455);
+                  measurement.should.have.property('unit');
+                  doneEach();
+                });
+            },function(doneEach){
+              Measurement
+                .findOne({
+                  sensor: sensor1._id,
+                  parameter: 'ph',
+                  collectedAt: {
+                    $gte: time,
+                    $lte: time
+                  }
+                }, function(err, measurement){
+                  if (err) return doneIt(err);
+                  should.exist(measurement);
+                  measurement.should.have.property('value', 5.45);
+                  measurement.should.have.property('unit');
+                  doneEach();
+              });
+            },function(doneEach){
+              Measurement
+                .findOne({
+                  sensor: sensor1._id,
+                  parameter: 'oxi-reduction_potential',
+                  collectedAt: {
+                    $gte: time,
+                    $lte: time
+                  }
+                }, function(err, measurement){
+                  if (err) return doneIt(err);
+                  should.exist(measurement);
+                  measurement.should.have.property('value', -387.70);
+                  measurement.should.have.property('unit', 'mV');
+                  doneEach();
+              });
+            },function(doneEach){
+              Measurement
+                .findOne({
+                  sensor: sensor1._id,
+                  parameter: 'electrical_conductivity',
+                  collectedAt: {
+                    $gte: time,
+                    $lte: time
+                  }
+                }, function(err, measurement){
+                  if (err) return doneIt(err);
+                  should.exist(measurement);
+                  measurement.should.have.property('value', 11);
+                  measurement.should.have.property('unit', 'S/m');
+                  doneEach();
+              });
+            },function(doneEach){
+              Measurement
+                .findOne({
+                  sensor: sensor1._id,
+                  parameter: 'water_temperature',
+                  collectedAt: {
+                    $gte: time,
+                    $lte: time
+                  }
+                }, function(err, measurement){
+                  if (err) return doneIt(err);
+                  should.exist(measurement);
+                  measurement.should.have.property('value', 0);
+                  measurement.should.have.property('unit', 'C');
+                  doneEach();
+              });
+            },function(doneEach){
+              Measurement
+                .findOne({
+                  sensor: sensor1._id,
+                  parameter: 'XX',
+                  collectedAt: {
+                    $gte: time,
+                    $lte: time
+                  }
+                }, function(err, measurement){
+                  if (err) return doneIt(err);
+                  should.exist(measurement);
+                  measurement.should.have.property('value', 32);
+                  measurement.should.have.property('unit', null);
+                  doneEach();
+              });
+            },function(doneEach){
+              Measurement
+                .findOne({
+                  sensor: sensor1._id,
+                  parameter: 'ZZ',
+                  collectedAt: {
+                    $gte: time,
+                    $lte: time
+                  }
+                }, function(err, measurement){
+                  if (err) return doneIt(err);
+                  should.exist(measurement);
+                  measurement.should.have.property('value', -100);
+                  measurement.should.have.property('unit', 'YY');
+                  doneEach();
+                });
+            }], doneIt);
+        });
+    });
+
     it('should return 400 for invalid timestamp', function(doneIt){
       var payload = {
         sensorIdentifier: sensor1.identifier,
@@ -447,7 +634,7 @@ describe('API: Measurements', function(){
           if (err) doneIt(err);
           res.body.messages.should.have.lengthOf(1);
           messaging.hasValidMessages(res.body).should.be.true;
-          res.body.messages[0].should.have.property('text', 'measurements.data_string.invalid_timestamp');
+          res.body.messages[0].should.have.property('text', 'Invalid timestamp.');
           doneIt();
         });
     });
@@ -467,10 +654,13 @@ describe('API: Measurements', function(){
           if (err) doneIt(err);
           res.body.messages.should.have.lengthOf(1);
           messaging.hasValidMessages(res.body).should.be.true;
-          res.body.messages[0].should.have.property('text', 'measurements.data_string.missing_measurements');
+          res.body.messages[0].should.have.property('text', 'Missing measurements.');
           doneIt();
         });
     });
+
+
+
 
     it('should return 400 for malformed measurements', function(doneIt){
       var payload = {
@@ -487,10 +677,12 @@ describe('API: Measurements', function(){
           if (err) doneIt(err);
           res.body.messages.should.have.lengthOf(1);
           messaging.hasValidMessages(res.body).should.be.true;
-          res.body.messages[0].should.have.property('text', 'measurements.data_string.malformed_measurement');
+          res.body.messages[0].should.have.property('text', 'Invalid measurement.');
           doneIt();
         });
     });
+
+
   });
 
   /*

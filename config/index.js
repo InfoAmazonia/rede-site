@@ -77,7 +77,7 @@ var parameters = {
     },
     "abbreviations": ["E"],
     "defaultUnit": "lx",
-    "wikipedia": "https://en.wikipedia.org/wiki/Relative_humidity"
+    "wikipedia": "https://en.wikipedia.org/wiki/Illuminance"
   }
 };
 
