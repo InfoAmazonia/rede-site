@@ -39,7 +39,7 @@ All routes should be prefixed with 'api/v1'.
 - [GET sensors/:sensor_id](#get-sensorssensor_id)
 - [PUT sensors/:sensor_id](#put-sensorssensor_id)
 - [DEL sensors/:sensor_id](#del-sensorssensor_id)
-- [GET sensors/:sensor_id/scores](#get-sensorssensor_idscores)
+- [GET sensors/:sensor_id/score](#get-sensorssensor_idscore)
 - [POST sensors/:sensor_id/subscribe](#post-sensorssensor_idsubscribe)
 - [POST sensors/:sensor_id/unsubscribe](#post-sensorssensor_idunsubscribe)
 - [POST sensors/:sensor_id/unsubscribe](#post-sensorssensor_idunsubscribe)
@@ -247,7 +247,7 @@ Possible responses:
 
 ### GET sensors/:sensor_id/score
 
-Get water quality score based on latest measurements.
+Get water quality score based on measurements.
 
 Parameters:
 - `:sensor_id`: _string_ (required)
@@ -350,7 +350,7 @@ Possible responses:
 
 ## GET measurements/aggregate
 
-Returns a measurements aggregate.
+Returns a measurements aggregate. Due to [a MongoDB limitation](https://jira.mongodb.org/browse/SERVER-6310), For simplificaton, all measurements are recorded in UTC,  but sensors  so the request,  is recorded Parameters `fromDate` and `toDate` should be sent
 
 Parameters:
 - `sensor_id`: _string_ (required)

@@ -20,7 +20,8 @@ var parameters = {
     },
     "abbreviations": ["EC"],
     "defaultUnit": "S/m",
-    "wikipedia": "https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity"
+    "wikipedia": "https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity",
+    "qualityWeight": 0.09
   },
   "ph": {
     "_id": "ph",
@@ -29,7 +30,8 @@ var parameters = {
       "pt": "pH"
     },
     "abbreviations": ["pH"],
-    "wikipedia": "https://en.wikipedia.org/wiki/PH"
+    "wikipedia": "https://en.wikipedia.org/wiki/PH",
+    "qualityWeight": 0.11
   },
   "oxi-reduction_potential": {
     "_id": "oxi-reduction_potential",
@@ -39,7 +41,8 @@ var parameters = {
     },
     "abbreviations": ["ORP"],
     "defaultUnit": "V",
-    "wikipedia": "https://en.wikipedia.org/wiki/Reduction_potential"
+    "wikipedia": "https://en.wikipedia.org/wiki/Reduction_potential",
+    "qualityWeight": 0.08
   },
   "water_temperature": {
     "_id": "water_temperature",
@@ -48,7 +51,8 @@ var parameters = {
       "pt": "Temperatura da água"
     },
     "abbreviations": ["Tw"],
-    "defaultUnit": "C"
+    "defaultUnit": "C",
+    "qualityWeight": 0.10
   },
   "ambient_temperature": {
     "_id": "ambient_temperature",

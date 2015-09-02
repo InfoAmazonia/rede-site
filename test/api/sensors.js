@@ -461,7 +461,7 @@ describe('API: Sensors', function(){
      * GET /api/v1/sensors/:sensor_id/score - Get water quality score for sensor
      */
     describe('GET sensors/:sensor_id/score', function(){
-      it('should return 200 for valid data', function(doneIt){
+      it('returns latest score when no date is passed', function(doneIt){
 
         var targetSensor = sensorsWithMeasurements[1];
 

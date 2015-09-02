@@ -92,7 +92,26 @@ SensorSchema.methods = {
   getScore: function(doneGetScore){
     var self = this;
 
-    async.map(allParameters, function(p, doneEach){
+    function getParameter(parameter_id, doneGetParameter) {
+      mongoose.model('Measurement')
+        .findOne({
+          sensor: self,
+          parameter: parameter_id
+        })
+        .sort('-collectedAt')
+        .exec(function(err, m){
+          doneGetParameter(err, m);
+        });
+    }
+
+    var result = {
+      sensor: self,
+      score: null,
+      range: 'Not defined',
+      parameters: []
+    };
+
+    async.each(allParameters, function(p, doneEach){
       mongoose.model('Measurement')
         .findOne({
           sensor: self,
@@ -100,24 +119,24 @@ SensorSchema.methods = {
         })
         .sort('-collectedAt')
         .exec(function(err, m){
-          doneEach(err,m);
-        })
-    }, function(err, parameters){
-      if (err) return doneGetScore(err);
+          if (err) doneEach(err);
+          if (m.wqi.score && p.qualityWeight) {
+            if (!result.score) result.score = 0;
+            result.score = m.wqi.score * p.qualityWeight;
+            result.parameters.push(m.toJSON());
+          }
+          doneEach();
+        });
+    }, function(err){
 
-      var result = {
-        sensor: self,
-        score: Math.random() * 10,
-        parameters: []
-      };
-
-      // fix async strange result
-      _.each(Object.keys(parameters), function (k){
-        result.parameters.push(parameters[k]);
-      })
-
-      doneGetScore(null, result);
-    })
+      if (result.score) {
+        var totalWeigth = _.reduce(allParameters, function(memo, p){
+            return memo + (p.qualityWeight || 0);
+        }, 0);
+        result.score = result.score / totalWeigth;
+      }
+      return doneGetScore(err, result);
+    });
   }
 }
 
