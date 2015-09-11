@@ -9,7 +9,7 @@ article.sensor-summary
 			.current
 				h3 Qualidade agora 
 					span.green BOA
-				a.button(href="#") Saiba mais
+				a.button(ui-sref="aboutData({'#': 'iqa'})") Saiba mais
 			.readings
 				latest-readings(amount="'3'" sensor="sensorId" params="[]")
 	//- section
