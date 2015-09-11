@@ -9,11 +9,16 @@ header#masthead.row
 			nav#mastnav
 				ul
 					li
-						a(href="#") Sobre os sensores
+						a(ui-sref="about") Sobre o projeto
+						ul
+							li
+								a(ui-sref="press") Imprensa
 					li
-						a(href="#") Metodologia
+						a(ui-sref="maedagua") Mãe D'Água
 					li
-						a(href="#") Parceiros
+						a(ui-sref="aboutData") Sobre os Dados
+					li
+						a(ui-sref="network") Rede de Monitoramento
 					li(ng-controller="AuthCtrl")
 						a(ui-sref="login" ng-hide="token") Entrar
 						a(ui-sref="account" ng-show="token") 

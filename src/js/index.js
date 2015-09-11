@@ -65,6 +65,26 @@ app
 				]
 			}
 		})
+		.state('about', {
+			url: '/sobre/',
+			templateUrl: '/views/pages/about.html'
+		})
+		.state('press', {
+			url: '/imprensa/',
+			templateUrl: '/views/pages/press.html'
+		})
+		.state('maedagua', {
+			url: '/mae-dagua/',
+			templateUrl: '/views/pages/mae-dagua.html'
+		})
+		.state('aboutData', {
+			url: '/sobre-dados/',
+			templateUrl: '/views/pages/about-data.html'
+		})
+		.state('network', {
+			url: '/rede/',
+			templateUrl: '/views/pages/network.html'
+		})
 		.state('login', {
 			url: '/login/',
 			templateUrl: '/views/login.html',
