@@ -27,7 +27,6 @@ angular.module('rede')
 				});
 			},
 			getTilejson: function(tiles, template) {
-				// TODO TILEJSON
 				return {
 					"scheme": "xyz",
 					"tilejson": "2.0.0",

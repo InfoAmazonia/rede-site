@@ -1,5 +1,7 @@
 'use strict';
 
+require('leaflet.markercluster');
+
 angular.module('rede')
 
 .controller('AccountCtrl', [
@@ -95,12 +97,12 @@ angular.module('rede')
 		};
 
 		$scope.map.layerData = [
-			{
-				name: 'Limite dos municípios',
-				user: 'infoamazonia',
-				sql: "SELECT * FROM merge_fiocruz WHERE municipio LIKE 'Santarém' OR municipio LIKE 'Belterra'",
-				cartocss: '#layer{polygon-opacity:.7;line-color:#FFF;line-width:.5;line-opacity:1;polygon-fill:transparent}'
-			}
+			// {
+			// 	name: 'Limite dos municípios',
+			// 	user: 'infoamazonia',
+			// 	sql: "SELECT * FROM merge_fiocruz WHERE municipio LIKE 'Santarém' OR municipio LIKE 'Belterra'",
+			// 	cartocss: '#layer{polygon-opacity:.7;line-color:#FFF;line-width:.5;line-opacity:1;polygon-fill:transparent}'
+			// }
 		];
 
 		$scope.map.layers = {

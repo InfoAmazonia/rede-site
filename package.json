@@ -52,6 +52,7 @@
     "intl-tel-input": "Bluefieldscom/intl-tel-input#v6.0.0",
     "jquery": "^2.1.4",
     "leaflet": "^0.7.3",
+    "leaflet.markercluster": "^0.4.0",
     "mapbox.js": "mapbox/mapbox.js#v2.1.8",
     "method-override": "^2.3.3",
     "moment": "^2.10.6",
