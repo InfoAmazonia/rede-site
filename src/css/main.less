@@ -115,13 +115,16 @@ input[type=submit] {
 					text-decoration: none;
 					text-transform: uppercase;
 					font-size: 14px;
+					&:hover {
+						color: #fff;
+					}
 				}
 				&:hover {
+					> a {
+						color: #fff;
+					}
 					ul {
 						display: block;
-						li {
-							text-align: right;
-						}
 					}
 				}
 				&:last-child {
@@ -134,7 +137,7 @@ input[type=submit] {
 				ul {
 					display: none;
 					position: absolute;
-					top: 17px;
+					top: 19px;
 					width: 170px;
 					left: 0;
 					background: #222;
@@ -147,11 +150,30 @@ input[type=submit] {
 						margin: 0;
 						padding: 0;
 						float: none;
+						border-bottom: 1px solid #333;
+						&:last-child {
+							border-bottom: 0;
+						}
 						a {
-							font-size: 12px;
+							font-size: 14px;
 							line-height: 24px;
 							text-transform: none;
 							text-align: inherit;
+							display: block;
+							padding: 5px 0;
+							&:hover {
+								color: #fff;
+							}
+						}
+					}
+					&.account {
+						li {
+							text-align: right;
+							border: 0;
+							a {
+								font-size: 12px;
+								padding: 3px 0;
+							}
 						}
 					}
 				}

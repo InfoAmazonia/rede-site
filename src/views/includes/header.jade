@@ -9,16 +9,37 @@ header#masthead.row
 			nav#mastnav
 				ul
 					li
-						a(ui-sref="about") Sobre o projeto
+						a(ui-sref="about") Projeto
 						ul
 							li
 								a(ui-sref="press") Imprensa
 					li
 						a(ui-sref="maedagua") Mãe D'Água
+						ul
+							li
+								a(ui-sref="maedagua({'#': 'tecnicos'})") Aspectos ténicos
+							li
+								a(ui-sref="maedagua({'#': 'qualidade'})") Qualidade da água
+							li
+								a(ui-sref="maedagua({'#': 'desenvolvimento'})") Desenvolvimento
+							li
+								a(ui-sref="maedagua({'#': 'limitacoes'})") Limitações
 					li
-						a(ui-sref="aboutData") Sobre os Dados
+						a(ui-sref="aboutData") Dados
+						ul
+							li
+								a(ui-sref="aboutData({'#': 'iqa'})") Índice de qualidade
+							li
+								a(ui-sref="aboutData({'#': 'visualizao'})") Visualização dos dados
 					li
-						a(ui-sref="network") Rede de Monitoramento
+						a(ui-sref="network") Monitoramento
+						ul
+							li
+								a(ui-sref="network({'#': 'formacao'})") Formação da rede
+							li
+								a(ui-sref="network({'#': 'atividades'})") Atividades de formação
+							li
+								a(ui-sref="network({'#': 'resultados'})") Resultados
 					li(ng-controller="AuthCtrl")
 						a(ui-sref="login" ng-hide="token") Entrar
 						a(ui-sref="account" ng-show="token") 
