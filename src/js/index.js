@@ -1,5 +1,6 @@
 window.$ = window.jQuery = require('jquery');
 require('mapbox.js');
+require('leaflet.markercluster');
 L.mapbox.accessToken = 'pk.eyJ1IjoibWlndWVscGVpeGUiLCJhIjoiVlc0WWlrQSJ9.pIPkSx25w7ossO6rZH9Tcw';
 window.angular = require('angular');
 window._ = require('underscore');
@@ -7,6 +8,8 @@ window.moment = require('moment');
 require('moment/locale/pt-br');
 moment.locale('pt-br');
 require('intl-tel-input/build/js/intlTelInput');
+
+require('angular-simple-logger');
 
 require('angular-animate');
 require('angular-leaflet-directive');

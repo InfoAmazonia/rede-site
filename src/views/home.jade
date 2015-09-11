@@ -33,7 +33,7 @@ section#home.anti-row
 						p Aenean libero nisl, luctus vel nibh vel, maximus tristique odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo sollicitudin ornare. Donec sem dolor, convallis at interdum et, accumsan imperdiet ex. Vestibulum feugiat id felis a vehicula.
 	#sensors-map
 		.sensor-map-container(ng-controller="MapCtrl")
-			leaflet#map(center="map.center" layers="map.layers" legend="legend" markers="map.markers" geojson="geojson" defaults="map.options")
+			leaflet#map(center="map.center" layers="map.layers" legend="legend" markers="markers" defaults="map.options")
 		.sensor-map-info(ng-hide="sensor")
 			h2 Sensores
 			ul.sensor-list

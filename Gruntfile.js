@@ -107,6 +107,16 @@ module.exports = function(grunt) {
 						expand: true
 					}
 				]
+			},
+			markercluster: {
+				files: [
+					{
+						cwd: 'node_modules/leaflet.markercluster/dist',
+						src: ['*.css'],
+						dest: 'public/lib/leaflet.markercluster',
+						expand: true
+					}
+				]
 			}
 		},
 		watch: {

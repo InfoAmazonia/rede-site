@@ -1,7 +1,5 @@
 'use strict';
 
-require('leaflet.markercluster');
-
 angular.module('rede')
 
 .controller('AccountCtrl', [
@@ -123,7 +121,13 @@ angular.module('rede')
 					type: 'xyz'
 				}
 			},
-			overlays: {}
+			overlays: {
+				sensors: {
+					name: 'Sensores',
+					type: 'markercluster',
+					visible: true
+				}
+			}
 		};
 
 		$scope.map.layerData.forEach(function(layer) {
@@ -177,46 +181,39 @@ angular.module('rede')
 
 		$scope.sensors = sensors.sensors;
 
-		$scope.geojson = {
-			data: Rede.sensorToGeoJSON($scope.sensors),
-			pointToLayer: function(f, latlng) {
-				return new L.Marker(latlng, {
-					icon: L.icon({
-						iconUrl: '/img/sensor-icon-white-small.png',
-						iconSize: [20,20],
-						shadowSize: [0,0],
-						iconAnchor: [10,10],
-						shadowAnchor: [0,0],
-						popupAnchor: [0,-10]
-					})
-				});
-			},
-			onEachFeature: function(f, layer) {
-				if(f.properties.postID) {
-					layer.bindPopup('Artigo: ' + f.properties.title);
-				} else {
-					layer.bindPopup(f.properties.name);
+		$scope.markers = [];
+
+		_.each($scope.sensors, function(sensor) {
+			$scope.markers.push({
+				_id: sensor._id,
+				lat: sensor.geometry.coordinates[1],
+				lng: sensor.geometry.coordinates[0],
+				layer: 'sensors',
+				message: sensor.name,
+				icon: {
+					iconUrl: '/img/sensor-icon-white-small.png',
+					iconSize: [20,20],
+					shadowSize: [0,0],
+					iconAnchor: [10,10],
+					shadowAnchor: [0,0],
+					popupAnchor: [0,-10]
 				}
-				layer.on('mouseover', function() {
-					layer.openPopup();
-					layer.setZIndexOffset(1000);
-				});
-				layer.on('mouseout', function() {
-					layer.closePopup();
-					layer.setZIndexOffset(0);
-				});
-				layer.on('click', function() {
-					if(f.properties.postID) {
-						window.open(f.properties.url, '_blank');
-					} else {
-						$scope.$apply(function() {
-							$scope.sensor = f.properties._id;
-						});
-					}
-				});
-				sCount++;
-			}
-		};
+			})
+		});
+
+		$scope.$on('leafletDirectiveMarker.mouseover', function(ev, args) {
+			args.leafletObject.openPopup();
+			args.leafletObject.setZIndexOffset(1000);
+		});
+
+		$scope.$on('leafletDirectiveMarker.mouseout', function(ev, args) {
+			args.leafletObject.closePopup();
+			args.leafletObject.setZIndexOffset(0);
+		});
+
+		$scope.$on('leafletDirectiveMarker.click', function(ev, args) {
+			$scope.sensor = args.model._id;
+		});
 
 		var latLngs = [];
 		_.each($scope.sensors, function(feature) {
@@ -265,24 +262,23 @@ angular.module('rede')
 
 		var sCount = 1;
 
-		$scope.geojson = {
-			data: Rede.sensorToGeoJSON([$scope.sensor]),
-			pointToLayer: function(f, latlng) {
-				return new L.Marker(latlng, {
-					icon: L.icon({
-						iconUrl: '/img/sensor-icon-white-small.png',
-						iconSize: [20,20],
-						shadowSize: [0,0],
-						iconAnchor: [10,10],
-						shadowAnchor: [0,0],
-						popupAnchor: [0,-10]
-					})
-				});
-			},
-			onEachFeature: function(f, layer) {
-				sCount++;
+		$scope.markers = [
+			{
+				_id: $scope.sensor._id,
+				lat: $scope.sensor.geometry.coordinates[1],
+				lng: $scope.sensor.geometry.coordinates[0],
+				layer: 'sensors',
+				message: $scope.sensor.name,
+				icon: {
+					iconUrl: '/img/sensor-icon-white-small.png',
+					iconSize: [20,20],
+					shadowSize: [0,0],
+					iconAnchor: [10,10],
+					shadowAnchor: [0,0],
+					popupAnchor: [0,-10]
+				}
 			}
-		};
+		];
 
 		var latLngs = [];
 		_.each([$scope.sensor], function(feature) {
