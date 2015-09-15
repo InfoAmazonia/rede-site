@@ -2,6 +2,7 @@
  * Module dependencies
  */
 
+var _ = require('underscore');
 var csv = require('csv');
 var request = require('supertest');
 var async = require('async');
@@ -493,6 +494,46 @@ describe('API: Sensors', function(){
           doneIt();
         }
       });
+
+      it('returns score when date is passed', function(doneIt){
+
+        var targetSensor = sensorsWithMeasurements[1];
+        var targetDate = moment().subtract(daysOfMeasurements-1, 'days').toISOString();
+
+        /* The request */
+        request(app)
+          .get(apiPrefix + '/sensors/'+targetSensor._id+'/score')
+          .query({date: targetDate})
+          .expect('Content-Type', /json/)
+          .expect(200)
+          .end(onResponse);
+
+        /* Verify response */
+        function onResponse(err, res) {
+          if (err) return doneIt(err);
+
+          var body = res.body;
+
+          body['sensor'].should.have.property('_id', targetSensor._id.toHexString());
+          body['score'].should.be.an.Number();
+          body.should.have.property('rating').not.equal('Not defined');
+          body.should.have.property('timestamp', targetDate);
+
+          var parameters = body.parameters;
+          parameters.should.be.an.Array();
+          parameters.should.not.have.lengthOf(0);
+
+          _.each(parameters, function(p){
+            p.should.have.property('_id');
+            p.should.have.property('value');
+            p.should.have.property('collectedAt').belowOrEqual(targetDate);
+          });
+
+          doneIt();
+        }
+      });
+
+
     });
 
     /*

@@ -73,8 +73,23 @@ exports.show = function(req, res) {
 }
 
 exports.score = function(req, res) {
-  req.sensor.getScore(function(err, score){
+  var date = req.query['date'];
+
+  /* Mongoose criteria */
+  var criteria = {};
+
+  if (date) {
+    if (!validator.isISO8601(date))
+      return res.status(400).json(messaging.error('invalid_date'));
+
+    if (!criteria['collectedAt']) {
+      criteria['collectedAt'] = {$lte: date};
+    } else criteria['collectedAt']['$lte'] = date;
+  }
+
+  req.sensor.getScore(criteria, function(err, score){
     if (err) res.sendStatus(500);
+    score['timestamp'] = date;
     res.status(200).json(score);
   });
 }

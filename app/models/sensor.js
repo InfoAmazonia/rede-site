@@ -88,20 +88,10 @@ SensorSchema.methods = {
       doneSaveMeasurementBatch({messages: [err]});
     }
   },
-  getScore: function(doneGetScore){
+  getScore: function(criteria, doneGetScore){
     var self = this;
 
-    function getParameter(parameter_id, doneGetParameter) {
-      mongoose.model('Measurement')
-        .findOne({
-          sensor: self,
-          parameter: parameter_id
-        })
-        .sort('-collectedAt')
-        .exec(function(err, m){
-          doneGetParameter(err, m);
-        });
-    }
+    criteria['sensor'] = self;
 
     var result = {
       sensor: self,
@@ -114,10 +104,7 @@ SensorSchema.methods = {
 
     async.each(allParameters, function(p, doneEach){
       mongoose.model('Measurement')
-        .findOne({
-          sensor: self,
-          parameter: p._id
-        })
+        .findOne(_.extend(criteria,{ parameter: p._id }))
         .sort('-collectedAt')
         .exec(function(err, m){
           if (err) doneEach(err);

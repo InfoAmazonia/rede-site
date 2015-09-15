@@ -251,9 +251,10 @@ Get water quality score based on measurements.
 
 Parameters:
 - `:sensor_id`: _string_ (required)
+- `:date`: _string_ [ISO 8601] timestamp
 
 Possible responses:
-- `200` Success + sensor object json;
+- `200` Success + sensor score json;
 - `404` Not found.
 - `500` Internal error.
 
