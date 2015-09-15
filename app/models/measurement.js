@@ -28,7 +28,7 @@ MeasurementSchema.static({
       .skip(options.perPage * options.page)
       .exec(cb);
   },
-  getWqiRange: function(score) {
+  getWqiRating: function(score) {
     if (score >= 90) return 'Excelent';
     else if (score >= 70) return 'Good';
     else if (score >= 50) return 'Average';
@@ -58,7 +58,7 @@ MeasurementSchema.virtual('wqi').get(function() {
     default:
       return {
         score: null,
-        range: 'Unavailable'
+        rating: 'Unavailable'
       }
   }
 });
@@ -81,11 +81,11 @@ MeasurementSchema.methods = {
 
     var result = {
       score: null,
-      range: 'Unavailable'
+      rating: 'Unavailable'
     }
 
     if (ph < 0 || ph > 14)
-      result.range = 'Invalid range'
+      result.rating = 'Invalid range'
     else if (ph < 2 || ph > 12)
       result.score = 0;
     else {
@@ -107,7 +107,7 @@ MeasurementSchema.methods = {
     }
 
     if (result.score >= 0)
-      result.range = mongoose.model('Measurement').getWqiRange(result.score);
+      result.rating = mongoose.model('Measurement').getWqiRating(result.score);
 
     return result;
   },
@@ -116,11 +116,11 @@ MeasurementSchema.methods = {
 
     var result = {
       score: null,
-      range: 'Unavailable'
+      rating: 'Unavailable'
     }
 
     if (ec < 0)
-      result.range = 'Invalid range'
+      result.rating = 'Invalid range'
     else if (ec <= 1500)
       result.score = (1500 - ec) / 1500 * 10 + 90;
     else if (ec <= 2000)
@@ -133,7 +133,7 @@ MeasurementSchema.methods = {
       result.score = 0;
 
     if (result.score)
-      result.range = mongoose.model('Measurement').getWqiRange(result.score);
+      result.rating = mongoose.model('Measurement').getWqiRating(result.score);
 
     return result;
   },
@@ -142,11 +142,11 @@ MeasurementSchema.methods = {
 
     var result = {
       score: null,
-      range: 'Unavailable'
+      rating: 'Unavailable'
     }
 
     if (orp < 0)
-      result.range = 'Invalid range'
+      result.rating = 'Invalid range'
     else if (orp >= 500)
       result.score = 90;
     else if (orp >= 300)
@@ -159,7 +159,7 @@ MeasurementSchema.methods = {
       result.score = 0;
 
     if (result.score)
-      result.range = mongoose.model('Measurement').getWqiRange(result.score);
+      result.rating = mongoose.model('Measurement').getWqiRating(result.score);
 
     return result;
   }

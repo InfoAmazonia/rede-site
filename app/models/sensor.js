@@ -123,7 +123,7 @@ SensorSchema.methods = {
 
       if (result.score) {
         result.score = result.score / totalWeight;
-        result.rating = mongoose.model('Measurement').getWqiRange(result.score);
+        result.rating = mongoose.model('Measurement').getWqiRating(result.score);
       }
       return doneGetScore(err, result);
     });

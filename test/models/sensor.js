@@ -89,7 +89,7 @@ describe('Model: Sensors', function(){
 
       var wqi = measurement.wqi;
       wqi.should.have.property('score', 92.5);
-      wqi.should.have.property('range', 'Excelent');
+      wqi.should.have.property('rating', 'Excelent');
       doneIt();
     });
 
@@ -102,7 +102,7 @@ describe('Model: Sensors', function(){
       });
       var wqi = measurement.wqi;
       wqi.should.have.property('score', 90.0);
-      wqi.should.have.property('range', 'Excelent');
+      wqi.should.have.property('rating', 'Excelent');
 
       var measurement = new Measurement({
         sensor: sensor1,
@@ -112,7 +112,7 @@ describe('Model: Sensors', function(){
       });
       var wqi = measurement.wqi;
       wqi.should.have.property('score', 60.0);
-      wqi.should.have.property('range', 'Average');
+      wqi.should.have.property('rating', 'Average');
 
       doneIt();
     });
@@ -127,7 +127,7 @@ describe('Model: Sensors', function(){
       });
       var wqi = measurement.wqi;
       wqi.should.have.property('score', 90.0);
-      wqi.should.have.property('range', 'Excelent');
+      wqi.should.have.property('rating', 'Excelent');
 
       var measurement = new Measurement({
         sensor: sensor1,
@@ -137,7 +137,7 @@ describe('Model: Sensors', function(){
       });
       var wqi = measurement.wqi;
       wqi.should.have.property('score', 25.0);
-      wqi.should.have.property('range', 'Bad');
+      wqi.should.have.property('rating', 'Bad');
 
       doneIt();
   });
