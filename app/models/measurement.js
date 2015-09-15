@@ -27,7 +27,16 @@ MeasurementSchema.static({
       .limit(options.perPage)
       .skip(options.perPage * options.page)
       .exec(cb);
+  },
+  getWqiRange: function(score) {
+    if (score >= 90) return 'Excelent';
+    else if (score >= 70) return 'Good';
+    else if (score >= 50) return 'Average';
+    else if (score >= 25) return 'Bad';
+    else if (score >= 0) return 'Very Bad';
+    else return 'Unavailable';
   }
+
 });
 
 /*
@@ -98,7 +107,7 @@ MeasurementSchema.methods = {
     }
 
     if (result.score >= 0)
-      result.range = self.getWqiRange(result.score);
+      result.range = mongoose.model('Measurement').getWqiRange(result.score);
 
     return result;
   },
@@ -124,7 +133,7 @@ MeasurementSchema.methods = {
       result.score = 0;
 
     if (result.score)
-      result.range = self.getWqiRange(result.score);
+      result.range = mongoose.model('Measurement').getWqiRange(result.score);
 
     return result;
   },
@@ -150,20 +159,12 @@ MeasurementSchema.methods = {
       result.score = 0;
 
     if (result.score)
-      result.range = self.getWqiRange(result.score);
+      result.range = mongoose.model('Measurement').getWqiRange(result.score);
 
     return result;
-  },
-  getWqiRange: function(score) {
-    if (score >= 90) return 'Excelent';
-    else if (score >= 70) return 'Good';
-    else if (score >= 50) return 'Average';
-    else if (score >= 25) return 'Bad';
-    else if (score >= 0) return 'Very Bad';
-    else return 'Unavailable';
   }
-
 };
+
 
 /* Register */
 mongoose.model('Measurement', MeasurementSchema);

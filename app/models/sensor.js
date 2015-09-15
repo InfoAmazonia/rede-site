@@ -55,7 +55,6 @@ SensorSchema.static({
       }
     })
   },
-
   list: function (options, cb) {
       var criteria = options.criteria || {}
 
@@ -107,9 +106,11 @@ SensorSchema.methods = {
     var result = {
       sensor: self,
       score: null,
-      range: 'Not defined',
+      rating: 'Not defined',
       parameters: []
     };
+
+    var totalWeight = 0;
 
     async.each(allParameters, function(p, doneEach){
       mongoose.model('Measurement')
@@ -120,20 +121,22 @@ SensorSchema.methods = {
         .sort('-collectedAt')
         .exec(function(err, m){
           if (err) doneEach(err);
+
           if (m.wqi.score && p.qualityWeight) {
             if (!result.score) result.score = 0;
-            result.score = m.wqi.score * p.qualityWeight;
+            result.score += m.wqi.score * p.qualityWeight;
             result.parameters.push(m.toJSON());
+
+            // adds weight of this parameter
+            totalWeight += p.qualityWeight;
           }
           doneEach();
         });
     }, function(err){
 
       if (result.score) {
-        var totalWeigth = _.reduce(allParameters, function(memo, p){
-            return memo + (p.qualityWeight || 0);
-        }, 0);
-        result.score = result.score / totalWeigth;
+        result.score = result.score / totalWeight;
+        result.rating = mongoose.model('Measurement').getWqiRange(result.score);
       }
       return doneGetScore(err, result);
     });

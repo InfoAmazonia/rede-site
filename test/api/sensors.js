@@ -480,6 +480,7 @@ describe('API: Sensors', function(){
 
           body['sensor'].should.have.property('_id', targetSensor._id.toHexString());
           body['score'].should.be.an.Number();
+          body.should.have.property('rating').not.equal('Not defined');
 
           var parameters = body.parameters;
           parameters.should.be.an.Array();
