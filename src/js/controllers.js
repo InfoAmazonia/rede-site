@@ -186,8 +186,8 @@ angular.module('rede')
 		_.each($scope.sensors, function(sensor) {
 			$scope.markers.push({
 				_id: sensor._id,
-				lat: sensor.geometry.coordinates[1],
-				lng: sensor.geometry.coordinates[0],
+				lat: parseFloat(sensor.geometry.coordinates[1]),
+				lng: parseFloat(sensor.geometry.coordinates[0]),
 				layer: 'sensors',
 				message: sensor.name,
 				icon: {
@@ -219,8 +219,8 @@ angular.module('rede')
 		_.each($scope.sensors, function(feature) {
 			latLngs.push(
 				[
-					feature.geometry.coordinates[1],
-					feature.geometry.coordinates[0]
+					parseFloat(feature.geometry.coordinates[1]),
+					parseFloat(feature.geometry.coordinates[0])
 				]
 			);
 		});
@@ -265,8 +265,8 @@ angular.module('rede')
 		$scope.markers = [
 			{
 				_id: $scope.sensor._id,
-				lat: $scope.sensor.geometry.coordinates[1],
-				lng: $scope.sensor.geometry.coordinates[0],
+				lat: parseFloat($scope.sensor.geometry.coordinates[1]),
+				lng: parseFloat($scope.sensor.geometry.coordinates[0]),
 				layer: 'sensors',
 				message: $scope.sensor.name,
 				icon: {
@@ -284,8 +284,8 @@ angular.module('rede')
 		_.each([$scope.sensor], function(feature) {
 			latLngs.push(
 				[
-					feature.geometry.coordinates[1],
-					feature.geometry.coordinates[0]
+					parseFloat(feature.geometry.coordinates[1]),
+					parseFloat(feature.geometry.coordinates[0])
 				]
 			);
 		});
