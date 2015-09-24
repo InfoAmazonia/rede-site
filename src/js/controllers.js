@@ -753,7 +753,7 @@ angular.module('rede')
 		};
 
 		$scope.getDate = function(measurement) {
-			return moment(measurement.collectedAt).format('LLLL');
+			return moment(measurement.collectedAt).utc().format('LLLL');
 		};
 
 		$scope.deleteMeasurement = function(measurement) {
