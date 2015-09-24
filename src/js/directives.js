@@ -177,11 +177,15 @@ angular.module('rede')
 				};
 
 				scope.getParam = function(param) {
-					return scope.availableParams[param];
+					if(scope.availableParams)
+						return scope.availableParams[param];
 				}
 
 				scope.scoreParam = function(param, score) {
-					return _.find(score.parameters, function(sP) { if(sP && sP.parameter) return sP.parameter == param; else return false; });
+					return _.find(score.parameters, function(sP) {
+						if(sP && sP.parameter) return sP.parameter == param;
+						else return false;
+					});
 				};
 
 				scope.fromNow = function(reading) {

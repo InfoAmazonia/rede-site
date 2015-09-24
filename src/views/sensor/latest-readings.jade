@@ -7,17 +7,11 @@
 			tr
 				th(title="Hora")
 					span Hora
-				th(title="Qualidade")
-					span Qualidade
 				th(title="{{getParam(param).name.pt}}" ng-repeat="param in params")
 					span {{getParam(param).name.pt}}
 		tbody
 			tr(ng-repeat="score in latest | limitTo: amount")
 				td.time(title="{{fromNow(score)}}")
 					span {{fromNow(score)}}
-				td.quality(title="{{labelQuality(score.quality)}}")
-					span
-						| {{labelQuality(score.quality)}} 
-						span.quality-icon(class="quality-{{score.quality}}")
 				td(title="{{scoreParam(param, score).value}} {{getParam(param).defaultUnit}}" ng-repeat="param in params")
 					span {{scoreParam(param, score).value}} {{getParam(param).defaultUnit}}

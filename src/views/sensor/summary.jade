@@ -6,11 +6,11 @@ article.sensor-summary
 			img.cmm-pic(ng-src="{{sensor.image}}")
 			p {{sensor.description}}
 		section.clearfix
-			.current
-				h3 Qualidade agora 
-					span.green BOA
-				a.button(ui-sref="aboutData({'#': 'iqa'})") Saiba mais
+			//- .current
+			//- 	h3 Qualidade agora 
+			//- 		span.green BOA
+			//- 	a.button(ui-sref="aboutData({'#': 'iqa'})") Saiba mais
 			.readings
-				latest-readings(amount="'3'" sensor="sensorId" params="[]")
+				latest-readings(amount="'3'" sensor="sensorId" params="['electrical_conductivity', 'oxi-reduction_potential']")
 	//- section
 	//- 	 sensor-chart-summary(sensor="sensorId")
