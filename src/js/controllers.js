@@ -184,21 +184,23 @@ angular.module('rede')
 		$scope.markers = [];
 
 		_.each($scope.sensors, function(sensor) {
-			$scope.markers.push({
-				_id: sensor._id,
-				lat: parseFloat(sensor.geometry.coordinates[1]),
-				lng: parseFloat(sensor.geometry.coordinates[0]),
-				layer: 'sensors',
-				message: sensor.name,
-				icon: {
-					iconUrl: '/img/sensor-icon-white-small.png',
-					iconSize: [20,20],
-					shadowSize: [0,0],
-					iconAnchor: [10,10],
-					shadowAnchor: [0,0],
-					popupAnchor: [0,-10]
-				}
-			})
+			if(sensor.geometry.coordinates.length) {
+				$scope.markers.push({
+					_id: sensor._id,
+					lat: parseFloat(sensor.geometry.coordinates[1]),
+					lng: parseFloat(sensor.geometry.coordinates[0]),
+					layer: 'sensors',
+					message: sensor.name,
+					icon: {
+						iconUrl: '/img/sensor-icon-white-small.png',
+						iconSize: [20,20],
+						shadowSize: [0,0],
+						iconAnchor: [10,10],
+						shadowAnchor: [0,0],
+						popupAnchor: [0,-10]
+					}
+				});
+			}
 		});
 
 		$scope.$on('leafletDirectiveMarker.mouseover', function(ev, args) {
@@ -217,12 +219,14 @@ angular.module('rede')
 
 		var latLngs = [];
 		_.each($scope.sensors, function(feature) {
-			latLngs.push(
-				[
-					parseFloat(feature.geometry.coordinates[1]),
-					parseFloat(feature.geometry.coordinates[0])
-				]
-			);
+			if(feature.geometry.coordinates.length) {
+				latLngs.push(
+					[
+						parseFloat(feature.geometry.coordinates[1]),
+						parseFloat(feature.geometry.coordinates[0])
+					]
+				);
+			}
 		});
 		var bounds = L.latLngBounds(latLngs);
 		leafletData.getMap('map').then(function(m) {
@@ -262,32 +266,36 @@ angular.module('rede')
 
 		var sCount = 1;
 
-		$scope.markers = [
-			{
-				_id: $scope.sensor._id,
-				lat: parseFloat($scope.sensor.geometry.coordinates[1]),
-				lng: parseFloat($scope.sensor.geometry.coordinates[0]),
-				layer: 'sensors',
-				message: $scope.sensor.name,
-				icon: {
-					iconUrl: '/img/sensor-icon-white-small.png',
-					iconSize: [20,20],
-					shadowSize: [0,0],
-					iconAnchor: [10,10],
-					shadowAnchor: [0,0],
-					popupAnchor: [0,-10]
+		if($scope.sensor.geometry.coordinates.length) {
+			$scope.markers = [
+				{
+					_id: $scope.sensor._id,
+					lat: parseFloat($scope.sensor.geometry.coordinates[1]),
+					lng: parseFloat($scope.sensor.geometry.coordinates[0]),
+					layer: 'sensors',
+					message: $scope.sensor.name,
+					icon: {
+						iconUrl: '/img/sensor-icon-white-small.png',
+						iconSize: [20,20],
+						shadowSize: [0,0],
+						iconAnchor: [10,10],
+						shadowAnchor: [0,0],
+						popupAnchor: [0,-10]
+					}
 				}
-			}
-		];
+			];
+		}
 
 		var latLngs = [];
 		_.each([$scope.sensor], function(feature) {
-			latLngs.push(
-				[
-					parseFloat(feature.geometry.coordinates[1]),
-					parseFloat(feature.geometry.coordinates[0])
-				]
-			);
+			if(feature.geometry.coordinates.length) {
+				latLngs.push(
+					[
+						parseFloat(feature.geometry.coordinates[1]),
+						parseFloat(feature.geometry.coordinates[0])
+					]
+				);
+			}
 		});
 		var bounds = L.latLngBounds(latLngs);
 		leafletData.getMap('map').then(function(m) {
