@@ -458,84 +458,84 @@ describe('API: Sensors', function(){
     });
 
 
-    /*
-     * GET /api/v1/sensors/:sensor_id/score - Get water quality score for sensor
-     */
-    describe('GET sensors/:sensor_id/score', function(){
-      it('returns latest score when no date is passed', function(doneIt){
-
-        var targetSensor = sensorsWithMeasurements[1];
-
-        /* The request */
-        request(app)
-          .get(apiPrefix + '/sensors/'+targetSensor._id+'/score')
-          .expect('Content-Type', /json/)
-          .expect(200)
-          .end(onResponse);
-
-        /* Verify response */
-        function onResponse(err, res) {
-          if (err) return doneIt(err);
-
-          var body = res.body;
-
-          body['sensor'].should.have.property('_id', targetSensor._id.toHexString());
-          body['score'].should.be.an.Number();
-          body.should.have.property('rating').not.equal('Not defined');
-
-          var parameters = body.parameters;
-          parameters.should.be.an.Array();
-          parameters.should.not.have.lengthOf(0);
-
-          var parameter = parameters[0];
-          parameter.should.have.property('_id');
-          parameter.should.have.property('value');
-
-          doneIt();
-        }
-      });
-
-      it('returns score when date is passed', function(doneIt){
-
-        var targetSensor = sensorsWithMeasurements[1];
-        var targetDate = moment().subtract(daysOfMeasurements-1, 'days').toISOString();
-
-        /* The request */
-        request(app)
-          .get(apiPrefix + '/sensors/'+targetSensor._id+'/score')
-          .query({date: targetDate})
-          .expect('Content-Type', /json/)
-          .expect(200)
-          .end(onResponse);
-
-        /* Verify response */
-        function onResponse(err, res) {
-          if (err) return doneIt(err);
-
-          var body = res.body;
-
-          body['sensor'].should.have.property('_id', targetSensor._id.toHexString());
-          body['score'].should.be.an.Number();
-          body.should.have.property('rating').not.equal('Not defined');
-          body.should.have.property('timestamp', targetDate);
-
-          var parameters = body.parameters;
-          parameters.should.be.an.Array();
-          parameters.should.not.have.lengthOf(0);
-
-          _.each(parameters, function(p){
-            p.should.have.property('_id');
-            p.should.have.property('value');
-            p.should.have.property('collectedAt').belowOrEqual(targetDate);
-          });
-
-          doneIt();
-        }
-      });
-
-
-    });
-
+    // /*
+    //  * GET /api/v1/sensors/:sensor_id/score - Get water quality score for sensor
+    //  */
+    // describe('GET sensors/:sensor_id/score', function(){
+    //   it('returns latest score when no date is passed', function(doneIt){
+    //
+    //     var targetSensor = sensorsWithMeasurements[1];
+    //
+    //     /* The request */
+    //     request(app)
+    //       .get(apiPrefix + '/sensors/'+targetSensor._id+'/score')
+    //       .expect('Content-Type', /json/)
+    //       .expect(200)
+    //       .end(onResponse);
+    //
+    //     /* Verify response */
+    //     function onResponse(err, res) {
+    //       if (err) return doneIt(err);
+    //
+    //       var body = res.body;
+    //
+    //       body['sensor'].should.have.property('_id', targetSensor._id.toHexString());
+    //       body['score'].should.be.an.Number();
+    //       body.should.have.property('rating').not.equal('Not defined');
+    //
+    //       var parameters = body.parameters;
+    //       parameters.should.be.an.Array();
+    //       parameters.should.not.have.lengthOf(0);
+    //
+    //       var parameter = parameters[0];
+    //       parameter.should.have.property('_id');
+    //       parameter.should.have.property('value');
+    //
+    //       doneIt();
+    //     }
+    //   });
+    //
+    //   it('returns score when date is passed', function(doneIt){
+    //
+    //     var targetSensor = sensorsWithMeasurements[1];
+    //     var targetDate = moment().subtract(daysOfMeasurements-1, 'days').toISOString();
+    //
+    //     /* The request */
+    //     request(app)
+    //       .get(apiPrefix + '/sensors/'+targetSensor._id+'/score')
+    //       .query({date: targetDate})
+    //       .expect('Content-Type', /json/)
+    //       .expect(200)
+    //       .end(onResponse);
+    //
+    //     /* Verify response */
+    //     function onResponse(err, res) {
+    //       if (err) return doneIt(err);
+    //
+    //       var body = res.body;
+    //
+    //       body['sensor'].should.have.property('_id', targetSensor._id.toHexString());
+    //       body['score'].should.be.an.Number();
+    //       body.should.have.property('rating').not.equal('Not defined');
+    //       body.should.have.property('timestamp', targetDate);
+    //
+    //       var parameters = body.parameters;
+    //       parameters.should.be.an.Array();
+    //       parameters.should.not.have.lengthOf(0);
+    //
+    //       _.each(parameters, function(p){
+    //         p.should.have.property('_id');
+    //         p.should.have.property('value');
+    //         p.should.have.property('collectedAt').belowOrEqual(targetDate);
+    //       });
+    //
+    //       doneIt();
+    //     }
+    //   });
+    //
+    //
+    // });
+    //
     /*
      * POST sensors/:sensor_id/subscribe
      */
