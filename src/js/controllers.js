@@ -774,7 +774,10 @@ angular.module('rede')
 
 		$scope.deleteMeasurement = function(measurement) {
 			if(confirm('Você tem certeza?')) {
-				console.log('delete');
+				Rede.measurements.delete({id: measurement._id}, function() {
+					Message.add('Medição removida.');
+					$scope.measurements = _.filter($scope.measurements, function(s) { return s._id !== measurement._id; });
+				});
 			}
 		}
 
