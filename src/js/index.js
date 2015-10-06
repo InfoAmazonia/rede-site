@@ -336,14 +336,17 @@ require('./service');
 require('./directives');
 require('./controllers');
 
-angular.module('rede').run(function (gettextCatalog) {
-	var userLang = navigator.language || navigator.userLanguage;
-	console.log(userLang);
-	if(userLang == 'pt-BR' || userLang == 'pt' || userLang == 'pt_BR' || userLang == 'pt_PT' || userLang == 'pt-PT')
-		gettextCatalog.setCurrentLanguage('pt_BR');
-	else
-		gettextCatalog.setCurrentLanguage('en');
-});
+angular.module('rede').run([
+	'gettextCatalog',
+	function (gettextCatalog) {
+		var userLang = navigator.language || navigator.userLanguage;
+		console.log(userLang);
+		if(userLang == 'pt-BR' || userLang == 'pt' || userLang == 'pt_BR' || userLang == 'pt_PT' || userLang == 'pt-PT')
+			gettextCatalog.setCurrentLanguage('pt_BR');
+		else
+			gettextCatalog.setCurrentLanguage('en');
+	}
+]);
 
 angular.element(document).ready(function() {
 	angular.bootstrap(document, ['rede']);
