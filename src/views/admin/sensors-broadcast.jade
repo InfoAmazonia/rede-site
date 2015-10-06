@@ -1,8 +1,8 @@
 #admin-sensor-broadcast
   h4 
     span.icon-megaphone 
-    | {{sensor.name}} Broadcast
-  p Envie uma mensagem para os assinantes de {{sensor.name}}
+    span(translate) {{sensor.name}} Broadcast
+  p(translate) Envie uma mensagem para os assinantes de {{sensor.name}}
   form#broadcast(ng-submit="broadcast(msg)")
     textarea(maxlength="160" ng-model="msg")
-    input(type="submit" value="Enviar mensagem")
+    input(type="submit" value="{{'Enviar mensagem' | translate}}")

@@ -2,7 +2,7 @@
   header.sub-section-header
     h4
       span.icon-line-graph 
-      | Medições em {{sensor.name}}
+      span(translate) Medições em {{sensor.name}}
     ul.tabbed-nav
       li(ng-repeat="(key,parameter) in parameters" ui-sref-active="active")
         a(ui-sref="admin.sensors.measurements({parameter_id: key, measurement_page: null})") {{parameter.name.pt}}
@@ -10,10 +10,10 @@
   table(ng-show="measurements")
     thead
       tr
-        th Data
-        th Valor
-        th Unidade de medida
-        th Remover
+        th(translate) Data
+        th(translate) Valor
+        th(translate) Unidade de medida
+        th(translate) Remover
     tbody
       tr(ng-repeat="measurement in measurements.measurements")
         td {{getDate(measurement)}}
@@ -22,8 +22,8 @@
         td 
           a.button(href="#" ng-click="deleteMeasurement(measurement)")
             span.icon-cross 
-            | Remover
+            span(translate) Remover
     
   p.pagination.clearfix.row(ng-show="showPrev || showNext")
-    a.button.prev(ui-sref="admin.sensors.measurements({measurement_page: page-1})" ng-show="showPrev") Página anterior
-    a.button.next(ui-sref="admin.sensors.measurements({measurement_page: page+1})" ng-show="showNext") Próxima página
+    a.button.prev(ui-sref="admin.sensors.measurements({measurement_page: page-1})" ng-show="showPrev" translate) Página anterior
+    a.button.next(ui-sref="admin.sensors.measurements({measurement_page: page+1})" ng-show="showNext" translate) Próxima página

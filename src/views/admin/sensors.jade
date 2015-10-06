@@ -5,40 +5,39 @@
         span.icon-signal 
     .three.columns
       h3 
-        a(ui-sref="admin.sensors({})")
-          | Sensores 
+        a(ui-sref="admin.sensors({})" translate) Sensores 
     .eight.columns
       a.button(ui-sref="admin.sensors.new") 
         span.icon-plus 
-        | Novo sensor
+        span(translate) Novo sensor
   div.eleven.columns.offset-by-one(ui-view autoscroll="false")
     table
       thead
         tr
-          th Nome
-          th Ver e editar medições
-          th Enviar broadcast
-          th Editar
-          th Remover
+          th(translate) Nome
+          th(translate) Ver e editar medições
+          th(translate) Enviar broadcast
+          th(translate) Editar
+          th(translate) Remover
       tbody
         tr(ng-repeat="sensor in sensors")
           td {{sensor.name}}
           td
             a.button(ui-sref="admin.sensors.measurements({sensorId: sensor._id})")
               span.icon-line-graph 
-              | Medições
+              span(translate) Medições
           td
             a.button(ui-sref="admin.sensors.broadcast({sensorId: sensor._id})") 
               span.icon-megaphone 
-              | Broadcast
+              span(translate) Broadcast
           td
             a.button(ui-sref="admin.sensors.edit({sensorId: sensor._id})")
               span.icon-edit 
-              | Editar
+              span(translate) Editar
           td
             a.button.delete(href="javascript:void(0);" ng-click="deleteSensor(sensor)") 
               span.icon-cross 
-              | Remover
+              span(translate) Remover
     p.pagination.clearfix.row(ng-show="showPrev || showNext")
-      a.button.prev(ui-sref="admin.sensors({page: page-1})" ng-show="showPrev") Página anterior
-      a.button.next(ui-sref="admin.sensors({page: page+1})" ng-show="showNext") Próxima página
+      a.button.prev(ui-sref="admin.sensors({page: page-1})" ng-show="showPrev" translate) Página anterior
+      a.button.next(ui-sref="admin.sensors({page: page+1})" ng-show="showNext" translate) Próxima página

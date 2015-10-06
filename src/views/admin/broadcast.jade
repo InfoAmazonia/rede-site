@@ -5,11 +5,10 @@
         span.icon-megaphone 
     .three.columns
       h3 
-        a(ui-sref="admin.broadcast")
-          | Broadcast 
+        a(ui-sref="admin.broadcast" translate) Broadcast 
 
   div.eleven.columns.offset-by-one
-    p Envie uma mensagem para todos os assinantes
+    p(translate) Envie uma mensagem para todos os assinantes
     form#broadcast(ng-submit="broadcast(msg)")
       textarea(maxlength="160" ng-model="msg")
-      input(type="submit" value="Enviar mensagem")
+      input(type="submit" value="{{'Enviar mensagem'|translate}}")

@@ -1,25 +1,25 @@
 form(ng-submit="submit(sensor)")
   h4 
     span.icon-edit 
-    span(ng-hide="sensor._id") Novo sensor
-    span(ng-show="sensor._id") Editar sensor
+    span(ng-hide="sensor._id" translate) Novo sensor
+    span(ng-show="sensor._id" translate) Editar sensor
   p
-    label(for="input_name") Nome 
+    label(for="input_name" translate) Nome 
     input#input_name(type="text" ng-model="sensor.name")
   p
-    label(for="input_name") Identificador 
+    label(for="input_name" translate) Identificador 
     input#input_name(type="text" ng-model="sensor.identifier")
   p
-    label(for="input_latitude") Latitude
+    label(for="input_latitude" translate) Latitude
     input#input_latitude(type="text" ng-model="sensor.geometry.coordinates[1]")
   p
-    label(for="input_longitude") Longitude
+    label(for="input_longitude" translate) Longitude
     input#input_longitude(type="text" ng-model="sensor.geometry.coordinates[0]")
   p
-    label(for="input_description") Descrição (comunidade)
+    label(for="input_description" translate) Descrição (comunidade)
     textarea#input_description(type="text" ng-model="sensor.description")
   p
-    label(for="input_image") URL da imagem
+    label(for="input_image" translate) URL da imagem
     input#input_image(type="text" ng-model="sensor.image")
   p
-    input(type="submit" value="Enviar")
+    input(type="submit" value="{{'Enviar' | translate}}")

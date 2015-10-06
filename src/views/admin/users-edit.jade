@@ -1,27 +1,27 @@
 form(ng-submit="submit(user)")
   h4 
     span.icon-edit 
-    span(ng-hide="user._id") Novo usuário
-    span(ng-show="user._id") Editar usuário
+    span(ng-hide="user._id" translate) Novo usuário
+    span(ng-show="user._id" translate) Editar usuário
   p
-    label(for="input_name") Nome 
+    label(for="input_name" translate) Nome 
     input#input_name(type="text" ng-model="user.name")
   p
-    label(for="input_email") Email
+    label(for="input_email" translate) Email
     input#input_email(type="text" ng-model="user.email")
   p
-    label(for="input_phone") Telefone
+    label(for="input_phone" translate) Telefone
     input#input_phone(type="text" ng-model="user.phoneNumber" international-phone-number preferred-countries="br" utils-script="/lib/intl-tel-input/utils.js")
   p
-    label(for="input_role") Função
+    label(for="input_role" translate) Função
     select#input_role(ng-model="user.role")
-      option(value="admin") Administrador
-      option(value="subscriber") Assinante
+      option(value="admin" translate) Administrador
+      option(value="subscriber" translate) Assinante
   p
-    label(for="input_pwd") Senha
+    label(for="input_pwd" translate) Senha
     input#input_pwd(type="password" ng-model="user.password")
   p
-    label(for="input_pwd_2") Repetir senha
+    label(for="input_pwd_2" translate) Repetir senha
     input#input_pwd_2(type="password" ng-model="user.password_repeat")
   p
-    input(type="submit" value="Enviar")
+    input(type="submit" value="{{'Enviar' | translate}}")

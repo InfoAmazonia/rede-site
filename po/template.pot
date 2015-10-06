@@ -9,12 +9,20 @@ msgstr ""
 msgid "A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda vazão hídrica."
 msgstr ""
 
+#: public/views/admin/users-edit.html:1
+msgid "Administrador"
+msgstr ""
+
 #: public/views/auth.html:1
 msgid "Ainda não tenho uma conta"
 msgstr ""
 
 #: public/views/home.html:1
 msgid "Amazônia Brasileira"
+msgstr ""
+
+#: public/views/admin/users-edit.html:1
+msgid "Assinante"
 msgstr ""
 
 #: public/views/home.html:1
@@ -31,6 +39,12 @@ msgstr ""
 
 #: public/views/sensor.html:1
 msgid "Baixar estes dados"
+msgstr ""
+
+#: public/views/admin/broadcast.html:1
+#: public/views/admin/index.html:1
+#: public/views/admin/sensors.html:1
+msgid "Broadcast"
 msgstr ""
 
 #: public/views/account-sensors.html:1
@@ -53,25 +67,98 @@ msgstr ""
 msgid "Dados históricos"
 msgstr ""
 
+#: public/views/admin/sensors-measurements.html:1
+msgid "Data"
+msgstr ""
+
 #: public/views/sensor.html:1
 msgid "Data de início"
+msgstr ""
+
+#: public/views/admin/sensors-edit.html:1
+msgid "Descrição (comunidade)"
+msgstr ""
+
+#: public/views/admin/sensors.html:1
+#: public/views/admin/users.html:1
+msgid "Editar"
+msgstr ""
+
+#: public/views/admin/sensors-edit.html:1
+msgid "Editar sensor"
+msgstr ""
+
+#: public/views/admin/users-edit.html:1
+msgid "Editar usuário"
+msgstr ""
+
+#: public/views/admin/users-edit.html:1
+#: public/views/admin/users.html:1
+msgid "Email"
 msgstr ""
 
 #: public/views/login.html:1
 msgid "Entrar"
 msgstr ""
 
+#: public/views/admin/sensors-edit.html:1
+#: public/views/admin/users-edit.html:1
+msgid "Enviar"
+msgstr ""
+
+#: public/views/admin/sensors.html:1
+msgid "Enviar broadcast"
+msgstr ""
+
+#: public/views/admin/broadcast.html:1
+#: public/views/admin/sensors-broadcast.html:1
+msgid "Enviar mensagem"
+msgstr ""
+
+#: public/views/admin/sensors-broadcast.html:1
+msgid "Envie uma mensagem para os assinantes de {{sensor.name}}"
+msgstr ""
+
+#: public/views/admin/broadcast.html:1
+msgid "Envie uma mensagem para todos os assinantes"
+msgstr ""
+
 #: public/views/auth.html:1
 msgid "Eu já tenho uma conta"
+msgstr ""
+
+#: public/views/admin/users-edit.html:1
+#: public/views/admin/users.html:1
+msgid "Função"
 msgstr ""
 
 #: public/views/sensor.html:1
 msgid "Gerar relatório"
 msgstr ""
 
+#: public/views/admin/sensors-edit.html:1
+msgid "Identificador"
+msgstr ""
+
+#: public/views/admin/sensors-edit.html:1
+msgid "Latitude"
+msgstr ""
+
+#: public/views/admin/sensors-edit.html:1
+msgid "Longitude"
+msgstr ""
+
 #: public/views/home.html:1
 #: public/views/sensor.html:1
 msgid "Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país."
+msgstr ""
+
+#: public/views/admin/sensors.html:1
+msgid "Medições"
+msgstr ""
+
+#: public/views/admin/sensors-measurements.html:1
+msgid "Medições em {{sensor.name}}"
 msgstr ""
 
 #: public/views/account.html:1
@@ -87,8 +174,39 @@ msgstr ""
 msgid "Na Amazônia Legal, 60% das residências são atendidas pela rede geral de água. A média nacional é de 82,7%."
 msgstr ""
 
+#: public/views/admin/sensors-edit.html:1
+#: public/views/admin/sensors.html:1
+#: public/views/admin/users-edit.html:1
+#: public/views/admin/users.html:1
+msgid "Nome"
+msgstr ""
+
 #: public/views/account.html:1
 msgid "Nova senha"
+msgstr ""
+
+#: public/views/admin/index.html:1
+#: public/views/admin/sensors-edit.html:1
+#: public/views/admin/sensors.html:1
+msgid "Novo sensor"
+msgstr ""
+
+#: public/views/admin/index.html:1
+#: public/views/admin/users-edit.html:1
+#: public/views/admin/users.html:1
+msgid "Novo usuário"
+msgstr ""
+
+#: public/views/admin/sensors-measurements.html:1
+#: public/views/admin/sensors.html:1
+#: public/views/admin/users.html:1
+msgid "Próxima página"
+msgstr ""
+
+#: public/views/admin/sensors-measurements.html:1
+#: public/views/admin/sensors.html:1
+#: public/views/admin/users.html:1
+msgid "Página anterior"
 msgstr ""
 
 #: public/views/sensor.html:1
@@ -103,14 +221,22 @@ msgstr ""
 msgid "Receba atualizações deste sensor"
 msgstr ""
 
+#: public/views/admin/sensors-measurements.html:1
+#: public/views/admin/sensors.html:1
+#: public/views/admin/users.html:1
+msgid "Remover"
+msgstr ""
+
 #: public/views/account.html:1
 msgid "Repetir nova senha"
 msgstr ""
 
+#: public/views/admin/users-edit.html:1
 #: public/views/auth.html:1
 msgid "Repetir senha"
 msgstr ""
 
+#: public/views/admin/users-edit.html:1
 #: public/views/auth.html:1
 msgid "Senha"
 msgstr ""
@@ -119,6 +245,8 @@ msgstr ""
 msgid "Senha atual"
 msgstr ""
 
+#: public/views/admin/index.html:1
+#: public/views/admin/sensors.html:1
 #: public/views/home.html:1
 msgid "Sensores"
 msgstr ""
@@ -146,8 +274,34 @@ msgstr ""
 msgid "Seu telefone"
 msgstr ""
 
+#: public/views/admin/users-edit.html:1
+#: public/views/admin/users.html:1
+msgid "Telefone"
+msgstr ""
+
+#: public/views/admin/sensors-edit.html:1
+msgid "URL da imagem"
+msgstr ""
+
+#: public/views/admin/sensors-measurements.html:1
+msgid "Unidade de medida"
+msgstr ""
+
+#: public/views/admin/index.html:1
+#: public/views/admin/users.html:1
+msgid "Usuários"
+msgstr ""
+
+#: public/views/admin/sensors-measurements.html:1
+msgid "Valor"
+msgstr ""
+
 #: public/views/home.html:1
 msgid "Ver detalhes deste sensor"
+msgstr ""
+
+#: public/views/admin/sensors.html:1
+msgid "Ver e editar medições"
 msgstr ""
 
 #: public/views/account-sensors.html:1
@@ -180,6 +334,14 @@ msgstr ""
 
 #: public/views/home.html:1
 msgid "redes móveis"
+msgstr ""
+
+#: public/views/admin/sensors-broadcast.html:1
+msgid "{{sensor.name}} Broadcast"
+msgstr ""
+
+#: public/views/admin/index.html:1
+msgid "Área administrativa"
 msgstr ""
 
 #: public/views/sensor.html:1
