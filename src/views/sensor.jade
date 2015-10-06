@@ -44,7 +44,7 @@ article#sensor
 								h3 {{params[key].name.pt}}
 								p {{average[0].avg.toFixed(1)}} {{params[key].defaultUnit}}
 				.six.columns
-					latest-readings(sensor="sensor._id" amount="'5'" params="['electrical_conductivity', 'oxi-reduction_potential']")
+					latest-readings(sensor="sensor._id" amount="'5'" params="['electrical_conductivity', 'oxi-reduction_potential', 'ph']")
 		section#sensor-charts.anchor-section.row
 			.sensor-chart
 				header#sensor-charts-header
