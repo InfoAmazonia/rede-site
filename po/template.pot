@@ -1,0 +1,187 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: public/views/home.html:1
+#: public/views/sensor.html:1
+msgid "A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda vazão hídrica."
+msgstr ""
+
+#: public/views/auth.html:1
+msgid "Ainda não tenho uma conta"
+msgstr ""
+
+#: public/views/home.html:1
+msgid "Amazônia Brasileira"
+msgstr ""
+
+#: public/views/home.html:1
+msgid "Assine as atualizações deste sensor"
+msgstr ""
+
+#: public/views/account.html:1
+msgid "Atualizar"
+msgstr ""
+
+#: public/views/account.html:1
+msgid "Atualizar senha"
+msgstr ""
+
+#: public/views/sensor.html:1
+msgid "Baixar estes dados"
+msgstr ""
+
+#: public/views/account-sensors.html:1
+msgid "Cancelar assinatura"
+msgstr ""
+
+#: public/views/sensor.html:1
+msgid "Cancelar assinatura deste sensor"
+msgstr ""
+
+#: public/views/sensor.html:1
+msgid "Comunidade"
+msgstr ""
+
+#: public/views/sensor.html:1
+msgid "Comunidade deste sensor"
+msgstr ""
+
+#: public/views/sensor.html:1
+msgid "Dados históricos"
+msgstr ""
+
+#: public/views/sensor.html:1
+msgid "Data de início"
+msgstr ""
+
+#: public/views/login.html:1
+msgid "Entrar"
+msgstr ""
+
+#: public/views/auth.html:1
+msgid "Eu já tenho uma conta"
+msgstr ""
+
+#: public/views/sensor.html:1
+msgid "Gerar relatório"
+msgstr ""
+
+#: public/views/home.html:1
+#: public/views/sensor.html:1
+msgid "Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país."
+msgstr ""
+
+#: public/views/account.html:1
+msgid "Meu perfil"
+msgstr ""
+
+#: public/views/sensor.html:1
+msgid "Média dos últimos 30 dias"
+msgstr ""
+
+#: public/views/home.html:1
+#: public/views/sensor.html:1
+msgid "Na Amazônia Legal, 60% das residências são atendidas pela rede geral de água. A média nacional é de 82,7%."
+msgstr ""
+
+#: public/views/account.html:1
+msgid "Nova senha"
+msgstr ""
+
+#: public/views/sensor.html:1
+msgid "Qualidade da água e doenças em <strong>{{city}}</strong>"
+msgstr ""
+
+#: public/views/home.html:1
+msgid "Qualidade da água e doenças na Amazônia"
+msgstr ""
+
+#: public/views/sensor.html:1
+msgid "Receba atualizações deste sensor"
+msgstr ""
+
+#: public/views/account.html:1
+msgid "Repetir nova senha"
+msgstr ""
+
+#: public/views/auth.html:1
+msgid "Repetir senha"
+msgstr ""
+
+#: public/views/auth.html:1
+msgid "Senha"
+msgstr ""
+
+#: public/views/account.html:1
+msgid "Senha atual"
+msgstr ""
+
+#: public/views/home.html:1
+msgid "Sensores"
+msgstr ""
+
+#: public/views/home.html:1
+msgid "Sensores ambientais"
+msgstr ""
+
+#: public/views/account-sensors.html:1
+msgid "Sensores assinados"
+msgstr ""
+
+#: public/views/account.html:1
+#: public/views/auth.html:1
+msgid "Seu email"
+msgstr ""
+
+#: public/views/account.html:1
+#: public/views/auth.html:1
+msgid "Seu nome"
+msgstr ""
+
+#: public/views/account.html:1
+#: public/views/auth.html:1
+msgid "Seu telefone"
+msgstr ""
+
+#: public/views/home.html:1
+msgid "Ver detalhes deste sensor"
+msgstr ""
+
+#: public/views/account-sensors.html:1
+msgid "Você ainda não assinou nenhum sensor!"
+msgstr ""
+
+#: public/views/sensor.html:1
+msgid "anterior"
+msgstr ""
+
+#: public/views/home.html:1
+msgid "conectados via"
+msgstr ""
+
+#: public/views/home.html:1
+msgid "em cidades da"
+msgstr ""
+
+#: public/views/home.html:1
+msgid "para gerar indicadores de"
+msgstr ""
+
+#: public/views/sensor.html:1
+msgid "próximo"
+msgstr ""
+
+#: public/views/home.html:1
+msgid "qualidade da água"
+msgstr ""
+
+#: public/views/home.html:1
+msgid "redes móveis"
+msgstr ""
+
+#: public/views/sensor.html:1
+msgid "Últimas medições"
+msgstr ""

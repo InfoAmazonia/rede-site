@@ -1,17 +1,17 @@
 /*
- * Module dependencies
- */
+* Module dependencies
+*/
 var async = require('async');
 
 /*
- * Load config
- */
+* Load config
+*/
 var dotenv = require('dotenv').load();
 var env = process.env.NODE_ENV || 'development';
 var config = require('./config')[env];
 /*
- * Export module
- */
+* Export module
+*/
 module.exports = function(grunt) {
 
 	grunt.initConfig({
@@ -119,6 +119,23 @@ module.exports = function(grunt) {
 				]
 			}
 		},
+		nggettext_extract: {
+			pot: {
+				files: {
+					'po/template.pot': ['public/views/*.html']
+				}
+			}
+		},
+		nggettext_compile: {
+			all: {
+				options: {
+					module: 'rede'
+				},
+				files: {
+					'src/js/translations.js': ['po/*.po']
+				}
+			}
+		},
 		watch: {
 			options: {
 				livereload: true
@@ -129,7 +146,7 @@ module.exports = function(grunt) {
 			},
 			jade: {
 				files: 'src/views/**/*.jade',
-				tasks: ['jade']
+				tasks: ['jade', 'nggettext_extract']
 			},
 			scripts: {
 				files: 'src/js/**/*.js',
@@ -138,6 +155,10 @@ module.exports = function(grunt) {
 			copy: {
 				files: ['src/**', '!src/**/*.less', '!src/**/*.jade', '!src/**/*.js'],
 				tasks: ['copy']
+			},
+			translations: {
+				files: 'po/**/*',
+				tasks: ['nggettext_compile']
 			}
 		}
 	});
@@ -147,6 +168,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jade');
 	grunt.loadNpmTasks('grunt-browserify');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-angular-gettext');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('populate','Populate application with mock data',function(){
@@ -192,7 +214,7 @@ module.exports = function(grunt) {
 	grunt.registerTask(
 		'views',
 		'Compile views.',
-		['jade', 'less', 'copy']
+		['jade', 'less', 'copy', 'nggettext_extract']
 	);
 
 	grunt.registerTask(
@@ -204,7 +226,7 @@ module.exports = function(grunt) {
 	grunt.registerTask(
 		'build',
 		'Compiles everything.',
-		['javascript', 'views']
+		['javascript', 'views', 'nggettext_compile']
 	);
 
 	grunt.registerTask(

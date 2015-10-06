@@ -1,6 +1,6 @@
 #account-sensors
-  h3 Sensores assinados
-  p(ng-hide="sensors.length") Você ainda não assinou nenhum sensor!
+  h3(translate) Sensores assinados
+  p(ng-hide="sensors.length" translate) Você ainda não assinou nenhum sensor!
   ul.account-sensors-list
     li.clearfix(ng-repeat="sensor in sensors")
       h4 
@@ -8,4 +8,4 @@
       p(ng-controller="SensorSubscription")
         a.button(href="#" ng-click="unsubscribe(sensor._id)")
           span.icon-cross 
-          | Cancelar assinatura
+          span(translate) Cancelar assinatura

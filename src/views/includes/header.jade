@@ -54,3 +54,6 @@ header#masthead.row
 								a(ui-sref="account.sensors") Sensores assinados
 							li 
 								a(href="#" ng-click="logout()") Sair 
+					li.language-switcher(ng-controller="LanguageCtrl")
+						p(ng-click="setLanguage('pt_BR')" ng-class="{'active': lang == 'pt_BR'}") pt
+						p(ng-click="setLanguage('en')" ng-class="{'active': lang == 'en'}") en

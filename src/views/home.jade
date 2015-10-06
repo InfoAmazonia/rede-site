@@ -4,16 +4,16 @@ section#home.anti-row
 			.twelve.columns
 				.main-text
 					h2
-						strong.first(ng-mouseover="resetAbout('sensor')" ng-class="{active: aboutText == 'sensor'}") Sensores ambientais
+						strong.first(ng-mouseover="resetAbout('sensor')" ng-class="{active: aboutText == 'sensor'}" translate) Sensores ambientais
 						br
-						| conectados via 
-						strong(ng-mouseover="resetAbout('sim')" ng-class="{active: aboutText == 'sim'}") redes móveis
+						span(translate) conectados via 
+						strong(ng-mouseover="resetAbout('sim')" ng-class="{active: aboutText == 'sim'}" translate) redes móveis 
 						br 
-						| para gerar indicadores de 
-						strong(ng-mouseover="resetAbout('water')" ng-class="{active: aboutText == 'water'}") qualidade da água
+						span(translate) para gerar indicadores de 
+						strong(ng-mouseover="resetAbout('water')" ng-class="{active: aboutText == 'water'}" translate) qualidade da água 
 						br 
-						| em cidades da 
-						strong(ng-mouseover="resetAbout('forest')" ng-class="{active: aboutText == 'forest'}") Amazônia Brasileira
+						span(translate) em cidades da 
+						strong(ng-mouseover="resetAbout('forest')" ng-class="{active: aboutText == 'forest'}" translate) Amazônia Brasileira
 				.details
 					.about-text(ng-show="aboutText == 'sensor'")
 						.image(style="background-image:url(/img/sensor.png);")
@@ -35,33 +35,31 @@ section#home.anti-row
 		.sensor-map-container(ng-controller="MapCtrl")
 			leaflet#map(center="map.center" layers="map.layers" legend="legend" markers="markers" defaults="map.options")
 		.sensor-map-info(ng-hide="sensor")
-			h2 Sensores
+			h2(translate) Sensores
 			ul.sensor-list
 				li.sensor-item(ng-repeat="(i, sensor) in sensors" ng-click="setSensor(sensor._id)")
 					.sensor-content
 						.clearfix
 							h3 {{sensor.name}}
-							p.quality Qualidade
-								span.green Boa
 						p.community {{sensor.description}}
 		#sensor-summary(ng-show="sensor")
 			span.icon-cross.close(ng-click="setSensor(false)")
 			sensor-summary(sensor="sensor")
 			a.button.permalink(ui-sref="sensor({sensorId: sensor})") 
 				span.icon-magnifying-glass 
-				| Ver detalhes deste sensor
+				span(translate) Ver detalhes deste sensor
 			a.button.subscribe(ui-sref="sensor.subscribe({sensorId: sensor})") 
 				span.icon-rss 
-				| Assine as atualizações deste sensor
+				span(translate) Assine as atualizações deste sensor
 	section#city-data.row
 		header.city-data-header
 			.container
 				.six.columns
-					h2 Qualidade da água e doenças na Amazônia
+					h2(translate) Qualidade da água e doenças na Amazônia
 					p via 
 						a.visaguas(href="http://visaguas.infoamazonia.org" rel="external" target="_blank") VISAGUAS
 				.six.columns
-					p A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda vazão hídrica.
-					p Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país.
-					p Na Amazônia Legal, 60% das residências são atendidas pela rede geral de água. A média nacional é de 82,7%.
+					p(translate) A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda vazão hídrica.
+					p(translate) Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país.
+					p(translate) Na Amazônia Legal, 60% das residências são atendidas pela rede geral de água. A média nacional é de 82,7%.
 		iframe(width="100%" height="800" src="http://visaguas.infoamazonia.org/?theme=rede" frameborder="0")

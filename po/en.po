@@ -1,0 +1,195 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rede InfoAmazonia Site\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Miguel Peixe <miguel@cardume.art.br>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: public/views/home.html:1 public/views/sensor.html:1
+msgid ""
+"A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda "
+"vazão hídrica."
+msgstr ""
+
+#: public/views/auth.html:1
+msgid "Ainda não tenho uma conta"
+msgstr "I don't have an account"
+
+#: public/views/home.html:1
+msgid "Amazônia Brasileira"
+msgstr "Brazilian Amazon"
+
+#: public/views/home.html:1
+msgid "Assine as atualizações deste sensor"
+msgstr "Subscribe the updates from this sensor"
+
+#: public/views/account.html:1
+msgid "Atualizar"
+msgstr "Update"
+
+#: public/views/account.html:1
+msgid "Atualizar senha"
+msgstr "Update password"
+
+#: public/views/sensor.html:1
+msgid "Baixar estes dados"
+msgstr "Download this data"
+
+#: public/views/account-sensors.html:1
+msgid "Cancelar assinatura"
+msgstr "Cancel subscription"
+
+#: public/views/sensor.html:1
+msgid "Cancelar assinatura deste sensor"
+msgstr "Cancel subscription for this sensor"
+
+#: public/views/sensor.html:1
+msgid "Comunidade"
+msgstr "Community"
+
+#: public/views/sensor.html:1
+msgid "Comunidade deste sensor"
+msgstr "Sensor community"
+
+#: public/views/sensor.html:1
+msgid "Dados históricos"
+msgstr "Historical data"
+
+#: public/views/sensor.html:1
+msgid "Data de início"
+msgstr "Start date"
+
+#: public/views/login.html:1
+msgid "Entrar"
+msgstr "Login"
+
+#: public/views/auth.html:1
+msgid "Eu já tenho uma conta"
+msgstr "I already have an account"
+
+#: public/views/sensor.html:1
+msgid "Gerar relatório"
+msgstr "Generate report"
+
+#: public/views/home.html:1 public/views/sensor.html:1
+msgid ""
+"Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores "
+"do país."
+msgstr ""
+
+#: public/views/account.html:1
+msgid "Meu perfil"
+msgstr "My profile"
+
+#: public/views/sensor.html:1
+msgid "Média dos últimos 30 dias"
+msgstr "30 days average"
+
+#: public/views/home.html:1 public/views/sensor.html:1
+msgid ""
+"Na Amazônia Legal, 60% das residências são atendidas pela rede geral de "
+"água. A média nacional é de 82,7%."
+msgstr ""
+
+#: public/views/account.html:1
+msgid "Nova senha"
+msgstr "New password"
+
+#: public/views/sensor.html:1
+msgid "Qualidade da água e doenças em <strong>{{city}}</strong>"
+msgstr "Water quality and malaties in <strong>{{city}}</strong>"
+
+#: public/views/home.html:1
+msgid "Qualidade da água e doenças na Amazônia"
+msgstr "Water quality and maladies in the Amazon"
+
+#: public/views/sensor.html:1
+msgid "Receba atualizações deste sensor"
+msgstr "Subscribe to this sensor"
+
+#: public/views/account.html:1
+msgid "Repetir nova senha"
+msgstr "Repeat new password"
+
+#: public/views/auth.html:1
+msgid "Repetir senha"
+msgstr "Repeat password"
+
+#: public/views/auth.html:1
+msgid "Senha"
+msgstr "Password"
+
+#: public/views/account.html:1
+msgid "Senha atual"
+msgstr "Current password"
+
+#: public/views/home.html:1
+msgid "Sensores"
+msgstr "Sensors"
+
+#: public/views/home.html:1
+msgid "Sensores ambientais"
+msgstr "Environmental sensors"
+
+#: public/views/account-sensors.html:1
+msgid "Sensores assinados"
+msgstr "Subscribed sensors"
+
+#: public/views/account.html:1 public/views/auth.html:1
+msgid "Seu email"
+msgstr "Your email"
+
+#: public/views/account.html:1 public/views/auth.html:1
+msgid "Seu nome"
+msgstr "Your name"
+
+#: public/views/account.html:1 public/views/auth.html:1
+msgid "Seu telefone"
+msgstr "Your phone number"
+
+#: public/views/home.html:1
+msgid "Ver detalhes deste sensor"
+msgstr "View details of this sensor"
+
+#: public/views/account-sensors.html:1
+msgid "Você ainda não assinou nenhum sensor!"
+msgstr "You still haven't subscribed any sensor!"
+
+#: public/views/sensor.html:1
+msgid "anterior"
+msgstr "previous"
+
+#: public/views/home.html:1
+msgid "conectados via"
+msgstr "connected via"
+
+#: public/views/home.html:1
+msgid "em cidades da"
+msgstr "in cities of the"
+
+#: public/views/home.html:1
+msgid "para gerar indicadores de"
+msgstr "to generate indicators of"
+
+#: public/views/sensor.html:1
+msgid "próximo"
+msgstr "next"
+
+#: public/views/home.html:1
+msgid "qualidade da água"
+msgstr "water quality"
+
+#: public/views/home.html:1
+msgid "redes móveis"
+msgstr "mobile networks"
+
+#: public/views/sensor.html:1
+msgid "Últimas medições"
+msgstr "Latest readings"

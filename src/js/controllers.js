@@ -2,6 +2,22 @@
 
 angular.module('rede')
 
+.controller('LanguageCtrl', [
+	'$scope',
+	'gettextCatalog',
+	function($scope, gettextCatalog) {
+		$scope.$watch(function() {
+			return gettextCatalog.getCurrentLanguage();
+		}, function(lang) {
+			$scope.lang = lang;
+		});
+		$scope.setLanguage = function(lang) {
+			console.log(lang);
+			gettextCatalog.setCurrentLanguage(lang);
+		};
+	}
+])
+
 .controller('AccountCtrl', [
 	'$scope',
 	'RedeService',

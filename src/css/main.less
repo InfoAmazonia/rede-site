@@ -184,6 +184,25 @@ input[type=submit] {
 						}
 					}
 				}
+				&.language-switcher {
+					background: #111;
+					.border-radius(3px);
+					color: #666;
+					padding: 5px;
+					line-height: 100%;
+					margin: -3px 0 0 20px;
+					p {
+						line-height: 100%;
+						display: inline;
+						cursor: pointer;
+						margin: 0 3px;
+						padding: 0;
+						&:hover,
+						&.active {
+							color: #fff;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -256,6 +275,9 @@ input[type=submit] {
 				font-size: 18px;
 				line-height: 40px;
 				text-align: right;
+				span {
+					margin-right: 5px;
+				}
 				strong {
 					font-size: 24px;
 					border-bottom: 1px dotted rgba(255,255,255,0.1);

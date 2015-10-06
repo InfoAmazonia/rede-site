@@ -8,37 +8,37 @@ article#sensor
 				.four.columns
 					h1 
 						a(ui-sref="sensor"){{sensor.name}}
-					.header-summary
-						.quality
-							h2 Qualidade agora
-								span.green Boa
-							p.detail Última medição: 1 hora atrás
+					//- .header-summary
+					//- 	.quality
+					//- 		h2 Qualidade agora
+					//- 			span.green Boa
+					//- 		p.detail Última medição: 1 hora atrás
 				.eight.columns
 					.clearfix
 						nav#sensor-nav.header-nav
-							a(ui-sref="sensor({'#': 'sensor-community'})") Comunidade
-							a(ui-sref="sensor({'#': 'sensor-main'})") Últimas medições
-							a(ui-sref="sensor({'#': 'sensor-charts'})") Dados históricos
+							a(ui-sref="sensor({'#': 'sensor-community'})" translate) Comunidade
+							a(ui-sref="sensor({'#': 'sensor-main'})" translate) Últimas medições
+							a(ui-sref="sensor({'#': 'sensor-charts'})" translate) Dados históricos
 							a(ui-sref="sensor({'#': 'sensor-city'})" ng-show="visaguasUrl") {{city}}
 					.clearfix(ng-controller="SensorSubscription")
 						a.button.subscribe(ui-sref="sensor.subscribe" ng-hide="subscribed()") 
 							span.icon-rss 
-							| Receba atualizações deste sensor
+							span(translate) Receba atualizações deste sensor
 						a.button.subscribe(href="#" ng-click="unsubscribe()" ng-show="subscribed()") 
 							span.icon-cross 
-							| Cancelar assinatura deste sensor
+							span(translate) Cancelar assinatura deste sensor
 	#sensor-content(ui-view)
 		section#sensor-community.anchor-section
 			.container
 				.twelve.columns
 					img.cmm-pic(ng-src="{{sensor.image}}")
-					h2 Comunidade deste sensor
+					h2(translate) Comunidade deste sensor
 					p {{sensor.description}} 
 		section#sensor-main.anchor-section
 			.container
 				.six.columns
 					.sensor-average
-						h2 Média dos últimos 30 dias
+						h2(translate) Média dos últimos 30 dias
 						ul.average-list
 							li.average-item(ng-repeat="(key, average) in averages")
 								h3 {{params[key].name.pt}}
@@ -50,26 +50,26 @@ article#sensor
 				header#sensor-charts-header
 					.container
 						.twelve.columns
-							h2 Dados históricos
+							h2(translate) Dados históricos
 							nav.chart-filters
 								.chart-filter-item
 									select(ng-model="chart.current.date" ng-options="param.label for param in chart.params.date track by param.value")
 								.chart-filter-item(ng-show="chart.current.date.value == 'custom'")
 									span.datepicker-label(ng-click="togglePicker('from')")
 										span.icon-calendar
-										span.label Data de início 
+										span.label(translate) Data de início 
 										span.value(ng-show="picker.from") {{picker.from}}
-									.datepicker(pickadate ng-show="showFrom" ng-model="picker.from" prev-label="'anterior'" next-label="'próximo'")
+									.datepicker(pickadate ng-show="showFrom" ng-model="picker.from" prev-label="'anterior' | translate" next-label="'próximo' | translate")
 								.chart-filter-item(ng-show="chart.current.date.value == 'custom'")
 									span.datepicker-label(ng-click="togglePicker('to')")
 										span.icon-calendar
 										span.label Data de fim 
 										span.value(ng-show="picker.to") {{picker.to}}
-									.datepicker(pickadate ng-show="showTo" ng-model="picker.to" prev-label="'anterior'" next-label="'próximo'" min-date="picker.from")
+									.datepicker(pickadate ng-show="showTo" ng-model="picker.to" prev-label="'anterior' | translate" next-label="'próximo' | translate" min-date="picker.from")
 				nav.chart-nav
 					.container
 						.twelve.columns
-							a(ng-repeat="param in chart.params.type" href="javascript:void(0);" ng-click="chartMeasure(param)" ng-class="{active: chart.current.type._id == param._id}") {{param.name.pt}}  
+							a(ng-repeat="param in chart.params.type" href="javascript:void(0);" ng-click="chartMeasure(param)" ng-class="{active: chart.current.type._id == param._id}") {{param.name.pt}} 
 				.container
 					.twelve.columns
 						.chart
@@ -77,20 +77,20 @@ article#sensor
 				.container
 					.six.columns
 						.download
-							a.button(href="#") Baixar estes dados
+							a.button(href="#" translate) Baixar estes dados
 					.six.columns
 						.report
-							a.button(ui-sref="sensor.report({from: chartDateFrom, to: chartDateTo})") Gerar relatório
+							a.button(ui-sref="sensor.report({from: chartDateFrom, to: chartDateTo})" translate) Gerar relatório
 
 		section#sensor-city.anchor-section(ng-show="visaguasUrl")
 			.container
 				.six.columns
-					h2 Qualidade da água e doenças em 
+					h2(translate) Qualidade da água e doenças em 
 						strong {{city}}
 					p via 
 						a.visaguas(href="http://visaguas.infoamazonia.org/" rel="external") Visaguas
 				.six.columns
-					p A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda vazão hídrica.
-					p Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país.
-					p Na Amazônia Legal, 60% das residências são atendidas pela rede geral de água. A média nacional é de 82,7%.
+					p(translate) A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda vazão hídrica.
+					p(translate) Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país.
+					p(translate) Na Amazônia Legal, 60% das residências são atendidas pela rede geral de água. A média nacional é de 82,7%.
 			iframe(ng-src="{{visaguasUrl}}" frameborder="0" width="100%" height="800")

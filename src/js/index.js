@@ -17,6 +17,7 @@ require('angular-google-chart');
 require('angular-ui-router');
 require('angular-resource');
 require('angular-cookies');
+require('angular-gettext');
 require('ng-dialog');
 require('angular-pickadate/src/angular-pickadate');
 require('international-phone-number/releases/international-phone-number');
@@ -30,7 +31,8 @@ var app = angular.module('rede', [
 	'googlechart',
 	'leaflet-directive',
 	'pickadate',
-	'internationalPhoneNumber'
+	'internationalPhoneNumber',
+	'gettext'
 ]);
 
 app
@@ -326,11 +328,22 @@ app
 	}
 ]);
 
+require('./translations');
+
 require('./messages');
 
 require('./service');
 require('./directives');
 require('./controllers');
+
+angular.module('rede').run(function (gettextCatalog) {
+	var userLang = navigator.language || navigator.userLanguage;
+	console.log(userLang);
+	if(userLang == 'pt-BR' || userLang == 'pt' || userLang == 'pt_BR' || userLang == 'pt_PT' || userLang == 'pt-PT')
+		gettextCatalog.setCurrentLanguage('pt_BR');
+	else
+		gettextCatalog.setCurrentLanguage('en');
+});
 
 angular.element(document).ready(function() {
 	angular.bootstrap(document, ['rede']);
