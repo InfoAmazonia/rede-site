@@ -36,7 +36,7 @@ var messaging = require('../../lib/helpers/messaging');
  */
 var config = require('../../config')['test'];
 var apiPrefix = config.apiPrefix;
-var defaultPerPage = 20;
+var defaultPerPage = 50;
 
 var numberOfSensors = 50;
 var numberOfSensorsWithData = 3;
