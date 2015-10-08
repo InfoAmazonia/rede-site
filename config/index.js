@@ -62,26 +62,6 @@ var parameters = {
     },
     "abbreviations": ["Ta"],
     "defaultUnit": "C"
-  },
-  "relative_humidity": {
-    "_id": "relative_humidity",
-    "name": {
-      "en": "Relative humidity",
-      "pt": "Humidade relativa"
-    },
-    "abbreviations": ["RH"],
-    "defaultUnit": "%",
-    "wikipedia": "https://en.wikipedia.org/wiki/Relative_humidity"
-  },
-  "illuminance": {
-    "_id": "illuminance",
-    "name": {
-      "en": "Illuminance",
-      "pt": "Iluminância"
-    },
-    "abbreviations": ["E"],
-    "defaultUnit": "lx",
-    "wikipedia": "https://en.wikipedia.org/wiki/Illuminance"
   }
 };
 

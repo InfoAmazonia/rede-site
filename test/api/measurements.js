@@ -522,7 +522,7 @@ describe('API: Measurements', function(){
     it('returns 200 for zero values', function(doneIt){
       var payload = {
         sensorIdentifier: sensor1.identifier,
-        data: '2014-08-20T08:55:47-03:00;RH=48.0;Ta:C=25.0;AP:Pa=7159;E=455;pH=5.45;ORP:mV=-387.70;EC:S/m=11.0;Tw:C=0.0;XX=32;ZZ:YY=-100'
+        data: '2014-08-20T08:55:47-03:00;Ta:C=25.0;AP:Pa=7159;pH=5.45;ORP:mV=-387.70;EC:S/m=11.0;Tw:C=0.0;XX=32;ZZ:YY=-100'
       }
 
       var time = moment('2014-08-20T08:55:47Z', moment.ISO_8601).toDate();
@@ -540,22 +540,6 @@ describe('API: Measurements', function(){
           // Verify each parameter sent
           async.series([
             function(doneEach){
-              Measurement
-                .findOne({
-                  sensor: sensor1._id,
-                  parameter: 'relative_humidity',
-                  collectedAt: {
-                    $gte: time,
-                    $lte: time
-                  }
-                }, function(err, measurement){
-                  if (err) return doneIt(err);
-                  should.exist(measurement);
-                  measurement.should.have.property('value', 48.0);
-                  measurement.should.have.property('unit', '%');
-                  doneEach();
-              });
-            },function(doneEach){
               Measurement
                 .findOne({
                   sensor: sensor1._id,
@@ -585,22 +569,6 @@ describe('API: Measurements', function(){
                   should.exist(measurement);
                   measurement.should.have.property('value', 7159);
                   measurement.should.have.property('unit', 'Pa');
-                  doneEach();
-                });
-            },function(doneEach){
-              Measurement
-                .findOne({
-                  sensor: sensor1._id,
-                  parameter: 'illuminance',
-                  collectedAt: {
-                    $gte: time,
-                    $lte: time
-                  }
-                }, function(err, measurement){
-                  if (err) return doneIt(err);
-                  should.exist(measurement);
-                  measurement.should.have.property('value', 455);
-                  measurement.should.have.property('unit');
                   doneEach();
                 });
             },function(doneEach){

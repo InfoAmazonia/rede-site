@@ -111,7 +111,7 @@ exports.list = function(req, res) {
       return res.status(400).json(messaging.error('invalid_pagination'));
     else
       perPage = parseInt(perPage);
-  } else perPage = 20;
+  } else perPage = 50;
 
   /* Mongoose Options */
   var options = {
