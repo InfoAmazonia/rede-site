@@ -1,22 +1,26 @@
+# 
+# Translators:
+# Miguel Peixe <miguspeixe@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: Rede InfoAmazonia Site\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: Miguel Peixe <miguel@cardume.art.br>\n"
-"Language-Team: \n"
-"Language: en\n"
-"MIME-Version: 1.0\n"
+"Project-Id-Version: Site Rede InfoAmazonia\n"
+"PO-Revision-Date: 2015-10-08 15:54+0000\n"
+"Last-Translator: Miguel Peixe <miguspeixe@gmail.com>\n"
+"Language-Team: English (http://www.transifex.com/infoamazonia/site-rede-infoamazonia/language/en/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: public/views/home.html:1 public/views/sensor.html:1
 msgid ""
 "A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda "
 "vazão hídrica."
 msgstr ""
+
+#: public/views/admin/users-edit.html:1
+msgid "Administrador"
+msgstr "Administrator"
 
 #: public/views/auth.html:1
 msgid "Ainda não tenho uma conta"
@@ -25,6 +29,10 @@ msgstr "I don't have an account"
 #: public/views/home.html:1
 msgid "Amazônia Brasileira"
 msgstr "Brazilian Amazon"
+
+#: public/views/admin/users-edit.html:1
+msgid "Assinante"
+msgstr "Subscriber"
 
 #: public/views/home.html:1
 msgid "Assine as atualizações deste sensor"
@@ -41,6 +49,11 @@ msgstr "Update password"
 #: public/views/sensor.html:1
 msgid "Baixar estes dados"
 msgstr "Download this data"
+
+#: public/views/admin/broadcast.html:1 public/views/admin/index.html:1
+#: public/views/admin/sensors.html:1
+msgid "Broadcast"
+msgstr "Broadcast"
 
 #: public/views/account-sensors.html:1
 msgid "Cancelar assinatura"
@@ -62,27 +75,96 @@ msgstr "Sensor community"
 msgid "Dados históricos"
 msgstr "Historical data"
 
+#: public/views/admin/sensors-measurements.html:1
+msgid "Data"
+msgstr "Date"
+
 #: public/views/sensor.html:1
 msgid "Data de início"
 msgstr "Start date"
+
+#: public/views/admin/sensors-edit.html:1
+msgid "Descrição (comunidade)"
+msgstr "Description (community)"
+
+#: public/views/admin/sensors.html:1 public/views/admin/users.html:1
+msgid "Editar"
+msgstr "Edit"
+
+#: public/views/admin/sensors-edit.html:1
+msgid "Editar sensor"
+msgstr "Edit sensor"
+
+#: public/views/admin/users-edit.html:1
+msgid "Editar usuário"
+msgstr "Edit user"
+
+#: public/views/admin/users-edit.html:1 public/views/admin/users.html:1
+msgid "Email"
+msgstr "Email"
 
 #: public/views/login.html:1
 msgid "Entrar"
 msgstr "Login"
 
+#: public/views/admin/sensors-edit.html:1 public/views/admin/users-edit.html:1
+msgid "Enviar"
+msgstr "Send"
+
+#: public/views/admin/sensors.html:1
+msgid "Enviar broadcast"
+msgstr "Send broadcast"
+
+#: public/views/admin/broadcast.html:1
+#: public/views/admin/sensors-broadcast.html:1
+msgid "Enviar mensagem"
+msgstr "Send message"
+
+#: public/views/admin/sensors-broadcast.html:1
+msgid "Envie uma mensagem para os assinantes de {{sensor.name}}"
+msgstr "Send a message to the subscriber of {{sensor.name}}"
+
+#: public/views/admin/broadcast.html:1
+msgid "Envie uma mensagem para todos os assinantes"
+msgstr "Send a message to all subscribers"
+
 #: public/views/auth.html:1
 msgid "Eu já tenho uma conta"
 msgstr "I already have an account"
+
+#: public/views/admin/users-edit.html:1 public/views/admin/users.html:1
+msgid "Função"
+msgstr "Role"
 
 #: public/views/sensor.html:1
 msgid "Gerar relatório"
 msgstr "Generate report"
 
+#: public/views/admin/sensors-edit.html:1
+msgid "Identificador"
+msgstr "Identifier"
+
+#: public/views/admin/sensors-edit.html:1
+msgid "Latitude"
+msgstr "Latitude"
+
+#: public/views/admin/sensors-edit.html:1
+msgid "Longitude"
+msgstr "Longitude"
+
 #: public/views/home.html:1 public/views/sensor.html:1
 msgid ""
-"Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores "
-"do país."
+"Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores"
+" do país."
 msgstr ""
+
+#: public/views/admin/sensors.html:1
+msgid "Medições"
+msgstr "Measurements"
+
+#: public/views/admin/sensors-measurements.html:1
+msgid "Medições em {{sensor.name}}"
+msgstr "Measurements in {{sensor.name}}"
 
 #: public/views/account.html:1
 msgid "Meu perfil"
@@ -98,9 +180,34 @@ msgid ""
 "água. A média nacional é de 82,7%."
 msgstr ""
 
+#: public/views/admin/sensors-edit.html:1 public/views/admin/sensors.html:1
+#: public/views/admin/users-edit.html:1 public/views/admin/users.html:1
+msgid "Nome"
+msgstr "Name"
+
 #: public/views/account.html:1
 msgid "Nova senha"
 msgstr "New password"
+
+#: public/views/admin/index.html:1 public/views/admin/sensors-edit.html:1
+#: public/views/admin/sensors.html:1
+msgid "Novo sensor"
+msgstr "New sensor"
+
+#: public/views/admin/index.html:1 public/views/admin/users-edit.html:1
+#: public/views/admin/users.html:1
+msgid "Novo usuário"
+msgstr "New user"
+
+#: public/views/admin/sensors-measurements.html:1
+#: public/views/admin/sensors.html:1 public/views/admin/users.html:1
+msgid "Próxima página"
+msgstr "Next page"
+
+#: public/views/admin/sensors-measurements.html:1
+#: public/views/admin/sensors.html:1 public/views/admin/users.html:1
+msgid "Página anterior"
+msgstr "Previous page"
 
 #: public/views/sensor.html:1
 msgid "Qualidade da água e doenças em <strong>{{city}}</strong>"
@@ -114,15 +221,20 @@ msgstr "Water quality and maladies in the Amazon"
 msgid "Receba atualizações deste sensor"
 msgstr "Subscribe to this sensor"
 
+#: public/views/admin/sensors-measurements.html:1
+#: public/views/admin/sensors.html:1 public/views/admin/users.html:1
+msgid "Remover"
+msgstr "Delete"
+
 #: public/views/account.html:1
 msgid "Repetir nova senha"
 msgstr "Repeat new password"
 
-#: public/views/auth.html:1
+#: public/views/admin/users-edit.html:1 public/views/auth.html:1
 msgid "Repetir senha"
 msgstr "Repeat password"
 
-#: public/views/auth.html:1
+#: public/views/admin/users-edit.html:1 public/views/auth.html:1
 msgid "Senha"
 msgstr "Password"
 
@@ -130,6 +242,7 @@ msgstr "Password"
 msgid "Senha atual"
 msgstr "Current password"
 
+#: public/views/admin/index.html:1 public/views/admin/sensors.html:1
 #: public/views/home.html:1
 msgid "Sensores"
 msgstr "Sensors"
@@ -154,9 +267,33 @@ msgstr "Your name"
 msgid "Seu telefone"
 msgstr "Your phone number"
 
+#: public/views/admin/users-edit.html:1 public/views/admin/users.html:1
+msgid "Telefone"
+msgstr "Phone number"
+
+#: public/views/admin/sensors-edit.html:1
+msgid "URL da imagem"
+msgstr "Image URL"
+
+#: public/views/admin/sensors-measurements.html:1
+msgid "Unidade de medida"
+msgstr "Measurement unit"
+
+#: public/views/admin/index.html:1 public/views/admin/users.html:1
+msgid "Usuários"
+msgstr "Users"
+
+#: public/views/admin/sensors-measurements.html:1
+msgid "Valor"
+msgstr "Value"
+
 #: public/views/home.html:1
 msgid "Ver detalhes deste sensor"
 msgstr "View details of this sensor"
+
+#: public/views/admin/sensors.html:1
+msgid "Ver e editar medições"
+msgstr "View and edit measurements"
 
 #: public/views/account-sensors.html:1
 msgid "Você ainda não assinou nenhum sensor!"
@@ -189,6 +326,14 @@ msgstr "water quality"
 #: public/views/home.html:1
 msgid "redes móveis"
 msgstr "mobile networks"
+
+#: public/views/admin/sensors-broadcast.html:1
+msgid "{{sensor.name}} Broadcast"
+msgstr "{{sensor.name}} Broadcast"
+
+#: public/views/admin/index.html:1
+msgid "Área administrativa"
+msgstr "Dashboard"
 
 #: public/views/sensor.html:1
 msgid "Últimas medições"
