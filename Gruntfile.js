@@ -158,7 +158,7 @@ module.exports = function(grunt) {
 			},
 			translations: {
 				files: 'po/**/*',
-				tasks: ['nggettext_compile']
+				tasks: ['nggettext_compile', 'browserify']
 			}
 		}
 	});
@@ -226,7 +226,7 @@ module.exports = function(grunt) {
 	grunt.registerTask(
 		'build',
 		'Compiles everything.',
-		['javascript', 'views', 'nggettext_compile']
+		['nggettext_compile', 'javascript', 'views']
 	);
 
 	grunt.registerTask(
