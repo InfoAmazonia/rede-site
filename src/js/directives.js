@@ -381,9 +381,15 @@ angular.module('rede')
 						data: dataTable,
 						options: {
 							curveType: 'function',
-							intervals: { lineWidth: 1, barWidth: 0.5, color: '#666' },
+							intervals: {
+								color: '#666',
+								style: 'bars',
+								pointSize: 4,
+								barWidth: 0,
+								lineWidth: 1
+							},
 			        series: [{'color': '#1858ac'}],
-							lineWidth: 4,
+							lineWidth: 3,
 							// chartArea: {
 							// 	left: 0,
 							// 	top: 0,
