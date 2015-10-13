@@ -2,58 +2,58 @@ header#masthead.row
 	.container
 		.four.columns
 			h1 
-				a(ui-sref='home')
+				a(ui-sref='home' translate)
 					span Rede
 					| InfoAmazonia
 		.eight.columns
 			nav#mastnav
 				ul
 					li
-						a(ui-sref="about") Projeto
+						a(ui-sref="about" translate) Projeto
 						ul
 							li
-								a(ui-sref="press") Imprensa
+								a(ui-sref="press" translate) Imprensa
 					li
-						a(ui-sref="maedagua") Mãe D'Água
+						a(ui-sref="maedagua" translate) Mãe D'Água
 						ul
 							li
-								a(ui-sref="maedagua({'#': 'tecnicos'})") Aspectos ténicos
+								a(ui-sref="maedagua({'#': 'tecnicos'})" translate) Aspectos ténicos
 							li
-								a(ui-sref="maedagua({'#': 'qualidade'})") Qualidade da água
+								a(ui-sref="maedagua({'#': 'qualidade'})" translate) Qualidade da água
 							li
-								a(ui-sref="maedagua({'#': 'desenvolvimento'})") Desenvolvimento
+								a(ui-sref="maedagua({'#': 'desenvolvimento'})" translate) Desenvolvimento
 							li
-								a(ui-sref="maedagua({'#': 'limitacoes'})") Limitações
+								a(ui-sref="maedagua({'#': 'limitacoes'})" translate) Limitações
 					li
-						a(ui-sref="aboutData") Dados
+						a(ui-sref="aboutData" translate) Dados
 						ul
 							li
-								a(ui-sref="aboutData({'#': 'iqa'})") Índice de qualidade
+								a(ui-sref="aboutData({'#': 'iqa'})" translate) Índice de qualidade
 							li
-								a(ui-sref="aboutData({'#': 'visualizao'})") Visualização dos dados
+								a(ui-sref="aboutData({'#': 'visualizao'})" translate) Visualização dos dados
 					li
-						a(ui-sref="network") Monitoramento
+						a(ui-sref="network" translate) Monitoramento
 						ul
 							li
-								a(ui-sref="network({'#': 'formacao'})") Formação da rede
+								a(ui-sref="network({'#': 'formacao'})" translate) Formação da rede
 							li
-								a(ui-sref="network({'#': 'atividades'})") Atividades de formação
+								a(ui-sref="network({'#': 'atividades'})" translate) Atividades de formação
 							li
-								a(ui-sref="network({'#': 'resultados'})") Resultados
+								a(ui-sref="network({'#': 'resultados'})" translate) Resultados
 					li(ng-controller="AuthCtrl")
-						a(ui-sref="login" ng-hide="token") Entrar
+						a(ui-sref="login" ng-hide="token" translate) Entrar
 						a(ui-sref="account" ng-show="token") 
-							| Minha conta 
+							span(translate) Minha conta 
 							span.icon-chevron-down
 						ul.account(ng-show="token")
 							li
-								a(ui-sref="admin" ng-show="token.role == 'admin'") Área administrativa
+								a(ui-sref="admin" ng-show="token.role == 'admin'" translate) Área administrativa
 							li 
-								a(ui-sref="account") Editar minha conta
+								a(ui-sref="account" translate) Editar minha conta
 							li 
-								a(ui-sref="account.sensors") Sensores assinados
+								a(ui-sref="account.sensors" translate) Sensores assinados
 							li 
-								a(href="#" ng-click="logout()") Sair 
+								a(href="#" ng-click="logout()" translate) Sair 
 					li.language-switcher(ng-controller="LanguageCtrl")
 						p(ng-click="setLanguage('pt_BR')" ng-class="{'active': lang == 'pt_BR'}") pt
 						p(ng-click="setLanguage('en')" ng-class="{'active': lang == 'en'}") en

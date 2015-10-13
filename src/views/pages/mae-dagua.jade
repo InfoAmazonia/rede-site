@@ -2,69 +2,69 @@
   .page-intro
     .container
       .nine.columns
-        h2 Mãe D'Água
-        p O hardware livre de monitoramento de qualidade da água em tempo real desenvolvido pelo projeto Rede InfoAmazonia foi batizado de "Mãe d'Água". Inspirado no Riffle, o dispositivo é resultado da colaboração da equipe do projeto com a redeo grupo norte-americanao de ciência cidadã Public Lab e a start-up Dev Tecnologia, empresa incubada na Universidade de São Paulo.
+        h2(translate) Mãe D'Água
+        p(translate) O hardware livre de monitoramento de qualidade da água em tempo real desenvolvido pelo projeto Rede InfoAmazonia foi batizado de "Mãe d'Água". Inspirado no Riffle, o dispositivo é resultado da colaboração da equipe do projeto com a redeo grupo norte-americanao de ciência cidadã Public Lab e a start-up Dev Tecnologia, empresa incubada na Universidade de São Paulo.
   .container
     .six.columns.offset-by-three
 
-      p O Mãe d´Água será capaz de monitorar parâmetros físico-químicos importantes que ajudam a indicar se a água é potável ou está contaminada. De hora em hora serão realizadas leituras das seguintes variáveis: acidez (pH), potencial de redução da oxidação (ORP), condutividade elétrica, temperatura e pressão barométrica no nível da água. O objetivo das medições é detectar variações que indiquem contaminação.
+      p(translate) O Mãe d´Água será capaz de monitorar parâmetros físico-químicos importantes que ajudam a indicar se a água é potável ou está contaminada. De hora em hora serão realizadas leituras das seguintes variáveis: acidez (pH), potencial de redução da oxidação (ORP), condutividade elétrica, temperatura e pressão barométrica no nível da água. O objetivo das medições é detectar variações que indiquem contaminação.
 
-      p As leituras das variáveis serão enviadas para um servidor remoto de hora em hora. A partir do último trimestre de 2015 as análises e a base de dados estarão acessíveis no site do Rede InfoAmazonia. Além da informação disponível do site, os interessados poderão se cadastrar para receber alertas SMS sobre qualidade da água em sua comunidade.
+      p(translate) As leituras das variáveis serão enviadas para um servidor remoto de hora em hora. A partir do último trimestre de 2015 as análises e a base de dados estarão acessíveis no site do Rede InfoAmazonia. Além da informação disponível do site, os interessados poderão se cadastrar para receber alertas SMS sobre qualidade da água em sua comunidade.
 
-      p Em caso de alterações na água, serão realizadas análises em laboratório para confirmar e obter maiores informações.
+      p(translate) Em caso de alterações na água, serão realizadas análises em laboratório para confirmar e obter maiores informações.
       
       p
-        a.button(href="#") Baixar manual
+        a.button(href="#" translate) Baixar manual
 
   .page-section#tecnicos
     .container
       .three.columns
-        h2 Aspectos técnicos
+        h2(translate) Aspectos técnicos
       .six.columns
         ul
-          li Parâmetros monitorados: pH, temperatura, condutividade elétrica, potencial de redução da oxidação (ORP) e pressão barométrica no nível da água
-          li Aplicação: o equipamento poderá ser utilizado para monitoramento da qualidade da água em caixas d´água, cisternas, reservatórios, corpos de água superficial com baixa vazão.
-          li Monitoramento em tempo real: A coleta de dados é feita automaticamente a cada hora, as leituras são enviadas via rede 2G ou 3G para o servidor do site rede.infoamazonia.org
-          li Instalação: A instalação é simples, não requer conhecimentos específicos.
-          li Calibração: A calibração dos sensores deve ser feita a cada três meses.
-          li Fonte de energia: energia elétrica bivolt ou bateria recarregável ligada a painel solar.
-          li Manutenção: As ponteiras dos sensores devem ser limpas periodicamente para evitar acumulo de resíduos que podem afetar as leituras. 
+          li(translate) Parâmetros monitorados: pH, temperatura, condutividade elétrica, potencial de redução da oxidação (ORP) e pressão barométrica no nível da água
+          li(translate) Aplicação: o equipamento poderá ser utilizado para monitoramento da qualidade da água em caixas d´água, cisternas, reservatórios, corpos de água superficial com baixa vazão.
+          li(translate) Monitoramento em tempo real: A coleta de dados é feita automaticamente a cada hora, as leituras são enviadas via rede 2G ou 3G para o servidor do site rede.infoamazonia.org
+          li(translate) Instalação: A instalação é simples, não requer conhecimentos específicos.
+          li(translate) Calibração: A calibração dos sensores deve ser feita a cada três meses.
+          li(translate) Fonte de energia: energia elétrica bivolt ou bateria recarregável ligada a painel solar.
+          li(translate) Manutenção: As ponteiras dos sensores devem ser limpas periodicamente para evitar acumulo de resíduos que podem afetar as leituras. 
 
   .page-section#desenvolvimento
     .container
       .three.columns 
-        h2 Desenvolvimento
+        h2(translate) Desenvolvimento
       .six.columns
-        p O hardware foi projetado em plataforma (Eagle) e licenças abertas, de forma modular:
+        p(translate) O hardware foi projetado em plataforma (Eagle) e licenças abertas, de forma modular:
         ul
-          li 
+          li(translate) 
             strong Módulo 1 (M1): 
             | composto por um Arduino Mega, responsável por todo o processamento das informações capturadas pelos sensores e pela alimentação de energia do conjunto (conectado a uma fonte externa).
-          li
+          li(translate)
             strong Módulo 2 (M2): 
             | um shield para Arduino que possui o sensor de pressão barométrica e conectores para acoplamento dos sensores de pH, ORP, condutividade e temperatura da água. Desta forma modular, é possível selecionar os sensores a serem utilizados visando o custo benefício da aplicação específica desejada.
-          li
+          li(translate)
             strong Módulo 3 (M3): 
             | responsável pela comunicação via rede de telefonia celular, capaz de transmitir os dados por SMS para um servidor do Rede InfoAmazonia. Como estratégia auxiliar de acesso aos dados, o M2 também possui espaço para cartão de memória SD.
             
-        p Alguns conceitos: 
+        p(translate) Alguns conceitos: 
 
         ul
-          li Hardware aberto: Parte eletrônica desenvolvida com documentação e arquivos abertos para que qualquer pessoa interessada possa conhecer e replicar. Não existe restrição autoral, intelectual ou industrial que impeça alguém de conhecer 100% de como o hardware é construído e operado.
-          li Plataforma Eagle: software livre utilizado para gerar o circuito e desenho do hardware.
-          li Arduíno Mega: Placa com microcontrolador utilizada para controlar o sistema.
-          li Shield: É uma placaque recebe as leituras físico-químicas ambientais para análise de qualidade da água.
-          li Firmware: Em eletrônica e computação, o firmware é o conjunto de instruções operacionais programadas diretamente no hardware de equipamentos eletrônicos.
+          li(translate) Hardware aberto: Parte eletrônica desenvolvida com documentação e arquivos abertos para que qualquer pessoa interessada possa conhecer e replicar. Não existe restrição autoral, intelectual ou industrial que impeça alguém de conhecer 100% de como o hardware é construído e operado.
+          li(translate) Plataforma Eagle: software livre utilizado para gerar o circuito e desenho do hardware.
+          li(translate) Arduíno Mega: Placa com microcontrolador utilizada para controlar o sistema.
+          li(translate) Shield: É uma placaque recebe as leituras físico-químicas ambientais para análise de qualidade da água.
+          li(translate) Firmware: Em eletrônica e computação, o firmware é o conjunto de instruções operacionais programadas diretamente no hardware de equipamentos eletrônicos.
 
   .page-section#limitacoes
     .container
       .three.columns
-        h2 Limitações
+        h2(translate) Limitações
       .six.columns
-        p Devido ao caráter de medição em tempo real, os resultados são considerados provisórios e não conclusivos, são sujeitos a equívocos e incertezas. Os dados podem conter valores inexatos devido a mal funcionamento do equipamento. Eventualmente os equipamentos serão desconectados para manutenção. 
+        p(translate) Devido ao caráter de medição em tempo real, os resultados são considerados provisórios e não conclusivos, são sujeitos a equívocos e incertezas. Os dados podem conter valores inexatos devido a mal funcionamento do equipamento. Eventualmente os equipamentos serão desconectados para manutenção. 
 
-        p Os resultados são acessíveis através do site rede.infoamazonia.org e alertam sobre possível contaminação. 
+        p(translate) Os resultados são acessíveis através do site rede.infoamazonia.org e alertam sobre possível contaminação. 
 
-        p Cabe ressaltar, também, a importância da avaliação de outros parâmetros importantes da qualidade da água para consumo humano, tais como Oxigênio Dissolvido, Coliformes termotolerantes e análise microbiológica da água, com relação à presença de parasitas, vírus, e bactérias.
+        p(translate) Cabe ressaltar, também, a importância da avaliação de outros parâmetros importantes da qualidade da água para consumo humano, tais como Oxigênio Dissolvido, Coliformes termotolerantes e análise microbiológica da água, com relação à presença de parasitas, vírus, e bactérias.
 
-        p A comprovação das condições da qualidade da água deve ser feita através de testes que analisam outros parâmetros como a qualidade microbiológica, para parasitas e vírus, além de bactérias.
+        p(translate) A comprovação das condições da qualidade da água deve ser feita através de testes que analisam outros parâmetros como a qualidade microbiológica, para parasitas e vírus, além de bactérias.
