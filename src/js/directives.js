@@ -321,21 +321,24 @@ angular.module('rede')
 ])
 
 .directive('readingChart', [
-	function() {
+	'googleChartApiPromise',
+	function(googleChartApiPromise) {
 		return {
 			restrict: 'E',
 			scope: {
 				'dataset': '=',
 				'label': '='
 			},
-			template: '<div google-chart chart="chart"></div>',
+			template: '<div google-chart chart="chart" style="width:100%;height:300px;"></div>',
 			link: function(scope, element, attrs) {
 
 				function init() {
 
 					var label = scope.label || '';
 
-					var data = [['', label + ' (média)', label + ' (máximo)', label + ' (mínimo)']];
+					// var data = [['', label + ' (média)', label + ' (máximo)', label + ' (mínimo)']];
+
+					var data = [];
 
 					_.each(scope.dataset, function(d, i) {
 						var date = new Date(d._id.year, 0, 1);
@@ -362,21 +365,36 @@ angular.module('rede')
 
 					data = _.sortBy(data, function(d) { return d[0]; });
 
-					// See https://google-developers.appspot.com/chart/interactive/docs/gallery/linechart
+					var dataTable = new google.visualization.DataTable();
+
+					dataTable.addColumn('date', 'Data');
+					dataTable.addColumn('number', 'Average');
+					dataTable.addColumn({id: "max", type:'number', role:'interval'});
+					dataTable.addColumn({id: "min", type:'number', role:'interval'});
+
+					dataTable.addRows(data);
+
+					console.log(dataTable);
+
 					scope.chart = {
-						type: 'google.charts.Line',
-						data: data,
-						curveType: 'function',
+						type: 'LineChart',
+						data: dataTable,
 						options: {
-							chartArea: {
-								left: 0,
-								top: 0,
-								bottom: 0,
-								right: 0
-							},
-							legend: {position: 'none'}
+							curveType: 'function',
+							intervals: { lineWidth: 1, barWidth: 0.5, color: '#666' },
+			        series: [{'color': '#1858ac'}],
+							lineWidth: 4,
+							// chartArea: {
+							// 	left: 0,
+							// 	top: 0,
+							// 	bottom: 0,
+							// 	right: 0
+							// },
+							legend: 'none'
 						}
 					};
+
+					// scope.chart = google.visualization.LineChart(dataTable, )
 
 				}
 
@@ -386,12 +404,15 @@ angular.module('rede')
 
 				};
 
-				scope.$watch('dataset', function() {
-					if(scope.dataset) {
-						init();
-					} else {
-						destroy();
-					}
+				googleChartApiPromise.then(function() {
+					console.log('ready');
+					scope.$watch('dataset', function() {
+						if(scope.dataset && scope.dataset.length) {
+							init();
+						} else {
+							destroy();
+						}
+					});
 				});
 			}
 		}
