@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Site Rede InfoAmazonia\n"
-"PO-Revision-Date: 2015-10-08 15:54+0000\n"
+"PO-Revision-Date: 2015-10-14 15:28+0000\n"
 "Last-Translator: Miguel Peixe <miguspeixe@gmail.com>\n"
 "Language-Team: English (http://www.transifex.com/infoamazonia/site-rede-infoamazonia/language/en/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -12,10 +12,211 @@ msgstr ""
 "Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: public/views/pages/press.html:1
+msgid "01 de maio de 2014"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid "06 de junho de 2015"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid "06 de março de 2015"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid "10 de abril de 2015"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid "11 de junho de 2015"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid "12 de setembro de 2014"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid "14 de novembro de 2014"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid "17 de abril de 2015"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid "20 de outubro de 2014"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid "26 de fevereiro de 2015"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid "30 de Abril de 2015"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid "30 de abril de 2014"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid ""
+"<a href=\"http://canaltech.com.br/noticia/ciencia/rede-desenvolve-"
+"dispositivo-open-source-para-medir-qualidade-da-agua-na-amazonia-43127/\" "
+"target=\"_blank\" rel=\"external\">Rede desenvolve dispositivo open-source "
+"para medir qualidade da água na Amazônia</a>"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid ""
+"<a href=\"http://g1.globo.com/pa/santarem-regiao/noticia/2015/03/projeto-"
+"capacita-ribeirinhos-para-monitorar-qualidade-da-agua-no-pa.html\" "
+"target=\"_blank\" rel=\"external\">Moradores são capacitados para monitorar "
+"qualidade da água no PA</a>"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid ""
+"<a href=\"http://ijnet.org/blog/using-sensors-test-and-report-water-quality-"
+"fast-urbanizing-amazon-cities\" target=\"_blank\" rel=\"external\">Using "
+"sensors to test and report on water quality in fast-urbanizing Amazon cities"
+" </a>"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid ""
+"<a href=\"http://infoamazonia.blogosfera.uol.com.br/2015/02/26/rede-de-"
+"sensores-vai-monitorar-qualidade-dagua-das-comunidades-na-amazonia/\" "
+"target=\"_blank\" rel=\"external\">Rede de sensores vai monitorar qualidade "
+"d’água das comunidades na Amazônia</a>"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid ""
+"<a href=\"http://infoamazonia.blogosfera.uol.com.br/2015/04/10/infoamazonia-"
+"faz-oficinas-com-ribeirinhos-na-regiao-do-tapajos/\" target=\"_blank\" "
+"rel=\"external\">InfoAmazônia faz oficinas com ribeirinhos na região do "
+"Tapajós</a>"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid ""
+"<a href=\"http://infoamazonia.blogosfera.uol.com.br/2015/07/06/rede-"
+"infoamazonia-cria-o-mae-dagua-para-monitorar-a-qualidade-dagua/\" "
+"target=\"_blank\" rel=\"external\">Rede InfoAmazonia cria o “Mãe d’Água” "
+"para monitorar a qualidade d’água</a>"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid ""
+"<a href=\"http://infoamazonia.org/pt/blog/portugues-infoamazonia-participa-"
+"de-encontro-sobre-monitoramento-ambiental-por-comunidades/\" "
+"target=\"_blank\" rel=\"external\">Hackers unidos para criar aplicativos e "
+"sensores sobre qualidade d´água</a>"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid ""
+"<a href=\"http://infoamazonia.org/pt/blog/portugues-infoamazonia-participa-"
+"de-encontro-sobre-monitoramento-ambiental-por-comunidades/\" "
+"target=\"_blank\" rel=\"external\">InfoAmazonia participa de encontro sobre "
+"monitoramento ambiental por comunidades</a>"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid ""
+"<a href=\"http://motherboard.vice.com/pt_br/read/a-rede-infoamazonia-quer-"
+"descobrir-a-qualidade-da-agua-no-norte-do-brasil\" target=\"_blank\" "
+"rel=\"external\">A Rede InfoAmazônia Quer Monitorar a Qualidade da Água no "
+"Norte do Brasil</a>"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid ""
+"<a href=\"http://observatorio.wwf.org.br/blog/2015/04/30/projeto-pioneiro-"
+"colocara-sensores-baratos-de-qualidade-dagua-na-amazonia1/\" "
+"target=\"_blank\" rel=\"external\">Projeto pioneiro colocará sensores "
+"baratos de qualidade d’água na Amazônia</a>"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid ""
+"<a href=\"http://pt.globalvoicesonline.org/2015/04/17/infoamazonia-leva-"
+"oficinas-de-monitoramento-de-qualidade-da-agua-a-regiao-do-tapajos/\" "
+"target=\"_blank\" rel=\"external\">InfoAmazônia leva oficinas de "
+"monitoramento de qualidade da água à região do Tapajós</a>"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid ""
+"<a href=\"http://publiclab.org/wiki/mae-d-agua-rede-infoamazonia\" "
+"target=\"_blank\" rel=\"external\">Mãe d’Água – Rede InfoAmazonia</a>"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid ""
+"<a href=\"http://www.icfj.org/news/infoamazonia-finalist-google-social-"
+"impact-challenge-brazil\" target=\"_blank\" rel=\"external\">InfoAmazonia is"
+" a Finalist of the Google Social Impact Challenge in Brazil</a>"
+msgstr ""
+
+#: public/views/index.html:1
+msgid "<span>Rede</span>InfoAmazonia"
+msgstr "<span>Rede</span>InfoAmazonia"
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"<strong>Módulo 1 (M1): </strong>composto por um Arduino Mega, responsável "
+"por todo o processamento das informações capturadas pelos sensores e pela "
+"alimentação de energia do conjunto (conectado a uma fonte externa)."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"<strong>Módulo 2 (M2): </strong>um shield para Arduino que possui o sensor "
+"de pressão barométrica e conectores para acoplamento dos sensores de pH, "
+"ORP, condutividade e temperatura da água. Desta forma modular, é possível "
+"selecionar os sensores a serem utilizados visando o custo benefício da "
+"aplicação específica desejada."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"<strong>Módulo 3 (M3): </strong>responsável pela comunicação via rede de "
+"telefonia celular, capaz de transmitir os dados por SMS para um servidor do "
+"Rede InfoAmazonia. Como estratégia auxiliar de acesso aos dados, o M2 também"
+" possui espaço para cartão de memória SD."
+msgstr ""
+
 #: public/views/home.html:1 public/views/sensor.html:1
 msgid ""
 "A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda "
 "vazão hídrica."
+msgstr "The Amazon holds the largest amount of fresh water Brazil, 73% of the entire water flow."
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"A comprovação das condições da qualidade da água deve ser feita através de "
+"testes que analisam outros parâmetros como a qualidade microbiológica, para "
+"parasitas e vírus, além de bactérias."
+msgstr ""
+
+#: public/views/pages/network.html:1
+msgid ""
+"A escolha dos pontos de monitoramento dependem do engajamento de lideranças "
+"locais no monitoramento participativo, conexão 3G, população local com "
+"indícios de contaminação de fontes de abastecimento."
+msgstr ""
+
+#: public/views/pages/about.html:1
+msgid ""
+"A implementação da rede de 20 sensores acontecerá na Amazônia Brasileira, e "
+"está prevista o último trimestre de 2015. A ONG Saúde e Alegria, que atua em"
+" unidades de conservação e comunidades ao longo do rio Tapajós, é uma "
+"parceira estratégica na articulação local no Pará, junto com as Secretarias "
+"de Meio Ambiente de Santarém e Belterra. No Amazonas o projeto está sendo "
+"implantado com o Instituto Mamirauá."
 msgstr ""
 
 #: public/views/admin/users-edit.html:1
@@ -26,9 +227,42 @@ msgstr "Administrator"
 msgid "Ainda não tenho uma conta"
 msgstr "I don't have an account"
 
+#: public/views/pages/mae-dagua.html:1
+msgid "Alguns conceitos:"
+msgstr "Some concepts:"
+
 #: public/views/home.html:1
 msgid "Amazônia Brasileira"
 msgstr "Brazilian Amazon"
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"Aplicação: o equipamento poderá ser utilizado para monitoramento da "
+"qualidade da água em caixas d´água, cisternas, reservatórios, corpos de água"
+" superficial com baixa vazão."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"Arduíno Mega: Placa com microcontrolador utilizada para controlar o sistema."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"As leituras das variáveis serão enviadas para um servidor remoto de hora em "
+"hora. A partir do último trimestre de 2015 as análises e a base de dados "
+"estarão acessíveis no site do Rede InfoAmazonia. Além da informação "
+"disponível do site, os interessados poderão se cadastrar para receber "
+"alertas SMS sobre qualidade da água em sua comunidade."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid "Aspectos técnicos"
+msgstr "Technical aspects"
+
+#: public/views/index.html:1
+msgid "Aspectos ténicos"
+msgstr "Technical aspects"
 
 #: public/views/admin/users-edit.html:1
 msgid "Assinante"
@@ -37,6 +271,10 @@ msgstr "Subscriber"
 #: public/views/home.html:1
 msgid "Assine as atualizações deste sensor"
 msgstr "Subscribe the updates from this sensor"
+
+#: public/views/index.html:1 public/views/pages/network.html:1
+msgid "Atividades de formação"
+msgstr "Training activities"
 
 #: public/views/account.html:1
 msgid "Atualizar"
@@ -50,10 +288,39 @@ msgstr "Update password"
 msgid "Baixar estes dados"
 msgstr "Download this data"
 
+#: public/views/pages/mae-dagua.html:1
+msgid "Baixar manual"
+msgstr "Download manual"
+
+#: public/views/pages/press.html:1
+msgid "Blog do InfoAmazonia na UOL"
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid "Blog do InfoAmazonia no UOL"
+msgstr ""
+
 #: public/views/admin/broadcast.html:1 public/views/admin/index.html:1
 #: public/views/admin/sensors.html:1
 msgid "Broadcast"
 msgstr "Broadcast"
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"Cabe ressaltar, também, a importância da avaliação de outros parâmetros "
+"importantes da qualidade da água para consumo humano, tais como Oxigênio "
+"Dissolvido, Coliformes termotolerantes e análise microbiológica da água, com"
+" relação à presença de parasitas, vírus, e bactérias."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"Calibração: A calibração dos sensores deve ser feita a cada três meses."
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid "CanalTech"
+msgstr ""
 
 #: public/views/account-sensors.html:1
 msgid "Cancelar assinatura"
@@ -63,6 +330,15 @@ msgstr "Cancel subscription"
 msgid "Cancelar assinatura deste sensor"
 msgstr "Cancel subscription for this sensor"
 
+#: public/views/pages/about.html:1
+msgid ""
+"Com o hardware, chamado \"Mãe d'Água\" é possível detectar possíveis "
+"alterações da condição da água provenientes de despejo inadequado de "
+"resíduos domésticos, industriais e metais pesados em caixas d´água, "
+"cisternas e águas superficiais de mananciais menores. Os resultados das "
+"análises ajudam a distinguir a água potável de água contaminada."
+msgstr ""
+
 #: public/views/sensor.html:1
 msgid "Comunidade"
 msgstr "Community"
@@ -70,6 +346,10 @@ msgstr "Community"
 #: public/views/sensor.html:1
 msgid "Comunidade deste sensor"
 msgstr "Sensor community"
+
+#: public/views/index.html:1
+msgid "Dados"
+msgstr "Data"
 
 #: public/views/sensor.html:1
 msgid "Dados históricos"
@@ -87,9 +367,26 @@ msgstr "Start date"
 msgid "Descrição (comunidade)"
 msgstr "Description (community)"
 
+#: public/views/index.html:1 public/views/pages/mae-dagua.html:1
+msgid "Desenvolvimento"
+msgstr "Development"
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"Devido ao caráter de medição em tempo real, os resultados são considerados "
+"provisórios e não conclusivos, são sujeitos a equívocos e incertezas. Os "
+"dados podem conter valores inexatos devido a mal funcionamento do "
+"equipamento. Eventualmente os equipamentos serão desconectados para "
+"manutenção."
+msgstr ""
+
 #: public/views/admin/sensors.html:1 public/views/admin/users.html:1
 msgid "Editar"
 msgstr "Edit"
+
+#: public/views/index.html:1
+msgid "Editar minha conta"
+msgstr "Edit my account"
 
 #: public/views/admin/sensors-edit.html:1
 msgid "Editar sensor"
@@ -99,11 +396,40 @@ msgstr "Edit sensor"
 msgid "Editar usuário"
 msgstr "Edit user"
 
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"Em caso de alterações na água, serão realizadas análises em laboratório para"
+" confirmar e obter maiores informações."
+msgstr ""
+
+#: public/views/pages/network.html:1
+msgid ""
+"Em parceria com o Projeto Saúde e Alegria - articulação com lideranças de "
+"comunidades ribeirinhas - e apoio das Secretarias de Meio Ambiente dos "
+"municípios de Santarém e Belterra, no Pará, serão escolhidos vinte pontos "
+"onde será feita a instalação dos equipamentos de monitoramento. A "
+"implantação está prevista para acontecer no último trimestre de 2015 após um"
+" ciclo de oficinas sobre tecnologias livres, meio ambiente e comunicação, "
+"que já foi iniciado. Após a instalação dos sensores será lançado o site onde"
+" as análises estarão disponíveis para visualização e download dos "
+"resultados."
+msgstr ""
+
+#: public/views/pages/network.html:1
+msgid ""
+"Em sua fase piloto, beneficiará 20 comunidades da zona urbana de Belterra e "
+"Santarém, Reserva Extrativista Tapajós Arapiuns e Floresta Nacional do "
+"Tapajós, no Oeste do Pará. O sensor e sistema desenvolvidos por nossa equipe"
+" e parceiros será capaz de medir parâmetros básicos de qualidade d'água e "
+"alertar governo, cidadãos e organizações não governamentais através do "
+"sistema de alerta para celulares (SMS) e aplicativos de mapeamento da web."
+msgstr ""
+
 #: public/views/admin/users-edit.html:1 public/views/admin/users.html:1
 msgid "Email"
 msgstr "Email"
 
-#: public/views/login.html:1
+#: public/views/index.html:1 public/views/login.html:1
 msgid "Entrar"
 msgstr "Login"
 
@@ -132,31 +458,95 @@ msgstr "Send a message to all subscribers"
 msgid "Eu já tenho uma conta"
 msgstr "I already have an account"
 
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"Firmware: Em eletrônica e computação, o firmware é o conjunto de instruções "
+"operacionais programadas diretamente no hardware de equipamentos "
+"eletrônicos."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"Fonte de energia: energia elétrica bivolt ou bateria recarregável ligada a "
+"painel solar."
+msgstr ""
+
+#: public/views/pages/network.html:1
+msgid "Formação da Rede"
+msgstr "Shaping the Network"
+
+#: public/views/index.html:1
+msgid "Formação da rede"
+msgstr "Shaping the network"
+
 #: public/views/admin/users-edit.html:1 public/views/admin/users.html:1
 msgid "Função"
 msgstr "Role"
+
+#: public/views/pages/press.html:1
+msgid "G1"
+msgstr ""
 
 #: public/views/sensor.html:1
 msgid "Gerar relatório"
 msgstr "Generate report"
 
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"Hardware aberto: Parte eletrônica desenvolvida com documentação e arquivos "
+"abertos para que qualquer pessoa interessada possa conhecer e replicar. Não "
+"existe restrição autoral, intelectual ou industrial que impeça alguém de "
+"conhecer 100% de como o hardware é construído e operado."
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid "IJNET International Journalists’ Network"
+msgstr ""
+
 #: public/views/admin/sensors-edit.html:1
 msgid "Identificador"
 msgstr "Identifier"
+
+#: public/views/index.html:1 public/views/pages/press.html:1
+msgid "Imprensa"
+msgstr "Press"
+
+#: public/views/pages/press.html:1
+msgid "InfoAmazonia"
+msgstr "InfoAmazonia"
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"Instalação: A instalação é simples, não requer conhecimentos específicos."
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid "International Center for Journalists"
+msgstr ""
 
 #: public/views/admin/sensors-edit.html:1
 msgid "Latitude"
 msgstr "Latitude"
 
+#: public/views/index.html:1 public/views/pages/mae-dagua.html:1
+msgid "Limitações"
+msgstr "Limitations"
+
 #: public/views/admin/sensors-edit.html:1
 msgid "Longitude"
 msgstr "Longitude"
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"Manutenção: As ponteiras dos sensores devem ser limpas periodicamente para "
+"evitar acumulo de resíduos que podem afetar as leituras."
+msgstr ""
 
 #: public/views/home.html:1 public/views/sensor.html:1
 msgid ""
 "Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores"
 " do país."
-msgstr ""
+msgstr "But access to sanitation in the 771 cities of the region is among the worst in the country."
 
 #: public/views/admin/sensors.html:1
 msgid "Medições"
@@ -170,6 +560,25 @@ msgstr "Measurements in {{sensor.name}}"
 msgid "Meu perfil"
 msgstr "My profile"
 
+#: public/views/index.html:1
+msgid "Minha conta"
+msgstr "My account"
+
+#: public/views/index.html:1
+msgid "Monitoramento"
+msgstr "Monitoring"
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"Monitoramento em tempo real: A coleta de dados é feita automaticamente a "
+"cada hora, as leituras são enviadas via rede 2G ou 3G para o servidor do "
+"site rede.infoamazonia.org"
+msgstr ""
+
+#: public/views/index.html:1 public/views/pages/mae-dagua.html:1
+msgid "Mãe D'Água"
+msgstr ""
+
 #: public/views/sensor.html:1
 msgid "Média dos últimos 30 dias"
 msgstr "30 days average"
@@ -178,7 +587,7 @@ msgstr "30 days average"
 msgid ""
 "Na Amazônia Legal, 60% das residências são atendidas pela rede geral de "
 "água. A média nacional é de 82,7%."
-msgstr ""
+msgstr "In the Amazon, 60% of households are served by the public system of water distribution. The national average is 82.7%."
 
 #: public/views/admin/sensors-edit.html:1 public/views/admin/sensors.html:1
 #: public/views/admin/users-edit.html:1 public/views/admin/users.html:1
@@ -199,15 +608,97 @@ msgstr "New sensor"
 msgid "Novo usuário"
 msgstr "New user"
 
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"O Mãe d´Água será capaz de monitorar parâmetros físico-químicos importantes "
+"que ajudam a indicar se a água é potável ou está contaminada. De hora em "
+"hora serão realizadas leituras das seguintes variáveis: acidez (pH), "
+"potencial de redução da oxidação (ORP), condutividade elétrica, temperatura "
+"e pressão barométrica no nível da água. O objetivo das medições é detectar "
+"variações que indiquem contaminação."
+msgstr ""
+
+#: public/views/pages/about.html:1
+msgid ""
+"O desenvolvimento dos sensores é realizado em parceria com a rede norte-"
+"americanao de ciência cidadã Public Lab e a a start-up Dev Tecnologia, "
+"empresa incubada na Universidade de São Paulo."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"O hardware foi projetado em plataforma (Eagle) e licenças abertas, de forma "
+"modular:"
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"O hardware livre de monitoramento de qualidade da água em tempo real "
+"desenvolvido pelo projeto Rede InfoAmazonia foi batizado de \"Mãe d'Água\". "
+"Inspirado no Riffle, o dispositivo é resultado da colaboração da equipe do "
+"projeto com a redeo grupo norte-americanao de ciência cidadã Public Lab e a "
+"start-up Dev Tecnologia, empresa incubada na Universidade de São Paulo."
+msgstr ""
+
+#: public/views/pages/about.html:1
+msgid ""
+"O projeto Rede InfoAmazonia visa desenvolver um sistema de monitoramento de "
+"baixo custo para analisar a qualidade da água para consumo humano, e "
+"estabelecer uma rede de monitoramento em articulação com comunidades da "
+"Amazônia brasileira, para apresentar em tempo real os resultados das "
+"análises na plataforma InfoAmazonia e enviar alertas aos consumidores "
+"através de SMS."
+msgstr ""
+
+#: public/views/pages/about.html:1
+msgid ""
+"O projeto foi um dos ganhadores do Desafio de Impacto Social do Google em "
+"2014, junto a outras 9 ideias apresentadas por ONGs de todo o Brasil."
+msgstr ""
+
+#: public/views/pages/press.html:1
+msgid "Observatório de UCs da WWF-Brasil"
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"Os resultados são acessíveis através do site rede.infoamazonia.org e alertam"
+" sobre possível contaminação."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"Parâmetros monitorados: pH, temperatura, condutividade elétrica, potencial "
+"de redução da oxidação (ORP) e pressão barométrica no nível da água"
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"Plataforma Eagle: software livre utilizado para gerar o circuito e desenho "
+"do hardware."
+msgstr ""
+
+#: public/views/index.html:1
+msgid "Projeto"
+msgstr "Project"
+
 #: public/views/admin/sensors-measurements.html:1
 #: public/views/admin/sensors.html:1 public/views/admin/users.html:1
 msgid "Próxima página"
 msgstr "Next page"
 
+#: public/views/pages/press.html:1
+msgid "Public Lab"
+msgstr ""
+
 #: public/views/admin/sensors-measurements.html:1
 #: public/views/admin/sensors.html:1 public/views/admin/users.html:1
 msgid "Página anterior"
 msgstr "Previous page"
+
+#: public/views/index.html:1
+msgid "Qualidade da água"
+msgstr "Water quality"
 
 #: public/views/sensor.html:1
 msgid "Qualidade da água e doenças em <strong>{{city}}</strong>"
@@ -221,6 +712,10 @@ msgstr "Water quality and maladies in the Amazon"
 msgid "Receba atualizações deste sensor"
 msgstr "Subscribe to this sensor"
 
+#: public/views/pages/network.html:1
+msgid "Rede de monitoramento"
+msgstr "Monitoring network"
+
 #: public/views/admin/sensors-measurements.html:1
 #: public/views/admin/sensors.html:1 public/views/admin/users.html:1
 msgid "Remover"
@@ -233,6 +728,14 @@ msgstr "Repeat new password"
 #: public/views/admin/users-edit.html:1 public/views/auth.html:1
 msgid "Repetir senha"
 msgstr "Repeat password"
+
+#: public/views/index.html:1 public/views/pages/network.html:1
+msgid "Resultados"
+msgstr "Results"
+
+#: public/views/index.html:1
+msgid "Sair"
+msgstr "Logout"
 
 #: public/views/admin/users-edit.html:1 public/views/auth.html:1
 msgid "Senha"
@@ -251,7 +754,7 @@ msgstr "Sensors"
 msgid "Sensores ambientais"
 msgstr "Environmental sensors"
 
-#: public/views/account-sensors.html:1
+#: public/views/account-sensors.html:1 public/views/index.html:1
 msgid "Sensores assinados"
 msgstr "Subscribed sensors"
 
@@ -266,6 +769,16 @@ msgstr "Your name"
 #: public/views/account.html:1 public/views/auth.html:1
 msgid "Seu telefone"
 msgstr "Your phone number"
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"Shield: É uma placaque recebe as leituras físico-químicas ambientais para "
+"análise de qualidade da água."
+msgstr ""
+
+#: public/views/pages/about.html:1
+msgid "Sobre o projeto"
+msgstr "About the project"
 
 #: public/views/admin/users-edit.html:1 public/views/admin/users.html:1
 msgid "Telefone"
@@ -294,6 +807,14 @@ msgstr "View details of this sensor"
 #: public/views/admin/sensors.html:1
 msgid "Ver e editar medições"
 msgstr "View and edit measurements"
+
+#: public/views/pages/press.html:1
+msgid "Vice"
+msgstr ""
+
+#: public/views/index.html:1
+msgid "Visualização dos dados"
+msgstr "Data visualization"
 
 #: public/views/account-sensors.html:1
 msgid "Você ainda não assinou nenhum sensor!"
@@ -331,9 +852,13 @@ msgstr "mobile networks"
 msgid "{{sensor.name}} Broadcast"
 msgstr "{{sensor.name}} Broadcast"
 
-#: public/views/admin/index.html:1
+#: public/views/admin/index.html:1 public/views/index.html:1
 msgid "Área administrativa"
 msgstr "Dashboard"
+
+#: public/views/index.html:1
+msgid "Índice de qualidade"
+msgstr "Quality Index"
 
 #: public/views/sensor.html:1
 msgid "Últimas medições"
