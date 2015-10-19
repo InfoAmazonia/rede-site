@@ -200,7 +200,7 @@ angular.module('rede')
 		$scope.markers = [];
 
 		_.each($scope.sensors, function(sensor) {
-			if(sensor.geometry.coordinates.length) {
+			if(sensor.geometry.coordinates.length && sensor.geometry.coordinates[0]) {
 				$scope.markers.push({
 					_id: sensor._id,
 					lat: parseFloat(sensor.geometry.coordinates[1]),
@@ -235,7 +235,7 @@ angular.module('rede')
 
 		var latLngs = [];
 		_.each($scope.sensors, function(feature) {
-			if(feature.geometry.coordinates.length) {
+			if(feature.geometry.coordinates.length  && feature.geometry.coordinates[0]) {
 				latLngs.push(
 					[
 						parseFloat(feature.geometry.coordinates[1]),
@@ -282,7 +282,7 @@ angular.module('rede')
 
 		var sCount = 1;
 
-		if($scope.sensor.geometry.coordinates.length) {
+		if($scope.sensor.geometry.coordinates.length && $scope.sensor.geometry.coordinates[0]) {
 			$scope.markers = [
 				{
 					_id: $scope.sensor._id,
@@ -304,7 +304,7 @@ angular.module('rede')
 
 		var latLngs = [];
 		_.each([$scope.sensor], function(feature) {
-			if(feature.geometry.coordinates.length) {
+			if(feature.geometry.coordinates.length && feature.geometry.coordinates[0]) {
 				latLngs.push(
 					[
 						parseFloat(feature.geometry.coordinates[1]),
