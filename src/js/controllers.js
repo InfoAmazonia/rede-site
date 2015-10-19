@@ -777,7 +777,7 @@ angular.module('rede')
 			if(confirm('Você tem certeza?')) {
 				Rede.measurements.delete({id: measurement._id}, function() {
 					Message.add('Medição removida.');
-					$scope.measurements = _.filter($scope.measurements, function(s) { return s._id !== measurement._id; });
+					$scope.measurements = _.filter($scope.measurements, function(m) { return m._id !== measurement._id; });
 				});
 			}
 		}
