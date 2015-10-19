@@ -760,7 +760,8 @@ angular.module('rede')
 	'RedeService',
 	'SensorData',
 	'ParametersData',
-	function($scope, Rede, Sensor, Parameters) {
+	'MessageService',
+	function($scope, Rede, Sensor, Parameters, Message) {
 		$scope.sensor = Sensor;
 		$scope.parameters = Parameters;
 
