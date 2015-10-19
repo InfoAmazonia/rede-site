@@ -54,7 +54,7 @@ angular.module('rede')
 					isArray: false
 				}
 			}),
-			measurements: $resource(apiUrl + '/measurements', {}, {
+			measurements: $resource(apiUrl + '/measurements/:id', { id: '@id' }, {
 				query: {
 					method: 'GET',
 					isArray: false
