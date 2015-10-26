@@ -10,7 +10,7 @@
 				th(title="{{getParam(param).name.pt}}" ng-repeat="param in params")
 					span {{getParam(param).name.pt}}
 		tbody
-			tr(ng-repeat="score in latest | limitTo: amount")
+			tr(ng-repeat="score in latest | limitTo: (amount*gap)-1")
 				td.time(title="{{fromNow(score)}}")
 					span {{fromNow(score)}}
 				td(title="{{scoreParam(param, score).value}} {{getParam(param).defaultUnit}}" ng-repeat="param in params")
