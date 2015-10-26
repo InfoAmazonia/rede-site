@@ -236,19 +236,23 @@ angular.module('rede')
 					if(sensor) {
 						var promises = [];
 						_.each(scope.dateRanges, function(date) {
-							promises.push(Rede.sensors.getScore({'id': scope.sensor, 'date': date.format()}).$promise);
+							// promises.push(Rede.sensors.getScore({'id': scope.sensor, 'date': date.format()}).$promise);
 						});
 						$q.all(promises).then(function(data) {
 							scope.latest = data.map(function(score) { return parseScore(score); });
 						});
 						latestInterval = $interval(function() {
-							Rede.sensors.getScore({'id': scope.sensor}, function(score) {
-								scope.latest.unshift(parseScore(score));
-							});
-						}, 20 * 1000);
+							// Rede.sensors.getScore({'id': scope.sensor}, function(score) {
+							// 	scope.latest.unshift(parseScore(score));
+							// });
+						}, 60 * 1000);
 					} else {
 						scope.latest = [];
 					}
+				});
+
+				scope.$on('$destroy', function() {
+					$interval.cancel(latestInterval);
 				});
 			}
 		}
@@ -332,6 +336,34 @@ angular.module('rede')
 			template: '<div google-chart chart="chart" style="width:100%;height:300px;"></div>',
 			link: function(scope, element, attrs) {
 
+				function getTooltip(data, date) {
+
+					var dateString;
+					if(data._id.hour) {
+						dateString = moment(date).format('LLL');
+					} else {
+						dateString = moment(date).format('LL');
+					}
+					console.log(data);
+
+					var tooltip = '<div class="google-chart-tooltip">';
+
+					tooltip += '<h3>' + dateString + '</h3>';
+
+					if(data.avg == data.max) {
+						tooltip += '<p>' + data.avg.toFixed(2) + '</p>';
+					} else {
+						tooltip += '<p><strong>Média</strong>: ' + data.avg.toFixed(2) + '</p>';
+						tooltip += '<p><strong>Mínima</strong>: ' + data.min.toFixed(2) + '</p>';
+						tooltip += '<p><strong>Máxima</strong>: ' + data.max.toFixed(2) + '</p>';
+					}
+
+					tooltip += '</div>';
+
+					return tooltip;
+
+				}
+
 				function init() {
 
 					var label = scope.label || '';
@@ -360,7 +392,7 @@ angular.module('rede')
 						if(d._id.hour) {
 							date.setHours(d._id.hour);
 						}
-						data.push([date, d.avg, d.max, d.min]);
+						data.push([date, d.avg, getTooltip(d, date), d.max, d.min]);
 					});
 
 					data = _.sortBy(data, function(d) { return d[0]; });
@@ -369,12 +401,11 @@ angular.module('rede')
 
 					dataTable.addColumn('date', 'Data');
 					dataTable.addColumn('number', 'Average');
+					dataTable.addColumn({type: 'string', role: 'tooltip', p: {html: true}});
 					dataTable.addColumn({id: "max", type:'number', role:'interval'});
 					dataTable.addColumn({id: "min", type:'number', role:'interval'});
 
 					dataTable.addRows(data);
-
-					console.log(dataTable);
 
 					scope.chart = {
 						type: 'LineChart',
@@ -396,7 +427,10 @@ angular.module('rede')
 							// 	bottom: 0,
 							// 	right: 0
 							// },
-							legend: 'none'
+							legend: 'none',
+							tooltip: {
+								isHtml: true
+							}
 						}
 					};
 
@@ -411,7 +445,6 @@ angular.module('rede')
 				};
 
 				googleChartApiPromise.then(function() {
-					console.log('ready');
 					scope.$watch('dataset', function() {
 						if(scope.dataset && scope.dataset.length) {
 							init();
