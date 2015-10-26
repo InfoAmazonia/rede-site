@@ -189,7 +189,7 @@ angular.module('rede')
 				};
 
 				scope.fromNow = function(reading) {
-					return moment().fromNow();
+					return moment(reading.timestamp).fromNow();
 				};
 
 				scope.amount = scope.amount || 3;
