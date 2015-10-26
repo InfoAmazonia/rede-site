@@ -236,15 +236,15 @@ angular.module('rede')
 					if(sensor) {
 						var promises = [];
 						_.each(scope.dateRanges, function(date) {
-							// promises.push(Rede.sensors.getScore({'id': scope.sensor, 'date': date.format()}).$promise);
+							promises.push(Rede.sensors.getScore({'id': scope.sensor, 'date': date.format()}).$promise);
 						});
 						$q.all(promises).then(function(data) {
 							scope.latest = data.map(function(score) { return parseScore(score); });
 						});
 						latestInterval = $interval(function() {
-							// Rede.sensors.getScore({'id': scope.sensor}, function(score) {
-							// 	scope.latest.unshift(parseScore(score));
-							// });
+							Rede.sensors.getScore({'id': scope.sensor}, function(score) {
+								scope.latest.unshift(parseScore(score));
+							});
 						}, 60 * 1000);
 					} else {
 						scope.latest = [];
@@ -344,7 +344,6 @@ angular.module('rede')
 					} else {
 						dateString = moment(date).format('LL');
 					}
-					console.log(data);
 
 					var tooltip = '<div class="google-chart-tooltip">';
 
