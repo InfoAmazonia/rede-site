@@ -375,6 +375,10 @@ msgstr ""
 msgid "Hardware aberto: Parte eletrônica desenvolvida com documentação e arquivos abertos para que qualquer pessoa interessada possa conhecer e replicar. Não existe restrição autoral, intelectual ou industrial que impeça alguém de conhecer 100% de como o hardware é construído e operado."
 msgstr ""
 
+#: public/views/sensor/latest-readings.html:1
+msgid "Hora"
+msgstr ""
+
 #: public/views/pages/press.html:1
 msgid "IJNET International Journalists’ Network"
 msgstr ""
@@ -718,5 +722,6 @@ msgid "Índice de qualidade"
 msgstr ""
 
 #: public/views/sensor.html:1
+#: public/views/sensor/latest-readings.html:1
 msgid "Últimas medições"
 msgstr ""

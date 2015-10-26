@@ -1,12 +1,12 @@
 .latest-readings
 	h3
-		| Últimas medições
+		span(translate) Últimas medições
 		span.realtime
 	table(class="amount-{{amount}}")
 		thead
 			tr
-				th(title="Hora")
-					span Hora
+				th(title="{{'Hora' | translate}}")
+					span(translate) Hora
 				th(title="{{getParam(param).name.pt}}" ng-repeat="param in params")
 					span {{getParam(param).name.pt}}
 		tbody
