@@ -14,4 +14,6 @@
 				td.time(title="{{fromNow(score)}}")
 					span {{fromNow(score)}}
 				td(title="{{scoreParam(param, score).value}} {{getParam(param).defaultUnit}}" ng-repeat="param in params")
-					span {{scoreParam(param, score).value.toFixed(2)}} {{getParam(param).defaultUnit}}
+					span(ng-show="scoreParam(param, score)")
+						span {{scoreParam(param, score).value.toFixed(2)}} {{getParam(param).defaultUnit}}
+					span(ng-hide="scoreParam(param, score)") --
