@@ -367,6 +367,56 @@ describe('API: Measurements', function(){
     });
   });
 
+  /*
+   * GET measurements/grouped (aggregate by collectedAt)
+  */
+  describe('GET measurements/grouped', function(){
+    it('returns 200 when no date is passed', function(doneIt){
+      var payload = {
+        sensor_id: sensor1._id.toHexString()
+      }
+
+      /* The request */
+      request(app)
+        .get(apiPrefix + '/measurements/group')
+        .query(payload)
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end(onResponse);
+
+        /* Verify response */
+        function onResponse(err, res) {
+          // console.log(res.text);
+          if (err) return doneIt(err);
+
+          // Check pagination
+          var body = res.body;
+
+          body.should.have.property('perPage', defaultPerPage);
+          body.should.have.property('page', 1);
+
+          // Check sensor data
+          body.should.have.property('sensor');
+          body.sensor.should.have.property('_id', sensor1._id.toHexString());
+
+          mongoose.model('Measurement').aggregate([
+             { $match: { sensor: payload.sensor_id }},
+             { $sort: {collectedAt: 1 } },
+             { $group : { _id : "$collectedAt", measurements: { $push: "$$ROOT" } } }
+           ], function (err, measurementGroups) {
+
+             _.each(measurementGroups, function(item, i){
+               _.each(item.measurements, function(item, j){
+                 body.measurementGroups[i][j].should.have.property('_id', measurementGroups[i][j]);
+               });
+             });
+
+             doneIt();
+          });
+        }
+    });
+  });
+
 
   /*
    * POST measurements/new

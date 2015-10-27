@@ -123,6 +123,41 @@ exports.list = function(req, res) {
 }
 
 /*
+ * Group
+ */
+exports.group = function(req, res) {
+
+  var sensor = req.sensor;
+  var page = (req.query['page'] - 1) || 0 ;
+  var perPage = req.query['perPage'] || 20;
+
+  // Validate parameter
+  if (!sensor) { return res.status(400).json(messaging.error('measurements.aggregate.missing_sensor')); }
+
+
+
+  Measurement.aggregate([
+     { $match: { sensor: req.sensor._id }},
+     { $sort: {collectedAt: 1 } },
+     { $group : { _id : "$collectedAt", measurements: { $push: "$$ROOT" } } },
+     { $skip: perPage * page},
+     { $limit: perPage}
+   ], function (err, measurementGroups) {
+     if (err) return res.status(500).json(messaging.error('internal_error'));
+
+     var result = {
+       sensor: sensor,
+       measurementGroups: measurementGroups,
+       page: page + 1,
+       perPage: perPage
+     }
+
+     res.status(200).json(result);
+
+   });
+}
+
+/*
  * Aggregate
  */
 exports.aggregate = function(req, res) {
@@ -207,7 +242,6 @@ exports.aggregate = function(req, res) {
         aggregates: aggregates
       });
     });
-
   });
 }
 

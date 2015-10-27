@@ -50,7 +50,6 @@ module.exports = function (app, config) {
   apiRoutes.post('/sensors', [auth.isLogged, sensors.create]);
   apiRoutes.put('/sensors/:sensor_id', [auth.isLogged, sensors.update]);
   apiRoutes.delete('/sensors/:sensor_id', [auth.isLogged, sensors.remove]);
-  apiRoutes.get('/sensors/:sensor_id/score', sensors.score);
   apiRoutes.post('/sensors/:sensor_id/subscribe', [auth.isLogged, sensors.subscribe]);
   apiRoutes.post('/sensors/:sensor_id/unsubscribe', [auth.isLogged, sensors.unsubscribe]);
   apiRoutes.get('/sensors/:sensor_id/measurements/:parameter_id.csv', sensors.csv);
@@ -59,6 +58,7 @@ module.exports = function (app, config) {
   apiRoutes.param('measurement_id', measurements.load)
   apiRoutes.post('/measurements/new', measurements.new);
   apiRoutes.get('/measurements', [sensors.loadByQueryString, parameters.loadByQueryStringIfDefined, measurements.list]);
+  apiRoutes.get('/measurements/group', [sensors.loadByQueryString, measurements.group]);
   apiRoutes.get('/measurements/aggregate', [sensors.loadByQueryString, parameters.loadByQueryStringIfDefined, measurements.aggregate]);
   apiRoutes.delete('/measurements/:measurement_id', [auth.isLogged, auth.isAdmin, measurements.remove]);
 
