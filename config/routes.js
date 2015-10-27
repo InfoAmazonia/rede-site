@@ -2,7 +2,7 @@
  * Module dependencies
  */
 var express = require('express');
-
+var cors = require('cors');
 /*
  * Require controllers
  */
@@ -52,7 +52,7 @@ module.exports = function (app, config) {
   apiRoutes.delete('/sensors/:sensor_id', [auth.isLogged, sensors.remove]);
   apiRoutes.post('/sensors/:sensor_id/subscribe', [auth.isLogged, sensors.subscribe]);
   apiRoutes.post('/sensors/:sensor_id/unsubscribe', [auth.isLogged, sensors.unsubscribe]);
-  apiRoutes.get('/sensors/:sensor_id/measurements/:parameter_id.csv', sensors.csv);
+  apiRoutes.get('/sensors/:sensor_id/measurements/:parameter_id.csv', cors(), sensors.csv);
 
   // measurement route
   apiRoutes.param('measurement_id', measurements.load)
