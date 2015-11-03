@@ -198,7 +198,7 @@ angular.module('rede')
 
 				scope.gap = 2;
 
-				for(var i = 0; i < (scope.amount*gap)-1; i = i+gap) {
+				for(var i = 0; i < (scope.amount*scope.gap)-1; i = i+scope.gap) {
 					scope.dateRanges.push(moment().subtract(i, 'hours'));
 				};
 
