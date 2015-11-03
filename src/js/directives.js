@@ -181,7 +181,7 @@ angular.module('rede')
 						return scope.availableParams[param];
 				}
 
-				scope.scoreParam = function(group, param) {
+				scope.paramMeasurement = function(group, param) {
 					return _.find(group.measurements, function(gM) {
 						if(gM && gM.parameter) return gM.parameter == param;
 						else return false;
