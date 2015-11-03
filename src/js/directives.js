@@ -181,76 +181,34 @@ angular.module('rede')
 						return scope.availableParams[param];
 				}
 
-				scope.scoreParam = function(param, score) {
-					return _.find(score.parameters, function(sP) {
-						if(sP && sP.parameter) return sP.parameter == param;
+				scope.scoreParam = function(group, param) {
+					return _.find(group.measurements, function(gM) {
+						if(gM && gM.parameter) return gM.parameter == param;
 						else return false;
 					});
 				};
 
-				scope.fromNow = function(reading) {
-					return moment(reading.timestamp).fromNow();
+				scope.fromNow = function(group) {
+					return moment(group._id).fromNow();
 				};
+
+				scope.formattedDate = function(group) {
+					return moment(group._id).format('LLLL');
+				}
 
 				scope.amount = scope.amount || 3;
 
-				scope.dateRanges = [];
-
-				scope.gap = 2;
-
-				for(var i = 0; i < (scope.amount*scope.gap)-1; i = i+scope.gap) {
-					scope.dateRanges.push(moment().subtract(i, 'hours'));
-				};
-
 				var latestInterval = false;
 
-				var parseScore = function(score) {
-					if(score.score < 3.33) {
-						score.quality = 1;
-					} else if(score.score < 7.77) {
-						score.quality = 2;
-					} else {
-						score.quality = 3;
-					}
-					return score;
-				};
-
-				scope.labelQuality = function(quality) {
-					var label;
-					switch(quality) {
-						case 1:
-							label = 'Ruim';
-							break;
-						case 2:
-							label = 'Média';
-							break;
-						case 3:
-							label = 'Boa';
-							break;
-					}
-					return label;
-				}
 
 				scope.$watch('sensor', function(sensor) {
 					if(latestInterval) {
 						$interval.cancel(latestInterval);
 					}
 					if(sensor) {
-						Rede.measurements.group({'sensor_id': scope.sensor, 'page': 1}, function(data) {
-							console.log(data);
+						Rede.measurements.group({'sensor_id': scope.sensor}, function(data) {
+							scope.latest = data.measurementGroups;
 						});
-						// var promises = [];
-						// _.each(scope.dateRanges, function(date) {
-						// 	promises.push(Rede.sensors.getScore({'id': scope.sensor, 'date': date.format()}).$promise);
-						// });
-						// $q.all(promises).then(function(data) {
-						// 	scope.latest = data.map(function(score) { return parseScore(score); });
-						// });
-						// latestInterval = $interval(function() {
-						// 	Rede.sensors.getScore({'id': scope.sensor}, function(score) {
-						// 		scope.latest.unshift(parseScore(score));
-						// 	});
-						// }, 1000 * 60 * 30);
 					} else {
 						scope.latest = [];
 					}
