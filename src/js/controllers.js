@@ -208,12 +208,12 @@ angular.module('rede')
 					layer: 'sensors',
 					message: sensor.name,
 					icon: {
-						iconUrl: '/img/sensor-icon-white-small.png',
-						iconSize: [20,20],
+						iconUrl: '/img/sensor-icon-white-small_.png',
+						iconSize: [24,24],
 						shadowSize: [0,0],
-						iconAnchor: [10,10],
+						iconAnchor: [12,12],
 						shadowAnchor: [0,0],
-						popupAnchor: [0,-10]
+						popupAnchor: [0,-12]
 					}
 				});
 			}
@@ -291,12 +291,12 @@ angular.module('rede')
 					layer: 'sensors',
 					message: $scope.sensor.name,
 					icon: {
-						iconUrl: '/img/sensor-icon-white-small.png',
-						iconSize: [20,20],
+						iconUrl: '/img/sensor-icon-white-small_.png',
+						iconSize: [24,24],
 						shadowSize: [0,0],
-						iconAnchor: [10,10],
+						iconAnchor: [12,12],
 						shadowAnchor: [0,0],
-						popupAnchor: [0,-10]
+						popupAnchor: [0,-12]
 					}
 				}
 			];
