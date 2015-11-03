@@ -236,18 +236,21 @@ angular.module('rede')
 						$interval.cancel(latestInterval);
 					}
 					if(sensor) {
-						var promises = [];
-						_.each(scope.dateRanges, function(date) {
-							promises.push(Rede.sensors.getScore({'id': scope.sensor, 'date': date.format()}).$promise);
+						Rede.measurements.group({'sensor_id': scope.sensor, 'page': 1}, function(data) {
+							console.log(data);
 						});
-						$q.all(promises).then(function(data) {
-							scope.latest = data.map(function(score) { return parseScore(score); });
-						});
-						latestInterval = $interval(function() {
-							Rede.sensors.getScore({'id': scope.sensor}, function(score) {
-								scope.latest.unshift(parseScore(score));
-							});
-						}, 1000 * 60 * 30);
+						// var promises = [];
+						// _.each(scope.dateRanges, function(date) {
+						// 	promises.push(Rede.sensors.getScore({'id': scope.sensor, 'date': date.format()}).$promise);
+						// });
+						// $q.all(promises).then(function(data) {
+						// 	scope.latest = data.map(function(score) { return parseScore(score); });
+						// });
+						// latestInterval = $interval(function() {
+						// 	Rede.sensors.getScore({'id': scope.sensor}, function(score) {
+						// 		scope.latest.unshift(parseScore(score));
+						// 	});
+						// }, 1000 * 60 * 30);
 					} else {
 						scope.latest = [];
 					}
@@ -351,12 +354,16 @@ angular.module('rede')
 
 					tooltip += '<h3>' + dateString + '</h3>';
 
+					// console.log(data);
+
 					if(data.avg == data.max) {
-						tooltip += '<p>' + data.avg.toFixed(2) + '</p>';
+						tooltip += '<p class="single">' + data.avg.toFixed(2) + '</p>';
 					} else {
-						tooltip += '<p><strong>Média</strong>: ' + data.avg.toFixed(2) + '</p>';
-						tooltip += '<p><strong>Mínima</strong>: ' + data.min.toFixed(2) + '</p>';
-						tooltip += '<p><strong>Máxima</strong>: ' + data.max.toFixed(2) + '</p>';
+						tooltip += '<table><tbody>';
+						tooltip += '<tr><th>Média</th><td>' + data.avg.toFixed(2) + '</td></tr>';
+						tooltip += '<tr><th>Mínima</th><td>' + data.min.toFixed(2) + '</td></tr>';
+						tooltip += '<tr><th>Máxima</th><td>' + data.max.toFixed(2) + '</td></tr>';
+						tooltip += '</tbody></table>';
 					}
 
 					tooltip += '</div>';

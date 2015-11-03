@@ -65,6 +65,10 @@ angular.module('rede')
 				aggregate: {
 					method: 'GET',
 					url: apiUrl + '/measurements/aggregate'
+				},
+				group: {
+					method: 'GET',
+					url: apiUrl + '/measurements/group'
 				}
 			}),
 			getParameters: function() {
