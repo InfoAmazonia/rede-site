@@ -130,7 +130,7 @@ describe('API: Sensors', function(){
         data.should.have.lengthOf(defaultPerPage);
         mongoose.model('Sensor')
           .find({})
-          .sort('_id')
+          .sort('-lastMeasurement')
           .limit(defaultPerPage)
           .lean()
           .exec(function(err, sensors){
@@ -189,7 +189,7 @@ describe('API: Sensors', function(){
         data.should.have.lengthOf(payload.perPage);
         mongoose.model('Sensor')
           .find({})
-          .sort('_id')
+          .sort('-lastMeasurement')
           .limit(payload.perPage)
           .skip(payload.perPage*(payload.page-1))
           .lean()
@@ -214,7 +214,7 @@ describe('API: Sensors', function(){
               data[i]['geometry']['coordinates'].should.containDeepOrdered(coordinates);
 
             }
-             doneIt();
+            doneIt();
           });
       }
     });

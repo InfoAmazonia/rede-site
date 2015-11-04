@@ -41,8 +41,13 @@ exports.new = function(req, res) {
         return res.status(400).json({messages: messaging.errorsArray(err.messages)});
       else if (err)
         return res.status(400).json(messaging.mongooseErrors(err, 'measurements'));
-      else
-        res.status(200).json({measurements: measurements});
+      else {
+        sensor.lastMeasurement = measurements[0].collectedAt;
+        sensor.save(function(err){
+          if (err) return res.status(400).json(messaging.mongooseErrors(err, 'measurements'));
+          else res.status(200).json({measurements: measurements});
+        });
+      }
     });
   });
 }

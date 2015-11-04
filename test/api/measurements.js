@@ -486,6 +486,14 @@ describe('API: Measurements', function(){
                   measurement.should.have.property('value', 6.9);
                   doneEach();
               });
+            },function(doneEach){
+              Sensor
+                .findById(sensor1._id, function(err, sensor){
+                  if (err) return doneIt(err);
+                  should.exist(sensor);
+                  sensor.should.have.property('lastMeasurement', time);
+                  doneEach();
+                });
             }], doneIt);
         });
     });

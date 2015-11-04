@@ -24,7 +24,8 @@ var SensorSchema = new Schema({
   description: {type: String},
   image: {type: String},
 	geometry: { type: {type: String}, coordinates: []},
-  createdAt: {type: Date, default: Date.now}
+  createdAt: {type: Date, default: Date.now},
+  lastMeasurement: {type: Date}
 });
 
 /**
@@ -59,7 +60,7 @@ SensorSchema.static({
       var criteria = options.criteria || {}
 
       this.find(criteria)
-        .sort('_id')
+        .sort('-lastMeasurement')
         .limit(options.perPage)
         .skip(options.perPage * options.page)
         .exec(cb);
