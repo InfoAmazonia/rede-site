@@ -8,13 +8,13 @@ Install the following dependencies:
 - [Node.js](nodejs.org)
 - [MongoDB](mongodb.org)
 
-Clone this repository locally and install dependency modules:
-
-    npm install
-
-Create a `.env` based on example:
+Clone this repository locally and create a `.env` based on example:
 
     cp .env.example .env
+
+Install dependency modules:
+
+    npm install
 
 Run:
 
