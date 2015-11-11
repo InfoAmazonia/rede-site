@@ -12,7 +12,6 @@ angular.module('rede')
 			$scope.lang = lang;
 		});
 		$scope.setLanguage = function(lang) {
-			console.log(lang);
 			gettextCatalog.setCurrentLanguage(lang);
 		};
 	}
@@ -24,7 +23,8 @@ angular.module('rede')
 	'RedeAuth',
 	'MessageService',
 	'$state',
-	function($scope, Rede, Auth, Message, $state) {
+	'gettext',
+	function($scope, Rede, Auth, Message, $state, gettext) {
 
 		$scope.user = {};
 
@@ -40,7 +40,7 @@ angular.module('rede')
 					phoneNumber: data.phoneNumber,
 					email: data.email
 				}));
-				Message.add('Informações atualizadas!');
+				Message.add(gettext('Informações atualizadas!'));
 			});
 		};
 
@@ -48,12 +48,12 @@ angular.module('rede')
 
 		$scope.updatePwd = function(pwd) {
 			if(!pwd.password) {
-				Message.add('Você deve inserir uma senha');
+				Message.add(gettext('Você deve inserir uma senha'));
 			} else if(pwd.password !== pwd.password_repeat) {
-				Message.add('Verifique se as senhas digitadas são identicas');
+				Message.add(gettext('Verifique se as senhas digitadas são identicas'));
 			} else {
 				Rede.users.updateAccount(pwd, function(user) {
-					Message.add('Senha atualizada');
+					Message.add(gettext('Senha atualizada'));
 					$scope.pwd = {};
 				});
 			}
@@ -267,9 +267,21 @@ angular.module('rede')
 	'AddressData',
 	'ParametersData',
 	'$sce',
-	function($q, $scope, Rede, leafletData, Sensor, Address, Parameters, $sce) {
+	'gettextCatalog',
+	'gettext',
+	function($q, $scope, Rede, leafletData, Sensor, Address, Parameters, $sce, gettextCatalog, gettext) {
 
 		$scope.sensor = Sensor;
+
+		$scope.paramLang = '';
+		$scope.$watch(function() {
+			return gettextCatalog.getCurrentLanguage();
+		}, function(lang) {
+			if(lang == 'pt_BR')
+				$scope.paramLang = 'pt';
+			else
+				$scope.paramLang = 'en';
+		});
 
 		if(Address.data.address) {
 			$scope.city = Address.data.address.city;
@@ -348,15 +360,15 @@ angular.module('rede')
 				type: Parameters,
 				date: [
 					{
-						label: 'Últimas 24 horas',
+						label: gettext('Últimas 24 horas'),
 						value: '24hours'
 					},
 					{
-						label: 'Últimos 30 dias',
+						label: gettext('Últimos 30 dias'),
 						value: '30days'
 					},
 					{
-						label: 'Customizado',
+						label: gettext('Customizado'),
 						value: 'custom'
 					}
 				]
@@ -457,7 +469,8 @@ angular.module('rede')
 	'RedeAuth',
 	'RedeService',
 	'$state',
-	function($scope, Message, Auth, Rede, $state) {
+	'gettext',
+	function($scope, Message, Auth, Rede, $state, gettext) {
 
 		$scope.token = Auth.getToken();
 
@@ -471,12 +484,12 @@ angular.module('rede')
 		$scope.subscribe = function() {
 			if(!$scope.subscribed()) {
 				Rede.sensors.subscribe({id: $state.params.sensorId}, function(data) {
-					Message.add('Você está assinando este sensor!');
+					Message.add(gettext('Você está assinando este sensor!'));
 					$state.go('sensor', {sensorId: $state.params.sensorId});
 					Auth.setToken(_.extend(Auth.getToken(), data.user));
 				});
 			} else if(Auth.getToken()) {
-				Message.add('Você já assina este sensor!');
+				Message.add(gettext('Você já assina este sensor!'));
 				$state.go('sensor', {sensorId: $state.params.sensorId});
 			}
 		}
@@ -485,7 +498,7 @@ angular.module('rede')
 			sensorId = sensorId || $state.params.sensorId;
 			if(Auth.getToken()) {
 				Rede.sensors.unsubscribe({id: sensorId}, function(data) {
-					Message.add('Você deixou de assinar este sensor!');
+					Message.add(gettext('Você deixou de assinar este sensor!'));
 					Auth.setToken(_.extend(Auth.getToken(), data.user));
 				});
 			}
@@ -499,9 +512,20 @@ angular.module('rede')
 	'$scope',
 	'$stateParams',
 	'$q',
-	function(Rede, $scope, $stateParams, $q) {
+	'gettextCatalog',
+	function(Rede, $scope, $stateParams, $q, gettextCatalog) {
 
 		$scope.data = {};
+
+		$scope.paramLang = '';
+		$scope.$watch(function() {
+			return gettextCatalog.getCurrentLanguage();
+		}, function(lang) {
+			if(lang == 'pt_BR')
+				$scope.paramLang = 'pt';
+			else
+				$scope.paramLang = 'en';
+		});
 
 		Rede.getParameters().then(function(params) {
 
@@ -572,7 +596,8 @@ angular.module('rede')
 	'RedeService',
 	'$scope',
 	'$state',
-	function(Auth, Rede, $scope, $state) {
+	'gettext',
+	function(Auth, Rede, $scope, $state, gettext) {
 		$scope.$watch(function() {
 			return Auth.getToken();
 		}, function(user) {
@@ -587,7 +612,7 @@ angular.module('rede')
 		});
 
 		$scope.broadcast = function(msg) {
-			if(confirm('Você tem certeza que deseja enviar "' + msg + '" para todos os assinantes?')) {
+			if(confirm(gettext('Você tem certeza que deseja enviar "' + msg + '" para todos os assinantes?'))) {
 				console.log('enviando', msg, $scope.sensor._id);
 			}
 		}
@@ -599,7 +624,8 @@ angular.module('rede')
 	'RedeService',
 	'SensorsData',
 	'MessageService',
-	function($scope, Rede, Sensors, Message) {
+	'gettext',
+	function($scope, Rede, Sensors, Message, gettext) {
 		$scope.sensors = Sensors.sensors;
 
 		var updatePaging = function(data) {
@@ -622,9 +648,9 @@ angular.module('rede')
 		});
 
 		$scope.deleteSensor = function(sensor) {
-			if(confirm('Você tem certeza?')) {
+			if(confirm(gettext('Você tem certeza?'))) {
 				Rede.sensors.delete({id: sensor._id}, function() {
-					Message.add('Sensor removido.');
+					Message.add(gettext('Sensor removido.'));
 					$scope.sensors = _.filter($scope.sensors, function(s) { return s._id !== sensor._id; });
 				});
 			}
@@ -638,7 +664,8 @@ angular.module('rede')
 	'$stateParams',
 	'$state',
 	'MessageService',
-	function($scope, Rede, $stateParams, $state, Message) {
+	'gettext',
+	function($scope, Rede, $stateParams, $state, Message, gettext) {
 
 		if($state.params.sensorId) {
 			Rede.sensors.get({id: $state.params.sensorId}, function(sensor) {
@@ -652,19 +679,19 @@ angular.module('rede')
 			if(sensor._id) {
 				Rede.sensors.update(sensor, function(s) {
 					$scope.sensor = s;
-					Message.add('Sensor atualizado.');
+					Message.add(gettext('Sensor atualizado.'));
 				});
 			} else {
 				Rede.sensors.save(sensor, function(s) {
 					$scope.sensor = s;
-					Message.add('Sensor criado.');
+					Message.add(gettext('Sensor criado.'));
 				});
 			}
 		};
 
 		$scope.broadcast = function(msg) {
 			if($scope.sensor) {
-				if(confirm('Você tem certeza que deseja enviar "' + msg + '" para os assinantes de ' + $scope.sensor.name + '?')) {
+				if(confirm(gettext('Você tem certeza que deseja enviar "' + msg + '" para os assinantes de ' + $scope.sensor.name + '?'))) {
 					console.log('enviando', msg, $scope.sensor._id);
 				}
 			}
@@ -677,7 +704,8 @@ angular.module('rede')
 	'MessageService',
 	'UsersData',
 	'$scope',
-	function(Rede, Message, Users, $scope) {
+	'gettext',
+	function(Rede, Message, Users, $scope, gettext) {
 		$scope.users = Users.users;
 
 		var updatePaging = function(data) {
@@ -700,9 +728,9 @@ angular.module('rede')
 		});
 
 		$scope.deleteUser = function(user) {
-			if(confirm('Você tem certeza?')) {
+			if(confirm(gettext('Você tem certeza?'))) {
 				Rede.users.delete({id: user._id}, function() {
-					Message.add('Usuário removido.');
+					Message.add(gettext('Usuário removido.'));
 					$scope.users = _.filter($scope.users, function(s) { return s._id !== user._id; });
 				});
 			}
@@ -716,7 +744,8 @@ angular.module('rede')
 	'$stateParams',
 	'$state',
 	'MessageService',
-	function($scope, Rede, $stateParams, $state, Message) {
+	'gettext',
+	function($scope, Rede, $stateParams, $state, Message, gettext) {
 
 		$scope.user = {};
 
@@ -728,17 +757,17 @@ angular.module('rede')
 
 		$scope.submit = function(user) {
 			if(user.password !== user.password_repeat) {
-				Message.add('Senhas não coincidem');
+				Message.add(gettext('Senhas não coincidem'));
 			} else {
 				if(user._id) {
 					Rede.users.update(user, function(u) {
 						$scope.user = u;
-						Message.add('Usuário atualizado.');
+						Message.add(gettext('Usuário atualizado.'));
 					});
 				} else {
 					Rede.users.save(user, function(u) {
 						$scope.user = u;
-						Message.add('Usuário criado.');
+						Message.add(gettext('Usuário criado.'));
 					});
 				}
 			}
@@ -746,7 +775,7 @@ angular.module('rede')
 
 		$scope.broadcast = function(msg) {
 			if($scope.user) {
-				if(confirm('Você tem certeza que deseja enviar "' + msg + '" para para ' + $scope.user.name + '?')) {
+				if(confirm(gettext('Você tem certeza que deseja enviar "' + msg + '" para para ' + $scope.user.name + '?'))) {
 					console.log('enviando', msg, $scope.user._id);
 				}
 			}
@@ -761,7 +790,8 @@ angular.module('rede')
 	'SensorData',
 	'ParametersData',
 	'MessageService',
-	function($scope, Rede, Sensor, Parameters, Message) {
+	'gettext',
+	function($scope, Rede, Sensor, Parameters, Message, gettext) {
 		$scope.sensor = Sensor;
 		$scope.parameters = Parameters;
 
@@ -774,9 +804,9 @@ angular.module('rede')
 		};
 
 		$scope.deleteMeasurement = function(measurement) {
-			if(confirm('Você tem certeza?')) {
+			if(confirm(gettext('Você tem certeza?'))) {
 				Rede.measurements.delete({id: measurement._id}, function() {
-					Message.add('Medição removida.');
+					Message.add(gettext('Medição removida.'));
 					$scope.measurements.measurements = _.filter($scope.measurements.measurements, function(m) { return m._id !== measurement._id; });
 				});
 			}

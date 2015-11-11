@@ -156,7 +156,8 @@ angular.module('rede')
 	'RedeService',
 	'$interval',
 	'$q',
-	function(Rede, $interval, $q) {
+	'gettextCatalog',
+	function(Rede, $interval, $q, gettextCatalog) {
 		return {
 			restrict: 'E',
 			scope: {
@@ -166,6 +167,16 @@ angular.module('rede')
 			},
 			templateUrl: '/views/sensor/latest-readings.html',
 			link: function(scope, element, attrs) {
+
+				scope.paramLang = '';
+				scope.$watch(function() {
+					return gettextCatalog.getCurrentLanguage();
+				}, function(lang) {
+					if(lang == 'pt_BR')
+						scope.paramLang = 'pt';
+					else
+						scope.paramLang = 'en';
+				});
 
 				Rede.getParameters().then(function(params) {
 					scope.availableParams = params;
@@ -225,7 +236,8 @@ angular.module('rede')
 .directive('sensorChartSummary', [
 	'RedeService',
 	'$interval',
-	function(Rede, $interval) {
+	'gettextCatalog',
+	function(Rede, $interval, gettextCatalog) {
 		return {
 			restrict: 'E',
 			scope: {
@@ -233,6 +245,16 @@ angular.module('rede')
 			},
 			templateUrl: '/views/sensor/chart-summary.html',
 			link: function(scope, element, attrs) {
+
+				scope.paramLang = '';
+				scope.$watch(function() {
+					return gettextCatalog.getCurrentLanguage();
+				}, function(lang) {
+					if(lang == 'pt_BR')
+						scope.paramLang = 'pt';
+					else
+						scope.paramLang = 'en';
+				});
 
 				Rede.getParameters().then(function(params) {
 
@@ -289,7 +311,9 @@ angular.module('rede')
 
 .directive('readingChart', [
 	'googleChartApiPromise',
-	function(googleChartApiPromise) {
+	'gettext',
+	'gettextCatalog',
+	function(googleChartApiPromise, gettext, gettextCatalog) {
 		return {
 			restrict: 'E',
 			scope: {
@@ -314,13 +338,17 @@ angular.module('rede')
 
 					// console.log(data);
 
+					var avgStr = gettext('Média');
+					var minStr = gettext('Mínima');
+					var maxStr = gettext('Máxima');
+
 					if(data.avg == data.max) {
 						tooltip += '<p class="single">' + data.avg.toFixed(2) + '</p>';
 					} else {
 						tooltip += '<table><tbody>';
-						tooltip += '<tr><th>Média</th><td>' + data.avg.toFixed(2) + '</td></tr>';
-						tooltip += '<tr><th>Mínima</th><td>' + data.min.toFixed(2) + '</td></tr>';
-						tooltip += '<tr><th>Máxima</th><td>' + data.max.toFixed(2) + '</td></tr>';
+						tooltip += '<tr><th>' + gettextCatalog.getString(avgStr) + '</th><td>' + data.avg.toFixed(2) + '</td></tr>';
+						tooltip += '<tr><th>' + gettextCatalog.getString(minStr) + '</th><td>' + data.min.toFixed(2) + '</td></tr>';
+						tooltip += '<tr><th>' + gettextCatalog.getString(maxStr) + '</th><td>' + data.max.toFixed(2) + '</td></tr>';
 						tooltip += '</tbody></table>';
 					}
 
@@ -513,7 +541,8 @@ angular.module('rede')
 	'RedeAuth',
 	'MessageService',
 	'$timeout',
-	function(Rede, Auth, Message, $timeout) {
+	'gettext',
+	function(Rede, Auth, Message, $timeout, gettext) {
 		return  {
 			restrict: 'E',
 			scope: {
@@ -531,7 +560,7 @@ angular.module('rede')
 
 				scope.register = function(user, cb) {
 					if(user.password !== user.password_repeat) {
-						Message.add('Verifique se as senhas digitadas são iguais');
+						Message.add(gettext('Verifique se as senhas digitadas são iguais'));
 					} else {
 						Auth.register(user).then(function(data) {
 							if(typeof scope.cb == 'function') {

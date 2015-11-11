@@ -2,50 +2,50 @@
   #report-intro
     .container
       .twelve.columns
-        p O projeto Rede InfoAmazonia desenvolveu um hardware aberto de monitoramento de qualidade da água em tempo real, o "Mãe d'Água". O objetivo projeto é detectar possíveis alterações provenientes de despejo inadequado de resíduos domésticos, industriais e metais pesados em caixas d´água, cisternas e águas superficiais de mananciais menores na região amazônica. Os resultados ajudam a distinguir a água potável de água contaminada. 
+        p(translate) O projeto Rede InfoAmazonia desenvolveu um hardware aberto de monitoramento de qualidade da água em tempo real, o "Mãe d'Água". O objetivo projeto é detectar possíveis alterações provenientes de despejo inadequado de resíduos domésticos, industriais e metais pesados em caixas d´água, cisternas e águas superficiais de mananciais menores na região amazônica. Os resultados ajudam a distinguir a água potável de água contaminada. 
 
-        p Devido ao caráter de medição em tempo real, os resultados são considerados provisórios e não conclusivos, são sujeitos a equívocos e incertezas. Os dados podem conter valores inexatos devido a mal funcionamento do equipamento. Eventualmente os equipamentos serão desconectados para manutenção. 
+        p(translate) Devido ao caráter de medição em tempo real, os resultados são considerados provisórios e não conclusivos, são sujeitos a equívocos e incertezas. Os dados podem conter valores inexatos devido a mal funcionamento do equipamento. Eventualmente os equipamentos serão desconectados para manutenção. 
 
-        p Os resultados são acessíveis através do site rede.infoamazonia.org e alertam sobre possível contaminação. 
+        p(translate) Os resultados são acessíveis através do site rede.infoamazonia.org e alertam sobre possível contaminação. 
 
-        p Cabe ressaltar, também, a importância da avaliação de outros parâmetros importantes da qualidade da água para consumo humano, tais como Oxigênio Dissolvido, Coliformes termotolerantes e análise microbiológica da água, com relação à presença de parasitas, vírus, e bactérias.
+        p(translate) Cabe ressaltar, também, a importância da avaliação de outros parâmetros importantes da qualidade da água para consumo humano, tais como Oxigênio Dissolvido, Coliformes termotolerantes e análise microbiológica da água, com relação à presença de parasitas, vírus, e bactérias.
   
   .report-header.row
     .container
       .twelve.columns
-        h2 Localização do sensor
-        p Latitude: {{sensor.geometry.coordinates[1]}}
-        p Longitude: {{sensor.geometry.coordinates[0]}}
+        h2(translate) Localização do sensor
+        p(translate) Latitude: {{sensor.geometry.coordinates[1]}}
+        p(translate) Longitude: {{sensor.geometry.coordinates[0]}}
   .report-content.row
     .container
       .twelve.columns
-        h2 Relatório de 
+        h2(translate) Relatório de 
           span {{formattedFrom}} 
           | à 
           span {{formattedTo}}
     section.sensor-param.row(ng-repeat="param in params")
       .container
         .twelve.columns
-          h3 {{param.name.pt}}
+          h3 {{param.name[paramLang]}}
           div(style="height: 200px;")
-            reading-chart(dataset="data[param._id]" label="param.name.pt")
+            reading-chart(dataset="data[param._id]" label="param.name[paramLang]")
   #method
     .container
       .twelve.columns
-        h2 Metodologia
+        h2(translate) Metodologia
         
-        P O Mãe d´Água possui funcionalidades de medição de acidez da água pelo potencial hidrogeniônico (pH), potencial de redução da oxidação (ORP), condutividade elétrica, temperatura da água e pressão barométrica no nível da água, variáveis que auxiliam na inferência da qualidade da água para consumo humano.
+        p(translate) O Mãe d´Água possui funcionalidades de medição de acidez da água pelo potencial hidrogeniônico (pH), potencial de redução da oxidação (ORP), condutividade elétrica, temperatura da água e pressão barométrica no nível da água, variáveis que auxiliam na inferência da qualidade da água para consumo humano.
 
-        p A coleta de dados é feita automaticamente a cada hora, as leituras são enviadas via rede 2G ou 3G para o servidor do site rede.infoamazonia.org. Os dados base  
+        p(translate) A coleta de dados é feita automaticamente a cada hora, as leituras são enviadas via rede 2G ou 3G para o servidor do site rede.infoamazonia.org. Os dados base  
 
-        h3 Condutividade elétrica
-        p A capacidade da água de conduzir eletricidade indica minerais dissolvidos ou clorídeos na água. Minerais dissolvidos podem comprometer a utilização da água para uso doméstico. 
+        h3(translate) Condutividade elétrica
+        p(translate) A capacidade da água de conduzir eletricidade indica minerais dissolvidos ou clorídeos na água. Minerais dissolvidos podem comprometer a utilização da água para uso doméstico. 
 
-        h3 Potencial hidrogeniônico (pH)
-        p O pH normal deve variar entre 6 e 9, este índice pode ser alterado por conta da poluição.
+        h3(translate) Potencial hidrogeniônico (pH)
+        p(translate) O pH normal deve variar entre 6 e 9, este índice pode ser alterado por conta da poluição.
 
-        h3 Temperatura
-        p A temperatura é um elemento que influencia características físicas e a química da água, como sua densidade e capacidade de reter oxigênio dissolvido. 
+        h3(translate) Temperatura
+        p(translate) A temperatura é um elemento que influencia características físicas e a química da água, como sua densidade e capacidade de reter oxigênio dissolvido. 
 
-        h3 Potencial de redução da oxidação (ORP)
-        p O potencial de redução da oxidação ajuda a definir quais formas dos metais estão presentes na água.  
+        h3(translate) Potencial de redução da oxidação (ORP)
+        p(translate) O potencial de redução da oxidação ajuda a definir quais formas dos metais estão presentes na água.  

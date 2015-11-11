@@ -125,6 +125,14 @@ msgstr ""
 msgid "A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda vazão hídrica."
 msgstr ""
 
+#: public/views/sensor/report.html:1
+msgid "A capacidade da água de conduzir eletricidade indica minerais dissolvidos ou clorídeos na água. Minerais dissolvidos podem comprometer a utilização da água para uso doméstico."
+msgstr ""
+
+#: public/views/sensor/report.html:1
+msgid "A coleta de dados é feita automaticamente a cada hora, as leituras são enviadas via rede 2G ou 3G para o servidor do site rede.infoamazonia.org. Os dados base"
+msgstr ""
+
 #: public/views/pages/mae-dagua.html:1
 msgid "A comprovação das condições da qualidade da água deve ser feita através de testes que analisam outros parâmetros como a qualidade microbiológica, para parasitas e vírus, além de bactérias."
 msgstr ""
@@ -135,6 +143,10 @@ msgstr ""
 
 #: public/views/pages/about.html:1
 msgid "A implementação da rede de 20 sensores acontecerá na Amazônia Brasileira, e está prevista o último trimestre de 2015. A ONG Saúde e Alegria, que atua em unidades de conservação e comunidades ao longo do rio Tapajós, é uma parceira estratégica na articulação local no Pará, junto com as Secretarias de Meio Ambiente de Santarém e Belterra. No Amazonas o projeto está sendo implantado com o Instituto Mamirauá."
+msgstr ""
+
+#: public/views/sensor/report.html:1
+msgid "A temperatura é um elemento que influencia características físicas e a química da água, como sua densidade e capacidade de reter oxigênio dissolvido."
 msgstr ""
 
 #: public/views/admin/users-edit.html:1
@@ -217,6 +229,7 @@ msgid "Broadcast"
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
+#: public/views/sensor/report.html:1
 msgid "Cabe ressaltar, também, a importância da avaliação de outros parâmetros importantes da qualidade da água para consumo humano, tais como Oxigênio Dissolvido, Coliformes termotolerantes e análise microbiológica da água, com relação à presença de parasitas, vírus, e bactérias."
 msgstr ""
 
@@ -248,6 +261,14 @@ msgstr ""
 msgid "Comunidade deste sensor"
 msgstr ""
 
+#: public/views/sensor/report.html:1
+msgid "Condutividade elétrica"
+msgstr ""
+
+#: src/js/controllers.js:371
+msgid "Customizado"
+msgstr ""
+
 #: public/views/index.html:1
 msgid "Dados"
 msgstr ""
@@ -274,6 +295,7 @@ msgid "Desenvolvimento"
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
+#: public/views/sensor/report.html:1
 msgid "Devido ao caráter de medição em tempo real, os resultados são considerados provisórios e não conclusivos, são sujeitos a equívocos e incertezas. Os dados podem conter valores inexatos devido a mal funcionamento do equipamento. Eventualmente os equipamentos serão desconectados para manutenção."
 msgstr ""
 
@@ -396,6 +418,10 @@ msgstr ""
 msgid "InfoAmazonia"
 msgstr ""
 
+#: src/js/controllers.js:43
+msgid "Informações atualizadas!"
+msgstr ""
+
 #: public/views/pages/mae-dagua.html:1
 msgid "Instalação: A instalação é simples, não requer conhecimentos específicos."
 msgstr ""
@@ -408,13 +434,25 @@ msgstr ""
 msgid "Latitude"
 msgstr ""
 
+#: public/views/sensor/report.html:1
+msgid "Latitude: {{sensor.geometry.coordinates[1]}}"
+msgstr ""
+
 #: public/views/index.html:1
 #: public/views/pages/mae-dagua.html:1
 msgid "Limitações"
 msgstr ""
 
+#: public/views/sensor/report.html:1
+msgid "Localização do sensor"
+msgstr ""
+
 #: public/views/admin/sensors-edit.html:1
 msgid "Longitude"
+msgstr ""
+
+#: public/views/sensor/report.html:1
+msgid "Longitude: {{sensor.geometry.coordinates[0]}}"
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
@@ -426,12 +464,20 @@ msgstr ""
 msgid "Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país."
 msgstr ""
 
+#: src/js/controllers.js:809
+msgid "Medição removida."
+msgstr ""
+
 #: public/views/admin/sensors.html:1
 msgid "Medições"
 msgstr ""
 
 #: public/views/admin/sensors-measurements.html:1
 msgid "Medições em {{sensor.name}}"
+msgstr ""
+
+#: public/views/sensor/report.html:1
+msgid "Metodologia"
 msgstr ""
 
 #: public/views/account.html:1
@@ -450,13 +496,25 @@ msgstr ""
 msgid "Monitoramento em tempo real: A coleta de dados é feita automaticamente a cada hora, as leituras são enviadas via rede 2G ou 3G para o servidor do site rede.infoamazonia.org"
 msgstr ""
 
+#: src/js/directives.js:343
+msgid "Máxima"
+msgstr ""
+
 #: public/views/index.html:1
 #: public/views/pages/mae-dagua.html:1
 msgid "Mãe D'Água"
 msgstr ""
 
+#: src/js/directives.js:341
+msgid "Média"
+msgstr ""
+
 #: public/views/sensor.html:1
 msgid "Média dos últimos 30 dias"
+msgstr ""
+
+#: src/js/directives.js:342
+msgid "Mínima"
 msgstr ""
 
 #: public/views/home.html:1
@@ -487,6 +545,10 @@ msgstr ""
 msgid "Novo usuário"
 msgstr ""
 
+#: public/views/sensor/report.html:1
+msgid "O Mãe d´Água possui funcionalidades de medição de acidez da água pelo potencial hidrogeniônico (pH), potencial de redução da oxidação (ORP), condutividade elétrica, temperatura da água e pressão barométrica no nível da água, variáveis que auxiliam na inferência da qualidade da água para consumo humano."
+msgstr ""
+
 #: public/views/pages/mae-dagua.html:1
 msgid "O Mãe d´Água será capaz de monitorar parâmetros físico-químicos importantes que ajudam a indicar se a água é potável ou está contaminada. De hora em hora serão realizadas leituras das seguintes variáveis: acidez (pH), potencial de redução da oxidação (ORP), condutividade elétrica, temperatura e pressão barométrica no nível da água. O objetivo das medições é detectar variações que indiquem contaminação."
 msgstr ""
@@ -503,6 +565,18 @@ msgstr ""
 msgid "O hardware livre de monitoramento de qualidade da água em tempo real desenvolvido pelo projeto Rede InfoAmazonia foi batizado de \"Mãe d'Água\". Inspirado no Riffle, o dispositivo é resultado da colaboração da equipe do projeto com a redeo grupo norte-americanao de ciência cidadã Public Lab e a start-up Dev Tecnologia, empresa incubada na Universidade de São Paulo."
 msgstr ""
 
+#: public/views/sensor/report.html:1
+msgid "O pH normal deve variar entre 6 e 9, este índice pode ser alterado por conta da poluição."
+msgstr ""
+
+#: public/views/sensor/report.html:1
+msgid "O potencial de redução da oxidação ajuda a definir quais formas dos metais estão presentes na água."
+msgstr ""
+
+#: public/views/sensor/report.html:1
+msgid "O projeto Rede InfoAmazonia desenvolveu um hardware aberto de monitoramento de qualidade da água em tempo real, o \"Mãe d'Água\". O objetivo projeto é detectar possíveis alterações provenientes de despejo inadequado de resíduos domésticos, industriais e metais pesados em caixas d´água, cisternas e águas superficiais de mananciais menores na região amazônica. Os resultados ajudam a distinguir a água potável de água contaminada."
+msgstr ""
+
 #: public/views/pages/about.html:1
 msgid "O projeto Rede InfoAmazonia visa desenvolver um sistema de monitoramento de baixo custo para analisar a qualidade da água para consumo humano, e estabelecer uma rede de monitoramento em articulação com comunidades da Amazônia brasileira, para apresentar em tempo real os resultados das análises na plataforma InfoAmazonia e enviar alertas aos consumidores através de SMS."
 msgstr ""
@@ -516,6 +590,7 @@ msgid "Observatório de UCs da WWF-Brasil"
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
+#: public/views/sensor/report.html:1
 msgid "Os resultados são acessíveis através do site rede.infoamazonia.org e alertam sobre possível contaminação."
 msgstr ""
 
@@ -525,6 +600,14 @@ msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
 msgid "Plataforma Eagle: software livre utilizado para gerar o circuito e desenho do hardware."
+msgstr ""
+
+#: public/views/sensor/report.html:1
+msgid "Potencial de redução da oxidação (ORP)"
+msgstr ""
+
+#: public/views/sensor/report.html:1
+msgid "Potencial hidrogeniônico (pH)"
 msgstr ""
 
 #: public/views/index.html:1
@@ -567,6 +650,10 @@ msgstr ""
 msgid "Rede de monitoramento"
 msgstr ""
 
+#: public/views/sensor/report.html:1
+msgid "Relatório de <span>{{formattedFrom}} </span>à <span>{{formattedTo}}</span>"
+msgstr ""
+
 #: public/views/admin/sensors-measurements.html:1
 #: public/views/admin/sensors.html:1
 #: public/views/admin/users.html:1
@@ -598,6 +685,26 @@ msgstr ""
 
 #: public/views/account.html:1
 msgid "Senha atual"
+msgstr ""
+
+#: src/js/controllers.js:56
+msgid "Senha atualizada"
+msgstr ""
+
+#: src/js/controllers.js:760
+msgid "Senhas não coincidem"
+msgstr ""
+
+#: src/js/controllers.js:682
+msgid "Sensor atualizado."
+msgstr ""
+
+#: src/js/controllers.js:687
+msgid "Sensor criado."
+msgstr ""
+
+#: src/js/controllers.js:653
+msgid "Sensor removido."
 msgstr ""
 
 #: public/views/admin/index.html:1
@@ -643,12 +750,28 @@ msgstr ""
 msgid "Telefone"
 msgstr ""
 
+#: public/views/sensor/report.html:1
+msgid "Temperatura"
+msgstr ""
+
 #: public/views/admin/sensors-edit.html:1
 msgid "URL da imagem"
 msgstr ""
 
 #: public/views/admin/sensors-measurements.html:1
 msgid "Unidade de medida"
+msgstr ""
+
+#: src/js/controllers.js:765
+msgid "Usuário atualizado."
+msgstr ""
+
+#: src/js/controllers.js:770
+msgid "Usuário criado."
+msgstr ""
+
+#: src/js/controllers.js:733
+msgid "Usuário removido."
 msgstr ""
 
 #: public/views/admin/index.html:1
@@ -668,6 +791,14 @@ msgstr ""
 msgid "Ver e editar medições"
 msgstr ""
 
+#: src/js/controllers.js:53
+msgid "Verifique se as senhas digitadas são identicas"
+msgstr ""
+
+#: src/js/directives.js:563
+msgid "Verifique se as senhas digitadas são iguais"
+msgstr ""
+
 #: public/views/pages/press.html:1
 msgid "Vice"
 msgstr ""
@@ -678,6 +809,40 @@ msgstr ""
 
 #: public/views/account-sensors.html:1
 msgid "Você ainda não assinou nenhum sensor!"
+msgstr ""
+
+#: src/js/controllers.js:501
+msgid "Você deixou de assinar este sensor!"
+msgstr ""
+
+#: src/js/controllers.js:51
+msgid "Você deve inserir uma senha"
+msgstr ""
+
+#: src/js/controllers.js:487
+msgid "Você está assinando este sensor!"
+msgstr ""
+
+#: src/js/controllers.js:492
+msgid "Você já assina este sensor!"
+msgstr ""
+
+#: src/js/controllers.js:694
+msgid "Você tem certeza que deseja enviar \"\" para os assinantes de ?"
+msgstr ""
+
+#: src/js/controllers.js:778
+msgid "Você tem certeza que deseja enviar \"\" para para ?"
+msgstr ""
+
+#: src/js/controllers.js:615
+msgid "Você tem certeza que deseja enviar \"\" para todos os assinantes?"
+msgstr ""
+
+#: src/js/controllers.js:651
+#: src/js/controllers.js:731
+#: src/js/controllers.js:807
+msgid "Você tem certeza?"
 msgstr ""
 
 #: public/views/sensor.html:1
@@ -721,7 +886,15 @@ msgstr ""
 msgid "Índice de qualidade"
 msgstr ""
 
+#: src/js/controllers.js:363
+msgid "Últimas 24 horas"
+msgstr ""
+
 #: public/views/sensor.html:1
 #: public/views/sensor/latest-readings.html:1
 msgid "Últimas medições"
+msgstr ""
+
+#: src/js/controllers.js:367
+msgid "Últimos 30 dias"
 msgstr ""

@@ -119,7 +119,8 @@ angular.module('rede')
 	'$scope',
 	'$sce',
 	'MessageService',
-	function($scope, $sce, MessageService) {
+	'gettextCatalog',
+	function($scope, $sce, MessageService, gettextCatalog) {
 
 		$scope.service = MessageService;
 
@@ -134,7 +135,7 @@ angular.module('rede')
 		});
 
 		$scope.getMessage = function(message) {
-			return $sce.trustAsHtml(message.text);
+			return $sce.trustAsHtml(gettextCatalog.getString(message.text));
 		};
 
 		$scope.close = function(message) {

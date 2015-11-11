@@ -7,8 +7,8 @@
 			tr
 				th(title="{{'Hora' | translate}}")
 					span(translate) Hora
-				th(title="{{getParam(param).name.pt}}" ng-repeat="param in params")
-					span {{getParam(param).name.pt}}
+				th(title="{{getParam(param).name[paramLang]}}" ng-repeat="param in params")
+					span {{getParam(param).name[paramLang]}}
 		tbody
 			tr(ng-repeat="group in latest | limitTo: amount")
 				td.time(title="{{formattedDate(group)}}")

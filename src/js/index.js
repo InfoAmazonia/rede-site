@@ -337,14 +337,24 @@ require('./directives');
 require('./controllers');
 
 angular.module('rede').run([
+	'$rootScope',
 	'gettextCatalog',
-	function (gettextCatalog) {
+	function ($rootScope, gettextCatalog) {
+		
 		var userLang = navigator.language || navigator.userLanguage;
-		console.log(userLang);
 		if(userLang == 'pt-BR' || userLang == 'pt' || userLang == 'pt_BR' || userLang == 'pt_PT' || userLang == 'pt-PT')
 			gettextCatalog.setCurrentLanguage('pt_BR');
 		else
 			gettextCatalog.setCurrentLanguage('en');
+
+		$rootScope.$watch(function() {
+			return gettextCatalog.getCurrentLanguage();
+		}, function(lang) {
+			if(lang == 'pt_BR')
+				moment.locale('pt-br');
+			else
+				moment.locale('en');
+		});
 	}
 ]);
 

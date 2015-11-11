@@ -1,6 +1,6 @@
 .sensor-chart
 	h3 Dados das últimas 24 horas
 	nav.chart-nav
-		a(ng-repeat="param in chartParams" href="javascript:void(0);" ng-click="chartMeasure(param._id)" ng-class="{active: curParam == param._id}") {{param.name.pt}}
+		a(ng-repeat="param in chartParams" href="javascript:void(0);" ng-click="chartMeasure(param._id)" ng-class="{active: curParam == param._id}") {{param.name[paramLang]}}
 	.chart
-		reading-chart(dataset="measures" label="param.name.pt")
+		reading-chart(dataset="measures" label="param.name[paramLang]")
