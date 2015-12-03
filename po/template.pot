@@ -308,7 +308,7 @@ msgstr ""
 msgid "Condutividade elétrica"
 msgstr ""
 
-#: src/js/controllers.js:376
+#: src/js/controllers.js:380
 msgid "Customizado"
 msgstr ""
 
@@ -514,7 +514,7 @@ msgstr ""
 msgid "Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país."
 msgstr ""
 
-#: src/js/controllers.js:814
+#: src/js/controllers.js:818
 msgid "Medição removida."
 msgstr ""
 
@@ -757,19 +757,19 @@ msgstr ""
 msgid "Senha atualizada"
 msgstr ""
 
-#: src/js/controllers.js:765
+#: src/js/controllers.js:769
 msgid "Senhas não coincidem"
 msgstr ""
 
-#: src/js/controllers.js:687
+#: src/js/controllers.js:691
 msgid "Sensor atualizado."
 msgstr ""
 
-#: src/js/controllers.js:692
+#: src/js/controllers.js:696
 msgid "Sensor criado."
 msgstr ""
 
-#: src/js/controllers.js:658
+#: src/js/controllers.js:662
 msgid "Sensor removido."
 msgstr ""
 
@@ -832,15 +832,15 @@ msgstr ""
 msgid "Unidade de medida"
 msgstr ""
 
-#: src/js/controllers.js:770
+#: src/js/controllers.js:774
 msgid "Usuário atualizado."
 msgstr ""
 
-#: src/js/controllers.js:775
+#: src/js/controllers.js:779
 msgid "Usuário criado."
 msgstr ""
 
-#: src/js/controllers.js:738
+#: src/js/controllers.js:742
 msgid "Usuário removido."
 msgstr ""
 
@@ -877,7 +877,7 @@ msgstr ""
 msgid "Você ainda não assinou nenhum sensor!"
 msgstr ""
 
-#: src/js/controllers.js:506
+#: src/js/controllers.js:510
 msgid "Você deixou de assinar este sensor!"
 msgstr ""
 
@@ -885,29 +885,29 @@ msgstr ""
 msgid "Você deve inserir uma senha"
 msgstr ""
 
-#: src/js/controllers.js:492
+#: src/js/controllers.js:496
 msgid "Você está assinando este sensor!"
 msgstr ""
 
-#: src/js/controllers.js:497
+#: src/js/controllers.js:501
 msgid "Você já assina este sensor!"
 msgstr ""
 
-#: src/js/controllers.js:699
+#: src/js/controllers.js:703
 msgid "Você tem certeza que deseja enviar \"\" para os assinantes de ?"
 msgstr ""
 
-#: src/js/controllers.js:783
+#: src/js/controllers.js:787
 msgid "Você tem certeza que deseja enviar \"\" para para ?"
 msgstr ""
 
-#: src/js/controllers.js:620
+#: src/js/controllers.js:624
 msgid "Você tem certeza que deseja enviar \"\" para todos os assinantes?"
 msgstr ""
 
-#: src/js/controllers.js:656
-#: src/js/controllers.js:736
-#: src/js/controllers.js:812
+#: src/js/controllers.js:660
+#: src/js/controllers.js:740
+#: src/js/controllers.js:816
 msgid "Você tem certeza?"
 msgstr ""
 
@@ -948,7 +948,7 @@ msgstr ""
 msgid "Área administrativa"
 msgstr ""
 
-#: src/js/controllers.js:368
+#: src/js/controllers.js:372
 msgid "Últimas 24 horas"
 msgstr ""
 
@@ -957,6 +957,6 @@ msgstr ""
 msgid "Últimas medições"
 msgstr ""
 
-#: src/js/controllers.js:372
+#: src/js/controllers.js:376
 msgid "Últimos 30 dias"
 msgstr ""

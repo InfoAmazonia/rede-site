@@ -167,10 +167,14 @@ angular.module('rede')
 	'$interval',
 	'SensorsData',
 	'ngDialog',
-	function($scope, Rede, CartoDB, leafletData, $interval, sensors, ngDialog) {
+	'$state',
+	function($scope, Rede, CartoDB, leafletData, $interval, sensors, ngDialog, $state) {
 
-		$scope.introDialog = ngDialog.open({
-			template: 'intro-dialog'
+		$scope.$on('$stateChangeSuccess', function(ev, toState, toParams, fromState) {
+			if(!fromState.name)
+				$scope.introDialog = ngDialog.open({
+					template: 'intro-dialog'
+				});
 		});
 
 		/*
