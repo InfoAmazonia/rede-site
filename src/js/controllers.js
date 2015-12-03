@@ -166,7 +166,12 @@ angular.module('rede')
 	'leafletData',
 	'$interval',
 	'SensorsData',
-	function($scope, Rede, CartoDB, leafletData, $interval, sensors) {
+	'ngDialog',
+	function($scope, Rede, CartoDB, leafletData, $interval, sensors, ngDialog) {
+
+		$scope.introDialog = ngDialog.open({
+			template: 'intro-dialog'
+		});
 
 		/*
 		 * About

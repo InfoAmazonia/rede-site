@@ -308,7 +308,7 @@ msgstr ""
 msgid "Condutividade elétrica"
 msgstr ""
 
-#: src/js/controllers.js:371
+#: src/js/controllers.js:376
 msgid "Customizado"
 msgstr ""
 
@@ -364,6 +364,10 @@ msgstr ""
 
 #: public/views/pages/network.html:1
 msgid "Em Belterra, a rede de monitoramento piloto é formada pelos pontos na zona urbana e comunidades da Floresta Nacional do Tapajós (Jamaraquá, São Domingos e Maguary). Em Mojuí dos Campos, participam da rede a  Escola Municipal de Ensino Fundamental Raimunda Queiroz de Sousa e o Micro sistema de abastecimento de Alto Alegre. Os pontos de monitoramento de Santarém são distribuídos na zona urbana (Projeto Saúde e Alegria, Escola Professor Aldo Ferreira Campos,  Escola São Francisco e Poço individual no bairro Alvorada), zona rural (Escola Irmça Dorothy Mae Stang) e também na Reserva Extrativisita Tapajós-Arapiuns (Centro Experimental Floresta Ativa, comunidades de Anumã, de Solimões, Pedra Branca e Carão, Escola Nossa Senhora Aparecida e Aldeia Vista Alegre de Capixauã)."
+msgstr ""
+
+#: public/views/home.html:1
+msgid "Em breve você poderá conhecer mais sobre o projeto, acompanhar a informações sobre a qualidade da água no Oeste do Pará e se cadastrar para receber alertas sobre como está a qualidade da água em comunidades de Belterra, Mojuí dos Campos e Santarém."
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
@@ -510,7 +514,7 @@ msgstr ""
 msgid "Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país."
 msgstr ""
 
-#: src/js/controllers.js:809
+#: src/js/controllers.js:814
 msgid "Medição removida."
 msgstr ""
 
@@ -643,6 +647,10 @@ msgstr ""
 msgid "Observatório de UCs da WWF-Brasil"
 msgstr ""
 
+#: public/views/home.html:1
+msgid "Olá! O Projeto Rede InfoAmazonia em fase final de desenvolvimento. Os sensores dos Mãe d'Água estão em fase de ajustes, e as leituras ainda não devem ser consideradas válidas e o conteúdo está em revisão final para publicação. Sugestões e comentários sobre o site são bem vindos. Entre em contato através do email rede@infoamazonia.org."
+msgstr ""
+
 #: public/views/pages/network.html:1
 msgid "Os microssistemas coletivos captam água diretamente dos lençóis freáticos através de poços profundos. Entre os pontos de monitoramento selecionados, apenas o sensor # Zona Urbana de Belterra analisa a água em seu ponto final de distribuição. Em todos os outros a análise é feita no ponto de captação."
 msgstr ""
@@ -749,19 +757,19 @@ msgstr ""
 msgid "Senha atualizada"
 msgstr ""
 
-#: src/js/controllers.js:760
+#: src/js/controllers.js:765
 msgid "Senhas não coincidem"
 msgstr ""
 
-#: src/js/controllers.js:682
+#: src/js/controllers.js:687
 msgid "Sensor atualizado."
 msgstr ""
 
-#: src/js/controllers.js:687
+#: src/js/controllers.js:692
 msgid "Sensor criado."
 msgstr ""
 
-#: src/js/controllers.js:653
+#: src/js/controllers.js:658
 msgid "Sensor removido."
 msgstr ""
 
@@ -824,15 +832,15 @@ msgstr ""
 msgid "Unidade de medida"
 msgstr ""
 
-#: src/js/controllers.js:765
+#: src/js/controllers.js:770
 msgid "Usuário atualizado."
 msgstr ""
 
-#: src/js/controllers.js:770
+#: src/js/controllers.js:775
 msgid "Usuário criado."
 msgstr ""
 
-#: src/js/controllers.js:733
+#: src/js/controllers.js:738
 msgid "Usuário removido."
 msgstr ""
 
@@ -869,7 +877,7 @@ msgstr ""
 msgid "Você ainda não assinou nenhum sensor!"
 msgstr ""
 
-#: src/js/controllers.js:501
+#: src/js/controllers.js:506
 msgid "Você deixou de assinar este sensor!"
 msgstr ""
 
@@ -877,29 +885,29 @@ msgstr ""
 msgid "Você deve inserir uma senha"
 msgstr ""
 
-#: src/js/controllers.js:487
+#: src/js/controllers.js:492
 msgid "Você está assinando este sensor!"
 msgstr ""
 
-#: src/js/controllers.js:492
+#: src/js/controllers.js:497
 msgid "Você já assina este sensor!"
 msgstr ""
 
-#: src/js/controllers.js:694
+#: src/js/controllers.js:699
 msgid "Você tem certeza que deseja enviar \"\" para os assinantes de ?"
 msgstr ""
 
-#: src/js/controllers.js:778
+#: src/js/controllers.js:783
 msgid "Você tem certeza que deseja enviar \"\" para para ?"
 msgstr ""
 
-#: src/js/controllers.js:615
+#: src/js/controllers.js:620
 msgid "Você tem certeza que deseja enviar \"\" para todos os assinantes?"
 msgstr ""
 
-#: src/js/controllers.js:651
-#: src/js/controllers.js:731
-#: src/js/controllers.js:807
+#: src/js/controllers.js:656
+#: src/js/controllers.js:736
+#: src/js/controllers.js:812
 msgid "Você tem certeza?"
 msgstr ""
 
@@ -940,7 +948,7 @@ msgstr ""
 msgid "Área administrativa"
 msgstr ""
 
-#: src/js/controllers.js:363
+#: src/js/controllers.js:368
 msgid "Últimas 24 horas"
 msgstr ""
 
@@ -949,6 +957,6 @@ msgstr ""
 msgid "Últimas medições"
 msgstr ""
 
-#: src/js/controllers.js:367
+#: src/js/controllers.js:372
 msgid "Últimos 30 dias"
 msgstr ""

@@ -117,6 +117,16 @@ module.exports = function(grunt) {
 						expand: true
 					}
 				]
+			},
+			ngDialog: {
+				files: [
+					{
+						cwd: 'node_modules/ng-dialog/css',
+						src: ['**'],
+						dest: 'public/lib/ng-dialog',
+						expand: true
+					}
+				]
 			}
 		},
 		nggettext_extract: {
