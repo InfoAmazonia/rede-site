@@ -82,9 +82,9 @@ app
 			url: '/mae-dagua/',
 			templateUrl: '/views/pages/mae-dagua.html'
 		})
-		.state('aboutData', {
-			url: '/sobre-dados/',
-			templateUrl: '/views/pages/about-data.html'
+		.state('faq', {
+			url: '/faq/',
+			templateUrl: '/views/pages/faq.html'
 		})
 		.state('network', {
 			url: '/rede/',
@@ -340,7 +340,7 @@ angular.module('rede').run([
 	'$rootScope',
 	'gettextCatalog',
 	function ($rootScope, gettextCatalog) {
-		
+
 		var userLang = navigator.language || navigator.userLanguage;
 		if(userLang == 'pt-BR' || userLang == 'pt' || userLang == 'pt_BR' || userLang == 'pt_PT' || userLang == 'pt-PT')
 			gettextCatalog.setCurrentLanguage('pt_BR');

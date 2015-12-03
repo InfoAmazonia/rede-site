@@ -41,6 +41,10 @@ msgid "20 de outubro de 2014"
 msgstr ""
 
 #: public/views/pages/press.html:1
+msgid "24 de novembro de 2015"
+msgstr ""
+
+#: public/views/pages/press.html:1
 msgid "26 de fevereiro de 2015"
 msgstr ""
 
@@ -77,6 +81,10 @@ msgid "<a href=\"http://infoamazonia.blogosfera.uol.com.br/2015/07/06/rede-infoa
 msgstr ""
 
 #: public/views/pages/press.html:1
+msgid "<a href=\"http://infoamazonia.blogosfera.uol.com.br/2015/11/24/comunidades-do-rio-tapajos-passam-a-monitorar-qualidade-dagua-com-sensor/\" target=\"_blank\" rel=\"external\">Comunidades do rio Tapajós passam a monitorar qualidade d’água com sensor</a>"
+msgstr ""
+
+#: public/views/pages/press.html:1
 msgid "<a href=\"http://infoamazonia.org/pt/blog/portugues-infoamazonia-participa-de-encontro-sobre-monitoramento-ambiental-por-comunidades/\" target=\"_blank\" rel=\"external\">Hackers unidos para criar aplicativos e sensores sobre qualidade d´água</a>"
 msgstr ""
 
@@ -97,15 +105,39 @@ msgid "<a href=\"http://pt.globalvoicesonline.org/2015/04/17/infoamazonia-leva-o
 msgstr ""
 
 #: public/views/pages/press.html:1
-msgid "<a href=\"http://publiclab.org/wiki/mae-d-agua-rede-infoamazonia\" target=\"_blank\" rel=\"external\">Mãe d’Água – Rede InfoAmazonia</a>"
-msgstr ""
-
-#: public/views/pages/press.html:1
 msgid "<a href=\"http://www.icfj.org/news/infoamazonia-finalist-google-social-impact-challenge-brazil\" target=\"_blank\" rel=\"external\">InfoAmazonia is a Finalist of the Google Social Impact Challenge in Brazil</a>"
 msgstr ""
 
 #: public/views/index.html:1
 msgid "<span>Rede</span>InfoAmazonia"
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid "<strong>Aplicação: </strong>o equipamento é utilizado para monitoramento da qualidade da água em caixas d´água, cisternas, reservatórios, corpos de água superficial com baixa vazão."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid "<strong>Calibração: </strong>A calibração dos sensores deve ser feita a cada três meses."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid "<strong>Condutividade elétrica: </strong>É a capacidade da água de conduzir eletricidade. Indica minerais dissolvidos ou clorídeos na água. Minerais dissolvidos podem comprometer a utilização da água para uso doméstico."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid "<strong>Fonte de energia: </strong>energia elétrica bivolt ou bateria recarregável ligada a painel solar."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid "<strong>Instalação: </strong>A instalação é simples, não requer conhecimentos específicos."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid "<strong>Manutenção: </strong>As ponteiras dos sensores devem ser limpas periodicamente para evitar acúmulo de resíduos que podem afetar as leituras."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid "<strong>Monitoramento em tempo real: </strong>A coleta de dados é feita automaticamente a cada hora, e as leituras são enviadas via rede 2G para o servidor do site rede.infoamazonia.org."
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
@@ -118,6 +150,22 @@ msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
 msgid "<strong>Módulo 3 (M3): </strong>responsável pela comunicação via rede de telefonia celular, capaz de transmitir os dados por SMS para um servidor do Rede InfoAmazonia. Como estratégia auxiliar de acesso aos dados, o M2 também possui espaço para cartão de memória SD."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid "<strong>Parâmetros monitorados: </strong>pH, temperatura, condutividade elétrica, potencial de redução da oxidação (ORP) e pressão barométrica no nível da água."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid "<strong>Potencial de redução da oxidação (ORP): </strong>O potencial de redução da oxidação ajuda a indicar a possibilidade de haverem micro-organismos presentes na água."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid "<strong>Potencial hidrogeniônico (pH): </strong>O pH normal deve variar entre 6 e 9, este índice pode ser alterado por conta da poluição."
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid "<strong>Temperatura: </strong>A temperatura é um elemento que influencia características físicas e químicas da água, como sua densidade e capacidade de reter oxigênio dissolvido."
 msgstr ""
 
 #: public/views/home.html:1
@@ -133,16 +181,16 @@ msgstr ""
 msgid "A coleta de dados é feita automaticamente a cada hora, as leituras são enviadas via rede 2G ou 3G para o servidor do site rede.infoamazonia.org. Os dados base"
 msgstr ""
 
-#: public/views/pages/mae-dagua.html:1
-msgid "A comprovação das condições da qualidade da água deve ser feita através de testes que analisam outros parâmetros como a qualidade microbiológica, para parasitas e vírus, além de bactérias."
-msgstr ""
-
 #: public/views/pages/network.html:1
-msgid "A escolha dos pontos de monitoramento dependem do engajamento de lideranças locais no monitoramento participativo, conexão 3G, população local com indícios de contaminação de fontes de abastecimento."
+msgid "A escolha dos pontos que compõem a rede teve como critérios eliminatórios o engajamento de lideranças locais no monitoramento participativo e conexão 2G no local do reservatório onde é feito o monitoramento. Os voluntários foram selecionados durante das atividades de formação."
 msgstr ""
 
 #: public/views/pages/about.html:1
-msgid "A implementação da rede de 20 sensores acontecerá na Amazônia Brasileira, e está prevista o último trimestre de 2015. A ONG Saúde e Alegria, que atua em unidades de conservação e comunidades ao longo do rio Tapajós, é uma parceira estratégica na articulação local no Pará, junto com as Secretarias de Meio Ambiente de Santarém e Belterra. No Amazonas o projeto está sendo implantado com o Instituto Mamirauá."
+msgid "A implementação da rede de 18 sensores pilotos aconteceu na Amazônia Brasileira em outubro de 2015, com o apoio e participação da <a href=\"http://www.saudeealegria.org.br/\" rel=\"external\" target=\"_blank\">ONG Saúde e Alegria</a>, que atua em unidades de conservação e comunidades ao longo do rio Tapajós. O projeto também contou com o apoio do Laboratório Mídias Eletrônicas da UFOPA e das Secretarias de Meio Ambiente dos municípios de Santarém e Belterra."
+msgstr ""
+
+#: public/views/pages/network.html:1
+msgid "A rede de monitoramento do Rede InfoAmazonia abrange análises de amostras de água de sistemas públicos, microssistemas coletivos e de abastecimento individual. Em sua fase piloto, o projeto beneficia os municípios de Belterra, Mojuí dos Campos e Santarém, localizados na região do Baixo Tapajós, no Oeste do Pará."
 msgstr ""
 
 #: public/views/sensor/report.html:1
@@ -166,15 +214,11 @@ msgid "Amazônia Brasileira"
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
-msgid "Aplicação: o equipamento poderá ser utilizado para monitoramento da qualidade da água em caixas d´água, cisternas, reservatórios, corpos de água superficial com baixa vazão."
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
 msgid "Arduíno Mega: Placa com microcontrolador utilizada para controlar o sistema."
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
-msgid "As leituras das variáveis serão enviadas para um servidor remoto de hora em hora. A partir do último trimestre de 2015 as análises e a base de dados estarão acessíveis no site do Rede InfoAmazonia. Além da informação disponível do site, os interessados poderão se cadastrar para receber alertas SMS sobre qualidade da água em sua comunidade."
+msgid "As leituras das variáveis são enviadas para um servidor remoto de hora em hora. Além da informação disponível do site, os interessados podem se cadastrar para receber alertas SMS sobre qualidade da água em sua comunidade."
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
@@ -210,10 +254,6 @@ msgstr ""
 msgid "Baixar estes dados"
 msgstr ""
 
-#: public/views/pages/mae-dagua.html:1
-msgid "Baixar manual"
-msgstr ""
-
 #: public/views/pages/press.html:1
 msgid "Blog do InfoAmazonia na UOL"
 msgstr ""
@@ -228,13 +268,12 @@ msgstr ""
 msgid "Broadcast"
 msgstr ""
 
-#: public/views/pages/mae-dagua.html:1
 #: public/views/sensor/report.html:1
 msgid "Cabe ressaltar, também, a importância da avaliação de outros parâmetros importantes da qualidade da água para consumo humano, tais como Oxigênio Dissolvido, Coliformes termotolerantes e análise microbiológica da água, com relação à presença de parasitas, vírus, e bactérias."
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
-msgid "Calibração: A calibração dos sensores deve ser feita a cada três meses."
+msgid "Cabe ressaltar, também, a importância da avaliação de outros parâmetros importantes da qualidade da água para consumo humano, tais como oxigênio dissolvido, coliformes termotolerantes e análise microbiológica da água, com relação à presença de parasitas, vírus e bactérias."
 msgstr ""
 
 #: public/views/pages/press.html:1
@@ -249,8 +288,12 @@ msgstr ""
 msgid "Cancelar assinatura deste sensor"
 msgstr ""
 
-#: public/views/pages/about.html:1
-msgid "Com o hardware, chamado \"Mãe d'Água\" é possível detectar possíveis alterações da condição da água provenientes de despejo inadequado de resíduos domésticos, industriais e metais pesados em caixas d´água, cisternas e águas superficiais de mananciais menores. Os resultados das análises ajudam a distinguir a água potável de água contaminada."
+#: public/views/pages/network.html:1
+msgid "Ciclo de oficinas 1 - Introdução a tecnologias livres e jornalismo cidadão"
+msgstr ""
+
+#: public/views/pages/network.html:1
+msgid "Ciclo de oficinas 2 - Formação para implantação da rede e oficina  jornalismo cidadão"
 msgstr ""
 
 #: public/views/sensor.html:1
@@ -267,10 +310,6 @@ msgstr ""
 
 #: src/js/controllers.js:371
 msgid "Customizado"
-msgstr ""
-
-#: public/views/index.html:1
-msgid "Dados"
 msgstr ""
 
 #: public/views/sensor.html:1
@@ -295,6 +334,9 @@ msgid "Desenvolvimento"
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
+msgid "Devido ao caráter de medição em tempo real, os resultados são considerados provisórios e não conclusivos, e são sujeitos a equívocos e incertezas. Os dados podem conter valores inexatos devido a mal funcionamento do equipamento. Eventualmente os equipamentos serão desconectados para manutenção."
+msgstr ""
+
 #: public/views/sensor/report.html:1
 msgid "Devido ao caráter de medição em tempo real, os resultados são considerados provisórios e não conclusivos, são sujeitos a equívocos e incertezas. Os dados podem conter valores inexatos devido a mal funcionamento do equipamento. Eventualmente os equipamentos serão desconectados para manutenção."
 msgstr ""
@@ -316,16 +358,20 @@ msgstr ""
 msgid "Editar usuário"
 msgstr ""
 
+#: public/views/pages/network.html:1
+msgid "Em 16 e 21 de outubro de 2015, os instrutores Paloma Oliveira e pixel realizaram oficinas para apresentar o sistema e o equipamento de monitoramento do Rede InfoAmazonia, para formar agentes comunitários que realizem a instalação e manutenção do equipamento. Em 16 de outubro, a atividade reuniu doze participantes no na UFOPA - Unidade Amazônia (Santarém) e no dia 21, sete pessoas participaram a oficina no Centro Experimental Floresta Ativa na Reserva (Extrativista Tapajós-Arapiuns - Santarém)."
+msgstr ""
+
+#: public/views/pages/network.html:1
+msgid "Em Belterra, a rede de monitoramento piloto é formada pelos pontos na zona urbana e comunidades da Floresta Nacional do Tapajós (Jamaraquá, São Domingos e Maguary). Em Mojuí dos Campos, participam da rede a  Escola Municipal de Ensino Fundamental Raimunda Queiroz de Sousa e o Micro sistema de abastecimento de Alto Alegre. Os pontos de monitoramento de Santarém são distribuídos na zona urbana (Projeto Saúde e Alegria, Escola Professor Aldo Ferreira Campos,  Escola São Francisco e Poço individual no bairro Alvorada), zona rural (Escola Irmça Dorothy Mae Stang) e também na Reserva Extrativisita Tapajós-Arapiuns (Centro Experimental Floresta Ativa, comunidades de Anumã, de Solimões, Pedra Branca e Carão, Escola Nossa Senhora Aparecida e Aldeia Vista Alegre de Capixauã)."
+msgstr ""
+
 #: public/views/pages/mae-dagua.html:1
 msgid "Em caso de alterações na água, serão realizadas análises em laboratório para confirmar e obter maiores informações."
 msgstr ""
 
 #: public/views/pages/network.html:1
-msgid "Em parceria com o Projeto Saúde e Alegria - articulação com lideranças de comunidades ribeirinhas - e apoio das Secretarias de Meio Ambiente dos municípios de Santarém e Belterra, no Pará, serão escolhidos vinte pontos onde será feita a instalação dos equipamentos de monitoramento. A implantação está prevista para acontecer no último trimestre de 2015 após um ciclo de oficinas sobre tecnologias livres, meio ambiente e comunicação, que já foi iniciado. Após a instalação dos sensores será lançado o site onde as análises estarão disponíveis para visualização e download dos resultados."
-msgstr ""
-
-#: public/views/pages/network.html:1
-msgid "Em sua fase piloto, beneficiará 20 comunidades da zona urbana de Belterra e Santarém, Reserva Extrativista Tapajós Arapiuns e Floresta Nacional do Tapajós, no Oeste do Pará. O sensor e sistema desenvolvidos por nossa equipe e parceiros será capaz de medir parâmetros básicos de qualidade d'água e alertar governo, cidadãos e organizações não governamentais através do sistema de alerta para celulares (SMS) e aplicativos de mapeamento da web."
+msgid "Em parceria com o Projeto Saúde e Alegria, articulação com lideranças de comunidades ribeirinhas, apoio do Laboratório Mídias Eletrônicas da UFOPA e Secretarias de Meio Ambiente dos municípios de Santarém e Belterra, no Pará, foram escolhidos dezoito pontos onde foi feita a instalação dos equipamentos de monitoramento. A implantação aconteceu na segunda quinzena de outubro de 2015 após um ciclo de oficinas sobre tecnologias livres, meio ambiente e jornalismo cidadão."
 msgstr ""
 
 #: public/views/admin/users-edit.html:1
@@ -336,6 +382,10 @@ msgstr ""
 #: public/views/index.html:1
 #: public/views/login.html:1
 msgid "Entrar"
+msgstr ""
+
+#: public/views/pages/network.html:1
+msgid "Entre 5 e 9 de março foram realizadas oficinas na Escola do Parque, no Centro Municipal de Informação e Educação Ambiental (Santarém) e no Colégio Santo Antônio (Belterra), com grupos de estudantes e jovens lideranças Nestas oficinas, Guima San e pixel apresentaram uma introdução sobre o conceito e parâmetros de análise de  qualidade d’água. Giovanny Vera abordou temas de jornalismo cidadão para oferecer informação e treinamento no uso de novas tecnologias para a construção de histórias e notícias geradas por eles mesmos e em suas comunidades."
 msgstr ""
 
 #: public/views/admin/sensors-edit.html:1
@@ -364,12 +414,16 @@ msgstr ""
 msgid "Eu já tenho uma conta"
 msgstr ""
 
+#: public/views/index.html:1
+msgid "FAQ"
+msgstr ""
+
 #: public/views/pages/mae-dagua.html:1
 msgid "Firmware: Em eletrônica e computação, o firmware é o conjunto de instruções operacionais programadas diretamente no hardware de equipamentos eletrônicos."
 msgstr ""
 
-#: public/views/pages/mae-dagua.html:1
-msgid "Fonte de energia: energia elétrica bivolt ou bateria recarregável ligada a painel solar."
+#: public/views/pages/network.html:1
+msgid "Foram realizados dois ciclos de atividades de mobilização e formação sobre tecnologias livres e comunicação cidadã entre março e outubro de 2015."
 msgstr ""
 
 #: public/views/pages/network.html:1
@@ -422,10 +476,6 @@ msgstr ""
 msgid "Informações atualizadas!"
 msgstr ""
 
-#: public/views/pages/mae-dagua.html:1
-msgid "Instalação: A instalação é simples, não requer conhecimentos específicos."
-msgstr ""
-
 #: public/views/pages/press.html:1
 msgid "International Center for Journalists"
 msgstr ""
@@ -453,10 +503,6 @@ msgstr ""
 
 #: public/views/sensor/report.html:1
 msgid "Longitude: {{sensor.geometry.coordinates[0]}}"
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid "Manutenção: As ponteiras dos sensores devem ser limpas periodicamente para evitar acumulo de resíduos que podem afetar as leituras."
 msgstr ""
 
 #: public/views/home.html:1
@@ -488,14 +534,6 @@ msgstr ""
 msgid "Minha conta"
 msgstr ""
 
-#: public/views/index.html:1
-msgid "Monitoramento"
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid "Monitoramento em tempo real: A coleta de dados é feita automaticamente a cada hora, as leituras são enviadas via rede 2G ou 3G para o servidor do site rede.infoamazonia.org"
-msgstr ""
-
 #: src/js/directives.js:343
 msgid "Máxima"
 msgstr ""
@@ -522,6 +560,10 @@ msgstr ""
 msgid "Na Amazônia Legal, 60% das residências são atendidas pela rede geral de água. A média nacional é de 82,7%."
 msgstr ""
 
+#: public/views/pages/network.html:1
+msgid "No dia 23 de outubro de 2015, Gustavo Faleiros ministrou uma oficina de Jornalismo Cidadão. Os participantes aprenderam a produzir conteúdo informativo a partir de questões das próprias comunidades, como fazer coberturas e levantamento de informação com celulares, a alimentação jornalística de redes sociais, a produção e edição de conteúdo multimídia (vídeos, áudios, fotos, mapas e transmissões ao vivo), além da publicação para web."
+msgstr ""
+
 #: public/views/admin/sensors-edit.html:1
 #: public/views/admin/sensors.html:1
 #: public/views/admin/users-edit.html:1
@@ -545,24 +587,32 @@ msgstr ""
 msgid "Novo usuário"
 msgstr ""
 
+#: public/views/pages/faq.html:1
+msgid "O Mãe d'Água está sendo testado no projeto Rede InfoAmazonia. Nesse momento, não há intenção do projeto de comercializar o equipamento. É hardware livre, e os arquivos necessários para produção estão disponíveis em:"
+msgstr ""
+
 #: public/views/sensor/report.html:1
 msgid "O Mãe d´Água possui funcionalidades de medição de acidez da água pelo potencial hidrogeniônico (pH), potencial de redução da oxidação (ORP), condutividade elétrica, temperatura da água e pressão barométrica no nível da água, variáveis que auxiliam na inferência da qualidade da água para consumo humano."
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
-msgid "O Mãe d´Água será capaz de monitorar parâmetros físico-químicos importantes que ajudam a indicar se a água é potável ou está contaminada. De hora em hora serão realizadas leituras das seguintes variáveis: acidez (pH), potencial de redução da oxidação (ORP), condutividade elétrica, temperatura e pressão barométrica no nível da água. O objetivo das medições é detectar variações que indiquem contaminação."
+msgid "O Mãe d´Água produzido utilizando tecnologias livres. As informações necessárias para produção estão disponíveis em:"
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid "O Mãe d´Água é capaz de monitorar parâmetros físico-químicos importantes que ajudam a indicar se a água é potável ou está contaminada. O dispositivo faz leituras das seguintes variáveis: acidez (pH),"
 msgstr ""
 
 #: public/views/pages/about.html:1
-msgid "O desenvolvimento dos sensores é realizado em parceria com a rede norte-americanao de ciência cidadã Public Lab e a a start-up Dev Tecnologia, empresa incubada na Universidade de São Paulo."
+msgid "O desenvolvimento dos sensores foi realizado em parceria com a start-up <a href=\"http://devtecnologia.com.br\" rel=\"external\" target=\"_blank\">Dev Tecnologia</a>, empresa incubada na Universidade de São Paulo, e com ajuda da rede internacional de ciência cidadã <a href=\"https://publiclab.org/\" rel=\"external\" target=\"_blank\">Public Lab</a>."
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
 msgid "O hardware foi projetado em plataforma (Eagle) e licenças abertas, de forma modular:"
 msgstr ""
 
-#: public/views/pages/mae-dagua.html:1
-msgid "O hardware livre de monitoramento de qualidade da água em tempo real desenvolvido pelo projeto Rede InfoAmazonia foi batizado de \"Mãe d'Água\". Inspirado no Riffle, o dispositivo é resultado da colaboração da equipe do projeto com a redeo grupo norte-americanao de ciência cidadã Public Lab e a start-up Dev Tecnologia, empresa incubada na Universidade de São Paulo."
+#: public/views/pages/about.html:1
+msgid "O hardware, chamado \"Mãe d'Água\", pode ser instalado em caixas d´água, cisternas e águas superficiais de mananciais menores, e com ele é possível detectar possíveis alterações de características da água provenientes de despejo inadequado de resíduos domésticos, industriais e metais pesados. Os resultados das análises ajudam a distinguir a água potável de água contaminada."
 msgstr ""
 
 #: public/views/sensor/report.html:1
@@ -577,25 +627,37 @@ msgstr ""
 msgid "O projeto Rede InfoAmazonia desenvolveu um hardware aberto de monitoramento de qualidade da água em tempo real, o \"Mãe d'Água\". O objetivo projeto é detectar possíveis alterações provenientes de despejo inadequado de resíduos domésticos, industriais e metais pesados em caixas d´água, cisternas e águas superficiais de mananciais menores na região amazônica. Os resultados ajudam a distinguir a água potável de água contaminada."
 msgstr ""
 
-#: public/views/pages/about.html:1
-msgid "O projeto Rede InfoAmazonia visa desenvolver um sistema de monitoramento de baixo custo para analisar a qualidade da água para consumo humano, e estabelecer uma rede de monitoramento em articulação com comunidades da Amazônia brasileira, para apresentar em tempo real os resultados das análises na plataforma InfoAmazonia e enviar alertas aos consumidores através de SMS."
+#: public/views/pages/mae-dagua.html:1
+msgid "O projeto Rede InfoAmazonia desenvolveu um hardware livre de monitoramento de qualidade da água em tempo real, que foi batizado como “Mãe d'Água\". Inspirado no <a href=\"http://publiclab.org/wiki/riffle\" rel=\"external\" target=\"_blank\">Riffle</a>, o dispositivo é resultado da colaboração da equipe do projeto com a rede norte-americana de ciência cidadã <a href=\"http://publiclab.org/\" rel=\"external\" target=\"_blank\">Public Lab </a>e a start-up <a href=\"http://devtecnologia.com.br/sobre/quem-somos/\" rel=\"external\" target=\"_blank\">Dev Tecnologia</a>, empresa incubada na Universidade de São Paulo."
 msgstr ""
 
 #: public/views/pages/about.html:1
-msgid "O projeto foi um dos ganhadores do Desafio de Impacto Social do Google em 2014, junto a outras 9 ideias apresentadas por ONGs de todo o Brasil."
+msgid "O projeto Rede InfoAmazonia desenvolveu um sistema de monitoramento de baixo custo para analisar a qualidade da água para consumo humano, e estabeleceu uma rede de monitoramento em articulação com comunidades da Amazônia brasileira, para apresentar em tempo real os resultados das análises na plataforma InfoAmazonia e enviar alertas aos consumidores através de SMS."
+msgstr ""
+
+#: public/views/pages/about.html:1
+msgid "O projeto foi um dos premiados do <a href=\"https://desafiosocial.withgoogle.com/brazil2014\" rel=\"external\" target=\"_blank\">Desafio de Impacto Social do Google em 2014</a>, junto a outras 9 ideias apresentadas por ONGs de todo o Brasil."
 msgstr ""
 
 #: public/views/pages/press.html:1
 msgid "Observatório de UCs da WWF-Brasil"
 msgstr ""
 
+#: public/views/pages/network.html:1
+msgid "Os microssistemas coletivos captam água diretamente dos lençóis freáticos através de poços profundos. Entre os pontos de monitoramento selecionados, apenas o sensor # Zona Urbana de Belterra analisa a água em seu ponto final de distribuição. Em todos os outros a análise é feita no ponto de captação."
+msgstr ""
+
 #: public/views/pages/mae-dagua.html:1
+msgid "Os resultados são acessíveis através deste site e alertam sobre possível contaminação."
+msgstr ""
+
 #: public/views/sensor/report.html:1
 msgid "Os resultados são acessíveis através do site rede.infoamazonia.org e alertam sobre possível contaminação."
 msgstr ""
 
+#: public/views/index.html:1
 #: public/views/pages/mae-dagua.html:1
-msgid "Parâmetros monitorados: pH, temperatura, condutividade elétrica, potencial de redução da oxidação (ORP) e pressão barométrica no nível da água"
+msgid "Parâmetros monitorados"
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
@@ -620,18 +682,10 @@ msgstr ""
 msgid "Próxima página"
 msgstr ""
 
-#: public/views/pages/press.html:1
-msgid "Public Lab"
-msgstr ""
-
 #: public/views/admin/sensors-measurements.html:1
 #: public/views/admin/sensors.html:1
 #: public/views/admin/users.html:1
 msgid "Página anterior"
-msgstr ""
-
-#: public/views/index.html:1
-msgid "Qualidade da água"
 msgstr ""
 
 #: public/views/sensor.html:1
@@ -646,6 +700,11 @@ msgstr ""
 msgid "Receba atualizações deste sensor"
 msgstr ""
 
+#: public/views/index.html:1
+msgid "Rede"
+msgstr ""
+
+#: public/views/index.html:1
 #: public/views/pages/network.html:1
 msgid "Rede de monitoramento"
 msgstr ""
@@ -669,9 +728,8 @@ msgstr ""
 msgid "Repetir senha"
 msgstr ""
 
-#: public/views/index.html:1
 #: public/views/pages/network.html:1
-msgid "Resultados"
+msgid "Saiba mais sobre como está a qualidade da água em cada local. A periodicidade de atualização do monitoramento pode variar em função do fornecimento de energia elétrica para acionar o equipamento Mãe d´Água. As análises estão disponíveis para visualização e download."
 msgstr ""
 
 #: public/views/index.html:1
@@ -754,6 +812,10 @@ msgstr ""
 msgid "Temperatura"
 msgstr ""
 
+#: public/views/pages/network.html:1
+msgid "Tendo em vista a importância do abastecimento através de sistemas alternativos, o projeto priorizou o monitoramento de microssistemas coletivos implantados através de parcerias  e geridos pela própria comunidade, com especial destaque às populações que moram em unidades de conservação e uso sustentável. É importante destacar que no estado do Pará apenas 47,92% das residências são atendidas pela rede pública de abastecimento, e que 36,78% dos domicílios particulares permanentes são servidos por água proveniente de poço ou nascente. <a href=\"http://visaguas.infoamazonia.org/\" rel=\"external\" target=\"_blank\">Saiba mais sobre Abastecimento e Doenças na Amazônia</a>"
+msgstr ""
+
 #: public/views/admin/sensors-edit.html:1
 msgid "URL da imagem"
 msgstr ""
@@ -801,10 +863,6 @@ msgstr ""
 
 #: public/views/pages/press.html:1
 msgid "Vice"
-msgstr ""
-
-#: public/views/index.html:1
-msgid "Visualização dos dados"
 msgstr ""
 
 #: public/views/account-sensors.html:1
@@ -880,10 +938,6 @@ msgstr ""
 #: public/views/admin/index.html:1
 #: public/views/index.html:1
 msgid "Área administrativa"
-msgstr ""
-
-#: public/views/index.html:1
-msgid "Índice de qualidade"
 msgstr ""
 
 #: src/js/controllers.js:363

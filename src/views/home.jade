@@ -17,20 +17,16 @@ section#home.anti-row
 				.details
 					.about-text(ng-show="aboutText == 'sensor'")
 						.image(style="background-image:url(/img/sensor.png);")
-						p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo sollicitudin ornare. 
-							a(href="#") Donec sem dolor
-							| , convallis at interdum et, accumsan imperdiet ex. Vestibulum feugiat id felis a vehicula. Aenean libero nisl, luctus vel nibh vel, maximus tristique odio. 
+						p Equipamentos capazes de monitorar parâmetros físico-químicos que ajudam a indicar se a água está contaminada 
 					.about-text(ng-show="aboutText == 'sim'")
 						.image(style="background-image:url(/img/sim.png)")
-						p Donec sem dolor, convallis at interdum et, accumsan imperdiet ex. 
-							a(href="#") Vestibulum feugiat 
-							| id felis a vehicula. Aenean libero nisl, luctus vel nibh vel, maximus tristique odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo sollicitudin ornare.
+						p São enviadas atualizações de hora em hora via rede 2G com as leituras dos dados para o site do Rede InfoAmazonia
 					.about-text(ng-show="aboutText == 'water'")
 						.image(style="background-image:url(/img/water.png)")
-						p Vestibulum feugiat id felis a vehicula. Aenean libero nisl, luctus vel nibh vel, maximus tristique odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo sollicitudin ornare. Donec sem dolor, convallis at interdum et, accumsan imperdiet ex.
+						p São monitorados parâmetros que ajudam a indicar a presença de contaminantes químicos e biológicos, para que possamos alertar a população
 					.about-text(ng-show="aboutText == 'forest'")
 						.image(style="background-image:url(/img/forest.png)")
-						p Aenean libero nisl, luctus vel nibh vel, maximus tristique odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo sollicitudin ornare. Donec sem dolor, convallis at interdum et, accumsan imperdiet ex. Vestibulum feugiat id felis a vehicula.
+						p Em sua fase piloto, a rede de sensores está sendo implementada em três cidades do Pará e uma do Amazonas
 	#sensors-map
 		.sensor-map-container(ng-controller="MapCtrl")
 			leaflet#map(center="map.center" layers="map.layers" legend="legend" markers="markers" defaults="map.options")

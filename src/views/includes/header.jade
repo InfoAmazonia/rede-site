@@ -14,32 +14,29 @@ header#masthead.row
 							li
 								a(ui-sref="press" translate) Imprensa
 					li
+						a(ui-sref="network" translate) Rede
+						ul
+							li
+								a(ui-sref="network" translate) Rede de monitoramento
+							li
+								a(ui-sref="network({'#': 'formacao'})" translate) Formação da rede
+							li
+								a(ui-sref="network({'#': 'atividades'})" translate) Atividades de formação
+							//- li
+							//- 	a(ui-sref="network({'#': 'resultados'})" translate) Resultados
+					li
 						a(ui-sref="maedagua" translate) Mãe D'Água
 						ul
 							li
 								a(ui-sref="maedagua({'#': 'tecnicos'})" translate) Aspectos ténicos
 							li
-								a(ui-sref="maedagua({'#': 'qualidade'})" translate) Qualidade da água
+								a(ui-sref="maedagua({'#': 'parametros'})" translate) Parâmetros monitorados
 							li
 								a(ui-sref="maedagua({'#': 'desenvolvimento'})" translate) Desenvolvimento
 							li
 								a(ui-sref="maedagua({'#': 'limitacoes'})" translate) Limitações
 					li
-						a(ui-sref="aboutData" translate) Dados
-						ul
-							li
-								a(ui-sref="aboutData({'#': 'iqa'})" translate) Índice de qualidade
-							li
-								a(ui-sref="aboutData({'#': 'visualizao'})" translate) Visualização dos dados
-					li
-						a(ui-sref="network" translate) Monitoramento
-						ul
-							li
-								a(ui-sref="network({'#': 'formacao'})" translate) Formação da rede
-							li
-								a(ui-sref="network({'#': 'atividades'})" translate) Atividades de formação
-							li
-								a(ui-sref="network({'#': 'resultados'})" translate) Resultados
+						a(ui-sref="faq" translate) FAQ
 					li(ng-controller="AuthCtrl")
 						a(ui-sref="login" ng-hide="token" translate) Entrar
 						a(ui-sref="account" ng-show="token") 

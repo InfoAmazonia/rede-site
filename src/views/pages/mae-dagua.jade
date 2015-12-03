@@ -3,18 +3,26 @@
     .container
       .nine.columns
         h2(translate) Mãe D'Água
-        p(translate) O hardware livre de monitoramento de qualidade da água em tempo real desenvolvido pelo projeto Rede InfoAmazonia foi batizado de "Mãe d'Água". Inspirado no Riffle, o dispositivo é resultado da colaboração da equipe do projeto com a redeo grupo norte-americanao de ciência cidadã Public Lab e a start-up Dev Tecnologia, empresa incubada na Universidade de São Paulo.
+        p(translate) O projeto Rede InfoAmazonia desenvolveu um hardware livre de monitoramento de qualidade da água em tempo real, que foi batizado como “Mãe d'Água". Inspirado no 
+          a(href="http://publiclab.org/wiki/riffle" rel="external" target="_blank") Riffle
+          | , o dispositivo é resultado da colaboração da equipe do projeto com a rede norte-americana de ciência cidadã 
+          a(href="http://publiclab.org/" rel="external" target="_blank") Public Lab 
+          | e a start-up 
+          a(href="http://devtecnologia.com.br/sobre/quem-somos/" rel="external" target="_blank") Dev Tecnologia
+          | , empresa incubada na Universidade de São Paulo.
   .container
     .six.columns.offset-by-three
 
-      p(translate) O Mãe d´Água será capaz de monitorar parâmetros físico-químicos importantes que ajudam a indicar se a água é potável ou está contaminada. De hora em hora serão realizadas leituras das seguintes variáveis: acidez (pH), potencial de redução da oxidação (ORP), condutividade elétrica, temperatura e pressão barométrica no nível da água. O objetivo das medições é detectar variações que indiquem contaminação.
+      p(translate) O Mãe d´Água é capaz de monitorar parâmetros físico-químicos importantes que ajudam a indicar se a água é potável ou está contaminada. O dispositivo faz leituras das seguintes variáveis: acidez (pH), 
+      a(href="https://pt.wikipedia.org/wiki/Potencial_de_redu%C3%A7%C3%A3o" rel="external" target="_blank") potencial de redução da oxidação (ORP)
+      | , condutividade elétrica, temperatura e pressão barométrica no nível da água. São essas medições as que permitem detectar variações que indicam contaminação.
 
-      p(translate) As leituras das variáveis serão enviadas para um servidor remoto de hora em hora. A partir do último trimestre de 2015 as análises e a base de dados estarão acessíveis no site do Rede InfoAmazonia. Além da informação disponível do site, os interessados poderão se cadastrar para receber alertas SMS sobre qualidade da água em sua comunidade.
+      p(translate) As leituras das variáveis são enviadas para um servidor remoto de hora em hora. Além da informação disponível do site, os interessados podem se cadastrar para receber alertas SMS sobre qualidade da água em sua comunidade.
 
       p(translate) Em caso de alterações na água, serão realizadas análises em laboratório para confirmar e obter maiores informações.
       
-      p
-        a.button(href="#" translate) Baixar manual
+      //- p
+      //-   a.button(href="#" translate) Baixar manual
 
   .page-section#tecnicos
     .container
@@ -22,13 +30,46 @@
         h2(translate) Aspectos técnicos
       .six.columns
         ul
-          li(translate) Parâmetros monitorados: pH, temperatura, condutividade elétrica, potencial de redução da oxidação (ORP) e pressão barométrica no nível da água
-          li(translate) Aplicação: o equipamento poderá ser utilizado para monitoramento da qualidade da água em caixas d´água, cisternas, reservatórios, corpos de água superficial com baixa vazão.
-          li(translate) Monitoramento em tempo real: A coleta de dados é feita automaticamente a cada hora, as leituras são enviadas via rede 2G ou 3G para o servidor do site rede.infoamazonia.org
-          li(translate) Instalação: A instalação é simples, não requer conhecimentos específicos.
-          li(translate) Calibração: A calibração dos sensores deve ser feita a cada três meses.
-          li(translate) Fonte de energia: energia elétrica bivolt ou bateria recarregável ligada a painel solar.
-          li(translate) Manutenção: As ponteiras dos sensores devem ser limpas periodicamente para evitar acumulo de resíduos que podem afetar as leituras. 
+          li(translate) 
+            strong Parâmetros monitorados: 
+            | pH, temperatura, condutividade elétrica, potencial de redução da oxidação (ORP) e pressão barométrica no nível da água.
+          li(translate) 
+            strong Aplicação: 
+            | o equipamento é utilizado para monitoramento da qualidade da água em caixas d´água, cisternas, reservatórios, corpos de água superficial com baixa vazão.
+          li(translate) 
+            strong Monitoramento em tempo real: 
+            | A coleta de dados é feita automaticamente a cada hora, e as leituras são enviadas via rede 2G para o servidor do site rede.infoamazonia.org.
+          li(translate) 
+            strong Instalação: 
+            | A instalação é simples, não requer conhecimentos específicos.
+          li(translate) 
+            strong Calibração: 
+            | A calibração dos sensores deve ser feita a cada três meses.
+          li(translate) 
+            strong Fonte de energia: 
+            | energia elétrica bivolt ou bateria recarregável ligada a painel solar.
+          li(translate) 
+            strong Manutenção: 
+            | As ponteiras dos sensores devem ser limpas periodicamente para evitar acúmulo de resíduos que podem afetar as leituras.
+          
+  .page-section#parametros
+    .container
+      .three.columns
+        h2(translate) Parâmetros monitorados
+      .six.columns
+        ul
+          li(translate)
+            strong Condutividade elétrica: 
+            | É a capacidade da água de conduzir eletricidade. Indica minerais dissolvidos ou clorídeos na água. Minerais dissolvidos podem comprometer a utilização da água para uso doméstico.
+          li(translate)
+            strong Potencial hidrogeniônico (pH): 
+            | O pH normal deve variar entre 6 e 9, este índice pode ser alterado por conta da poluição.
+          li(translate)
+            strong Temperatura: 
+            | A temperatura é um elemento que influencia características físicas e químicas da água, como sua densidade e capacidade de reter oxigênio dissolvido.
+          li(translate)
+            strong Potencial de redução da oxidação (ORP): 
+            | O potencial de redução da oxidação ajuda a indicar a possibilidade de haverem micro-organismos presentes na água.
 
   .page-section#desenvolvimento
     .container
@@ -55,16 +96,22 @@
           li(translate) Arduíno Mega: Placa com microcontrolador utilizada para controlar o sistema.
           li(translate) Shield: É uma placaque recebe as leituras físico-químicas ambientais para análise de qualidade da água.
           li(translate) Firmware: Em eletrônica e computação, o firmware é o conjunto de instruções operacionais programadas diretamente no hardware de equipamentos eletrônicos.
+          
+        p(translate) O Mãe d´Água produzido utilizando tecnologias livres. As informações necessárias para produção estão disponíveis em:
+        
+        ul
+          li
+            a(href="https://github.com/InfoAmazonia/rede-hardware" rel="external" target="_blank") https://github.com/InfoAmazonia/rede-hardware (hardware)
+          li
+            a(href="https://github.com/InfoAmazonia/rede-firmware" rel="external" target="_blank") https://github.com/InfoAmazonia/rede-hardware (firmware)
 
   .page-section#limitacoes
     .container
       .three.columns
         h2(translate) Limitações
       .six.columns
-        p(translate) Devido ao caráter de medição em tempo real, os resultados são considerados provisórios e não conclusivos, são sujeitos a equívocos e incertezas. Os dados podem conter valores inexatos devido a mal funcionamento do equipamento. Eventualmente os equipamentos serão desconectados para manutenção. 
+        p(translate) Devido ao caráter de medição em tempo real, os resultados são considerados provisórios e não conclusivos, e são sujeitos a equívocos e incertezas. Os dados podem conter valores inexatos devido a mal funcionamento do equipamento. Eventualmente os equipamentos serão desconectados para manutenção.
 
-        p(translate) Os resultados são acessíveis através do site rede.infoamazonia.org e alertam sobre possível contaminação. 
+        p(translate) Os resultados são acessíveis através deste site e alertam sobre possível contaminação.
 
-        p(translate) Cabe ressaltar, também, a importância da avaliação de outros parâmetros importantes da qualidade da água para consumo humano, tais como Oxigênio Dissolvido, Coliformes termotolerantes e análise microbiológica da água, com relação à presença de parasitas, vírus, e bactérias.
-
-        p(translate) A comprovação das condições da qualidade da água deve ser feita através de testes que analisam outros parâmetros como a qualidade microbiológica, para parasitas e vírus, além de bactérias.
+        p(translate) Cabe ressaltar, também, a importância da avaliação de outros parâmetros importantes da qualidade da água para consumo humano, tais como oxigênio dissolvido, coliformes termotolerantes e análise microbiológica da água, com relação à presença de parasitas, vírus e bactérias.
