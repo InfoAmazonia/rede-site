@@ -1,11 +1,12 @@
 # 
 # Translators:
+# GINA LEITE <gina@memelab.com.br>, 2015
 # Miguel Peixe <miguspeixe@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Site Rede InfoAmazonia\n"
-"PO-Revision-Date: 2015-10-14 15:28+0000\n"
-"Last-Translator: Miguel Peixe <miguspeixe@gmail.com>\n"
+"PO-Revision-Date: 2015-12-04 00:12+0000\n"
+"Last-Translator: GINA LEITE <gina@memelab.com.br>\n"
 "Language-Team: English (http://www.transifex.com/infoamazonia/site-rede-infoamazonia/language/en/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,51 +15,55 @@ msgstr ""
 
 #: public/views/pages/press.html:1
 msgid "01 de maio de 2014"
-msgstr ""
+msgstr "May 1, 2014"
 
 #: public/views/pages/press.html:1
 msgid "06 de junho de 2015"
-msgstr ""
+msgstr "June 6, 2015"
 
 #: public/views/pages/press.html:1
 msgid "06 de março de 2015"
-msgstr ""
+msgstr "March 6, 2015"
 
 #: public/views/pages/press.html:1
 msgid "10 de abril de 2015"
-msgstr ""
+msgstr "April 10, 2015"
 
 #: public/views/pages/press.html:1
 msgid "11 de junho de 2015"
-msgstr ""
+msgstr "June 11, 2015"
 
 #: public/views/pages/press.html:1
 msgid "12 de setembro de 2014"
-msgstr ""
+msgstr "September 12, 2014"
 
 #: public/views/pages/press.html:1
 msgid "14 de novembro de 2014"
-msgstr ""
+msgstr "November 14, 2014"
 
 #: public/views/pages/press.html:1
 msgid "17 de abril de 2015"
-msgstr ""
+msgstr "April 17, 2015"
 
 #: public/views/pages/press.html:1
 msgid "20 de outubro de 2014"
-msgstr ""
+msgstr "October 20, 2014"
+
+#: public/views/pages/press.html:1
+msgid "24 de novembro de 2015"
+msgstr "November 24, 2015"
 
 #: public/views/pages/press.html:1
 msgid "26 de fevereiro de 2015"
-msgstr ""
+msgstr "February 26, 2015"
 
 #: public/views/pages/press.html:1
 msgid "30 de Abril de 2015"
-msgstr ""
+msgstr "April 30, 2015"
 
 #: public/views/pages/press.html:1
 msgid "30 de abril de 2014"
-msgstr ""
+msgstr "April 30, 2014"
 
 #: public/views/pages/press.html:1
 msgid ""
@@ -66,7 +71,7 @@ msgid ""
 "dispositivo-open-source-para-medir-qualidade-da-agua-na-amazonia-43127/\" "
 "target=\"_blank\" rel=\"external\">Rede desenvolve dispositivo open-source "
 "para medir qualidade da água na Amazônia</a>"
-msgstr ""
+msgstr "<a href=\"http://canaltech.com.br/noticia/ciencia/rede-desenvolve-dispositivo-open-source-para-medir-qualidade-da-agua-na-amazonia-43127/\" target=\"_blank\" rel=\"external\">Network develops open-source device to monitor water quality in the Amazon</a>"
 
 #: public/views/pages/press.html:1
 msgid ""
@@ -74,7 +79,7 @@ msgid ""
 "capacita-ribeirinhos-para-monitorar-qualidade-da-agua-no-pa.html\" "
 "target=\"_blank\" rel=\"external\">Moradores são capacitados para monitorar "
 "qualidade da água no PA</a>"
-msgstr ""
+msgstr "<a href=\"http://g1.globo.com/pa/santarem-regiao/noticia/2015/03/projeto-capacita-ribeirinhos-para-monitorar-qualidade-da-agua-no-pa.html\" target=\"_blank\" rel=\"external\">Citizens are trained to monitor water quality in PA</a>"
 
 #: public/views/pages/press.html:1
 msgid ""
@@ -82,7 +87,7 @@ msgid ""
 "fast-urbanizing-amazon-cities\" target=\"_blank\" rel=\"external\">Using "
 "sensors to test and report on water quality in fast-urbanizing Amazon cities"
 " </a>"
-msgstr ""
+msgstr "<a href=\"http://ijnet.org/blog/using-sensors-test-and-report-water-quality-fast-urbanizing-amazon-cities\" target=\"_blank\" rel=\"external\">Using sensors to test and report on water quality in fast-urbanizing Amazon cities </a>"
 
 #: public/views/pages/press.html:1
 msgid ""
@@ -90,7 +95,7 @@ msgid ""
 "sensores-vai-monitorar-qualidade-dagua-das-comunidades-na-amazonia/\" "
 "target=\"_blank\" rel=\"external\">Rede de sensores vai monitorar qualidade "
 "d’água das comunidades na Amazônia</a>"
-msgstr ""
+msgstr "<a href=\"http://infoamazonia.blogosfera.uol.com.br/2015/02/26/rede-de-sensores-vai-monitorar-qualidade-dagua-das-comunidades-na-amazonia/\" target=\"_blank\" rel=\"external\">Sensors network will monitor water quality consumed by communities in the Amazon</a>"
 
 #: public/views/pages/press.html:1
 msgid ""
@@ -98,7 +103,7 @@ msgid ""
 "faz-oficinas-com-ribeirinhos-na-regiao-do-tapajos/\" target=\"_blank\" "
 "rel=\"external\">InfoAmazônia faz oficinas com ribeirinhos na região do "
 "Tapajós</a>"
-msgstr ""
+msgstr "<a href=\"http://infoamazonia.blogosfera.uol.com.br/2015/04/10/infoamazonia-faz-oficinas-com-ribeirinhos-na-regiao-do-tapajos/\" target=\"_blank\" rel=\"external\">InfoAmazônia organize workshops with riverine communities of Tapajós River</a>"
 
 #: public/views/pages/press.html:1
 msgid ""
@@ -106,7 +111,15 @@ msgid ""
 "infoamazonia-cria-o-mae-dagua-para-monitorar-a-qualidade-dagua/\" "
 "target=\"_blank\" rel=\"external\">Rede InfoAmazonia cria o “Mãe d’Água” "
 "para monitorar a qualidade d’água</a>"
-msgstr ""
+msgstr "<a href=\"http://infoamazonia.blogosfera.uol.com.br/2015/07/06/rede-infoamazonia-cria-o-mae-dagua-para-monitorar-a-qualidade-dagua/\" target=\"_blank\" rel=\"external\">Rede InfoAmazonia creates “Mãe d’Água” to monitor water quality </a>"
+
+#: public/views/pages/press.html:1
+msgid ""
+"<a href=\"http://infoamazonia.blogosfera.uol.com.br/2015/11/24/comunidades-"
+"do-rio-tapajos-passam-a-monitorar-qualidade-dagua-com-sensor/\" "
+"target=\"_blank\" rel=\"external\">Comunidades do rio Tapajós passam a "
+"monitorar qualidade d’água com sensor</a>"
+msgstr "<a href=\"http://infoamazonia.blogosfera.uol.com.br/2015/11/24/comunidades-do-rio-tapajos-passam-a-monitorar-qualidade-dagua-com-sensor/\" target=\"_blank\" rel=\"external\">Tapajos riverside communities begin to monitor quality da'água with sensor</a>"
 
 #: public/views/pages/press.html:1
 msgid ""
@@ -114,7 +127,7 @@ msgid ""
 "de-encontro-sobre-monitoramento-ambiental-por-comunidades/\" "
 "target=\"_blank\" rel=\"external\">Hackers unidos para criar aplicativos e "
 "sensores sobre qualidade d´água</a>"
-msgstr ""
+msgstr "<a href=\"http://infoamazonia.org/pt/blog/portugues-infoamazonia-participa-de-encontro-sobre-monitoramento-ambiental-por-comunidades/\" target=\"_blank\" rel=\"external\">Hhackers united to create applications and sensors on water quality</a>"
 
 #: public/views/pages/press.html:1
 msgid ""
@@ -122,7 +135,7 @@ msgid ""
 "de-encontro-sobre-monitoramento-ambiental-por-comunidades/\" "
 "target=\"_blank\" rel=\"external\">InfoAmazonia participa de encontro sobre "
 "monitoramento ambiental por comunidades</a>"
-msgstr ""
+msgstr "<a href=\"http://infoamazonia.org/pt/blog/portugues-infoamazonia-participa-de-encontro-sobre-monitoramento-ambiental-por-comunidades/\" target=\"_blank\" rel=\"external\">InfoAmazonia participates in meeting on community environmental monitoring</a>"
 
 #: public/views/pages/press.html:1
 msgid ""
@@ -130,7 +143,7 @@ msgid ""
 "descobrir-a-qualidade-da-agua-no-norte-do-brasil\" target=\"_blank\" "
 "rel=\"external\">A Rede InfoAmazônia Quer Monitorar a Qualidade da Água no "
 "Norte do Brasil</a>"
-msgstr ""
+msgstr "<a href=\"http://motherboard.vice.com/pt_br/read/a-rede-infoamazonia-quer-descobrir-a-qualidade-da-agua-no-norte-do-brasil\" target=\"_blank\" rel=\"external\">Rede InfoAmazônia Network Wants to Monitor Water Quality in Northern Brazil</a>"
 
 #: public/views/pages/press.html:1
 msgid ""
@@ -138,7 +151,7 @@ msgid ""
 "colocara-sensores-baratos-de-qualidade-dagua-na-amazonia1/\" "
 "target=\"_blank\" rel=\"external\">Projeto pioneiro colocará sensores "
 "baratos de qualidade d’água na Amazônia</a>"
-msgstr ""
+msgstr "<a href=\"http://observatorio.wwf.org.br/blog/2015/04/30/projeto-pioneiro-colocara-sensores-baratos-de-qualidade-dagua-na-amazonia1/\" target=\"_blank\" rel=\"external\">Pioneering project to put economic water sensors quality in the Amazon</a>"
 
 #: public/views/pages/press.html:1
 msgid ""
@@ -146,20 +159,14 @@ msgid ""
 "oficinas-de-monitoramento-de-qualidade-da-agua-a-regiao-do-tapajos/\" "
 "target=\"_blank\" rel=\"external\">InfoAmazônia leva oficinas de "
 "monitoramento de qualidade da água à região do Tapajós</a>"
-msgstr ""
-
-#: public/views/pages/press.html:1
-msgid ""
-"<a href=\"http://publiclab.org/wiki/mae-d-agua-rede-infoamazonia\" "
-"target=\"_blank\" rel=\"external\">Mãe d’Água – Rede InfoAmazonia</a>"
-msgstr ""
+msgstr "<a href=\"http://pt.globalvoicesonline.org/2015/04/17/infoamazonia-leva-oficinas-de-monitoramento-de-qualidade-da-agua-a-regiao-do-tapajos/\" target=\"_blank\" rel=\"external\">InfoAmazônia brings water quality monitoring workshops in the Tapajos region</a>"
 
 #: public/views/pages/press.html:1
 msgid ""
 "<a href=\"http://www.icfj.org/news/infoamazonia-finalist-google-social-"
 "impact-challenge-brazil\" target=\"_blank\" rel=\"external\">InfoAmazonia is"
 " a Finalist of the Google Social Impact Challenge in Brazil</a>"
-msgstr ""
+msgstr "<a href=\"http://www.icfj.org/news/infoamazonia-finalist-google-social-impact-challenge-brazil\" target=\"_blank\" rel=\"external\">InfoAmazonia is Finalist of the Google Social Impact Challenge in Brazil</a>"
 
 #: public/views/index.html:1
 msgid "<span>Rede</span>InfoAmazonia"
@@ -167,10 +174,55 @@ msgstr "<span>Rede</span>InfoAmazonia"
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
+"<strong>Aplicação: </strong>o equipamento é utilizado para monitoramento da "
+"qualidade da água em caixas d´água, cisternas, reservatórios, corpos de água"
+" superficial com baixa vazão."
+msgstr "<strong>oApplication: </strong> the equipment is used for monitoring water quality in water tanks, cisterns, tanks, surface water bodies with low flow."
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"<strong>Calibração: </strong>A calibração dos sensores deve ser feita a cada"
+" três meses."
+msgstr "<strong>Calibration: </strong> Calibration of the sensors should be done every three months."
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"<strong>Condutividade elétrica: </strong>É a capacidade da água de conduzir "
+"eletricidade. Indica minerais dissolvidos ou clorídeos na água. Minerais "
+"dissolvidos podem comprometer a utilização da água para uso doméstico."
+msgstr "<strong>Electrical conductivity: </strong> it is the water's ability to conduct electricity. It can indicate clorídeos or mineral dissolved in water. Dissolved minerals can compromise the use of water for domestic use. "
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"<strong>Fonte de energia: </strong>energia elétrica bivolt ou bateria "
+"recarregável ligada a painel solar."
+msgstr "<strong>Power source: </strong> electric power multi-voltage or rechargeable battery connected to solar panel."
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"<strong>Instalação: </strong>A instalação é simples, não requer "
+"conhecimentos específicos."
+msgstr "<strong>Installation:  </strong>Installation is simple, requires no special knowledge."
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"<strong>Manutenção: </strong>As ponteiras dos sensores devem ser limpas "
+"periodicamente para evitar acúmulo de resíduos que podem afetar as leituras."
+msgstr "<strong>Maintenance: </strong>The tips of the sensors must be cleaned regularly to avoid accumulation of waste that may affect readings."
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"<strong>Monitoramento em tempo real: </strong>A coleta de dados é feita "
+"automaticamente a cada hora, e as leituras são enviadas via rede 2G para o "
+"servidor do site rede.infoamazonia.org."
+msgstr "<strong>Real-time monitoring: </strong>Data collection is done automatically every hour, and the readings are sent via 2G network to the site server. rede.infoamazonia.org"
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
 "<strong>Módulo 1 (M1): </strong>composto por um Arduino Mega, responsável "
 "por todo o processamento das informações capturadas pelos sensores e pela "
 "alimentação de energia do conjunto (conectado a uma fonte externa)."
-msgstr ""
+msgstr "<strong>Module 1 (M1):  </strong>composed by Arduino Mega, it is responsible for all processing of information captured by the sensors and the entire power supply (connected to an external source)."
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
@@ -179,7 +231,7 @@ msgid ""
 "ORP, condutividade e temperatura da água. Desta forma modular, é possível "
 "selecionar os sensores a serem utilizados visando o custo benefício da "
 "aplicação específica desejada."
-msgstr ""
+msgstr "<strong>Module 2 (M2): </strong> Arduino shield, designed using Eagle platform, with the barometric pressure sensor and connectors for coupling the pH, ORP, conductivity and water temperature sensors. This way, it is possible to select modules that are appropriate aiming the best cost-benefit ratio of specific desired application. "
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
@@ -187,37 +239,89 @@ msgid ""
 "telefonia celular, capaz de transmitir os dados por SMS para um servidor do "
 "Rede InfoAmazonia. Como estratégia auxiliar de acesso aos dados, o M2 também"
 " possui espaço para cartão de memória SD."
-msgstr ""
+msgstr "<strong>Module 3 (M3): </strong> responsible for mobile communication 2G, capable of transmitting data by Internet and by SMS to the InfoAmazonia Network internet server. As auxiliary data access strategy, the M2 also features a SD memory card slot."
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"<strong>Parâmetros monitorados: </strong>pH, temperatura, condutividade "
+"elétrica, potencial de redução da oxidação (ORP) e pressão barométrica no "
+"nível da água."
+msgstr "<strong>Monitored parameters: </strong> pH, temperature, electrical conductivity, oxidation reduction potential (ORP) and barometric pressure at the water level."
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"<strong>Potencial de redução da oxidação (ORP): </strong>O potencial de "
+"redução da oxidação ajuda a indicar a possibilidade de haver micro-"
+"organismos presentes na água."
+msgstr "<strong> oxidation reduction potential (ORP): </ strong> The oxidation reduction potential helps to indicate the possibility of micro-organisms present in the water."
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"<strong>Potencial hidrogeniônico (pH): </strong>O pH normal deve variar "
+"entre 6 e 9, este índice pode ser alterado por conta da poluição."
+msgstr "<strong>Hydrogenic potential (pH):  </strong> The good pH should range between 6 and 9, this index may vary due pollution."
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"<strong>Temperatura: </strong>A temperatura é um elemento que influencia "
+"características físicas e químicas da água, como sua densidade e capacidade "
+"de reter oxigênio dissolvido."
+msgstr "<strong>Temperature: </strong>it is an element that influences physical and chemical characteristics of water, such as its density and ability to retain dissolved oxygen."
 
 #: public/views/home.html:1 public/views/sensor.html:1
 msgid ""
 "A Amazônia detém a maior quantidade de água doce do Brasil, 73% de toda "
 "vazão hídrica."
-msgstr "The Amazon holds the largest amount of fresh water Brazil, 73% of the entire water flow."
+msgstr "The Amazon holds the largest amount of fresh water in Brazil, 73% of the entire water flow."
 
-#: public/views/pages/mae-dagua.html:1
+#: public/views/sensor/report.html:1
 msgid ""
-"A comprovação das condições da qualidade da água deve ser feita através de "
-"testes que analisam outros parâmetros como a qualidade microbiológica, para "
-"parasitas e vírus, além de bactérias."
-msgstr ""
+"A capacidade da água de conduzir eletricidade indica minerais dissolvidos ou"
+" clorídeos na água. Minerais dissolvidos podem comprometer a utilização da "
+"água para uso doméstico."
+msgstr "it is the water's ability to conduct electricity. It can indicate clorídeos or mineral dissolved in water. Dissolved minerals can compromise the use of water for domestic use. "
+
+#: public/views/sensor/report.html:1
+msgid ""
+"A coleta de dados é feita automaticamente a cada hora, as leituras são "
+"enviadas via rede 2G ou 3G para o servidor do site rede.infoamazonia.org. Os"
+" dados base"
+msgstr "A coleta de dados é feita automaticamente a cada hora, e as leituras são enviadas via rede 2G para o servidor do site. rede.infoamazonia.org; The database"
 
 #: public/views/pages/network.html:1
 msgid ""
-"A escolha dos pontos de monitoramento dependem do engajamento de lideranças "
-"locais no monitoramento participativo, conexão 3G, população local com "
-"indícios de contaminação de fontes de abastecimento."
-msgstr ""
+"A escolha dos pontos que compõem a rede teve como critérios eliminatórios o "
+"engajamento de lideranças locais no monitoramento participativo e conexão 2G"
+" no local do reservatório onde é feito o monitoramento. Os voluntários foram"
+" selecionados durante das atividades de formação."
+msgstr "The selecion of the sites to build the network had several criteria. The two main restrictions were to the involvement of local leaders in participatory monitoring and 2G connection in the monitoring site. The volunteers who are part of of the project were selected after the educational activities."
 
 #: public/views/pages/about.html:1
 msgid ""
-"A implementação da rede de 20 sensores acontecerá na Amazônia Brasileira, e "
-"está prevista o último trimestre de 2015. A ONG Saúde e Alegria, que atua em"
-" unidades de conservação e comunidades ao longo do rio Tapajós, é uma "
-"parceira estratégica na articulação local no Pará, junto com as Secretarias "
-"de Meio Ambiente de Santarém e Belterra. No Amazonas o projeto está sendo "
-"implantado com o Instituto Mamirauá."
-msgstr ""
+"A implementação da rede de 18 sensores pilotos aconteceu na Amazônia "
+"Brasileira em outubro de 2015, com o apoio e participação da <a "
+"href=\"http://www.saudeealegria.org.br/\" rel=\"external\" "
+"target=\"_blank\">ONG Saúde e Alegria</a>, que atua em unidades de "
+"conservação e comunidades ao longo do rio Tapajós. O projeto também contou "
+"com o apoio do Laboratório Mídias Eletrônicas da UFOPA e das Secretarias de "
+"Meio Ambiente dos municípios de Santarém e Belterra."
+msgstr "The implementation of 18 pilot sensor network happened in the Brazilian Amazon in October 2015 with the support and participation of the  <a href=\"http://www.saudeealegria.org.br/\" rel=\"external\" target=\"_blank\">NGO Saúde e Alegria</a>, who operates in conservation and community units along the Tapajos River. The project also had the support of the Laboratory of Electronic Media of the Federal University of Westen Pará and Environment Secretariats of the municipalities of Santarém and Belterra. "
+
+#: public/views/pages/network.html:1
+msgid ""
+"A rede de monitoramento do Rede InfoAmazonia abrange análises de amostras de"
+" água de sistemas públicos, microssistemas coletivos e de abastecimento "
+"individual. Em sua fase piloto, o projeto beneficia os municípios de "
+"Belterra, Mojuí dos Campos e Santarém, localizados na região do Baixo "
+"Tapajós, no Oeste do Pará."
+msgstr "The Rede InfoAmazonia monitoring network analyzes samples of public systems water, water collective systems and individual water systems. In its pilot phase, the project benefits the municipalities of Belterra, Mojuí dos Campos and Santarem, located in the Lower Tapajós River, Western Pará."
+
+#: public/views/sensor/report.html:1
+msgid ""
+"A temperatura é um elemento que influencia características físicas e a "
+"química da água, como sua densidade e capacidade de reter oxigênio "
+"dissolvido."
+msgstr "it is an element that influences physical and chemical characteristics of water, such as its density and ability to retain dissolved oxygen."
 
 #: public/views/admin/users-edit.html:1
 msgid "Administrador"
@@ -237,24 +341,16 @@ msgstr "Brazilian Amazon"
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
-"Aplicação: o equipamento poderá ser utilizado para monitoramento da "
-"qualidade da água em caixas d´água, cisternas, reservatórios, corpos de água"
-" superficial com baixa vazão."
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid ""
 "Arduíno Mega: Placa com microcontrolador utilizada para controlar o sistema."
-msgstr ""
+msgstr "Arduino Mega:  open-source electronics platform based on easy-to-use hardware and software."
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
-"As leituras das variáveis serão enviadas para um servidor remoto de hora em "
-"hora. A partir do último trimestre de 2015 as análises e a base de dados "
-"estarão acessíveis no site do Rede InfoAmazonia. Além da informação "
-"disponível do site, os interessados poderão se cadastrar para receber "
-"alertas SMS sobre qualidade da água em sua comunidade."
-msgstr ""
+"As leituras das variáveis são enviadas para um servidor remoto de hora em "
+"hora. Além da informação disponível do site, os interessados podem se "
+"cadastrar para receber alertas SMS sobre qualidade da água em sua "
+"comunidade."
+msgstr "The readings of the variables are sent to a remote server every hour. In addition to the available site information, interested parties can register to receive SMS alerts about water quality in your community."
 
 #: public/views/pages/mae-dagua.html:1
 msgid "Aspectos técnicos"
@@ -274,7 +370,7 @@ msgstr "Subscribe the updates from this sensor"
 
 #: public/views/index.html:1 public/views/pages/network.html:1
 msgid "Atividades de formação"
-msgstr "Training activities"
+msgstr "Educational activities"
 
 #: public/views/account.html:1
 msgid "Atualizar"
@@ -288,39 +384,38 @@ msgstr "Update password"
 msgid "Baixar estes dados"
 msgstr "Download this data"
 
-#: public/views/pages/mae-dagua.html:1
-msgid "Baixar manual"
-msgstr "Download manual"
-
 #: public/views/pages/press.html:1
 msgid "Blog do InfoAmazonia na UOL"
-msgstr ""
+msgstr "InfoAmazonia Blog at UOL "
 
 #: public/views/pages/press.html:1
 msgid "Blog do InfoAmazonia no UOL"
-msgstr ""
+msgstr "InfoAmazonia Blog at UOL "
 
 #: public/views/admin/broadcast.html:1 public/views/admin/index.html:1
 #: public/views/admin/sensors.html:1
 msgid "Broadcast"
 msgstr "Broadcast"
 
-#: public/views/pages/mae-dagua.html:1
+#: public/views/sensor/report.html:1
 msgid ""
 "Cabe ressaltar, também, a importância da avaliação de outros parâmetros "
 "importantes da qualidade da água para consumo humano, tais como Oxigênio "
 "Dissolvido, Coliformes termotolerantes e análise microbiológica da água, com"
 " relação à presença de parasitas, vírus, e bactérias."
-msgstr ""
+msgstr "It is worth emphasizing the importance of the evaluation of other important parameters of water quality for human consumption, such as dissolved oxygen, fecal coliform and microbiological analysis of water, with respect to the presence of parasites, viruses and bacteria."
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
-"Calibração: A calibração dos sensores deve ser feita a cada três meses."
-msgstr ""
+"Cabe ressaltar, também, a importância da avaliação de outros parâmetros "
+"importantes da qualidade da água para consumo humano, tais como oxigênio "
+"dissolvido, coliformes termotolerantes e análise microbiológica da água, com"
+" relação à presença de parasitas, vírus e bactérias."
+msgstr "It is worth emphasizing the importance of the evaluation of other important parameters of water quality for human consumption, such as dissolved oxygen, fecal coliform and microbiological analysis of water, with respect to the presence of parasites, viruses and bacteria."
 
 #: public/views/pages/press.html:1
 msgid "CanalTech"
-msgstr ""
+msgstr "CanalTech"
 
 #: public/views/account-sensors.html:1
 msgid "Cancelar assinatura"
@@ -330,14 +425,16 @@ msgstr "Cancel subscription"
 msgid "Cancelar assinatura deste sensor"
 msgstr "Cancel subscription for this sensor"
 
-#: public/views/pages/about.html:1
+#: public/views/pages/network.html:1
 msgid ""
-"Com o hardware, chamado \"Mãe d'Água\" é possível detectar possíveis "
-"alterações da condição da água provenientes de despejo inadequado de "
-"resíduos domésticos, industriais e metais pesados em caixas d´água, "
-"cisternas e águas superficiais de mananciais menores. Os resultados das "
-"análises ajudam a distinguir a água potável de água contaminada."
-msgstr ""
+"Ciclo de oficinas 1 - Introdução a tecnologias livres e jornalismo cidadão"
+msgstr "1st Cycle of workshops - Open technologies introduction and citizen journalism"
+
+#: public/views/pages/network.html:1
+msgid ""
+"Ciclo de oficinas 2 - Formação para implantação da rede e oficina  "
+"jornalismo cidadão"
+msgstr "2nd Cycle of workshops 2 - Training for network deployment and citizen journalism "
 
 #: public/views/sensor.html:1
 msgid "Comunidade"
@@ -347,9 +444,13 @@ msgstr "Community"
 msgid "Comunidade deste sensor"
 msgstr "Sensor community"
 
-#: public/views/index.html:1
-msgid "Dados"
-msgstr "Data"
+#: public/views/sensor/report.html:1
+msgid "Condutividade elétrica"
+msgstr "Eletric conductivity"
+
+#: src/js/controllers.js:380
+msgid "Customizado"
+msgstr "Custom"
 
 #: public/views/sensor.html:1
 msgid "Dados históricos"
@@ -374,11 +475,20 @@ msgstr "Development"
 #: public/views/pages/mae-dagua.html:1
 msgid ""
 "Devido ao caráter de medição em tempo real, os resultados são considerados "
+"provisórios e não conclusivos, e são sujeitos a equívocos e incertezas. Os "
+"dados podem conter valores inexatos devido a mal funcionamento do "
+"equipamento. Eventualmente os equipamentos serão desconectados para "
+"manutenção."
+msgstr "Due to the real-time measurement, the results are considered provisional and inconclusive, and are subject to ambiguities and uncertainties. The data may contain inaccurate values due to malfunction of equipment. Eventually the equipment will be disconnected for maintenance."
+
+#: public/views/sensor/report.html:1
+msgid ""
+"Devido ao caráter de medição em tempo real, os resultados são considerados "
 "provisórios e não conclusivos, são sujeitos a equívocos e incertezas. Os "
 "dados podem conter valores inexatos devido a mal funcionamento do "
 "equipamento. Eventualmente os equipamentos serão desconectados para "
 "manutenção."
-msgstr ""
+msgstr "Due to the real-time measurement, the results are considered provisional and inconclusive, and are subject to ambiguities and uncertainties. The data may contain inaccurate values due to malfunction of equipment. Eventually the equipment will be disconnected for maintenance."
 
 #: public/views/admin/sensors.html:1 public/views/admin/users.html:1
 msgid "Editar"
@@ -396,34 +506,51 @@ msgstr "Edit sensor"
 msgid "Editar usuário"
 msgstr "Edit user"
 
-#: public/views/pages/mae-dagua.html:1
+#: public/views/pages/network.html:1
 msgid ""
-"Em caso de alterações na água, serão realizadas análises em laboratório para"
-" confirmar e obter maiores informações."
-msgstr ""
+"Em 16 e 21 de outubro de 2015, os instrutores Paloma Oliveira e pixel "
+"realizaram oficinas para apresentar o sistema e o equipamento de "
+"monitoramento do Rede InfoAmazonia, para formar agentes comunitários que "
+"realizem a instalação e manutenção do equipamento. Em 16 de outubro, a "
+"atividade reuniu doze participantes no na UFOPA - Unidade Amazônia "
+"(Santarém) e no dia 21, sete pessoas participaram a oficina no Centro "
+"Experimental Floresta Ativa na Reserva (Extrativista Tapajós-Arapiuns - "
+"Santarém)."
+msgstr "Between 16 and 21 October 2015, Paloma Oliveira and pixel held workshops to introduce the system and monitoring equipment used by Rede InfoAmazonia. The volunteers were prepared to undertake the installation in site and maintenance of equipment. On October 16, the activity gathered twelve participants at UFOPA (Santarém), On October 21, seven people attended the workshop at the Centro Experimental Foresta Ativa in the Extractive Reserve of Tapajós-Arapiuns - Santarém."
 
 #: public/views/pages/network.html:1
 msgid ""
-"Em parceria com o Projeto Saúde e Alegria - articulação com lideranças de "
-"comunidades ribeirinhas - e apoio das Secretarias de Meio Ambiente dos "
-"municípios de Santarém e Belterra, no Pará, serão escolhidos vinte pontos "
-"onde será feita a instalação dos equipamentos de monitoramento. A "
-"implantação está prevista para acontecer no último trimestre de 2015 após um"
-" ciclo de oficinas sobre tecnologias livres, meio ambiente e comunicação, "
-"que já foi iniciado. Após a instalação dos sensores será lançado o site onde"
-" as análises estarão disponíveis para visualização e download dos "
-"resultados."
-msgstr ""
+"Em Belterra, a rede de monitoramento piloto é formada pelos pontos na zona "
+"urbana e comunidades da Floresta Nacional do Tapajós (Jamaraquá, São "
+"Domingos e Maguary). Em Mojuí dos Campos, participam da rede a  Escola "
+"Municipal de Ensino Fundamental Raimunda Queiroz de Sousa e o Micro sistema "
+"de abastecimento de Alto Alegre. Os pontos de monitoramento de Santarém são "
+"distribuídos na zona urbana (Projeto Saúde e Alegria, Escola Professor Aldo "
+"Ferreira Campos,  Escola São Francisco e Poço individual no bairro "
+"Alvorada), zona rural (Escola Irmça Dorothy Mae Stang) e também na Reserva "
+"Extrativisita Tapajós-Arapiuns (Centro Experimental Floresta Ativa, "
+"comunidades de Anumã, de Solimões, Pedra Branca e Carão, Escola Nossa "
+"Senhora Aparecida e Aldeia Vista Alegre de Capixauã)."
+msgstr "In Belterra, the pilot monitoring network is formed by points located in urban areas and communities of the Tapajós National Forest (Jamaraquá, São Domingos and Maguary). In Mojuí dos Campos, the Municipal Elementary School Raimunda Queiroz de Sousa and Micro Alto Alegre supply system are part of the network . The monitored points of Santarém are distributed in urban areas (NGO Projeto Saúde e Alegria, Professor Aldo Ferreira Campos School, São Francisco School and an individual well in the neighbourhood of Alvorada), rural area (Dorothy Mae Stang School Irmça) and also in the Extrativisit Reserve Tapajós- Arapiuns (Centro Experimental Floesta Ativa, communities of Anuma, Solimões, Pedra Branca and Carão, Nossa Senhora Aparecida School and the village of Vista Alegre Capixauã)."
+
+#: public/views/home.html:1
+msgid ""
+"Em breve você poderá conhecer mais sobre o projeto, acompanhar a informações"
+" sobre a qualidade da água no Oeste do Pará e se cadastrar para receber "
+"alertas sobre como está a qualidade da água em comunidades de Belterra, "
+"Mojuí dos Campos e Santarém."
+msgstr "Soon you will know more about the project to monitor water quality in the West of Pará, Brasil, and subscribe to receive notifications about is the quality of water in communities of Belterra, Mojuí dos Campos and Santarém."
 
 #: public/views/pages/network.html:1
 msgid ""
-"Em sua fase piloto, beneficiará 20 comunidades da zona urbana de Belterra e "
-"Santarém, Reserva Extrativista Tapajós Arapiuns e Floresta Nacional do "
-"Tapajós, no Oeste do Pará. O sensor e sistema desenvolvidos por nossa equipe"
-" e parceiros será capaz de medir parâmetros básicos de qualidade d'água e "
-"alertar governo, cidadãos e organizações não governamentais através do "
-"sistema de alerta para celulares (SMS) e aplicativos de mapeamento da web."
-msgstr ""
+"Em parceria com o Projeto Saúde e Alegria, articulação com lideranças de "
+"comunidades ribeirinhas, apoio do Laboratório Mídias Eletrônicas da UFOPA e "
+"Secretarias de Meio Ambiente dos municípios de Santarém e Belterra, no Pará,"
+" foram escolhidos dezoito pontos onde foi feita a instalação dos "
+"equipamentos de monitoramento. A implantação aconteceu na segunda quinzena "
+"de outubro de 2015 após um ciclo de oficinas sobre tecnologias livres, meio "
+"ambiente e jornalismo cidadão."
+msgstr "In partnership with the NGO Projeto Saúde & Alegria, articulation with leaders of riverine communities, support the Electronic Media Laboratory UFOPA and Secretariats of Environment in the municipalities of Santarém and Belterra, Pará, eighteen sites where chosen to have the equipment deployed. The implementation took place in mid-October 2015 after a cycle of workshops about free technologies, environment and citizen journalism."
 
 #: public/views/admin/users-edit.html:1 public/views/admin/users.html:1
 msgid "Email"
@@ -432,6 +559,18 @@ msgstr "Email"
 #: public/views/index.html:1 public/views/login.html:1
 msgid "Entrar"
 msgstr "Login"
+
+#: public/views/pages/network.html:1
+msgid ""
+"Entre 5 e 9 de março foram realizadas oficinas na Escola do Parque, no "
+"Centro Municipal de Informação e Educação Ambiental (Santarém) e no Colégio "
+"Santo Antônio (Belterra), com grupos de estudantes e jovens lideranças "
+"Nestas oficinas, Guima San e pixel apresentaram uma introdução sobre o "
+"conceito e parâmetros de análise de  qualidade d’água. Giovanny Vera abordou"
+" temas de jornalismo cidadão para oferecer informação e treinamento no uso "
+"de novas tecnologias para a construção de histórias e notícias geradas por "
+"eles mesmos e em suas comunidades."
+msgstr "Between 5- 9 March, students and young leaders took part in workshops held at Escola do Parque, Municipal Information and Environmental Education Center (Santarém) and the Santo Antônio College (Belterra). Guima San and pixel presented a introduction to parameters to analyze water quality. Giovanny Vera approached citizen journalism themes. He provided information and training on using new technologies to tell stories and news generated by them and in their communities."
 
 #: public/views/admin/sensors-edit.html:1 public/views/admin/users-edit.html:1
 msgid "Enviar"
@@ -458,26 +597,30 @@ msgstr "Send a message to all subscribers"
 msgid "Eu já tenho uma conta"
 msgstr "I already have an account"
 
+#: public/views/index.html:1
+msgid "FAQ"
+msgstr "FAQ"
+
 #: public/views/pages/mae-dagua.html:1
 msgid ""
 "Firmware: Em eletrônica e computação, o firmware é o conjunto de instruções "
 "operacionais programadas diretamente no hardware de equipamentos "
 "eletrônicos."
-msgstr ""
+msgstr "Firmware: In electronics and computing, firmware is the set of operating instructions programmed directly into the electronics hardware."
 
-#: public/views/pages/mae-dagua.html:1
+#: public/views/pages/network.html:1
 msgid ""
-"Fonte de energia: energia elétrica bivolt ou bateria recarregável ligada a "
-"painel solar."
-msgstr ""
+"Foram realizados dois ciclos de atividades de mobilização e formação sobre "
+"tecnologias livres e comunicação cidadã entre março e outubro de 2015."
+msgstr "Two cycles of mobilization and educational activities on open technologies and citizen communication between March and October 2015."
 
 #: public/views/pages/network.html:1
 msgid "Formação da Rede"
-msgstr "Shaping the Network"
+msgstr "Building the network"
 
 #: public/views/index.html:1
 msgid "Formação da rede"
-msgstr "Shaping the network"
+msgstr "Building the network"
 
 #: public/views/admin/users-edit.html:1 public/views/admin/users.html:1
 msgid "Função"
@@ -485,7 +628,7 @@ msgstr "Role"
 
 #: public/views/pages/press.html:1
 msgid "G1"
-msgstr ""
+msgstr "G1"
 
 #: public/views/sensor.html:1
 msgid "Gerar relatório"
@@ -497,11 +640,15 @@ msgid ""
 "abertos para que qualquer pessoa interessada possa conhecer e replicar. Não "
 "existe restrição autoral, intelectual ou industrial que impeça alguém de "
 "conhecer 100% de como o hardware é construído e operado."
-msgstr ""
+msgstr "Open Hardware: Electronic decive developed with documentation and open files so that anyone can learn and replicate it. There is no copyright, intellectual or industrial restriction that prevents someone to know 100% of how the hardware is built and operated."
+
+#: public/views/sensor/latest-readings.html:1
+msgid "Hora"
+msgstr "Hour"
 
 #: public/views/pages/press.html:1
 msgid "IJNET International Journalists’ Network"
-msgstr ""
+msgstr "IJNET International Journalists’ Network"
 
 #: public/views/admin/sensors-edit.html:1
 msgid "Identificador"
@@ -515,38 +662,47 @@ msgstr "Press"
 msgid "InfoAmazonia"
 msgstr "InfoAmazonia"
 
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"Instalação: A instalação é simples, não requer conhecimentos específicos."
-msgstr ""
+#: src/js/controllers.js:43
+msgid "Informações atualizadas!"
+msgstr "Information updated!"
 
 #: public/views/pages/press.html:1
 msgid "International Center for Journalists"
-msgstr ""
+msgstr "International Center for Journalists"
 
 #: public/views/admin/sensors-edit.html:1
 msgid "Latitude"
 msgstr "Latitude"
 
+#: public/views/sensor/report.html:1
+msgid "Latitude: {{sensor.geometry.coordinates[1]}}"
+msgstr "Latitude: {{sensor.geometry.coordinates[1]}}"
+
 #: public/views/index.html:1 public/views/pages/mae-dagua.html:1
 msgid "Limitações"
 msgstr "Limitations"
+
+#: public/views/sensor/report.html:1
+msgid "Localização do sensor"
+msgstr "Sensor location"
 
 #: public/views/admin/sensors-edit.html:1
 msgid "Longitude"
 msgstr "Longitude"
 
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"Manutenção: As ponteiras dos sensores devem ser limpas periodicamente para "
-"evitar acumulo de resíduos que podem afetar as leituras."
-msgstr ""
+#: public/views/sensor/report.html:1
+msgid "Longitude: {{sensor.geometry.coordinates[0]}}"
+msgstr "Longitude: {{sensor.geometry.coordinates[0]}}"
 
 #: public/views/home.html:1 public/views/sensor.html:1
 msgid ""
 "Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores"
 " do país."
 msgstr "But access to sanitation in the 771 cities of the region is among the worst in the country."
+
+#: src/js/controllers.js:818
+msgid "Medição removida."
+msgstr "Measurement removed."
 
 #: public/views/admin/sensors.html:1
 msgid "Medições"
@@ -556,6 +712,10 @@ msgstr "Measurements"
 msgid "Medições em {{sensor.name}}"
 msgstr "Measurements in {{sensor.name}}"
 
+#: public/views/sensor/report.html:1
+msgid "Metodologia"
+msgstr "Methodology"
+
 #: public/views/account.html:1
 msgid "Meu perfil"
 msgstr "My profile"
@@ -564,30 +724,42 @@ msgstr "My profile"
 msgid "Minha conta"
 msgstr "My account"
 
-#: public/views/index.html:1
-msgid "Monitoramento"
-msgstr "Monitoring"
-
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"Monitoramento em tempo real: A coleta de dados é feita automaticamente a "
-"cada hora, as leituras são enviadas via rede 2G ou 3G para o servidor do "
-"site rede.infoamazonia.org"
-msgstr ""
+#: src/js/directives.js:343
+msgid "Máxima"
+msgstr "Max"
 
 #: public/views/index.html:1 public/views/pages/mae-dagua.html:1
 msgid "Mãe D'Água"
-msgstr ""
+msgstr "Mãe D'Água"
+
+#: src/js/directives.js:341
+msgid "Média"
+msgstr "Average"
 
 #: public/views/sensor.html:1
 msgid "Média dos últimos 30 dias"
 msgstr "30 days average"
+
+#: src/js/directives.js:342
+msgid "Mínima"
+msgstr "Min"
 
 #: public/views/home.html:1 public/views/sensor.html:1
 msgid ""
 "Na Amazônia Legal, 60% das residências são atendidas pela rede geral de "
 "água. A média nacional é de 82,7%."
 msgstr "In the Amazon, 60% of households are served by the public system of water distribution. The national average is 82.7%."
+
+#: public/views/pages/network.html:1
+msgid ""
+"No dia 23 de outubro de 2015, Gustavo Faleiros ministrou uma oficina de "
+"Jornalismo Cidadão. Os participantes aprenderam a produzir conteúdo "
+"informativo a partir de questões das próprias comunidades, como fazer "
+"coberturas e levantamento de informação com celulares, a alimentação "
+"jornalística de redes sociais, a produção e edição de conteúdo multimídia "
+"(vídeos, áudios, fotos, mapas e transmissões ao vivo), além da publicação "
+"para web."
+msgstr "On October 23, 2015, Gustavo Faleiros held a Citizen Journalism workshop. Participants learned how to produce informative content from issues that concerned the communities themselves, how to cover news and research information using mobile phones and feed social media with journalistic texts, as well as how to produce and edit multimedia content (video, audio, photos, maps and transmissions to live), to publish on the web."
 
 #: public/views/admin/sensors-edit.html:1 public/views/admin/sensors.html:1
 #: public/views/admin/users-edit.html:1 public/views/admin/users.html:1
@@ -608,75 +780,162 @@ msgstr "New sensor"
 msgid "Novo usuário"
 msgstr "New user"
 
+#: public/views/pages/faq.html:1
+msgid ""
+"O Mãe d'Água está sendo testado no projeto Rede InfoAmazonia. Nesse momento,"
+" não há intenção do projeto de comercializar o equipamento. É hardware "
+"livre, e os arquivos necessários para produção estão disponíveis em:"
+msgstr "The Mãe d´Água is being tested by the team of the Rede InfoAmazonia project. At this point, there is no intention of the project to market the equipment. It's free hardware, and the necessary files for production is available at:"
+
+#: public/views/sensor/report.html:1
+msgid ""
+"O Mãe d´Água possui funcionalidades de medição de acidez da água pelo "
+"potencial hidrogeniônico (pH), potencial de redução da oxidação (ORP), "
+"condutividade elétrica, temperatura da água e pressão barométrica no nível "
+"da água, variáveis que auxiliam na inferência da qualidade da água para "
+"consumo humano."
+msgstr "The Mãe d´Água measured acidity of the water by hydrogenic potential (pH), oxidation reduction potential (ORP), conductivity, water temperature and barometric pressure in the water level, variables that help to inference the quality of water for human consumption."
+
 #: public/views/pages/mae-dagua.html:1
 msgid ""
-"O Mãe d´Água será capaz de monitorar parâmetros físico-químicos importantes "
-"que ajudam a indicar se a água é potável ou está contaminada. De hora em "
-"hora serão realizadas leituras das seguintes variáveis: acidez (pH), "
-"potencial de redução da oxidação (ORP), condutividade elétrica, temperatura "
-"e pressão barométrica no nível da água. O objetivo das medições é detectar "
-"variações que indiquem contaminação."
-msgstr ""
+"O Mãe d´Água produzido utilizando tecnologias livres. As informações "
+"necessárias para produção estão disponíveis em:"
+msgstr "The Mãe d'Água was developed using open technologies. The information you  need to produce is available at:"
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"O Mãe d´Água é capaz de monitorar parâmetros físico-químicos importantes que"
+" ajudam a indicar se a água é potável ou está contaminada. O dispositivo faz"
+" leituras das seguintes variáveis: acidez (pH),"
+msgstr "Mãe d´Água is able to monitor important physicochemical properties that helps to distingish if the water is drinkable or contaminated. The device reads the following variables: acidity (pH),"
 
 #: public/views/pages/about.html:1
 msgid ""
-"O desenvolvimento dos sensores é realizado em parceria com a rede norte-"
-"americanao de ciência cidadã Public Lab e a a start-up Dev Tecnologia, "
-"empresa incubada na Universidade de São Paulo."
-msgstr ""
+"O desenvolvimento dos sensores foi realizado em parceria com a start-up <a "
+"href=\"http://devtecnologia.com.br\" rel=\"external\" target=\"_blank\">Dev "
+"Tecnologia</a>, empresa incubada na Universidade de São Paulo, e com ajuda "
+"da rede internacional de ciência cidadã <a href=\"https://publiclab.org/\" "
+"rel=\"external\" target=\"_blank\">Public Lab</a>."
+msgstr "The development of sensors was carried out in partnership with the start-up  <a href=\"http://devtecnologia.com.br\" rel=\"external\" target=\"_blank\">Dev Technology [</a>, a company incubated at the University of São Paulo, and with the help of the international network of citizen science <a href=\"https://publiclab.org/\" rel=\"external\" target=\"_blank\">Public Lab</a>."
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
 "O hardware foi projetado em plataforma (Eagle) e licenças abertas, de forma "
 "modular:"
-msgstr ""
+msgstr "The hardware was designed in modules in platform (Eagle) and under open licenses:"
+
+#: public/views/pages/about.html:1
+msgid ""
+"O hardware, chamado \"Mãe d'Água\", pode ser instalado em caixas d´água, "
+"cisternas e águas superficiais de mananciais menores, e com ele é possível "
+"detectar possíveis alterações de características da água provenientes de "
+"despejo inadequado de resíduos domésticos, industriais e metais pesados. Os "
+"resultados das análises ajudam a distinguir a água potável de água "
+"contaminada."
+msgstr "The hardware, called \"Mãe d´Água\", can be installed in water tanks, tanks and of smaller surface water springs . With it is possible to detect possible changes in water characteristics from inadequate disposal of household waste, industrial and heavy metals. The test results help distinguish the drinking water from contaminated water."
+
+#: public/views/sensor/report.html:1
+msgid ""
+"O pH normal deve variar entre 6 e 9, este índice pode ser alterado por conta"
+" da poluição."
+msgstr "Hydrogenic potential (pH): The good pH should range between 6 and 9, this index may vary due pollution."
+
+#: public/views/sensor/report.html:1
+msgid ""
+"O potencial de redução da oxidação ajuda a definir quais formas dos metais "
+"estão presentes na água."
+msgstr "The oxidation reduction potential helps to define what forms of metals are present in the water."
+
+#: public/views/sensor/report.html:1
+msgid ""
+"O projeto Rede InfoAmazonia desenvolveu um hardware aberto de monitoramento "
+"de qualidade da água em tempo real, o \"Mãe d'Água\". O objetivo projeto é "
+"detectar possíveis alterações provenientes de despejo inadequado de resíduos"
+" domésticos, industriais e metais pesados em caixas d´água, cisternas e "
+"águas superficiais de mananciais menores na região amazônica. Os resultados "
+"ajudam a distinguir a água potável de água contaminada."
+msgstr "The project InfoAmazonia Network has developed an open hardware water quality monitoring in real time the \"Mãe d´Água. The project goal is to detect possible changes from inadequate disposal of household waste, industrial and heavy metals in water tanks, tanks and surface water minor sources in the Amazon region. The results help distinguish the drinking water contaminated water."
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
-"O hardware livre de monitoramento de qualidade da água em tempo real "
-"desenvolvido pelo projeto Rede InfoAmazonia foi batizado de \"Mãe d'Água\". "
-"Inspirado no Riffle, o dispositivo é resultado da colaboração da equipe do "
-"projeto com a redeo grupo norte-americanao de ciência cidadã Public Lab e a "
-"start-up Dev Tecnologia, empresa incubada na Universidade de São Paulo."
-msgstr ""
+"O projeto Rede InfoAmazonia desenvolveu um hardware livre de monitoramento "
+"de qualidade da água em tempo real, que foi batizado como “Mãe d'Água\". "
+"Inspirado no <a href=\"http://publiclab.org/wiki/riffle\" rel=\"external\" "
+"target=\"_blank\">Riffle</a>, o dispositivo é resultado da colaboração da "
+"equipe do projeto com a rede norte-americana de ciência cidadã <a "
+"href=\"http://publiclab.org/\" rel=\"external\" target=\"_blank\">Public Lab"
+" </a>e a start-up <a href=\"http://devtecnologia.com.br/sobre/quem-somos/\" "
+"rel=\"external\" target=\"_blank\">Dev Tecnologia</a>, empresa incubada na "
+"Universidade de São Paulo."
+msgstr "The project Rede InfoAmazonia is developing \"Mãe d'água - Water's mother\", an open hardware to monitor water quality in real time.  Inspired on <a href=\"http://publiclab.org/wiki/riffle\" rel=\"external\" target=\"_blank\">Riffle</a> [http://publiclab.org/wiki/riffle] , o device was created in collaboration with the american citzen science network <a href=\"http://publiclab.org/\" rel=\"external\" target=\"_blank\">Public Lab</a> and <a href=\"http://devtecnologia.com.br/sobre/quem-somos/\" rel=\"external\" target=\"_blank\">Dev Tecnologia </a>, startup incubated at Sao Paulo University. "
 
 #: public/views/pages/about.html:1
 msgid ""
-"O projeto Rede InfoAmazonia visa desenvolver um sistema de monitoramento de "
-"baixo custo para analisar a qualidade da água para consumo humano, e "
-"estabelecer uma rede de monitoramento em articulação com comunidades da "
-"Amazônia brasileira, para apresentar em tempo real os resultados das "
-"análises na plataforma InfoAmazonia e enviar alertas aos consumidores "
-"através de SMS."
-msgstr ""
+"O projeto Rede InfoAmazonia desenvolveu um sistema de monitoramento de baixo"
+" custo para analisar a qualidade da água para consumo humano, e estabeleceu "
+"uma rede de monitoramento em articulação com comunidades da Amazônia "
+"brasileira, para apresentar em tempo real os resultados das análises na "
+"plataforma InfoAmazonia e enviar alertas aos consumidores através de SMS."
+msgstr "O projeto Rede InfoAmazonia desenvolveu um sistema de monitoramento de baixo custo para analisar a qualidade da água para consumo humano, e estabeleceu uma rede de monitoramento em articulação com comunidades da Amazônia brasileira, para apresentar em tempo real os resultados das análises na plataforma InfoAmazonia e enviar alertas aos consumidores através de SMS. \t"
 
 #: public/views/pages/about.html:1
 msgid ""
-"O projeto foi um dos ganhadores do Desafio de Impacto Social do Google em "
-"2014, junto a outras 9 ideias apresentadas por ONGs de todo o Brasil."
-msgstr ""
+"O projeto foi um dos premiados do <a "
+"href=\"https://desafiosocial.withgoogle.com/brazil2014\" rel=\"external\" "
+"target=\"_blank\">Desafio de Impacto Social do Google em 2014</a>, junto a "
+"outras 9 ideias apresentadas por ONGs de todo o Brasil."
+msgstr "The project was one of the winners of the <a href=\"https://desafiosocial.withgoogle.com/brazil2014\" rel=\"external\" target=\"_blank\">Google Social Impact Challenge in 2014 </a>,  along with 9 other ideas presented by NGOs from all over Brazil."
 
 #: public/views/pages/press.html:1
 msgid "Observatório de UCs da WWF-Brasil"
-msgstr ""
+msgstr " Observatory of Protected Areas of WWF-Brasil "
+
+#: public/views/home.html:1
+msgid ""
+"Olá! O Projeto Rede InfoAmazonia em fase final de desenvolvimento. Os "
+"sensores dos Mãe d'Água estão em fase de ajustes, e as leituras ainda não "
+"devem ser consideradas válidas e o conteúdo está em revisão final para "
+"publicação. Sugestões e comentários sobre o site são bem vindos. Entre em "
+"contato através do email rede@infoamazonia.org."
+msgstr "Olá! O Projeto Rede InfoAmazonia em fase final de desenvolvimento. Os sensores dos Mãe d'Água estão em fase de ajustes (as leituras ainda não devem ser consideradas válidas) e o conteúdo está em revisão final para publicação. Sugestões e comentários sobre o site são bem vindos. Entre em contato através do email rede@infoamazonia.org."
+
+#: public/views/pages/network.html:1
+msgid ""
+"Os microssistemas coletivos captam água diretamente dos lençóis freáticos "
+"através de poços profundos. Entre os pontos de monitoramento selecionados, "
+"apenas o sensor # Zona Urbana de Belterra analisa a água em seu ponto final "
+"de distribuição. Em todos os outros a análise é feita no ponto de captação."
+msgstr "Collective systems take water directly from the groundwater through deep wells. Among the selected monitoring points, only the sensor located in the urban area of Belterra analyzes the water in its final distribution point. In all others, the analysis is done at the pickup point."
 
 #: public/views/pages/mae-dagua.html:1
+msgid ""
+"Os resultados são acessíveis através deste site e alertam sobre possível "
+"contaminação."
+msgstr "The results are available in this site and alert you to possible contamination in the sites."
+
+#: public/views/sensor/report.html:1
 msgid ""
 "Os resultados são acessíveis através do site rede.infoamazonia.org e alertam"
 " sobre possível contaminação."
-msgstr ""
+msgstr "The results are available at rede.infoamazonia.org and alert you to possible contamination."
 
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"Parâmetros monitorados: pH, temperatura, condutividade elétrica, potencial "
-"de redução da oxidação (ORP) e pressão barométrica no nível da água"
-msgstr ""
+#: public/views/index.html:1 public/views/pages/mae-dagua.html:1
+msgid "Parâmetros monitorados"
+msgstr "Monitored parameters "
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
 "Plataforma Eagle: software livre utilizado para gerar o circuito e desenho "
 "do hardware."
-msgstr ""
+msgstr "Eagle Platform: free software tool used to generate circuits and hardware design."
+
+#: public/views/sensor/report.html:1
+msgid "Potencial de redução da oxidação (ORP)"
+msgstr "Oxidation-Reduction Potential (ORP) "
+
+#: public/views/sensor/report.html:1
+msgid "Potencial hidrogeniônico (pH)"
+msgstr "Hydrogen Potential (pH)"
 
 #: public/views/index.html:1
 msgid "Projeto"
@@ -687,22 +946,14 @@ msgstr "Project"
 msgid "Próxima página"
 msgstr "Next page"
 
-#: public/views/pages/press.html:1
-msgid "Public Lab"
-msgstr ""
-
 #: public/views/admin/sensors-measurements.html:1
 #: public/views/admin/sensors.html:1 public/views/admin/users.html:1
 msgid "Página anterior"
 msgstr "Previous page"
 
-#: public/views/index.html:1
-msgid "Qualidade da água"
-msgstr "Water quality"
-
 #: public/views/sensor.html:1
 msgid "Qualidade da água e doenças em <strong>{{city}}</strong>"
-msgstr "Water quality and malaties in <strong>{{city}}</strong>"
+msgstr "Water quality and maladies in <strong>{{city}}</strong>"
 
 #: public/views/home.html:1
 msgid "Qualidade da água e doenças na Amazônia"
@@ -712,9 +963,18 @@ msgstr "Water quality and maladies in the Amazon"
 msgid "Receba atualizações deste sensor"
 msgstr "Subscribe to this sensor"
 
-#: public/views/pages/network.html:1
+#: public/views/index.html:1
+msgid "Rede"
+msgstr "Network"
+
+#: public/views/index.html:1 public/views/pages/network.html:1
 msgid "Rede de monitoramento"
 msgstr "Monitoring network"
+
+#: public/views/sensor/report.html:1
+msgid ""
+"Relatório de <span>{{formattedFrom}} </span>à <span>{{formattedTo}}</span>"
+msgstr "Report from <span>{{formattedFrom}} </span>to <span>{{formattedTo}}</span>"
 
 #: public/views/admin/sensors-measurements.html:1
 #: public/views/admin/sensors.html:1 public/views/admin/users.html:1
@@ -729,9 +989,13 @@ msgstr "Repeat new password"
 msgid "Repetir senha"
 msgstr "Repeat password"
 
-#: public/views/index.html:1 public/views/pages/network.html:1
-msgid "Resultados"
-msgstr "Results"
+#: public/views/pages/network.html:1
+msgid ""
+"Saiba mais sobre como está a qualidade da água em cada local. A "
+"periodicidade de atualização do monitoramento pode variar em função do "
+"fornecimento de energia elétrica para acionar o equipamento Mãe d´Água. As "
+"análises estão disponíveis para visualização e download."
+msgstr "Learn more about how is the quality of the water in each location. The frequency of updating the monitoring can vary depending on the supply of electricity to drive the Mother d'Água. Analyses are available for viewing and also for downloading."
 
 #: public/views/index.html:1
 msgid "Sair"
@@ -744,6 +1008,26 @@ msgstr "Password"
 #: public/views/account.html:1
 msgid "Senha atual"
 msgstr "Current password"
+
+#: src/js/controllers.js:56
+msgid "Senha atualizada"
+msgstr "Password updated"
+
+#: src/js/controllers.js:769
+msgid "Senhas não coincidem"
+msgstr "Passwords don't match"
+
+#: src/js/controllers.js:691
+msgid "Sensor atualizado."
+msgstr "Sensor updated."
+
+#: src/js/controllers.js:696
+msgid "Sensor criado."
+msgstr "Sensor created."
+
+#: src/js/controllers.js:662
+msgid "Sensor removido."
+msgstr "Sensor removed"
 
 #: public/views/admin/index.html:1 public/views/admin/sensors.html:1
 #: public/views/home.html:1
@@ -774,7 +1058,7 @@ msgstr "Your phone number"
 msgid ""
 "Shield: É uma placaque recebe as leituras físico-químicas ambientais para "
 "análise de qualidade da água."
-msgstr ""
+msgstr "Shield: board which receives the physical-chemical environmental readings for water quality analysis."
 
 #: public/views/pages/about.html:1
 msgid "Sobre o projeto"
@@ -784,6 +1068,24 @@ msgstr "About the project"
 msgid "Telefone"
 msgstr "Phone number"
 
+#: public/views/sensor/report.html:1
+msgid "Temperatura"
+msgstr "Temperature"
+
+#: public/views/pages/network.html:1
+msgid ""
+"Tendo em vista a importância do abastecimento através de sistemas "
+"alternativos, o projeto priorizou o monitoramento de microssistemas "
+"coletivos implantados através de parcerias  e geridos pela própria "
+"comunidade, com especial destaque às populações que moram em unidades de "
+"conservação e uso sustentável. É importante destacar que no estado do Pará "
+"apenas 47,92% das residências são atendidas pela rede pública de "
+"abastecimento, e que 36,78% dos domicílios particulares permanentes são "
+"servidos por água proveniente de poço ou nascente. <a "
+"href=\"http://visaguas.infoamazonia.org/\" rel=\"external\" "
+"target=\"_blank\">Saiba mais sobre Abastecimento e Doenças na Amazônia</a>"
+msgstr "Consideting the importance of water supply through alternative systems, the project prioritized monitoring collective microsystems, which are managed by the community, with particular attention to people living in conservation and sustainable areas. It is important to mention that in Pará state only 47.92% of households are served by public water supply, and that 36.78% of permanent households are served by water from a well or spring. <a href=\"http://visaguas.infoamazonia.org/\" rel=\"external\" target=\"_blank\">Learn more about Supply and Diseases in the Amazon</a>."
+
 #: public/views/admin/sensors-edit.html:1
 msgid "URL da imagem"
 msgstr "Image URL"
@@ -791,6 +1093,18 @@ msgstr "Image URL"
 #: public/views/admin/sensors-measurements.html:1
 msgid "Unidade de medida"
 msgstr "Measurement unit"
+
+#: src/js/controllers.js:774
+msgid "Usuário atualizado."
+msgstr "User updated."
+
+#: src/js/controllers.js:779
+msgid "Usuário criado."
+msgstr "User created."
+
+#: src/js/controllers.js:742
+msgid "Usuário removido."
+msgstr "User removed."
 
 #: public/views/admin/index.html:1 public/views/admin/users.html:1
 msgid "Usuários"
@@ -808,17 +1122,54 @@ msgstr "View details of this sensor"
 msgid "Ver e editar medições"
 msgstr "View and edit measurements"
 
+#: src/js/controllers.js:53
+msgid "Verifique se as senhas digitadas são identicas"
+msgstr "Please, check if passwords are identical"
+
+#: src/js/directives.js:563
+msgid "Verifique se as senhas digitadas são iguais"
+msgstr "Please, check if passwords are identical."
+
 #: public/views/pages/press.html:1
 msgid "Vice"
-msgstr ""
-
-#: public/views/index.html:1
-msgid "Visualização dos dados"
-msgstr "Data visualization"
+msgstr "Vice"
 
 #: public/views/account-sensors.html:1
 msgid "Você ainda não assinou nenhum sensor!"
-msgstr "You still haven't subscribed any sensor!"
+msgstr "You haven't subscribed any sensor yet!"
+
+#: src/js/controllers.js:510
+msgid "Você deixou de assinar este sensor!"
+msgstr "You've been unsubscribed to this sensors' notifications!"
+
+#: src/js/controllers.js:51
+msgid "Você deve inserir uma senha"
+msgstr "Please, enter a password"
+
+#: src/js/controllers.js:496
+msgid "Você está assinando este sensor!"
+msgstr "You are subscribing to this sensor!"
+
+#: src/js/controllers.js:501
+msgid "Você já assina este sensor!"
+msgstr "You have already subscribed to this sensor!"
+
+#: src/js/controllers.js:703
+msgid "Você tem certeza que deseja enviar \"\" para os assinantes de ?"
+msgstr "Are you sure you want to send \"\" to the subscribers of ?"
+
+#: src/js/controllers.js:787
+msgid "Você tem certeza que deseja enviar \"\" para para ?"
+msgstr "Are you sure you want to send \"\" to ?"
+
+#: src/js/controllers.js:624
+msgid "Você tem certeza que deseja enviar \"\" para todos os assinantes?"
+msgstr "Are you sure you want to send \"\" to all subscribers?"
+
+#: src/js/controllers.js:660 src/js/controllers.js:740
+#: src/js/controllers.js:816
+msgid "Você tem certeza?"
+msgstr "Are you sure?"
 
 #: public/views/sensor.html:1
 msgid "anterior"
@@ -856,10 +1207,14 @@ msgstr "{{sensor.name}} Broadcast"
 msgid "Área administrativa"
 msgstr "Dashboard"
 
-#: public/views/index.html:1
-msgid "Índice de qualidade"
-msgstr "Quality Index"
+#: src/js/controllers.js:372
+msgid "Últimas 24 horas"
+msgstr "Last 24 hours"
 
-#: public/views/sensor.html:1
+#: public/views/sensor.html:1 public/views/sensor/latest-readings.html:1
 msgid "Últimas medições"
 msgstr "Latest readings"
+
+#: src/js/controllers.js:376
+msgid "Últimos 30 dias"
+msgstr "Last 30 days"
