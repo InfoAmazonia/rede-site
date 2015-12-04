@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Site Rede InfoAmazonia\n"
-"PO-Revision-Date: 2015-12-04 19:27+0000\n"
+"PO-Revision-Date: 2015-12-04 19:47+0000\n"
 "Last-Translator: Miguel Peixe <miguspeixe@gmail.com>\n"
 "Language-Team: English (http://www.transifex.com/infoamazonia/site-rede-infoamazonia/language/en/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -202,7 +202,7 @@ msgstr "<strong>Power source: </strong> electric power multi-voltage or recharge
 msgid ""
 "<strong>Instalação: </strong>A instalação é simples, não requer "
 "conhecimentos específicos."
-msgstr "<strong>Installation:</strong> Installation is simple, requires no special knowledge."
+msgstr "<strong>Installation:</strong> Installation is simple, it requires no special knowledge."
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
@@ -222,7 +222,7 @@ msgid ""
 "<strong>Módulo 1 (M1): </strong>composto por um Arduino Mega, responsável "
 "por todo o processamento das informações capturadas pelos sensores e pela "
 "alimentação de energia do conjunto (conectado a uma fonte externa)."
-msgstr "<strong>Module 1 (M1):  </strong>composed by Arduino Mega, it is responsible for all processing of information captured by the sensors and the entire power supply (connected to an external source)."
+msgstr "<strong>Module 1 (M1):  </strong>composed by Arduino Mega, it is responsible for processing information captured by the sensors and provide power supply (connected to an external source)."
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
@@ -251,9 +251,8 @@ msgstr "<strong>Monitored parameters: </strong> pH, temperature, electrical cond
 #: public/views/pages/mae-dagua.html:1
 msgid ""
 "<strong>Potencial de redução da oxidação (ORP): </strong>O potencial de "
-"redução da oxidação ajuda a indicar a possibilidade de haver micro-"
-"organismos presentes na água."
-msgstr "<strong>Oxidation reduction potential (ORP):</strong> The oxidation reduction potential helps to indicate the possibility of micro-organisms present in the water."
+"redução da oxidação ajuda a indicar a presença de micro-organismos na água."
+msgstr "<strong>Oxidation reduction potential (ORP):</strong> The oxidation reduction potential helps to indicate the presence of micro-organisms in the water."
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
@@ -342,7 +341,7 @@ msgstr "Brazilian Amazon"
 #: public/views/pages/mae-dagua.html:1
 msgid ""
 "Arduíno Mega: Placa com microcontrolador utilizada para controlar o sistema."
-msgstr "Arduino Mega:  open-source electronics platform based on easy-to-use hardware and software."
+msgstr "Arduino Mega:  open-source electronic platform based on easy-to-use hardware and software."
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
@@ -407,7 +406,7 @@ msgid ""
 "importantes da qualidade da água para consumo humano, tais como Oxigênio "
 "Dissolvido, Coliformes termotolerantes e análise microbiológica da água, com"
 " relação à presença de parasitas, vírus, e bactérias."
-msgstr "It is worth emphasizing the importance of the evaluation of other important parameters of water quality for human consumption, such as dissolved oxygen, fecal coliform and microbiological analysis of water, with respect to the presence of parasites, viruses and bacteria."
+msgstr "It is worth emphasizing the importance of evaluating other important parameters of drinking water quality, such as dissolved oxygen, fecal coliform and microbiological analysis of water, with respect to the presence of parasites, viruses and bacteria."
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
@@ -629,7 +628,7 @@ msgid ""
 "Firmware: Em eletrônica e computação, o firmware é o conjunto de instruções "
 "operacionais programadas diretamente no hardware de equipamentos "
 "eletrônicos."
-msgstr "Firmware: In electronics and computing, firmware is the set of operating instructions programmed directly into the electronics hardware."
+msgstr "Firmware: In electronics and computing, firmware is the set of operating instructions programmed directly into the electronic hardware."
 
 #: public/views/pages/network.html:1
 msgid ""
@@ -805,10 +804,17 @@ msgstr "New user"
 
 #: public/views/pages/faq.html:1
 msgid ""
-"O Mãe d'Água está sendo testado no projeto Rede InfoAmazonia. Nesse momento,"
-" não há intenção do projeto de comercializar o equipamento. É hardware "
-"livre, e os arquivos necessários para produção estão disponíveis em:"
+"O Mãe d'Água está sendo testado pelo projeto Rede InfoAmazonia. Nesse "
+"momento, não há intenção do projeto de comercializar o equipamento. É "
+"hardware livre, e os arquivos necessários para produção estão disponíveis "
+"em:"
 msgstr "The Mãe d´Água is being tested by the team of the Rede InfoAmazonia project. At this point, there is no intention of the project to market the equipment. It's free hardware, and the necessary files for production is available at:"
+
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"O Mãe d´Água foi produzido utilizando tecnologias livres. As informações "
+"necessárias para produção estão disponíveis em:"
+msgstr "The Mãe d'Água was developed using open technologies. The information you need to produce is available at:"
 
 #: public/views/sensor/report.html:1
 msgid ""
@@ -818,12 +824,6 @@ msgid ""
 "da água, variáveis que auxiliam na inferência da qualidade da água para "
 "consumo humano."
 msgstr "The Mãe d´Água measured acidity of the water by hydrogenic potential (pH), oxidation reduction potential (ORP), conductivity, water temperature and barometric pressure in the water level, variables that help to inference the quality of water for human consumption."
-
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"O Mãe d´Água produzido utilizando tecnologias livres. As informações "
-"necessárias para produção estão disponíveis em:"
-msgstr "The Mãe d'Água was developed using open technologies. The information you  need to produce is available at:"
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
@@ -939,7 +939,7 @@ msgstr "Collective systems take water directly from the groundwater through deep
 msgid ""
 "Os resultados são acessíveis através deste site e alertam sobre possível "
 "contaminação."
-msgstr "The results are available in this site and alert you to possible contamination in the sites."
+msgstr "The results are available in this site and will alert you in any contamination in the project's monitored spots."
 
 #: public/views/sensor/report.html:1
 msgid ""

@@ -157,7 +157,7 @@ msgid "<strong>Parâmetros monitorados: </strong>pH, temperatura, condutividade 
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
-msgid "<strong>Potencial de redução da oxidação (ORP): </strong>O potencial de redução da oxidação ajuda a indicar a possibilidade de haver micro-organismos presentes na água."
+msgid "<strong>Potencial de redução da oxidação (ORP): </strong>O potencial de redução da oxidação ajuda a indicar a presença de micro-organismos na água."
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
@@ -608,15 +608,15 @@ msgid "Novo usuário"
 msgstr ""
 
 #: public/views/pages/faq.html:1
-msgid "O Mãe d'Água está sendo testado no projeto Rede InfoAmazonia. Nesse momento, não há intenção do projeto de comercializar o equipamento. É hardware livre, e os arquivos necessários para produção estão disponíveis em:"
+msgid "O Mãe d'Água está sendo testado pelo projeto Rede InfoAmazonia. Nesse momento, não há intenção do projeto de comercializar o equipamento. É hardware livre, e os arquivos necessários para produção estão disponíveis em:"
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid "O Mãe d´Água foi produzido utilizando tecnologias livres. As informações necessárias para produção estão disponíveis em:"
 msgstr ""
 
 #: public/views/sensor/report.html:1
 msgid "O Mãe d´Água possui funcionalidades de medição de acidez da água pelo potencial hidrogeniônico (pH), potencial de redução da oxidação (ORP), condutividade elétrica, temperatura da água e pressão barométrica no nível da água, variáveis que auxiliam na inferência da qualidade da água para consumo humano."
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid "O Mãe d´Água produzido utilizando tecnologias livres. As informações necessárias para produção estão disponíveis em:"
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
