@@ -7,6 +7,7 @@ Install the following dependencies:
 
 - [Node.js](nodejs.org)
 - [MongoDB](mongodb.org)
+- [Python](python.org)
 
 Clone this repository locally and create a `.env` based on example:
 
