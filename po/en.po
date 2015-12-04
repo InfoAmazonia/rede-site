@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Site Rede InfoAmazonia\n"
-"PO-Revision-Date: 2015-12-04 19:47+0000\n"
+"PO-Revision-Date: 2015-12-04 19:52+0000\n"
 "Last-Translator: Miguel Peixe <miguspeixe@gmail.com>\n"
 "Language-Team: English (http://www.transifex.com/infoamazonia/site-rede-infoamazonia/language/en/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -414,7 +414,7 @@ msgid ""
 "importantes da qualidade da água para consumo humano, tais como oxigênio "
 "dissolvido, coliformes termotolerantes e análise microbiológica da água, com"
 " relação à presença de parasitas, vírus e bactérias."
-msgstr "It is worth emphasizing the importance of the evaluation of other important parameters of water quality for human consumption, such as dissolved oxygen, fecal coliform and microbiological analysis of water, with respect to the presence of parasites, viruses and bacteria."
+msgstr "It is worth emphasizing the importance of evaluating other important parameters of drinking water quality, such as dissolved oxygen, fecal coliform and microbiological analysis of water, with respect to the presence of parasites, viruses and bacteria."
 
 #: public/views/pages/press.html:1
 msgid "CanalTech"
