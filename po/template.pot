@@ -237,6 +237,10 @@ msgstr ""
 msgid "Assine as atualizações deste sensor"
 msgstr ""
 
+#: public/views/sensor/subscribe.html:1
+msgid "Assine as atualizações do sensor"
+msgstr ""
+
 #: public/views/index.html:1
 #: public/views/pages/network.html:1
 msgid "Atividades de formação"
@@ -306,6 +310,10 @@ msgstr ""
 
 #: public/views/sensor/report.html:1
 msgid "Condutividade elétrica"
+msgstr ""
+
+#: public/views/sensor/subscribe.html:1
+msgid "Confirmar assinatura"
 msgstr ""
 
 #: src/js/controllers.js:380

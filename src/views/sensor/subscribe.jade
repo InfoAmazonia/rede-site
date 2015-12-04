@@ -1,5 +1,5 @@
 .container(ng-hide="token")
   .six.columns.offset-by-three
     #subscribe-sensor(ng-init="subscribe()")
-      h2 Assine as atualizações do sensor
-      auth-form(callback="subscribe" submit-label="'Confirmar assinatura'")
+      h2(translate) Assine as atualizações do sensor
+      auth-form(callback="subscribe" submit-label="'Confirmar assinatura'|translate")

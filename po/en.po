@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Site Rede InfoAmazonia\n"
-"PO-Revision-Date: 2015-12-04 12:30+0000\n"
+"PO-Revision-Date: 2015-12-04 12:36+0000\n"
 "Last-Translator: Miguel Peixe <miguspeixe@gmail.com>\n"
 "Language-Team: English (http://www.transifex.com/infoamazonia/site-rede-infoamazonia/language/en/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -368,6 +368,10 @@ msgstr "Subscriber"
 msgid "Assine as atualizações deste sensor"
 msgstr "Subscribe the updates from this sensor"
 
+#: public/views/sensor/subscribe.html:1
+msgid "Assine as atualizações do sensor"
+msgstr "Subscribe the updates from this sensor"
+
 #: public/views/index.html:1 public/views/pages/network.html:1
 msgid "Atividades de formação"
 msgstr "Educational activities"
@@ -447,6 +451,10 @@ msgstr "Sensor community"
 #: public/views/sensor/report.html:1
 msgid "Condutividade elétrica"
 msgstr "Eletric conductivity"
+
+#: public/views/sensor/subscribe.html:1
+msgid "Confirmar assinatura"
+msgstr "Confirm subscription"
 
 #: src/js/controllers.js:380
 msgid "Customizado"
