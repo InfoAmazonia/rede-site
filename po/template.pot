@@ -157,7 +157,7 @@ msgid "<strong>Parâmetros monitorados: </strong>pH, temperatura, condutividade 
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
-msgid "<strong>Potencial de redução da oxidação (ORP): </strong>O potencial de redução da oxidação ajuda a indicar a possibilidade de haverem micro-organismos presentes na água."
+msgid "<strong>Potencial de redução da oxidação (ORP): </strong>O potencial de redução da oxidação ajuda a indicar a possibilidade de haver micro-organismos presentes na água."
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
@@ -368,10 +368,6 @@ msgstr ""
 
 #: public/views/home.html:1
 msgid "Em breve você poderá conhecer mais sobre o projeto, acompanhar a informações sobre a qualidade da água no Oeste do Pará e se cadastrar para receber alertas sobre como está a qualidade da água em comunidades de Belterra, Mojuí dos Campos e Santarém."
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid "Em caso de alterações na água, serão realizadas análises em laboratório para confirmar e obter maiores informações."
 msgstr ""
 
 #: public/views/pages/network.html:1
