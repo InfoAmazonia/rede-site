@@ -652,7 +652,7 @@ msgid "Observatório de UCs da WWF-Brasil"
 msgstr ""
 
 #: public/views/home.html:1
-msgid "Olá! O Projeto Rede InfoAmazonia em fase final de desenvolvimento. Os sensores dos Mãe d'Água estão em fase de ajustes, e as leituras ainda não devem ser consideradas válidas e o conteúdo está em revisão final para publicação. Sugestões e comentários sobre o site são bem vindos. Entre em contato através do email rede@infoamazonia.org."
+msgid "Olá! O Projeto Rede InfoAmazonia em fase final de desenvolvimento. Os sensores dos Mãe d'Água estão em fase de ajustes (as leituras ainda não devem ser consideradas válidas) e o conteúdo está em revisão final para publicação. Sugestões e comentários sobre o site são bem vindos. Entre em contato através do email rede@infoamazonia.org."
 msgstr ""
 
 #: public/views/pages/network.html:1
