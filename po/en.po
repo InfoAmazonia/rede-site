@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Site Rede InfoAmazonia\n"
-"PO-Revision-Date: 2015-12-04 12:36+0000\n"
+"PO-Revision-Date: 2015-12-04 12:52+0000\n"
 "Last-Translator: Miguel Peixe <miguspeixe@gmail.com>\n"
 "Language-Team: English (http://www.transifex.com/infoamazonia/site-rede-infoamazonia/language/en/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -177,7 +177,7 @@ msgid ""
 "<strong>Aplicação: </strong>o equipamento é utilizado para monitoramento da "
 "qualidade da água em caixas d´água, cisternas, reservatórios, corpos de água"
 " superficial com baixa vazão."
-msgstr "<strong>oApplication: </strong> the equipment is used for monitoring water quality in water tanks, cisterns, tanks, surface water bodies with low flow."
+msgstr "<strong>Application: </strong> the equipment is used for monitoring water quality in water tanks, cisterns, tanks, surface water bodies with low flow."
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
@@ -253,7 +253,7 @@ msgid ""
 "<strong>Potencial de redução da oxidação (ORP): </strong>O potencial de "
 "redução da oxidação ajuda a indicar a possibilidade de haver micro-"
 "organismos presentes na água."
-msgstr "<strong> oxidation reduction potential (ORP): </ strong> The oxidation reduction potential helps to indicate the possibility of micro-organisms present in the water."
+msgstr "<strong>Oxidation reduction potential (ORP):</strong> The oxidation reduction potential helps to indicate the possibility of micro-organisms present in the water."
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
@@ -439,6 +439,10 @@ msgid ""
 "Ciclo de oficinas 2 - Formação para implantação da rede e oficina  "
 "jornalismo cidadão"
 msgstr "2nd Cycle of workshops 2 - Training for network deployment and citizen journalism "
+
+#: public/views/pages/faq.html:1
+msgid "Como posso adquirir o Mãe d´Água?"
+msgstr "Can I buy a Mãe d´Água?"
 
 #: public/views/sensor.html:1
 msgid "Comunidade"
@@ -826,8 +830,13 @@ msgstr "The Mãe d'Água was developed using open technologies. The information 
 msgid ""
 "O Mãe d´Água é capaz de monitorar parâmetros físico-químicos importantes que"
 " ajudam a indicar se a água é potável ou está contaminada. O dispositivo faz"
-" leituras das seguintes variáveis: acidez (pH),"
-msgstr "Mãe d´Água is able to monitor important physicochemical properties that helps to distingish if the water is drinkable or contaminated. The device reads the following variables: acidity (pH),"
+" leituras das seguintes variáveis: acidez (pH), <a "
+"href=\"https://pt.wikipedia.org/wiki/Potencial_de_redu%C3%A7%C3%A3o\" "
+"rel=\"external\" target=\"_blank\">potencial de redução da oxidação "
+"(ORP)</a>, condutividade elétrica, temperatura e pressão barométrica no "
+"nível da água. São essas medições as que permitem detectar variações que "
+"indicam contaminação."
+msgstr "Mãe d´Água is able to monitor important physicochemical properties that helps to distingish if the water is drinkable or contaminated. The device reads the following variables: acidity (pH), <a href=\"https://pt.wikipedia.org/wiki/Potencial_de_redu%C3%A7%C3%A3o\" rel=\"external\" target=\"_blank\">oxidation reduction potential (ORP)</a>, conductivity, temperature and barometric pressure at the water level. These are the measurements that can detect variations that indicate contamination."
 
 #: public/views/pages/about.html:1
 msgid ""
@@ -836,7 +845,7 @@ msgid ""
 "Tecnologia</a>, empresa incubada na Universidade de São Paulo, e com ajuda "
 "da rede internacional de ciência cidadã <a href=\"https://publiclab.org/\" "
 "rel=\"external\" target=\"_blank\">Public Lab</a>."
-msgstr "The development of sensors was carried out in partnership with the start-up  <a href=\"http://devtecnologia.com.br\" rel=\"external\" target=\"_blank\">Dev Technology [</a>, a company incubated at the University of São Paulo, and with the help of the international network of citizen science <a href=\"https://publiclab.org/\" rel=\"external\" target=\"_blank\">Public Lab</a>."
+msgstr "The development of sensors was carried out in partnership with the start-up  <a href=\"http://devtecnologia.com.br\" rel=\"external\" target=\"_blank\">Dev Technology</a>, a company incubated at the University of São Paulo, and with the help of the international network of citizen science <a href=\"https://publiclab.org/\" rel=\"external\" target=\"_blank\">Public Lab</a>."
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
@@ -887,7 +896,7 @@ msgid ""
 " </a>e a start-up <a href=\"http://devtecnologia.com.br/sobre/quem-somos/\" "
 "rel=\"external\" target=\"_blank\">Dev Tecnologia</a>, empresa incubada na "
 "Universidade de São Paulo."
-msgstr "The project Rede InfoAmazonia is developing \"Mãe d'água - Water's mother\", an open hardware to monitor water quality in real time.  Inspired on <a href=\"http://publiclab.org/wiki/riffle\" rel=\"external\" target=\"_blank\">Riffle</a> [http://publiclab.org/wiki/riffle] , o device was created in collaboration with the american citzen science network <a href=\"http://publiclab.org/\" rel=\"external\" target=\"_blank\">Public Lab</a> and <a href=\"http://devtecnologia.com.br/sobre/quem-somos/\" rel=\"external\" target=\"_blank\">Dev Tecnologia </a>, startup incubated at Sao Paulo University. "
+msgstr "The project Rede InfoAmazonia is developing \"Mãe d'água - Water's mother\", an open hardware to monitor water quality in real time.  Inspired on <a href=\"http://publiclab.org/wiki/riffle\" rel=\"external\" target=\"_blank\">Riffle</a>, o device was created in collaboration with the american citzen science network <a href=\"http://publiclab.org/\" rel=\"external\" target=\"_blank\">Public Lab</a> and <a href=\"http://devtecnologia.com.br/sobre/quem-somos/\" rel=\"external\" target=\"_blank\">Dev Tecnologia</a>, startup incubated at Sao Paulo University. "
 
 #: public/views/pages/about.html:1
 msgid ""
@@ -942,6 +951,10 @@ msgstr "The results are available at rede.infoamazonia.org and alert you to poss
 #: public/views/index.html:1 public/views/pages/mae-dagua.html:1
 msgid "Parâmetros monitorados"
 msgstr "Monitored parameters "
+
+#: public/views/pages/faq.html:1
+msgid "Perguntas frequentes"
+msgstr "FAQs"
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""

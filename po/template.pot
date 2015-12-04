@@ -300,6 +300,10 @@ msgstr ""
 msgid "Ciclo de oficinas 2 - Formação para implantação da rede e oficina  jornalismo cidadão"
 msgstr ""
 
+#: public/views/pages/faq.html:1
+msgid "Como posso adquirir o Mãe d´Água?"
+msgstr ""
+
 #: public/views/sensor.html:1
 msgid "Comunidade"
 msgstr ""
@@ -616,7 +620,7 @@ msgid "O Mãe d´Água produzido utilizando tecnologias livres. As informações
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
-msgid "O Mãe d´Água é capaz de monitorar parâmetros físico-químicos importantes que ajudam a indicar se a água é potável ou está contaminada. O dispositivo faz leituras das seguintes variáveis: acidez (pH),"
+msgid "O Mãe d´Água é capaz de monitorar parâmetros físico-químicos importantes que ajudam a indicar se a água é potável ou está contaminada. O dispositivo faz leituras das seguintes variáveis: acidez (pH), <a href=\"https://pt.wikipedia.org/wiki/Potencial_de_redu%C3%A7%C3%A3o\" rel=\"external\" target=\"_blank\">potencial de redução da oxidação (ORP)</a>, condutividade elétrica, temperatura e pressão barométrica no nível da água. São essas medições as que permitem detectar variações que indicam contaminação."
 msgstr ""
 
 #: public/views/pages/about.html:1
@@ -678,6 +682,10 @@ msgstr ""
 #: public/views/index.html:1
 #: public/views/pages/mae-dagua.html:1
 msgid "Parâmetros monitorados"
+msgstr ""
+
+#: public/views/pages/faq.html:1
+msgid "Perguntas frequentes"
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
