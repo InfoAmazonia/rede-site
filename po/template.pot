@@ -371,7 +371,7 @@ msgid "Editar usuário"
 msgstr ""
 
 #: public/views/pages/network.html:1
-msgid "Em 16 e 21 de outubro de 2015, os instrutores Paloma Oliveira e pixel realizaram oficinas para apresentar o sistema e o equipamento de monitoramento do Rede InfoAmazonia, para formar agentes comunitários que realizem a instalação e manutenção do equipamento. Em 16 de outubro, a atividade reuniu doze participantes no na UFOPA - Unidade Amazônia (Santarém) e no dia 21, sete pessoas participaram a oficina no Centro Experimental Floresta Ativa na Reserva (Extrativista Tapajós-Arapiuns - Santarém)."
+msgid "Em 16 e 21 de outubro de 2015, os instrutores Paloma Oliveira e pixel realizaram oficinas para apresentar o sistema de monitoramento do Rede InfoAmazonia e formar agentes comunitários que realizem a instalação e manutenção do equipamento. Em 16 de outubro, a atividade reuniu doze participantes na UFOPA - Unidade Amazônia (Santarém) e no dia 21, sete pessoas participaram a oficina no Centro Experimental Floresta Ativa (Reserva Extrativista Tapajós-Arapiuns - Santarém)."
 msgstr ""
 
 #: public/views/pages/network.html:1
@@ -620,7 +620,7 @@ msgid "O Mãe d´Água produzido utilizando tecnologias livres. As informações
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
-msgid "O Mãe d´Água é capaz de monitorar parâmetros físico-químicos importantes que ajudam a indicar se a água é potável ou está contaminada. O dispositivo faz leituras das seguintes variáveis: acidez (pH), <a href=\"https://pt.wikipedia.org/wiki/Potencial_de_redu%C3%A7%C3%A3o\" rel=\"external\" target=\"_blank\">potencial de redução da oxidação (ORP)</a>, condutividade elétrica, temperatura e pressão barométrica no nível da água. São essas medições as que permitem detectar variações que indicam contaminação."
+msgid "O Mãe d´Água é capaz de monitorar parâmetros físico-químicos importantes que ajudam a indicar se a água é potável ou está contaminada. O dispositivo faz leituras das seguintes variáveis: acidez (pH), <a href=\"https://pt.wikipedia.org/wiki/Potencial_de_redu%C3%A7%C3%A3o\" rel=\"external\" target=\"_blank\">potencial de redução da oxidação (ORP)</a>, condutividade elétrica, temperatura e pressão barométrica no nível da água. Essas medições permitem detectar variações que indicam contaminação."
 msgstr ""
 
 #: public/views/pages/about.html:1
@@ -668,7 +668,7 @@ msgid "Olá! O Projeto Rede InfoAmazonia em fase final de desenvolvimento. Os se
 msgstr ""
 
 #: public/views/pages/network.html:1
-msgid "Os microssistemas coletivos captam água diretamente dos lençóis freáticos através de poços profundos. Entre os pontos de monitoramento selecionados, apenas o sensor # Zona Urbana de Belterra analisa a água em seu ponto final de distribuição. Em todos os outros a análise é feita no ponto de captação."
+msgid "Os microssistemas coletivos captam água diretamente dos lençóis freáticos através de poços profundos. Entre os pontos de monitoramento selecionados, apenas o sensor Zona Urbana de Belterra analisa a água em seu ponto final de distribuição. Em todos os outros a análise é feita no ponto de captação."
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1

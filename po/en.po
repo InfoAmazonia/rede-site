@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Site Rede InfoAmazonia\n"
-"PO-Revision-Date: 2015-12-04 12:52+0000\n"
+"PO-Revision-Date: 2015-12-04 19:27+0000\n"
 "Last-Translator: Miguel Peixe <miguspeixe@gmail.com>\n"
 "Language-Team: English (http://www.transifex.com/infoamazonia/site-rede-infoamazonia/language/en/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -202,7 +202,7 @@ msgstr "<strong>Power source: </strong> electric power multi-voltage or recharge
 msgid ""
 "<strong>Instalação: </strong>A instalação é simples, não requer "
 "conhecimentos específicos."
-msgstr "<strong>Installation:  </strong>Installation is simple, requires no special knowledge."
+msgstr "<strong>Installation:</strong> Installation is simple, requires no special knowledge."
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
@@ -215,7 +215,7 @@ msgid ""
 "<strong>Monitoramento em tempo real: </strong>A coleta de dados é feita "
 "automaticamente a cada hora, e as leituras são enviadas via rede 2G para o "
 "servidor do site rede.infoamazonia.org."
-msgstr "<strong>Real-time monitoring: </strong>Data collection is done automatically every hour, and the readings are sent via 2G network to the site server. rede.infoamazonia.org"
+msgstr "<strong>Real-time monitoring: </strong>Data collection is done automatically every hour, and the readings are sent via 2G network to the site server rede.infoamazonia.org"
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
@@ -294,7 +294,7 @@ msgid ""
 "engajamento de lideranças locais no monitoramento participativo e conexão 2G"
 " no local do reservatório onde é feito o monitoramento. Os voluntários foram"
 " selecionados durante das atividades de formação."
-msgstr "The selecion of the sites to build the network had several criteria. The two main restrictions were to the involvement of local leaders in participatory monitoring and 2G connection in the monitoring site. The volunteers who are part of of the project were selected after the educational activities."
+msgstr "The selecion of the sites to build the network had several criteria. The two main restrictions were the involvement of local leaders in participatory monitoring and 2G connection in the monitoring site. The volunteers who are part of of the project were selected after the educational activities."
 
 #: public/views/pages/about.html:1
 msgid ""
@@ -521,14 +521,13 @@ msgstr "Edit user"
 #: public/views/pages/network.html:1
 msgid ""
 "Em 16 e 21 de outubro de 2015, os instrutores Paloma Oliveira e pixel "
-"realizaram oficinas para apresentar o sistema e o equipamento de "
-"monitoramento do Rede InfoAmazonia, para formar agentes comunitários que "
-"realizem a instalação e manutenção do equipamento. Em 16 de outubro, a "
-"atividade reuniu doze participantes no na UFOPA - Unidade Amazônia "
-"(Santarém) e no dia 21, sete pessoas participaram a oficina no Centro "
-"Experimental Floresta Ativa na Reserva (Extrativista Tapajós-Arapiuns - "
-"Santarém)."
-msgstr "Between 16 and 21 October 2015, Paloma Oliveira and pixel held workshops to introduce the system and monitoring equipment used by Rede InfoAmazonia. The volunteers were prepared to undertake the installation in site and maintenance of equipment. On October 16, the activity gathered twelve participants at UFOPA (Santarém), On October 21, seven people attended the workshop at the Centro Experimental Foresta Ativa in the Extractive Reserve of Tapajós-Arapiuns - Santarém."
+"realizaram oficinas para apresentar o sistema de monitoramento do Rede "
+"InfoAmazonia e formar agentes comunitários que realizem a instalação e "
+"manutenção do equipamento. Em 16 de outubro, a atividade reuniu doze "
+"participantes na UFOPA - Unidade Amazônia (Santarém) e no dia 21, sete "
+"pessoas participaram a oficina no Centro Experimental Floresta Ativa "
+"(Reserva Extrativista Tapajós-Arapiuns - Santarém)."
+msgstr "Between 16 and 21 October 2015, Paloma Oliveira and pixel held workshops to introduce the monitoring system used by Rede InfoAmazonia. The volunteers were prepared to undertake the installation in site and maintenance of equipment. On October 16, the activity gathered twelve participants at UFOPA (Santarém), On October 21, seven people attended the workshop at the Centro Experimental Floresta Ativa in the Extractive Reserve of Tapajós-Arapiuns - Santarém."
 
 #: public/views/pages/network.html:1
 msgid ""
@@ -543,7 +542,7 @@ msgid ""
 "Extrativisita Tapajós-Arapiuns (Centro Experimental Floresta Ativa, "
 "comunidades de Anumã, de Solimões, Pedra Branca e Carão, Escola Nossa "
 "Senhora Aparecida e Aldeia Vista Alegre de Capixauã)."
-msgstr "In Belterra, the pilot monitoring network is formed by points located in urban areas and communities of the Tapajós National Forest (Jamaraquá, São Domingos and Maguary). In Mojuí dos Campos, the Municipal Elementary School Raimunda Queiroz de Sousa and Micro Alto Alegre supply system are part of the network . The monitored points of Santarém are distributed in urban areas (NGO Projeto Saúde e Alegria, Professor Aldo Ferreira Campos School, São Francisco School and an individual well in the neighbourhood of Alvorada), rural area (Dorothy Mae Stang School Irmça) and also in the Extrativisit Reserve Tapajós- Arapiuns (Centro Experimental Floesta Ativa, communities of Anuma, Solimões, Pedra Branca and Carão, Nossa Senhora Aparecida School and the village of Vista Alegre Capixauã)."
+msgstr "In Belterra, the pilot monitoring network is formed by points located in urban areas and communities of the Tapajós National Forest (Jamaraquá, São Domingos and Maguary). In Mojuí dos Campos, the Municipal Elementary School Raimunda Queiroz de Sousa and Micro Alto Alegre supply system are part of the network. The monitored points of Santarém are distributed in urban areas (NGO Projeto Saúde e Alegria, Professor Aldo Ferreira Campos School, São Francisco School and an individual well in the neighbourhood of Alvorada), rural area (Irmã Dorothy Mae Stang School) and also in the Extrativisit Reserve Tapajós- Arapiuns (Centro Experimental Floesta Ativa, communities of Anuma, Solimões, Pedra Branca and Carão, Nossa Senhora Aparecida School and the village of Vista Alegre Capixauã)."
 
 #: public/views/home.html:1
 msgid ""
@@ -636,7 +635,7 @@ msgstr "Firmware: In electronics and computing, firmware is the set of operating
 msgid ""
 "Foram realizados dois ciclos de atividades de mobilização e formação sobre "
 "tecnologias livres e comunicação cidadã entre março e outubro de 2015."
-msgstr "Two cycles of mobilization and educational activities on open technologies and citizen communication between March and October 2015."
+msgstr "Two cycles of mobilization and educational activities on open technologies and citizen communication happened between March and October 2015."
 
 #: public/views/pages/network.html:1
 msgid "Formação da Rede"
@@ -834,9 +833,9 @@ msgid ""
 "href=\"https://pt.wikipedia.org/wiki/Potencial_de_redu%C3%A7%C3%A3o\" "
 "rel=\"external\" target=\"_blank\">potencial de redução da oxidação "
 "(ORP)</a>, condutividade elétrica, temperatura e pressão barométrica no "
-"nível da água. São essas medições as que permitem detectar variações que "
-"indicam contaminação."
-msgstr "Mãe d´Água is able to monitor important physicochemical properties that helps to distingish if the water is drinkable or contaminated. The device reads the following variables: acidity (pH), <a href=\"https://pt.wikipedia.org/wiki/Potencial_de_redu%C3%A7%C3%A3o\" rel=\"external\" target=\"_blank\">oxidation reduction potential (ORP)</a>, conductivity, temperature and barometric pressure at the water level. These are the measurements that can detect variations that indicate contamination."
+"nível da água. Essas medições permitem detectar variações que indicam "
+"contaminação."
+msgstr "Mãe d´Água is able to monitor important physicochemical properties that helps to distingish if the water is drinkable or contaminated. The device reads the following variables: acidity (pH), <a href=\"https://pt.wikipedia.org/wiki/Potencial_de_redu%C3%A7%C3%A3o\" rel=\"external\" target=\"_blank\">oxidation reduction potential (ORP)</a>, conductivity, temperature and barometric pressure at the water level. Those measurements can detect variations that indicate contamination."
 
 #: public/views/pages/about.html:1
 msgid ""
@@ -861,7 +860,7 @@ msgid ""
 "despejo inadequado de resíduos domésticos, industriais e metais pesados. Os "
 "resultados das análises ajudam a distinguir a água potável de água "
 "contaminada."
-msgstr "The hardware, called \"Mãe d´Água\", can be installed in water tanks, tanks and of smaller surface water springs . With it is possible to detect possible changes in water characteristics from inadequate disposal of household waste, industrial and heavy metals. The test results help distinguish the drinking water from contaminated water."
+msgstr "The hardware, called \"Mãe d´Água\", can be installed in water tanks, tanks and of smaller surface water springs. With it is possible to detect possible changes in water characteristics from inadequate disposal of household waste, industrial and heavy metals. The results help distinguish the drinking water from contaminated water."
 
 #: public/views/sensor/report.html:1
 msgid ""
@@ -896,7 +895,7 @@ msgid ""
 " </a>e a start-up <a href=\"http://devtecnologia.com.br/sobre/quem-somos/\" "
 "rel=\"external\" target=\"_blank\">Dev Tecnologia</a>, empresa incubada na "
 "Universidade de São Paulo."
-msgstr "The project Rede InfoAmazonia is developing \"Mãe d'água - Water's mother\", an open hardware to monitor water quality in real time.  Inspired on <a href=\"http://publiclab.org/wiki/riffle\" rel=\"external\" target=\"_blank\">Riffle</a>, o device was created in collaboration with the american citzen science network <a href=\"http://publiclab.org/\" rel=\"external\" target=\"_blank\">Public Lab</a> and <a href=\"http://devtecnologia.com.br/sobre/quem-somos/\" rel=\"external\" target=\"_blank\">Dev Tecnologia</a>, startup incubated at Sao Paulo University. "
+msgstr "The project Rede InfoAmazonia is developing \"Mãe d'água - Water's mother\", an open hardware to monitor water quality in real time.  Inspired on <a href=\"http://publiclab.org/wiki/riffle\" rel=\"external\" target=\"_blank\">Riffle</a>, the device was created in collaboration with the american citzen science network <a href=\"http://publiclab.org/\" rel=\"external\" target=\"_blank\">Public Lab</a> and <a href=\"http://devtecnologia.com.br/sobre/quem-somos/\" rel=\"external\" target=\"_blank\">Dev Tecnologia</a>, startup incubated at Sao Paulo University. "
 
 #: public/views/pages/about.html:1
 msgid ""
@@ -905,7 +904,7 @@ msgid ""
 "uma rede de monitoramento em articulação com comunidades da Amazônia "
 "brasileira, para apresentar em tempo real os resultados das análises na "
 "plataforma InfoAmazonia e enviar alertas aos consumidores através de SMS."
-msgstr "The project Rede InfoAmazonia has developed an inexpensive monitoring system to analyze the quality of water for human consumption, and establish a monitoring network in partntership with communities in the Brazilian Amazon. It provides real-time analysis results in InfoAmazonia platform and sends notifications to consumers via SMS.\t"
+msgstr "The project Rede InfoAmazonia has developed an inexpensive monitoring system to analyze the quality of water for human consumption, and establish a monitoring network in partnership with communities in the Brazilian Amazon. It provides real-time analysis results in InfoAmazonia platform and sends notifications to consumers via SMS.\t"
 
 #: public/views/pages/about.html:1
 msgid ""
@@ -913,7 +912,7 @@ msgid ""
 "href=\"https://desafiosocial.withgoogle.com/brazil2014\" rel=\"external\" "
 "target=\"_blank\">Desafio de Impacto Social do Google em 2014</a>, junto a "
 "outras 9 ideias apresentadas por ONGs de todo o Brasil."
-msgstr "The project was one of the winners of the <a href=\"https://desafiosocial.withgoogle.com/brazil2014\" rel=\"external\" target=\"_blank\">Google Social Impact Challenge in 2014 </a>,  along with 9 other ideas presented by NGOs from all over Brazil."
+msgstr "The project was one of the winners of the <a href=\"https://desafiosocial.withgoogle.com/brazil2014\" rel=\"external\" target=\"_blank\">Google Social Impact Challenge in 2014</a>,  along with 9 other ideas presented by NGOs from all over Brazil."
 
 #: public/views/pages/press.html:1
 msgid "Observatório de UCs da WWF-Brasil"
@@ -932,8 +931,8 @@ msgstr "Hello! The Rede InfoAmazonia project is in late-stage of development. Th
 msgid ""
 "Os microssistemas coletivos captam água diretamente dos lençóis freáticos "
 "através de poços profundos. Entre os pontos de monitoramento selecionados, "
-"apenas o sensor # Zona Urbana de Belterra analisa a água em seu ponto final "
-"de distribuição. Em todos os outros a análise é feita no ponto de captação."
+"apenas o sensor Zona Urbana de Belterra analisa a água em seu ponto final de"
+" distribuição. Em todos os outros a análise é feita no ponto de captação."
 msgstr "Collective systems take water directly from the groundwater through deep wells. Among the selected monitoring points, only the sensor located in the urban area of Belterra analyzes the water in its final distribution point. In all others, the analysis is done at the pickup point."
 
 #: public/views/pages/mae-dagua.html:1
