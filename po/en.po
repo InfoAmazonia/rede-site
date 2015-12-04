@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Site Rede InfoAmazonia\n"
-"PO-Revision-Date: 2015-12-04 00:21+0000\n"
+"PO-Revision-Date: 2015-12-04 00:25+0000\n"
 "Last-Translator: GINA LEITE <gina@memelab.com.br>\n"
 "Language-Team: English (http://www.transifex.com/infoamazonia/site-rede-infoamazonia/language/en/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -888,7 +888,7 @@ msgid ""
 "uma rede de monitoramento em articulação com comunidades da Amazônia "
 "brasileira, para apresentar em tempo real os resultados das análises na "
 "plataforma InfoAmazonia e enviar alertas aos consumidores através de SMS."
-msgstr "O projeto Rede InfoAmazonia desenvolveu um sistema de monitoramento de baixo custo para analisar a qualidade da água para consumo humano, e estabeleceu uma rede de monitoramento em articulação com comunidades da Amazônia brasileira, para apresentar em tempo real os resultados das análises na plataforma InfoAmazonia e enviar alertas aos consumidores através de SMS. \t"
+msgstr "The project Rede InfoAmazonia has developed an inexpensive monitoring system to analyze the quality of water for human consumption, and establish a monitoring network in partntership with communities in the Brazilian Amazon. It provides real-time analysis results in InfoAmazonia platform and sends notifications to consumers via SMS.\t"
 
 #: public/views/pages/about.html:1
 msgid ""
