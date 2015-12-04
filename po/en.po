@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Site Rede InfoAmazonia\n"
-"PO-Revision-Date: 2015-12-04 00:12+0000\n"
+"PO-Revision-Date: 2015-12-04 00:21+0000\n"
 "Last-Translator: GINA LEITE <gina@memelab.com.br>\n"
 "Language-Team: English (http://www.transifex.com/infoamazonia/site-rede-infoamazonia/language/en/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -552,6 +552,12 @@ msgid ""
 "ambiente e jornalismo cidadão."
 msgstr "In partnership with the NGO Projeto Saúde & Alegria, articulation with leaders of riverine communities, support the Electronic Media Laboratory UFOPA and Secretariats of Environment in the municipalities of Santarém and Belterra, Pará, eighteen sites where chosen to have the equipment deployed. The implementation took place in mid-October 2015 after a cycle of workshops about free technologies, environment and citizen journalism."
 
+#: public/views/home.html:1
+msgid ""
+"Em sua fase piloto, a rede de sensores está sendo implementada em três "
+"cidades do Pará e uma do Amazonas"
+msgstr "In its pilot phase, the sensor network is being implemented in three cities in Para and Amazonas"
+
 #: public/views/admin/users-edit.html:1 public/views/admin/users.html:1
 msgid "Email"
 msgstr "Email"
@@ -592,6 +598,12 @@ msgstr "Send a message to the subscriber of {{sensor.name}}"
 #: public/views/admin/broadcast.html:1
 msgid "Envie uma mensagem para todos os assinantes"
 msgstr "Send a message to all subscribers"
+
+#: public/views/home.html:1
+msgid ""
+"Equipamentos capazes de monitorar parâmetros físico-químicos que ajudam a "
+"indicar se a água está contaminada"
+msgstr "Equipments capable of monitoring physical and chemical parameters that help indicate whether the water is contaminated"
 
 #: public/views/auth.html:1
 msgid "Eu já tenho uma conta"
@@ -1063,6 +1075,18 @@ msgstr "Shield: board which receives the physical-chemical environmental reading
 #: public/views/pages/about.html:1
 msgid "Sobre o projeto"
 msgstr "About the project"
+
+#: public/views/home.html:1
+msgid ""
+"São enviadas atualizações de hora em hora via rede 2G com as leituras dos "
+"dados para o site do Rede InfoAmazonia"
+msgstr "Hourly updates are to Rede InfoAmazonia site sent via 2G with sensor data readings"
+
+#: public/views/home.html:1
+msgid ""
+"São monitorados parâmetros que ajudam a indicar a presença de contaminantes "
+"químicos e biológicos, para que possamos alertar a população"
+msgstr "We monitor parameters that help indicate the presence of chemical and biological contaminants, so that we can alert the communities "
 
 #: public/views/admin/users-edit.html:1 public/views/admin/users.html:1
 msgid "Telefone"

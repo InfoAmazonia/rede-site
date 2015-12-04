@@ -374,6 +374,10 @@ msgstr ""
 msgid "Em parceria com o Projeto Saúde e Alegria, articulação com lideranças de comunidades ribeirinhas, apoio do Laboratório Mídias Eletrônicas da UFOPA e Secretarias de Meio Ambiente dos municípios de Santarém e Belterra, no Pará, foram escolhidos dezoito pontos onde foi feita a instalação dos equipamentos de monitoramento. A implantação aconteceu na segunda quinzena de outubro de 2015 após um ciclo de oficinas sobre tecnologias livres, meio ambiente e jornalismo cidadão."
 msgstr ""
 
+#: public/views/home.html:1
+msgid "Em sua fase piloto, a rede de sensores está sendo implementada em três cidades do Pará e uma do Amazonas"
+msgstr ""
+
 #: public/views/admin/users-edit.html:1
 #: public/views/admin/users.html:1
 msgid "Email"
@@ -408,6 +412,10 @@ msgstr ""
 
 #: public/views/admin/broadcast.html:1
 msgid "Envie uma mensagem para todos os assinantes"
+msgstr ""
+
+#: public/views/home.html:1
+msgid "Equipamentos capazes de monitorar parâmetros físico-químicos que ajudam a indicar se a água está contaminada"
 msgstr ""
 
 #: public/views/auth.html:1
@@ -805,6 +813,14 @@ msgstr ""
 
 #: public/views/pages/about.html:1
 msgid "Sobre o projeto"
+msgstr ""
+
+#: public/views/home.html:1
+msgid "São enviadas atualizações de hora em hora via rede 2G com as leituras dos dados para o site do Rede InfoAmazonia"
+msgstr ""
+
+#: public/views/home.html:1
+msgid "São monitorados parâmetros que ajudam a indicar a presença de contaminantes químicos e biológicos, para que possamos alertar a população"
 msgstr ""
 
 #: public/views/admin/users-edit.html:1
