@@ -56,6 +56,10 @@ msgstr ""
 msgid "30 de abril de 2014"
 msgstr ""
 
+#: public/views/pages/monitoring.html:1
+msgid "73% da água doce do Brasil está na Amazônia, no entanto o índice de água tratada nessa região é aproximadamente 22% inferior ao resto do Brasil. Ou seja, embora a água doce seja abundante na Amazônia, a população ainda enfrenta dificuldades para ter acesso a água potável. A má qualidade da água para consumo humano é decorrente tanto da contaminação dos rios pela decomposição natural de matéria orgânica de origem animal ou vegetal e provêm dos esgotos domésticos e de diversos processos industriais ou agropecuários. Contrariamente aos resíduos orgânicos, a matéria inorgânica que vêm de indústrias, não se decompõe naturalmente e podem matar micro-organismos, plantas e animais aquáticos, e tornar a água imprópria para o consumo ou para o banho."
+msgstr ""
+
 #: public/views/pages/press.html:1
 msgid "<a href=\"http://canaltech.com.br/noticia/ciencia/rede-desenvolve-dispositivo-open-source-para-medir-qualidade-da-agua-na-amazonia-43127/\" target=\"_blank\" rel=\"external\">Rede desenvolve dispositivo open-source para medir qualidade da água na Amazônia</a>"
 msgstr ""
@@ -197,6 +201,18 @@ msgstr ""
 msgid "A temperatura é um elemento que influencia características físicas e a química da água, como sua densidade e capacidade de reter oxigênio dissolvido."
 msgstr ""
 
+#: public/views/pages/monitoring.html:1
+msgid "A temperatura é um fator importante para considerar ao monitorar qualidade da água. Além de seus próprios efeitos, a temperatura influencia vários outros parâmetros e pode alterar as propriedades químicas e físicas da água. Desse modo, a temperatura da água deve ser considerada ao determinar (entre outros):"
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid "A água própria para o consumo, chamada de água potável, é aquela que não tem micróbios patogênicos, nem substâncias químicas além dos limites de tolerância e não é desagradável pelo seu aspecto, a quaisquer dos nossos sentidos (visão, olfato, tato e paladar)."
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid "Abaixo são descritos alguns parâmetros utilizados para monitorar qualidade da água. Se você quer mais detalhes sobre algum dos parâmetros listados abaixo, veja as referências."
+msgstr ""
+
 #: public/views/admin/users-edit.html:1
 msgid "Administrador"
 msgstr ""
@@ -312,8 +328,25 @@ msgstr ""
 msgid "Comunidade deste sensor"
 msgstr ""
 
+#: public/views/index.html:1
+msgid "Condutividade"
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
 #: public/views/sensor/report.html:1
 msgid "Condutividade elétrica"
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid "Condutividade é uma maneira indireta de medir concentração de poluentes, e mudanças em seu nível indica mudanças na composição da água. Água entre 0 - 2500 μS/cm pode ser consumida por humanos, apesar de que estes preferem água na primeira metade dessa variação se estiver disponível."
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid "Condutividade é uma medida da capacidade da água de passar uma corrente elétrica. Essa habilidade é diretamente relacionada com a concentração de íons na água. Esses íons condutivos vêm de sais dissolvidos e outros materiais inorgânicos. Quantos mais íons estiverem presentes, maior a condutividade da água. Do mesmo modo, quanto menos íons houverem na água, menos condutiva ela é. Água destilada ou desionizada pode agir como isolante devido à sua condutividade muito baixa. Água do mar, por outro lado, tem uma condutividade muito alta."
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid "Condutividade;"
 msgstr ""
 
 #: public/views/sensor/subscribe.html:1
@@ -322,6 +355,10 @@ msgstr ""
 
 #: src/js/controllers.js:380
 msgid "Customizado"
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid "Da mesma maneira que a transferência de íons de hidrogênio entre espécies químicas determina o pH de uma solução aquosa, a transferência de elétrons entre espécies químicas determina o potencial de oxidação/redução (ORP, ou potencial redox) de uma solução aquosa. Assim como o pH, o potencial de redução representa quão fortemente elétrons são transferidos de ou para espécies em uma solução."
 msgstr ""
 
 #: public/views/sensor.html:1
@@ -554,6 +591,10 @@ msgstr ""
 msgid "Minha conta"
 msgstr ""
 
+#: public/views/index.html:1
+msgid "Monitoramento"
+msgstr ""
+
 #: src/js/directives.js:343
 msgid "Máxima"
 msgstr ""
@@ -623,6 +664,10 @@ msgstr ""
 msgid "O Mãe d´Água é capaz de monitorar parâmetros físico-químicos importantes que ajudam a indicar se a água é potável ou está contaminada. O dispositivo faz leituras das seguintes variáveis: acidez (pH), <a href=\"https://pt.wikipedia.org/wiki/Potencial_de_redu%C3%A7%C3%A3o\" rel=\"external\" target=\"_blank\">potencial de redução da oxidação (ORP)</a>, condutividade elétrica, temperatura e pressão barométrica no nível da água. Essas medições permitem detectar variações que indicam contaminação."
 msgstr ""
 
+#: public/views/pages/monitoring.html:1
+msgid "O controle da qualidade da água para consumo humano é fundamental para a garantia da saúde. O monitoramento da qualidade da água deve ser feito regularmente pelo responsável pelo sistema de abastecimento de água, destinado a verificar se a água fornecida à população é potável. Medidas preventivas simples como desinfectar a água com cloro podem evitar ou eliminar organismos patogênicos transmitidos pela água."
+msgstr ""
+
 #: public/views/pages/about.html:1
 msgid "O desenvolvimento dos sensores foi realizado em parceria com a start-up <a href=\"http://devtecnologia.com.br\" rel=\"external\" target=\"_blank\">Dev Tecnologia</a>, empresa incubada na Universidade de São Paulo, e com ajuda da rede internacional de ciência cidadã <a href=\"https://publiclab.org/\" rel=\"external\" target=\"_blank\">Public Lab</a>."
 msgstr ""
@@ -637,6 +682,10 @@ msgstr ""
 
 #: public/views/sensor/report.html:1
 msgid "O pH normal deve variar entre 6 e 9, este índice pode ser alterado por conta da poluição."
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid "O pH ótimo vai variar em diferentes fornecedores a partir da composição da água e da natureza da construção dos materiais no sistema de distribuição. O Governo Brasileiro recomenda manter o nível de pH em sistemas de distribuição entre 6 e 9,5."
 msgstr ""
 
 #: public/views/sensor/report.html:1
@@ -659,6 +708,19 @@ msgstr ""
 msgid "O projeto foi um dos premiados do <a href=\"https://desafiosocial.withgoogle.com/brazil2014\" rel=\"external\" target=\"_blank\">Desafio de Impacto Social do Google em 2014</a>, junto a outras 9 ideias apresentadas por ONGs de todo o Brasil."
 msgstr ""
 
+#: public/views/index.html:1
+#: public/views/pages/monitoring.html:1
+msgid "ORP"
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid "ORP mede a habilidade da água de limpar-se ou quebrar produtos como contaminantes e plantas e animais mortos. Quando o valor do ORP é alto, existe muito oxigênio presente na água. Isso significa que bactérias que decompõem tecidos mortos e contaminantes pode trabalhar com mais eficiência. Em geral, quanto maior o valor do ORP, mais saudável é a água."
+msgstr ""
+
+#: public/views/pages/monitoring.html:3
+msgid "ORP."
+msgstr ""
+
 #: public/views/pages/press.html:1
 msgid "Observatório de UCs da WWF-Brasil"
 msgstr ""
@@ -677,6 +739,10 @@ msgstr ""
 
 #: public/views/sensor/report.html:1
 msgid "Os resultados são acessíveis através do site rede.infoamazonia.org e alertam sobre possível contaminação."
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid "Para entender melhor as descrições abaixo, é importante entender que um íon é qualquer átomo ou grupo de átomos que tem carga positiva ou negativa. Íons são formados pela adição ou remoção de elétrons a, ou remoção de elétrons de, átomos ou moléculas ou outros íons; pela combinação de íons com outras partículas; ou pela ruptura de um vínculo covalente entre 2 átomos de modo que ambos os elétrons do vínculo são deixados em associação a um dos átomos da reação."
 msgstr ""
 
 #: public/views/index.html:1
@@ -733,6 +799,7 @@ msgid "Rede"
 msgstr ""
 
 #: public/views/index.html:1
+#: public/views/pages/monitoring.html:1
 #: public/views/pages/network.html:1
 msgid "Rede de monitoramento"
 msgstr ""
@@ -814,7 +881,6 @@ msgid "Seu email"
 msgstr ""
 
 #: public/views/account.html:1
-#: public/views/auth.html:1
 msgid "Seu nome"
 msgstr ""
 
@@ -844,8 +910,15 @@ msgstr ""
 msgid "Telefone"
 msgstr ""
 
+#: public/views/index.html:1
+#: public/views/pages/monitoring.html:1
 #: public/views/sensor/report.html:1
 msgid "Temperatura"
+msgstr ""
+
+#: public/views/index.html:1
+#: public/views/pages/monitoring.html:4
+msgid "Temperatura do equipamento"
 msgstr ""
 
 #: public/views/pages/network.html:1
@@ -854,6 +927,10 @@ msgstr ""
 
 #: public/views/admin/sensors-edit.html:1
 msgid "URL da imagem"
+msgstr ""
+
+#: public/views/pages/monitoring.html:4
+msgid "Uma vez que a temperatura interfere na operação de equipamentos eletrônicos, o Mãe d'Água monitora a temperatura do equipamento ao mesmo tempo que faz as outras leituras."
 msgstr ""
 
 #: public/views/admin/sensors-measurements.html:1
@@ -951,6 +1028,23 @@ msgstr ""
 msgid "em cidades da"
 msgstr ""
 
+#: public/views/auth.html:1
+msgid "login')\" href=\"#\" translate class=\"button bold\">Eu já tenho uma conta</a></p><p ng-show=\"form == 'login'\"><a ng-click=\"switch('register')\" href=\"#\" translate class=\"button bold\">Ainda não tenho uma conta</a></p><p ng-show=\"form == 'register'\"><input type=\"text\" placeholder=\"{{'Seu nome"
+msgstr ""
+
+#: public/views/index.html:1
+#: public/views/pages/monitoring.html:1
+msgid "pH"
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid "pH é a medida de quão ácida/básica é a água. Um nível 7 de pH é neutro, valores menores que 7 indicam acidez, e valores maiores que 7 indicam uma base. pH é a medida relativa da quantidade de íons de hidrogênio e hidroxilo na água. Água que tem mais íons de hidrogênio livres é ácida, e água que tem mais íons de hidroxilo é básica. Como o pH pode ser afetado por substâncias químicas na água, pH é um importante indicador de água que está mudando quimicamente."
+msgstr ""
+
+#: public/views/pages/monitoring.html:2
+msgid "pH;"
+msgstr ""
+
 #: public/views/home.html:1
 msgid "para gerar indicadores de"
 msgstr ""
@@ -974,6 +1068,10 @@ msgstr ""
 #: public/views/admin/index.html:1
 #: public/views/index.html:1
 msgid "Área administrativa"
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid "É possível definir um nível do ORP necessário para assegurar desinfecção efetiva. Esse valor deve ser determinado caso a caso; valores universais não são recomendados. Mais pesquisa e avaliação do ORP como uma técnica operacional de monitoramento é altamente recomendada pela Organização Mundial de Saúde."
 msgstr ""
 
 #: src/js/controllers.js:372

@@ -82,6 +82,10 @@ app
 			url: '/mae-dagua/',
 			templateUrl: '/views/pages/mae-dagua.html'
 		})
+		.state('monitoring', {
+			url: '/monitoring/',
+			templateUrl: '/views/pages/monitoring.html'
+		})
 		.state('faq', {
 			url: '/faq/',
 			templateUrl: '/views/pages/faq.html'
