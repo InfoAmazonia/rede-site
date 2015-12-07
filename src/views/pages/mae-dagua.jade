@@ -10,14 +10,7 @@
           | e a start-up 
           a(href="http://devtecnologia.com.br/sobre/quem-somos/" rel="external" target="_blank") Dev Tecnologia
           | , empresa incubada na Universidade de São Paulo.
-  .container
-    .six.columns.offset-by-three
-
-      p(translate) O Mãe d´Água é capaz de monitorar parâmetros físico-químicos importantes que ajudam a indicar se a água é potável ou está contaminada. O dispositivo faz leituras das seguintes variáveis: acidez (pH), 
-        a(href="https://pt.wikipedia.org/wiki/Potencial_de_redu%C3%A7%C3%A3o" rel="external" target="_blank") potencial de redução da oxidação (ORP)
-        | , condutividade elétrica, temperatura e pressão barométrica no nível da água. Essas medições permitem detectar variações que indicam contaminação.
-
-      p(translate) As leituras das variáveis são enviadas para um servidor remoto de hora em hora. Além da informação disponível do site, os interessados podem se cadastrar para receber alertas SMS sobre qualidade da água em sua comunidade.
+        p(translate) O Mãe d´Água é capaz de realizar leitura parâmetros físico-químicos importantes que ajudam a identificar potencial de contaminação da água.
 
       //- p
       //-   a.button(href="#" translate) Baixar manual
@@ -28,53 +21,29 @@
         h2(translate) Aspectos técnicos
       .six.columns
         ul
-          li(translate) 
+          li(translate)
             strong Parâmetros monitorados: 
-            | pH, temperatura, condutividade elétrica, potencial de redução da oxidação (ORP) e pressão barométrica no nível da água.
-          li(translate) 
+            | condutividade elétrica, pH, potencial de oxidação/redução (ORP), temperatura, pressão barométrica e temperatura do equipamento.
+          li(translate)
             strong Aplicação: 
-            | o equipamento é utilizado para monitoramento da qualidade da água em caixas d´água, cisternas, reservatórios, corpos de água superficial com baixa vazão.
-          li(translate) 
-            strong Monitoramento em tempo real: 
-            | A coleta de dados é feita automaticamente a cada hora, e as leituras são enviadas via rede 2G para o servidor do site rede.infoamazonia.org.
-          li(translate) 
-            strong Instalação: 
-            | A instalação é simples, não requer conhecimentos específicos.
-          li(translate) 
-            strong Calibração: 
-            | A calibração dos sensores deve ser feita a cada três meses.
-          li(translate) 
-            strong Fonte de energia: 
-            | energia elétrica bivolt ou bateria recarregável ligada a painel solar.
+            | o equipamento pode ser utilizado para monitoramento da qualidade da água em caixas d´água, cisternas, reservatórios, corpos de água superficial com baixa vazão.
+          li(translate)
+            strong Comunicação: 
+            | A coleta de dados é feita automaticamente a cada hora, e as leituras são enviadas em tempo real via rede de telefonia móvel para um servidor.
           li(translate) 
             strong Manutenção: 
-            | As ponteiras dos sensores devem ser limpas periodicamente para evitar acúmulo de resíduos que podem afetar as leituras.
+            | A calibração dos sensores deve ser feita periodicamente. As ponteiras devem ser limpas periodicamente para evitar acúmulo de resíduos que podem afetar as leituras.
           
-  .page-section#parametros
-    .container
-      .three.columns
-        h2(translate) Parâmetros monitorados
-      .six.columns
-        ul
-          li(translate)
-            strong Condutividade elétrica: 
-            | É a capacidade da água de conduzir eletricidade. Indica minerais dissolvidos ou clorídeos na água. Minerais dissolvidos podem comprometer a utilização da água para uso doméstico.
-          li(translate)
-            strong Potencial hidrogeniônico (pH): 
-            | O pH normal deve variar entre 6 e 9, este índice pode ser alterado por conta da poluição.
-          li(translate)
-            strong Temperatura: 
-            | A temperatura é um elemento que influencia características físicas e químicas da água, como sua densidade e capacidade de reter oxigênio dissolvido.
-          li(translate)
-            strong Potencial de redução da oxidação (ORP): 
-            | O potencial de redução da oxidação ajuda a indicar a presença de micro-organismos na água.
-
   .page-section#desenvolvimento
     .container
       .three.columns 
         h2(translate) Desenvolvimento
       .six.columns
-        p(translate) O hardware foi projetado em plataforma (Eagle) e licenças abertas, de forma modular:
+        p(translate) Os 
+          a(href="https://github.com/InfoAmazonia/rede-hardware" rel="external" target="_blank") arquivos necessários para produção do equipamento
+          | , bem como seu 
+          a(href="https://github.com/InfoAmazonia/rede-firmware" rel="external" target="_blank") firmware
+          |, estão disponíveis em licença MIT. O hardware é modular:
         ul
           li(translate) 
             strong Módulo 1 (M1): 
@@ -84,24 +53,7 @@
             | um shield para Arduino que possui o sensor de pressão barométrica e conectores para acoplamento dos sensores de pH, ORP, condutividade e temperatura da água. Desta forma modular, é possível selecionar os sensores a serem utilizados visando o custo benefício da aplicação específica desejada.
           li(translate)
             strong Módulo 3 (M3): 
-            | responsável pela comunicação via rede de telefonia celular, capaz de transmitir os dados por SMS para um servidor do Rede InfoAmazonia. Como estratégia auxiliar de acesso aos dados, o M2 também possui espaço para cartão de memória SD.
-            
-        p(translate) Alguns conceitos: 
-
-        ul
-          li(translate) Hardware aberto: Parte eletrônica desenvolvida com documentação e arquivos abertos para que qualquer pessoa interessada possa conhecer e replicar. Não existe restrição autoral, intelectual ou industrial que impeça alguém de conhecer 100% de como o hardware é construído e operado.
-          li(translate) Plataforma Eagle: software livre utilizado para gerar o circuito e desenho do hardware.
-          li(translate) Arduíno Mega: Placa com microcontrolador utilizada para controlar o sistema.
-          li(translate) Shield: É uma placaque recebe as leituras físico-químicas ambientais para análise de qualidade da água.
-          li(translate) Firmware: Em eletrônica e computação, o firmware é o conjunto de instruções operacionais programadas diretamente no hardware de equipamentos eletrônicos.
-          
-        p(translate) O Mãe d´Água foi produzido utilizando tecnologias livres. As informações necessárias para produção estão disponíveis em:
-        
-        ul
-          li
-            a(href="https://github.com/InfoAmazonia/rede-hardware" rel="external" target="_blank") https://github.com/InfoAmazonia/rede-hardware (hardware)
-          li
-            a(href="https://github.com/InfoAmazonia/rede-firmware" rel="external" target="_blank") https://github.com/InfoAmazonia/rede-hardware (firmware)
+            | responsável pela comunicação via rede de telefonia celular, capaz de transmitir os dados por Internet para um servidor.
 
   .page-section#limitacoes
     .container
@@ -110,6 +62,8 @@
       .six.columns
         p(translate) Devido ao caráter de medição em tempo real, os resultados são considerados provisórios e não conclusivos, e são sujeitos a equívocos e incertezas. Os dados podem conter valores inexatos devido a mal funcionamento do equipamento. Eventualmente os equipamentos serão desconectados para manutenção.
 
-        p(translate) Os resultados são acessíveis através deste site e alertam sobre possível contaminação.
+        p(translate) Os resultados são acessíveis através deste site e alertam sobre 
+          b(translate) possível
+          |  contaminação, sem fornecer um resultado conclusivo.
 
-        p(translate) Cabe ressaltar, também, a importância da avaliação de outros parâmetros importantes da qualidade da água para consumo humano, tais como oxigênio dissolvido, coliformes termotolerantes e análise microbiológica da água, com relação à presença de parasitas, vírus e bactérias.
+        p(translate) Ao observar potencial de contaminação a partir dos dados do site, devem ser relizadas outras análises.

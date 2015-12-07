@@ -25,7 +25,7 @@ msgid "\"O pH ótimo vai variar em diferentes fornecedores a partir da composiç
 msgstr ""
 
 #: public/views/pages/monitoring.html:1
-msgid "\"pH é a medida de quão ácida/básica é a água.\"<sup>[5]</sup> Um nível 7 de pH é neutro, valores \"menores que 7 indicam acidez, e valores maiores que 7 indicam uma base. pH é a medida relativa da quantidade de íons de hidrogênio e hidroxilo na água. Água que tem mais íons de hidrogênio livres é ácida, e água que tem mais íons de hidroxilo é básica. Como o pH pode ser afetado por substâncias químicas na água, pH é um importante indicador de água que está mudando quimicamente.\"<sup>[5]  </sup>"
+msgid "\"pH é a medida de quão ácida/básica é a água.\"<sup>[5]</sup> Um nível 7 de pH é neutro, valores \"menores que 7 indicam acidez, e valores maiores que 7 indicam uma base. pH é a medida relativa da quantidade de íons de hidrogênio e hidroxilo na água. Água que tem mais íons de hidrogênio livres é ácida, e água que tem mais íons de hidroxilo é básica. Como o pH pode ser afetado por substâncias químicas na água, pH é um importante indicador de água que está mudando quimicamente.\"<sup>[5]</sup>"
 msgstr ""
 
 #: public/views/pages/monitoring.html:1
@@ -145,31 +145,15 @@ msgid "<span>Rede</span>InfoAmazonia"
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
-msgid "<strong>Aplicação: </strong>o equipamento é utilizado para monitoramento da qualidade da água em caixas d´água, cisternas, reservatórios, corpos de água superficial com baixa vazão."
+msgid "<strong>Aplicação: </strong>o equipamento pode ser utilizado para monitoramento da qualidade da água em caixas d´água, cisternas, reservatórios, corpos de água superficial com baixa vazão."
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
-msgid "<strong>Calibração: </strong>A calibração dos sensores deve ser feita a cada três meses."
+msgid "<strong>Comunicação: </strong>A coleta de dados é feita automaticamente a cada hora, e as leituras são enviadas em tempo real via rede de telefonia móvel para um servidor."
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
-msgid "<strong>Condutividade elétrica: </strong>É a capacidade da água de conduzir eletricidade. Indica minerais dissolvidos ou clorídeos na água. Minerais dissolvidos podem comprometer a utilização da água para uso doméstico."
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid "<strong>Fonte de energia: </strong>energia elétrica bivolt ou bateria recarregável ligada a painel solar."
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid "<strong>Instalação: </strong>A instalação é simples, não requer conhecimentos específicos."
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid "<strong>Manutenção: </strong>As ponteiras dos sensores devem ser limpas periodicamente para evitar acúmulo de resíduos que podem afetar as leituras."
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid "<strong>Monitoramento em tempo real: </strong>A coleta de dados é feita automaticamente a cada hora, e as leituras são enviadas via rede 2G para o servidor do site rede.infoamazonia.org."
+msgid "<strong>Manutenção: </strong>A calibração dos sensores deve ser feita periodicamente. As ponteiras devem ser limpas periodicamente para evitar acúmulo de resíduos que podem afetar as leituras."
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
@@ -181,23 +165,11 @@ msgid "<strong>Módulo 2 (M2): </strong>um shield para Arduino que possui o sens
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
-msgid "<strong>Módulo 3 (M3): </strong>responsável pela comunicação via rede de telefonia celular, capaz de transmitir os dados por SMS para um servidor do Rede InfoAmazonia. Como estratégia auxiliar de acesso aos dados, o M2 também possui espaço para cartão de memória SD."
+msgid "<strong>Módulo 3 (M3): </strong>responsável pela comunicação via rede de telefonia celular, capaz de transmitir os dados por Internet para um servidor."
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
-msgid "<strong>Parâmetros monitorados: </strong>pH, temperatura, condutividade elétrica, potencial de redução da oxidação (ORP) e pressão barométrica no nível da água."
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid "<strong>Potencial de redução da oxidação (ORP): </strong>O potencial de redução da oxidação ajuda a indicar a presença de micro-organismos na água."
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid "<strong>Potencial hidrogeniônico (pH): </strong>O pH normal deve variar entre 6 e 9, este índice pode ser alterado por conta da poluição."
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid "<strong>Temperatura: </strong>A temperatura é um elemento que influencia características físicas e químicas da água, como sua densidade e capacidade de reter oxigênio dissolvido."
+msgid "<strong>Parâmetros monitorados: </strong>condutividade elétrica, pH, potencial de oxidação/redução (ORP), temperatura, pressão barométrica e temperatura do equipamento."
 msgstr ""
 
 #: public/views/home.html:1
@@ -249,20 +221,12 @@ msgstr ""
 msgid "Ainda não tenho uma conta"
 msgstr ""
 
-#: public/views/pages/mae-dagua.html:1
-msgid "Alguns conceitos:"
-msgstr ""
-
 #: public/views/home.html:1
 msgid "Amazônia Brasileira"
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
-msgid "Arduíno Mega: Placa com microcontrolador utilizada para controlar o sistema."
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid "As leituras das variáveis são enviadas para um servidor remoto de hora em hora. Além da informação disponível do site, os interessados podem se cadastrar para receber alertas SMS sobre qualidade da água em sua comunidade."
+msgid "Ao observar potencial de contaminação a partir dos dados do site, devem ser relizadas outras análises."
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
@@ -318,10 +282,6 @@ msgstr ""
 
 #: public/views/sensor/report.html:1
 msgid "Cabe ressaltar, também, a importância da avaliação de outros parâmetros importantes da qualidade da água para consumo humano, tais como Oxigênio Dissolvido, Coliformes termotolerantes e análise microbiológica da água, com relação à presença de parasitas, vírus, e bactérias."
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid "Cabe ressaltar, também, a importância da avaliação de outros parâmetros importantes da qualidade da água para consumo humano, tais como oxigênio dissolvido, coliformes termotolerantes e análise microbiológica da água, com relação à presença de parasitas, vírus e bactérias."
 msgstr ""
 
 #: public/views/pages/press.html:1
@@ -491,10 +451,6 @@ msgstr ""
 msgid "FAQ"
 msgstr ""
 
-#: public/views/pages/mae-dagua.html:1
-msgid "Firmware: Em eletrônica e computação, o firmware é o conjunto de instruções operacionais programadas diretamente no hardware de equipamentos eletrônicos."
-msgstr ""
-
 #: public/views/pages/network.html:1
 msgid "Foram realizados dois ciclos de atividades de mobilização e formação sobre tecnologias livres e comunicação cidadã entre março e outubro de 2015."
 msgstr ""
@@ -518,10 +474,6 @@ msgstr ""
 
 #: public/views/sensor.html:1
 msgid "Gerar relatório"
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid "Hardware aberto: Parte eletrônica desenvolvida com documentação e arquivos abertos para que qualquer pessoa interessada possa conhecer e replicar. Não existe restrição autoral, intelectual ou industrial que impeça alguém de conhecer 100% de como o hardware é construído e operado."
 msgstr ""
 
 #: public/views/sensor/latest-readings.html:1
@@ -668,16 +620,12 @@ msgstr ""
 msgid "O Mãe d'Água está sendo testado pelo projeto Rede InfoAmazonia. Nesse momento, não há intenção do projeto de comercializar o equipamento. É hardware livre, e os arquivos necessários para produção estão disponíveis em:"
 msgstr ""
 
-#: public/views/pages/mae-dagua.html:1
-msgid "O Mãe d´Água foi produzido utilizando tecnologias livres. As informações necessárias para produção estão disponíveis em:"
-msgstr ""
-
 #: public/views/sensor/report.html:1
 msgid "O Mãe d´Água possui funcionalidades de medição de acidez da água pelo potencial hidrogeniônico (pH), potencial de redução da oxidação (ORP), condutividade elétrica, temperatura da água e pressão barométrica no nível da água, variáveis que auxiliam na inferência da qualidade da água para consumo humano."
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
-msgid "O Mãe d´Água é capaz de monitorar parâmetros físico-químicos importantes que ajudam a indicar se a água é potável ou está contaminada. O dispositivo faz leituras das seguintes variáveis: acidez (pH), <a href=\"https://pt.wikipedia.org/wiki/Potencial_de_redu%C3%A7%C3%A3o\" rel=\"external\" target=\"_blank\">potencial de redução da oxidação (ORP)</a>, condutividade elétrica, temperatura e pressão barométrica no nível da água. Essas medições permitem detectar variações que indicam contaminação."
+msgid "O Mãe d´Água é capaz de realizar leitura parâmetros físico-químicos importantes que ajudam a identificar potencial de contaminação da água."
 msgstr ""
 
 #: public/views/pages/monitoring.html:1
@@ -686,10 +634,6 @@ msgstr ""
 
 #: public/views/pages/about.html:1
 msgid "O desenvolvimento dos sensores foi realizado em parceria com a start-up <a href=\"http://devtecnologia.com.br\" rel=\"external\" target=\"_blank\">Dev Tecnologia</a>, empresa incubada na Universidade de São Paulo, e com ajuda da rede internacional de ciência cidadã <a href=\"https://publiclab.org/\" rel=\"external\" target=\"_blank\">Public Lab</a>."
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid "O hardware foi projetado em plataforma (Eagle) e licenças abertas, de forma modular:"
 msgstr ""
 
 #: public/views/pages/about.html:1
@@ -741,12 +685,16 @@ msgstr ""
 msgid "Olá! O Projeto Rede InfoAmazonia em fase final de desenvolvimento. Os sensores dos Mãe d'Água estão em fase de ajustes (as leituras ainda não devem ser consideradas válidas) e o conteúdo está em revisão final para publicação. Sugestões e comentários sobre o site são bem vindos. Entre em contato através do email rede@infoamazonia.org."
 msgstr ""
 
+#: public/views/pages/mae-dagua.html:1
+msgid "Os <a href=\"https://github.com/InfoAmazonia/rede-hardware\" rel=\"external\" target=\"_blank\">arquivos necessários para produção do equipamento</a>, bem como seu <a href=\"https://github.com/InfoAmazonia/rede-firmware\" rel=\"external\" target=\"_blank\">firmware</a>, estão disponíveis em licença MIT. O hardware é modular:"
+msgstr ""
+
 #: public/views/pages/network.html:1
 msgid "Os microssistemas coletivos captam água diretamente dos lençóis freáticos através de poços profundos. Entre os pontos de monitoramento selecionados, apenas o sensor Zona Urbana de Belterra analisa a água em seu ponto final de distribuição. Em todos os outros a análise é feita no ponto de captação."
 msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
-msgid "Os resultados são acessíveis através deste site e alertam sobre possível contaminação."
+msgid "Os resultados são acessíveis através deste site e alertam sobre <b translate=\"\">possível</b> contaminação, sem fornecer um resultado conclusivo."
 msgstr ""
 
 #: public/views/sensor/report.html:1
@@ -758,16 +706,11 @@ msgid "Para entender melhor as descrições abaixo, é importante entender que u
 msgstr ""
 
 #: public/views/index.html:1
-#: public/views/pages/mae-dagua.html:1
 msgid "Parâmetros monitorados"
 msgstr ""
 
 #: public/views/pages/faq.html:1
 msgid "Perguntas frequentes"
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid "Plataforma Eagle: software livre utilizado para gerar o circuito e desenho do hardware."
 msgstr ""
 
 #: public/views/sensor/report.html:1
@@ -903,10 +846,6 @@ msgstr ""
 #: public/views/account.html:1
 #: public/views/auth.html:1
 msgid "Seu telefone"
-msgstr ""
-
-#: public/views/pages/mae-dagua.html:1
-msgid "Shield: É uma placaque recebe as leituras físico-químicas ambientais para análise de qualidade da água."
 msgstr ""
 
 #: public/views/pages/about.html:1
@@ -1055,6 +994,10 @@ msgstr ""
 
 #: public/views/home.html:1
 msgid "para gerar indicadores de"
+msgstr ""
+
+#: public/views/pages/mae-dagua.html:1
+msgid "possível"
 msgstr ""
 
 #: public/views/sensor.html:1
