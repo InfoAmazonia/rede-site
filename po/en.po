@@ -5,13 +5,76 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Site Rede InfoAmazonia\n"
-"PO-Revision-Date: 2015-12-04 19:52+0000\n"
-"Last-Translator: Miguel Peixe <miguspeixe@gmail.com>\n"
+"PO-Revision-Date: 2015-12-07 18:11+0000\n"
+"Last-Translator: GINA LEITE <gina@memelab.com.br>\n"
 "Language-Team: English (http://www.transifex.com/infoamazonia/site-rede-infoamazonia/language/en/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: public/views/pages/monitoring.html:1
+msgid ""
+"\"A temperatura é um fator importante para considerar ao monitorar qualidade"
+" da água. Além de seus próprios efeitos, a temperatura influencia vários "
+"outros parâmetros e pode alterar as propriedades químicas e físicas da água."
+" Desse modo, a temperatura da água deve ser considerada ao "
+"determinar\"<sup>[11]</sup> (entre outros):"
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid "\"Condutividade (...);"
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid ""
+"\"Condutividade é uma medida da capacidade da água de passar uma corrente "
+"elétrica. Essa habilidade é diretamente relacionada com a concentração de "
+"íons na água. Esses íons condutivos vêm de sais dissolvidos e outros "
+"materiais inorgânicos. (...) Quantos mais íons estiverem presentes, maior a "
+"condutividade da água. Do mesmo modo, quanto menos íons houverem na água, "
+"menos condutiva ela é. Água destilada ou desionizada pode agir como isolante"
+" devido à sua condutividade muito baixa. Água do mar, por outro lado, tem "
+"uma condutividade muito alta.\"<sup>[2]</sup>"
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid ""
+"\"Da mesma maneira que a transferência de íons de hidrogênio entre espécies "
+"químicas determina o pH de uma solução aquosa, a transferência de elétrons "
+"entre espécies químicas determina o\"<sup>[8]</sup> potencial de "
+"oxidação/redução (ORP, ou potencial redox) \"de uma solução aquosa. Assim "
+"como o pH, o potencial de redução representa quão fortemente elétrons são "
+"transferidos de ou para espécies em uma solução.\"<sup>[8]</sup>"
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid ""
+"\"O pH ótimo vai variar em diferentes fornecedores a partir da composição da"
+" água e da natureza da construção dos materiais no sistema de "
+"distribuição.\"<sup>[6]</sup> O Governo Brasileiro recomenda manter o nível "
+"de pH em sistemas de distribuição entre 6 e 9,5.<sup>[7]</sup>"
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid ""
+"\"pH é a medida de quão ácida/básica é a água.\"<sup>[5]</sup> Um nível 7 de"
+" pH é neutro, valores \"menores que 7 indicam acidez, e valores maiores que "
+"7 indicam uma base. pH é a medida relativa da quantidade de íons de "
+"hidrogênio e hidroxilo na água. Água que tem mais íons de hidrogênio livres "
+"é ácida, e água que tem mais íons de hidroxilo é básica. Como o pH pode ser "
+"afetado por substâncias químicas na água, pH é um importante indicador de "
+"água que está mudando quimicamente.\"<sup>[5]</sup>"
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid ""
+"\"É possível definir um nível do ORP necessário para assegurar desinfecção "
+"efetiva. Esse valor deve ser determinado caso a caso; valores universais não"
+" são recomendados. Mais pesquisa e avaliação do ORP como uma técnica "
+"operacional de monitoramento é altamente recomendada pela Organização "
+"Mundial de Saúde.\"<sup>[10]</sup>"
+msgstr ""
 
 #: public/views/pages/press.html:1
 msgid "01 de maio de 2014"
@@ -64,6 +127,21 @@ msgstr "April 30, 2015"
 #: public/views/pages/press.html:1
 msgid "30 de abril de 2014"
 msgstr "April 30, 2014"
+
+#: public/views/pages/monitoring.html:1
+msgid ""
+"73% da água doce do Brasil está na Amazônia. No entanto, o índice de água "
+"tratada nessa região é aproximadamente 22% inferior ao resto do Brasil. Ou "
+"seja, embora a água doce seja abundante na Amazônia, a população ainda "
+"enfrenta dificuldades para ter acesso a água potável. A má qualidade da água"
+" para consumo humano é decorrente tanto da contaminação dos rios pela "
+"decomposição natural de matéria orgânica de origem animal ou vegetal e "
+"provêm dos esgotos domésticos e de diversos processos industriais ou "
+"agropecuários. Contrariamente aos resíduos orgânicos, a matéria inorgânica "
+"que vem de indústrias não se decompõe naturalmente, pode matar micro-"
+"organismos, plantas e animais aquáticos, e tornar a água imprópria para o "
+"consumo ou para o banho."
+msgstr ""
 
 #: public/views/pages/press.html:1
 msgid ""
@@ -174,48 +252,24 @@ msgstr "<span>Rede</span>InfoAmazonia"
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
-"<strong>Aplicação: </strong>o equipamento é utilizado para monitoramento da "
-"qualidade da água em caixas d´água, cisternas, reservatórios, corpos de água"
-" superficial com baixa vazão."
-msgstr "<strong>Application: </strong> the equipment is used for monitoring water quality in water tanks, cisterns, tanks, surface water bodies with low flow."
+"<strong>Aplicação: </strong>o equipamento pode ser utilizado para "
+"monitoramento da qualidade da água em caixas d´água, cisternas, "
+"reservatórios, corpos de água superficial com baixa vazão."
+msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
-"<strong>Calibração: </strong>A calibração dos sensores deve ser feita a cada"
-" três meses."
-msgstr "<strong>Calibration: </strong> Calibration of the sensors should be done every three months."
+"<strong>Comunicação: </strong>A coleta de dados é feita automaticamente a "
+"cada hora, e as leituras são enviadas em tempo real via rede de telefonia "
+"móvel para um servidor."
+msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
-"<strong>Condutividade elétrica: </strong>É a capacidade da água de conduzir "
-"eletricidade. Indica minerais dissolvidos ou clorídeos na água. Minerais "
-"dissolvidos podem comprometer a utilização da água para uso doméstico."
-msgstr "<strong>Electrical conductivity: </strong> it is the water's ability to conduct electricity. It can indicate clorídeos or mineral dissolved in water. Dissolved minerals can compromise the use of water for domestic use. "
-
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"<strong>Fonte de energia: </strong>energia elétrica bivolt ou bateria "
-"recarregável ligada a painel solar."
-msgstr "<strong>Power source: </strong> electric power multi-voltage or rechargeable battery connected to solar panel."
-
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"<strong>Instalação: </strong>A instalação é simples, não requer "
-"conhecimentos específicos."
-msgstr "<strong>Installation:</strong> Installation is simple, it requires no special knowledge."
-
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"<strong>Manutenção: </strong>As ponteiras dos sensores devem ser limpas "
-"periodicamente para evitar acúmulo de resíduos que podem afetar as leituras."
-msgstr "<strong>Maintenance: </strong>The tips of the sensors must be cleaned regularly to avoid accumulation of waste that may affect readings."
-
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"<strong>Monitoramento em tempo real: </strong>A coleta de dados é feita "
-"automaticamente a cada hora, e as leituras são enviadas via rede 2G para o "
-"servidor do site rede.infoamazonia.org."
-msgstr "<strong>Real-time monitoring: </strong>Data collection is done automatically every hour, and the readings are sent via 2G network to the site server rede.infoamazonia.org"
+"<strong>Manutenção: </strong>A calibração dos sensores deve ser feita "
+"periodicamente. As ponteiras devem ser limpas periodicamente para evitar "
+"acúmulo de resíduos que podem afetar as leituras."
+msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
@@ -236,36 +290,16 @@ msgstr "<strong>Module 2 (M2): </strong> Arduino shield, designed using Eagle pl
 #: public/views/pages/mae-dagua.html:1
 msgid ""
 "<strong>Módulo 3 (M3): </strong>responsável pela comunicação via rede de "
-"telefonia celular, capaz de transmitir os dados por SMS para um servidor do "
-"Rede InfoAmazonia. Como estratégia auxiliar de acesso aos dados, o M2 também"
-" possui espaço para cartão de memória SD."
-msgstr "<strong>Module 3 (M3): </strong> responsible for mobile communication 2G, capable of transmitting data by Internet and by SMS to the InfoAmazonia Network internet server. As auxiliary data access strategy, the M2 also features a SD memory card slot."
+"telefonia celular, capaz de transmitir os dados por Internet para um "
+"servidor."
+msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
-"<strong>Parâmetros monitorados: </strong>pH, temperatura, condutividade "
-"elétrica, potencial de redução da oxidação (ORP) e pressão barométrica no "
-"nível da água."
-msgstr "<strong>Monitored parameters: </strong> pH, temperature, electrical conductivity, oxidation reduction potential (ORP) and barometric pressure at the water level."
-
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"<strong>Potencial de redução da oxidação (ORP): </strong>O potencial de "
-"redução da oxidação ajuda a indicar a presença de micro-organismos na água."
-msgstr "<strong>Oxidation reduction potential (ORP):</strong> The oxidation reduction potential helps to indicate the presence of micro-organisms in the water."
-
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"<strong>Potencial hidrogeniônico (pH): </strong>O pH normal deve variar "
-"entre 6 e 9, este índice pode ser alterado por conta da poluição."
-msgstr "<strong>Hydrogenic potential (pH):  </strong> The good pH should range between 6 and 9, this index may vary due pollution."
-
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"<strong>Temperatura: </strong>A temperatura é um elemento que influencia "
-"características físicas e químicas da água, como sua densidade e capacidade "
-"de reter oxigênio dissolvido."
-msgstr "<strong>Temperature: </strong>it is an element that influences physical and chemical characteristics of water, such as its density and ability to retain dissolved oxygen."
+"<strong>Parâmetros monitorados: </strong>condutividade elétrica, pH, "
+"potencial de oxidação/redução (ORP), temperatura, pressão barométrica e "
+"temperatura do equipamento."
+msgstr ""
 
 #: public/views/home.html:1 public/views/sensor.html:1
 msgid ""
@@ -315,12 +349,35 @@ msgid ""
 "Tapajós, no Oeste do Pará."
 msgstr "The Rede InfoAmazonia monitoring network analyzes samples of public systems water, water collective systems and individual water systems. In its pilot phase, the project benefits the municipalities of Belterra, Mojuí dos Campos and Santarem, located in the Lower Tapajós River, Western Pará."
 
+#: public/views/pages/monitoring.html:4
+msgid ""
+"A temperatura de equipamentos eletrônicos interfere em seu funcionamento. "
+"Para verificar se houve alguma interferência durante uma leitura, o Mãe "
+"d'Água monitora a temperatura do equipamento ao mesmo tempo que faz as "
+"outras leituras."
+msgstr ""
+
 #: public/views/sensor/report.html:1
 msgid ""
 "A temperatura é um elemento que influencia características físicas e a "
 "química da água, como sua densidade e capacidade de reter oxigênio "
 "dissolvido."
 msgstr "it is an element that influences physical and chemical characteristics of water, such as its density and ability to retain dissolved oxygen."
+
+#: public/views/pages/monitoring.html:1
+msgid ""
+"A água própria para o consumo, chamada de água potável, é aquela que não tem"
+" micróbios patogênicos, nem substâncias químicas além dos limites de "
+"tolerância e não é desagradável pelo seu aspecto, a quaisquer dos nossos "
+"sentidos (visão, olfato, tato e paladar)."
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid ""
+"Abaixo são descritos alguns parâmetros utilizados para monitorar qualidade "
+"da água. Se você quer mais detalhes sobre algum dos parâmetros listados "
+"abaixo, veja as referências."
+msgstr ""
 
 #: public/views/admin/users-edit.html:1
 msgid "Administrador"
@@ -330,26 +387,15 @@ msgstr "Administrator"
 msgid "Ainda não tenho uma conta"
 msgstr "I don't have an account"
 
-#: public/views/pages/mae-dagua.html:1
-msgid "Alguns conceitos:"
-msgstr "Some concepts:"
-
 #: public/views/home.html:1
 msgid "Amazônia Brasileira"
 msgstr "Brazilian Amazon"
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
-"Arduíno Mega: Placa com microcontrolador utilizada para controlar o sistema."
-msgstr "Arduino Mega:  open-source electronic platform based on easy-to-use hardware and software."
-
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"As leituras das variáveis são enviadas para um servidor remoto de hora em "
-"hora. Além da informação disponível do site, os interessados podem se "
-"cadastrar para receber alertas SMS sobre qualidade da água em sua "
-"comunidade."
-msgstr "The readings of the variables are sent to a remote server every hour. In addition to the available site information, interested parties can register to receive SMS alerts about water quality in your community."
+"Ao observar potencial de contaminação a partir dos dados do site, devem ser "
+"relizadas outras análises."
+msgstr ""
 
 #: public/views/pages/mae-dagua.html:1
 msgid "Aspectos técnicos"
@@ -408,14 +454,6 @@ msgid ""
 " relação à presença de parasitas, vírus, e bactérias."
 msgstr "It is worth emphasizing the importance of evaluating other important parameters of drinking water quality, such as dissolved oxygen, fecal coliform and microbiological analysis of water, with respect to the presence of parasites, viruses and bacteria."
 
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"Cabe ressaltar, também, a importância da avaliação de outros parâmetros "
-"importantes da qualidade da água para consumo humano, tais como oxigênio "
-"dissolvido, coliformes termotolerantes e análise microbiológica da água, com"
-" relação à presença de parasitas, vírus e bactérias."
-msgstr "It is worth emphasizing the importance of evaluating other important parameters of drinking water quality, such as dissolved oxygen, fecal coliform and microbiological analysis of water, with respect to the presence of parasites, viruses and bacteria."
-
 #: public/views/pages/press.html:1
 msgid "CanalTech"
 msgstr "CanalTech"
@@ -451,9 +489,22 @@ msgstr "Community"
 msgid "Comunidade deste sensor"
 msgstr "Sensor community"
 
-#: public/views/sensor/report.html:1
+#: public/views/index.html:1
+msgid "Condutividade"
+msgstr ""
+
+#: public/views/pages/monitoring.html:1 public/views/sensor/report.html:1
 msgid "Condutividade elétrica"
 msgstr "Eletric conductivity"
+
+#: public/views/pages/monitoring.html:1
+msgid ""
+"Condutividade é uma maneira indireta de medir concentração de poluentes, e "
+"mudanças em seu nível indica mudanças na composição da água.<sup>[3]</sup> "
+"Água entre 0 - 2500 μS/cm pode ser consumida por humanos, apesar de que "
+"estes preferem água na primeira metade dessa variação se estiver disponível."
+" <sup>[4]</sup>"
+msgstr ""
 
 #: public/views/sensor/subscribe.html:1
 msgid "Confirmar assinatura"
@@ -623,13 +674,6 @@ msgstr "I already have an account"
 msgid "FAQ"
 msgstr "FAQ"
 
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"Firmware: Em eletrônica e computação, o firmware é o conjunto de instruções "
-"operacionais programadas diretamente no hardware de equipamentos "
-"eletrônicos."
-msgstr "Firmware: In electronics and computing, firmware is the set of operating instructions programmed directly into the electronic hardware."
-
 #: public/views/pages/network.html:1
 msgid ""
 "Foram realizados dois ciclos de atividades de mobilização e formação sobre "
@@ -655,14 +699,6 @@ msgstr "G1"
 #: public/views/sensor.html:1
 msgid "Gerar relatório"
 msgstr "Generate report"
-
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"Hardware aberto: Parte eletrônica desenvolvida com documentação e arquivos "
-"abertos para que qualquer pessoa interessada possa conhecer e replicar. Não "
-"existe restrição autoral, intelectual ou industrial que impeça alguém de "
-"conhecer 100% de como o hardware é construído e operado."
-msgstr "Open Hardware: Electronic decive developed with documentation and open files so that anyone can learn and replicate it. There is no copyright, intellectual or industrial restriction that prevents someone to know 100% of how the hardware is built and operated."
 
 #: public/views/sensor/latest-readings.html:1
 msgid "Hora"
@@ -746,6 +782,10 @@ msgstr "My profile"
 msgid "Minha conta"
 msgstr "My account"
 
+#: public/views/index.html:1
+msgid "Monitoramento"
+msgstr ""
+
 #: src/js/directives.js:343
 msgid "Máxima"
 msgstr "Max"
@@ -810,12 +850,6 @@ msgid ""
 "em:"
 msgstr "The Mãe d´Água is being tested by the team of the Rede InfoAmazonia project. At this point, there is no intention of the project to market the equipment. It's free hardware, and the necessary files for production is available at:"
 
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"O Mãe d´Água foi produzido utilizando tecnologias livres. As informações "
-"necessárias para produção estão disponíveis em:"
-msgstr "The Mãe d'Água was developed using open technologies. The information you need to produce is available at:"
-
 #: public/views/sensor/report.html:1
 msgid ""
 "O Mãe d´Água possui funcionalidades de medição de acidez da água pelo "
@@ -827,15 +861,19 @@ msgstr "The Mãe d´Água measured acidity of the water by hydrogenic potential 
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
-"O Mãe d´Água é capaz de monitorar parâmetros físico-químicos importantes que"
-" ajudam a indicar se a água é potável ou está contaminada. O dispositivo faz"
-" leituras das seguintes variáveis: acidez (pH), <a "
-"href=\"https://pt.wikipedia.org/wiki/Potencial_de_redu%C3%A7%C3%A3o\" "
-"rel=\"external\" target=\"_blank\">potencial de redução da oxidação "
-"(ORP)</a>, condutividade elétrica, temperatura e pressão barométrica no "
-"nível da água. Essas medições permitem detectar variações que indicam "
-"contaminação."
-msgstr "Mãe d´Água is able to monitor important physicochemical properties that helps to distingish if the water is drinkable or contaminated. The device reads the following variables: acidity (pH), <a href=\"https://pt.wikipedia.org/wiki/Potencial_de_redu%C3%A7%C3%A3o\" rel=\"external\" target=\"_blank\">oxidation reduction potential (ORP)</a>, conductivity, temperature and barometric pressure at the water level. Those measurements can detect variations that indicate contamination."
+"O Mãe d´Água é capaz de realizar leitura parâmetros físico-químicos "
+"importantes que ajudam a identificar potencial de contaminação da água."
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid ""
+"O controle da qualidade da água para consumo humano é fundamental para a "
+"garantia da saúde. O monitoramento da qualidade da água deve ser feito "
+"regularmente pelo responsável pelo sistema de abastecimento de água, "
+"destinado a verificar se a água fornecida à população é potável. Medidas "
+"preventivas simples como desinfectar a água com cloro podem evitar ou "
+"eliminar organismos patogênicos transmitidos pela água."
+msgstr ""
 
 #: public/views/pages/about.html:1
 msgid ""
@@ -845,12 +883,6 @@ msgid ""
 "da rede internacional de ciência cidadã <a href=\"https://publiclab.org/\" "
 "rel=\"external\" target=\"_blank\">Public Lab</a>."
 msgstr "The development of sensors was carried out in partnership with the start-up  <a href=\"http://devtecnologia.com.br\" rel=\"external\" target=\"_blank\">Dev Technology</a>, a company incubated at the University of São Paulo, and with the help of the international network of citizen science <a href=\"https://publiclab.org/\" rel=\"external\" target=\"_blank\">Public Lab</a>."
-
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"O hardware foi projetado em plataforma (Eagle) e licenças abertas, de forma "
-"modular:"
-msgstr "The hardware was designed in modules in platform (Eagle) and under open licenses:"
 
 #: public/views/pages/about.html:1
 msgid ""
@@ -914,6 +946,24 @@ msgid ""
 "outras 9 ideias apresentadas por ONGs de todo o Brasil."
 msgstr "The project was one of the winners of the <a href=\"https://desafiosocial.withgoogle.com/brazil2014\" rel=\"external\" target=\"_blank\">Google Social Impact Challenge in 2014</a>,  along with 9 other ideas presented by NGOs from all over Brazil."
 
+#: public/views/index.html:1 public/views/pages/monitoring.html:1
+msgid "ORP"
+msgstr ""
+
+#: public/views/pages/monitoring.html:1
+msgid ""
+"ORP mede a habilidade da água \"de limpar-se ou quebrar produtos como "
+"contaminantes e plantas e animais mortos. Quando o valor do ORP é alto, "
+"existe muito oxigênio presente na água. Isso significa que bactérias que "
+"decompõem tecidos mortos e contaminantes pode trabalhar com mais eficiência."
+" Em geral, quanto maior o valor do ORP, mais saudável é a "
+"água.\"<sup>[9]</sup>"
+msgstr ""
+
+#: public/views/pages/monitoring.html:3
+msgid "ORP\".<sup>[11]</sup>"
+msgstr ""
+
 #: public/views/pages/press.html:1
 msgid "Observatório de UCs da WWF-Brasil"
 msgstr " Observatory of Protected Areas of WWF-Brasil "
@@ -927,6 +977,15 @@ msgid ""
 "contato através do email rede@infoamazonia.org."
 msgstr "Hello! The Rede InfoAmazonia project is in late-stage of development. The Mãe d´Água sensor are being configured (readings should not be considered valid) and the content in this website is in final review for publication. Suggestions and comments are welcome. Please, contact by email rede@infoamazonia.org."
 
+#: public/views/pages/mae-dagua.html:1
+msgid ""
+"Os <a href=\"https://github.com/InfoAmazonia/rede-hardware\" "
+"rel=\"external\" target=\"_blank\">arquivos necessários para produção do "
+"equipamento</a>, bem como seu <a href=\"https://github.com/InfoAmazonia"
+"/rede-firmware\" rel=\"external\" target=\"_blank\">firmware</a>, estão "
+"disponíveis em licença MIT. O hardware é modular:"
+msgstr ""
+
 #: public/views/pages/network.html:1
 msgid ""
 "Os microssistemas coletivos captam água diretamente dos lençóis freáticos "
@@ -937,9 +996,10 @@ msgstr "Collective systems take water directly from the groundwater through deep
 
 #: public/views/pages/mae-dagua.html:1
 msgid ""
-"Os resultados são acessíveis através deste site e alertam sobre possível "
-"contaminação."
-msgstr "The results are available in this site and will alert you in any contamination in the project's monitored spots."
+"Os resultados são acessíveis através deste site e alertam sobre <b "
+"translate=\"\">possível</b> contaminação, sem fornecer um resultado "
+"conclusivo."
+msgstr ""
 
 #: public/views/sensor/report.html:1
 msgid ""
@@ -947,19 +1007,24 @@ msgid ""
 " sobre possível contaminação."
 msgstr "The results are available at rede.infoamazonia.org and alert you to possible contamination."
 
-#: public/views/index.html:1 public/views/pages/mae-dagua.html:1
+#: public/views/pages/monitoring.html:1
+msgid ""
+"Para entender melhor as descrições abaixo, é importante entender que um íon "
+"é qualquer átomo ou grupo de átomos que tem carga positiva ou negativa. Íons"
+" são formados pela adição ou remoção de elétrons a, ou remoção de elétrons "
+"de, átomos ou moléculas ou outros íons; pela combinação de íons com outras "
+"partículas; ou pela ruptura de um vínculo covalente entre 2 átomos de modo "
+"que ambos os elétrons do vínculo são deixados em associação a um dos átomos "
+"da reação."
+msgstr ""
+
+#: public/views/index.html:1
 msgid "Parâmetros monitorados"
 msgstr "Monitored parameters "
 
 #: public/views/pages/faq.html:1
 msgid "Perguntas frequentes"
 msgstr "FAQs"
-
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"Plataforma Eagle: software livre utilizado para gerar o circuito e desenho "
-"do hardware."
-msgstr "Eagle Platform: free software tool used to generate circuits and hardware design."
 
 #: public/views/sensor/report.html:1
 msgid "Potencial de redução da oxidação (ORP)"
@@ -999,9 +1064,14 @@ msgstr "Subscribe to this sensor"
 msgid "Rede"
 msgstr "Network"
 
-#: public/views/index.html:1 public/views/pages/network.html:1
+#: public/views/index.html:1 public/views/pages/monitoring.html:1
+#: public/views/pages/network.html:1
 msgid "Rede de monitoramento"
 msgstr "Monitoring network"
+
+#: public/views/pages/monitoring.html:4
+msgid "Referências"
+msgstr ""
 
 #: public/views/sensor/report.html:1
 msgid ""
@@ -1078,19 +1148,13 @@ msgstr "Subscribed sensors"
 msgid "Seu email"
 msgstr "Your email"
 
-#: public/views/account.html:1 public/views/auth.html:1
+#: public/views/account.html:1
 msgid "Seu nome"
 msgstr "Your name"
 
 #: public/views/account.html:1 public/views/auth.html:1
 msgid "Seu telefone"
 msgstr "Your phone number"
-
-#: public/views/pages/mae-dagua.html:1
-msgid ""
-"Shield: É uma placaque recebe as leituras físico-químicas ambientais para "
-"análise de qualidade da água."
-msgstr "Shield: board which receives the physical-chemical environmental readings for water quality analysis."
 
 #: public/views/pages/about.html:1
 msgid "Sobre o projeto"
@@ -1112,9 +1176,14 @@ msgstr "We monitor parameters that help indicate the presence of chemical and bi
 msgid "Telefone"
 msgstr "Phone number"
 
+#: public/views/index.html:1 public/views/pages/monitoring.html:1
 #: public/views/sensor/report.html:1
 msgid "Temperatura"
 msgstr "Temperature"
+
+#: public/views/index.html:1 public/views/pages/monitoring.html:4
+msgid "Temperatura do equipamento"
+msgstr ""
 
 #: public/views/pages/network.html:1
 msgid ""
@@ -1128,7 +1197,7 @@ msgid ""
 "servidos por água proveniente de poço ou nascente. <a "
 "href=\"http://visaguas.infoamazonia.org/\" rel=\"external\" "
 "target=\"_blank\">Saiba mais sobre Abastecimento e Doenças na Amazônia</a>"
-msgstr "Consideting the importance of water supply through alternative systems, the project prioritized monitoring collective microsystems, which are managed by the community, with particular attention to people living in conservation and sustainable areas. It is important to mention that in Pará state only 47.92% of households are served by public water supply, and that 36.78% of permanent households are served by water from a well or spring. <a href=\"http://visaguas.infoamazonia.org/\" rel=\"external\" target=\"_blank\">Learn more about Supply and Diseases in the Amazon</a>."
+msgstr "Considering the importance of water supply through alternative systems, the project prioritized monitoring collective microsystems, which are managed by the community, with particular attention to people living in conservation and sustainable areas. It is important to mention that in Pará state only 47.92% of households are served by public water supply, and that 36.78% of permanent households are served by water from a well or spring. <a href=\"http://visaguas.infoamazonia.org/\" rel=\"external\" target=\"_blank\">Learn more about Supply and Diseases in the Amazon</a>."
 
 #: public/views/admin/sensors-edit.html:1
 msgid "URL da imagem"
@@ -1227,9 +1296,30 @@ msgstr "connected via"
 msgid "em cidades da"
 msgstr "in cities of the"
 
+#: public/views/auth.html:1
+msgid ""
+"login')\" href=\"#\" translate class=\"button bold\">Eu já tenho uma "
+"conta</a></p><p ng-show=\"form == 'login'\"><a ng-"
+"click=\"switch('register')\" href=\"#\" translate class=\"button "
+"bold\">Ainda não tenho uma conta</a></p><p ng-show=\"form == "
+"'register'\"><input type=\"text\" placeholder=\"{{'Seu nome"
+msgstr ""
+
+#: public/views/index.html:1 public/views/pages/monitoring.html:1
+msgid "pH"
+msgstr ""
+
+#: public/views/pages/monitoring.html:2
+msgid "pH;"
+msgstr ""
+
 #: public/views/home.html:1
 msgid "para gerar indicadores de"
 msgstr "to generate indicators of"
+
+#: public/views/pages/mae-dagua.html:1
+msgid "possível"
+msgstr ""
 
 #: public/views/sensor.html:1
 msgid "próximo"
