@@ -206,6 +206,11 @@ angular.module('rede')
 
 		$scope.sensors = sensors.sensors;
 
+		// temp solution
+		$scope.sensors = _.filter($scope.sensors, function(sensor) {
+			return sensor.name.indexOf('#') !== 0;
+		});
+
 		$scope.markers = [];
 
 		_.each($scope.sensors, function(sensor) {

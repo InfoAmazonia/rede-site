@@ -76,10 +76,10 @@ article#sensor
 						.chart
 							reading-chart(dataset="aggregates" label="chart.current.type.name[paramLang]")
 				.container
-					.six.columns
-						.download
-							a.button(href="#" translate) Baixar estes dados
-					.six.columns
+					//- .six.columns
+					//- 	.download
+					//- 		a.button(href="#" translate) Baixar estes dados
+					.twelve.columns
 						.report
 							a.button(ui-sref="sensor.report({from: chartDateFrom, to: chartDateTo})" translate) Gerar relatório
 

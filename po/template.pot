@@ -262,10 +262,6 @@ msgstr ""
 msgid "Atualizar senha"
 msgstr ""
 
-#: public/views/sensor.html:1
-msgid "Baixar estes dados"
-msgstr ""
-
 #: public/views/pages/press.html:1
 msgid "Blog do InfoAmazonia na UOL"
 msgstr ""
@@ -333,7 +329,7 @@ msgstr ""
 msgid "Confirmar assinatura"
 msgstr ""
 
-#: src/js/controllers.js:380
+#: src/js/controllers.js:385
 msgid "Customizado"
 msgstr ""
 
@@ -535,7 +531,7 @@ msgstr ""
 msgid "Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país."
 msgstr ""
 
-#: src/js/controllers.js:818
+#: src/js/controllers.js:823
 msgid "Medição removida."
 msgstr ""
 
@@ -803,19 +799,19 @@ msgstr ""
 msgid "Senha atualizada"
 msgstr ""
 
-#: src/js/controllers.js:769
+#: src/js/controllers.js:774
 msgid "Senhas não coincidem"
 msgstr ""
 
-#: src/js/controllers.js:691
+#: src/js/controllers.js:696
 msgid "Sensor atualizado."
 msgstr ""
 
-#: src/js/controllers.js:696
+#: src/js/controllers.js:701
 msgid "Sensor criado."
 msgstr ""
 
-#: src/js/controllers.js:662
+#: src/js/controllers.js:667
 msgid "Sensor removido."
 msgstr ""
 
@@ -840,6 +836,7 @@ msgid "Seu email"
 msgstr ""
 
 #: public/views/account.html:1
+#: public/views/auth.html:1
 msgid "Seu nome"
 msgstr ""
 
@@ -888,15 +885,15 @@ msgstr ""
 msgid "Unidade de medida"
 msgstr ""
 
-#: src/js/controllers.js:774
+#: src/js/controllers.js:779
 msgid "Usuário atualizado."
 msgstr ""
 
-#: src/js/controllers.js:779
+#: src/js/controllers.js:784
 msgid "Usuário criado."
 msgstr ""
 
-#: src/js/controllers.js:742
+#: src/js/controllers.js:747
 msgid "Usuário removido."
 msgstr ""
 
@@ -933,7 +930,7 @@ msgstr ""
 msgid "Você ainda não assinou nenhum sensor!"
 msgstr ""
 
-#: src/js/controllers.js:510
+#: src/js/controllers.js:515
 msgid "Você deixou de assinar este sensor!"
 msgstr ""
 
@@ -941,29 +938,29 @@ msgstr ""
 msgid "Você deve inserir uma senha"
 msgstr ""
 
-#: src/js/controllers.js:496
+#: src/js/controllers.js:501
 msgid "Você está assinando este sensor!"
 msgstr ""
 
-#: src/js/controllers.js:501
+#: src/js/controllers.js:506
 msgid "Você já assina este sensor!"
 msgstr ""
 
-#: src/js/controllers.js:703
+#: src/js/controllers.js:708
 msgid "Você tem certeza que deseja enviar \"\" para os assinantes de ?"
 msgstr ""
 
-#: src/js/controllers.js:787
+#: src/js/controllers.js:792
 msgid "Você tem certeza que deseja enviar \"\" para para ?"
 msgstr ""
 
-#: src/js/controllers.js:624
+#: src/js/controllers.js:629
 msgid "Você tem certeza que deseja enviar \"\" para todos os assinantes?"
 msgstr ""
 
-#: src/js/controllers.js:660
-#: src/js/controllers.js:740
-#: src/js/controllers.js:816
+#: src/js/controllers.js:665
+#: src/js/controllers.js:745
+#: src/js/controllers.js:821
 msgid "Você tem certeza?"
 msgstr ""
 
@@ -977,10 +974,6 @@ msgstr ""
 
 #: public/views/home.html:1
 msgid "em cidades da"
-msgstr ""
-
-#: public/views/auth.html:1
-msgid "login')\" href=\"#\" translate class=\"button bold\">Eu já tenho uma conta</a></p><p ng-show=\"form == 'login'\"><a ng-click=\"switch('register')\" href=\"#\" translate class=\"button bold\">Ainda não tenho uma conta</a></p><p ng-show=\"form == 'register'\"><input type=\"text\" placeholder=\"{{'Seu nome"
 msgstr ""
 
 #: public/views/index.html:1
@@ -1021,7 +1014,7 @@ msgstr ""
 msgid "Área administrativa"
 msgstr ""
 
-#: src/js/controllers.js:372
+#: src/js/controllers.js:377
 msgid "Últimas 24 horas"
 msgstr ""
 
@@ -1030,6 +1023,6 @@ msgstr ""
 msgid "Últimas medições"
 msgstr ""
 
-#: src/js/controllers.js:376
+#: src/js/controllers.js:381
 msgid "Últimos 30 dias"
 msgstr ""
