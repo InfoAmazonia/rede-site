@@ -346,6 +346,7 @@ describe('API: Sensors', function(){
             identifier: '+550000000000',
             name: 'changed name',
             description: 'changed description',
+            isPrivate: false,
             geometry: {
               type: 'Point',
               coordinates: [-46.222222, -23.11111]
@@ -366,6 +367,7 @@ describe('API: Sensors', function(){
               body.should.have.property('identifier', payload.identifier);
               body.should.have.property('name', payload.name);
               body.should.have.property('description', payload.description);
+              body.should.have.property('isPrivate', payload.isPrivate);
 
               /* Location geojson */
               var geometryGeojson = body.geometry;

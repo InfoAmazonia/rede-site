@@ -22,6 +22,7 @@ var SensorSchema = new Schema({
   identifier: {type: String, required: 'missing_identifier'}, // phone or mac address
   name: {type: String, required: 'missing_name'},
   description: {type: String},
+  isPrivate: {type: Boolean, default: true},
   image: {type: String},
 	geometry: { type: {type: String}, coordinates: []},
   createdAt: {type: Date, default: Date.now},
