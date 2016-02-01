@@ -2,7 +2,8 @@
 	h3
 		span(translate) Últimas medições
 		span.realtime
-	table(class="amount-{{amount}}")
+	p(ng-hide="latest.length") Nenhuma medição foi encontrada
+	table(class="amount-{{amount}}" ng-show="latest.length")
 		thead
 			tr
 				th(title="{{'Hora' | translate}}")
