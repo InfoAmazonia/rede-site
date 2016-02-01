@@ -83,7 +83,7 @@ article#sensor
 						.report
 							a.button(ui-sref="sensor.report({from: chartDateFrom, to: chartDateTo})" translate) Gerar relatório
 
-		section#sensor-city.anchor-section(ng-show="visaguasUrl")
+		section#sensor-city.anchor-section.hide-if-mobile(ng-show="visaguasUrl")
 			.container
 				.six.columns
 					h2(translate) Qualidade da água e doenças em 
