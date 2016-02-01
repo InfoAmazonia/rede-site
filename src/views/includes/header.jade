@@ -1,11 +1,11 @@
 header#masthead.row
 	.container
-		.four.columns
+		.left-head
 			h1 
 				a(ui-sref='home' translate)
 					span Rede
 					| InfoAmazonia
-		.eight.columns
+		.right-head
 			nav#mastnav
 				ul
 					li
@@ -50,6 +50,13 @@ header#masthead.row
 								a(ui-sref="maedagua({'#': 'limitacoes'})" translate) Limitações
 					li
 						a(ui-sref="faq" translate) FAQ
+					li(ng-controller="SensorNavCtrl" ng-show="sensors.length")
+						a(href="javascript:void(0)")
+							span(translate) Sensores
+							span.icon-chevron-down
+						ul.sensor-list
+							li(ng-repeat="sensor in sensors")
+								a(ui-sref="sensor({sensorId: sensor._id})") {{sensor.name}}
 					li(ng-controller="AuthCtrl")
 						a(ui-sref="login" ng-hide="token" translate) Entrar
 						a(ui-sref="account" ng-show="token") 

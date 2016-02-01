@@ -17,6 +17,22 @@ angular.module('rede')
 	}
 ])
 
+.controller('SensorNavCtrl', [
+	'$scope',
+	'RedeService',
+	function($scope, Rede) {
+		Rede.sensors.query({}, function(data) {
+			$scope.sensors = data.sensors;
+
+			// temp solution
+			$scope.sensors = _.filter($scope.sensors, function(sensor) {
+				return sensor.name.indexOf('#') !== 0;
+			});
+
+		});
+	}
+])
+
 .controller('AccountCtrl', [
 	'$scope',
 	'RedeService',
