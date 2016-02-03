@@ -717,6 +717,10 @@ msgstr ""
 msgid "Potencial hidrogeniônico (pH)"
 msgstr ""
 
+#: public/views/admin/sensors-edit.html:1
+msgid "Privado"
+msgstr ""
+
 #: public/views/index.html:1
 msgid "Projeto"
 msgstr ""

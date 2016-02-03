@@ -26,7 +26,7 @@ angular.module('rede')
 
 			// temp solution
 			$scope.sensors = _.filter($scope.sensors, function(sensor) {
-				return sensor.name.indexOf('#') !== 0;
+				return !sensor.isPrivate;
 			});
 
 		});
@@ -224,7 +224,7 @@ angular.module('rede')
 
 		// temp solution
 		$scope.sensors = _.filter($scope.sensors, function(sensor) {
-			return sensor.name.indexOf('#') !== 0;
+			return !sensor.isPrivate;
 		});
 
 		$scope.markers = [];

@@ -22,4 +22,7 @@ form(ng-submit="submit(sensor)")
     label(for="input_image" translate) URL da imagem
     input#input_image(type="text" ng-model="sensor.image")
   p
+    label(for="input_private" translate) Privado
+    input#input_private(type="checkbox" ng-model="sensor.isPrivate")
+  p
     input(type="submit" value="{{'Enviar' | translate}}")
