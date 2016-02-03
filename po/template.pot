@@ -13,23 +13,23 @@ msgid "\"Condutividade (...);"
 msgstr ""
 
 #: public/views/pages/monitoring.html:1
-msgid "\"Condutividade é uma medida da capacidade da água de passar uma corrente elétrica. Essa habilidade é diretamente relacionada com a concentração de íons na água. Esses íons condutivos vêm de sais dissolvidos e outros materiais inorgânicos. (...) Quantos mais íons estiverem presentes, maior a condutividade da água. Do mesmo modo, quanto menos íons houverem na água, menos condutiva ela é. Água destilada ou desionizada pode agir como isolante devido à sua condutividade muito baixa. Água do mar, por outro lado, tem uma condutividade muito alta.\"<sup>[2]</sup>"
+msgid "\"Condutividade é uma medida da capacidade da água de passar uma corrente elétrica. Essa habilidade é diretamente relacionada com a concentração de íons na água. Esses íons condutivos vêm de sais dissolvidos e outros materiais inorgânicos. (...) Quantos mais íons estiverem presentes, maior a condutividade da água. Do mesmo modo, quanto menos íons houverem na água, menos condutiva ela é. Água destilada ou desionizada pode agir como isolante devido à sua condutividade muito baixa. Água do mar, por outro lado, tem uma condutividade muito alta.\"<sup> <a href=\"#sup-2\">[2]</a></sup>"
 msgstr ""
 
 #: public/views/pages/monitoring.html:1
-msgid "\"Da mesma maneira que a transferência de íons de hidrogênio entre espécies químicas determina o pH de uma solução aquosa, a transferência de elétrons entre espécies químicas determina o\"<sup>[8]</sup> potencial de oxidação/redução (ORP, ou potencial redox) \"de uma solução aquosa. Assim como o pH, o potencial de redução representa quão fortemente elétrons são transferidos de ou para espécies em uma solução.\"<sup>[8]</sup>"
+msgid "\"Da mesma maneira que a transferência de íons de hidrogênio entre espécies químicas determina o pH de uma solução aquosa, a transferência de elétrons entre espécies químicas determina o\"<sup> <a href=\"#sup-8\">[8]</a></sup> potencial de oxidação/redução (ORP, ou potencial redox) \"de uma solução aquosa. Assim como o pH, o potencial de redução representa quão fortemente elétrons são transferidos de ou para espécies em uma solução.\"<sup> <a href=\"#sup-8\">[8]</a></sup>"
 msgstr ""
 
 #: public/views/pages/monitoring.html:1
-msgid "\"O pH ótimo vai variar em diferentes fornecedores a partir da composição da água e da natureza da construção dos materiais no sistema de distribuição.\"<sup>[6]</sup> O Governo Brasileiro recomenda manter o nível de pH em sistemas de distribuição entre 6 e 9,5.<sup>[7]</sup>"
+msgid "\"O pH ótimo vai variar em diferentes fornecedores a partir da composição da água e da natureza da construção dos materiais no sistema de distribuição.\"<sup> <a href=\"#sup-6\">[6]</a></sup> O Governo Brasileiro recomenda manter o nível de pH em sistemas de distribuição entre 6 e 9,5.<sup> <a href=\"#sup-7\">[7]</a></sup>"
 msgstr ""
 
 #: public/views/pages/monitoring.html:1
-msgid "\"pH é a medida de quão ácida/básica é a água.\"<sup>[5]</sup> Um nível 7 de pH é neutro, valores \"menores que 7 indicam acidez, e valores maiores que 7 indicam uma base. pH é a medida relativa da quantidade de íons de hidrogênio e hidroxilo na água. Água que tem mais íons de hidrogênio livres é ácida, e água que tem mais íons de hidroxilo é básica. Como o pH pode ser afetado por substâncias químicas na água, pH é um importante indicador de água que está mudando quimicamente.\"<sup>[5]</sup>"
+msgid "\"pH é a medida de quão ácida/básica é a água.\"<sup> <a href=\"#sup-5\">[5]</a></sup> Um nível 7 de pH é neutro, valores \"menores que 7 indicam acidez, e valores maiores que 7 indicam uma base. pH é a medida relativa da quantidade de íons de hidrogênio e hidroxilo na água. Água que tem mais íons de hidrogênio livres é ácida, e água que tem mais íons de hidroxilo é básica. Como o pH pode ser afetado por substâncias químicas na água, pH é um importante indicador de água que está mudando quimicamente.\"<sup><a href=\"#sup-5\">[5]</a></sup>"
 msgstr ""
 
 #: public/views/pages/monitoring.html:1
-msgid "\"É possível definir um nível do ORP necessário para assegurar desinfecção efetiva. Esse valor deve ser determinado caso a caso; valores universais não são recomendados. Mais pesquisa e avaliação do ORP como uma técnica operacional de monitoramento é altamente recomendada pela Organização Mundial de Saúde.\"<sup>[10]</sup>"
+msgid "\"É possível definir um nível do ORP necessário para assegurar desinfecção efetiva. Esse valor deve ser determinado caso a caso; valores universais não são recomendados. Mais pesquisa e avaliação do ORP como uma técnica operacional de monitoramento é altamente recomendada pela Organização Mundial de Saúde.\"<sup> <a href=\"#sup-10\">[10]</a></sup>"
 msgstr ""
 
 #: public/views/pages/press.html:1
@@ -322,7 +322,7 @@ msgid "Condutividade elétrica"
 msgstr ""
 
 #: public/views/pages/monitoring.html:1
-msgid "Condutividade é uma maneira indireta de medir concentração de poluentes, e mudanças em seu nível indica mudanças na composição da água.<sup>[3]</sup> Água entre 0 - 2500 μS/cm pode ser consumida por humanos, apesar de que estes preferem água na primeira metade dessa variação se estiver disponível. <sup>[4]</sup>"
+msgid "Condutividade é uma maneira indireta de medir concentração de poluentes, e mudanças em seu nível indica mudanças na composição da água.<sup> <a href=\"#sup-3\">[3]</a></sup> Água entre 0 - 2500 μS/cm pode ser consumida por humanos, apesar de que estes preferem água na primeira metade dessa variação se estiver disponível. <sup> <a href=\"#sup-4\">[4]</a></sup>"
 msgstr ""
 
 #: public/views/sensor/subscribe.html:1
@@ -666,7 +666,7 @@ msgid "ORP"
 msgstr ""
 
 #: public/views/pages/monitoring.html:1
-msgid "ORP mede a habilidade da água \"de limpar-se ou quebrar produtos como contaminantes e plantas e animais mortos. Quando o valor do ORP é alto, existe muito oxigênio presente na água. Isso significa que bactérias que decompõem tecidos mortos e contaminantes pode trabalhar com mais eficiência. Em geral, quanto maior o valor do ORP, mais saudável é a água.\"<sup>[9]</sup>"
+msgid "ORP mede a habilidade da água \"de limpar-se ou quebrar produtos como contaminantes e plantas e animais mortos. Quando o valor do ORP é alto, existe muito oxigênio presente na água. Isso significa que bactérias que decompõem tecidos mortos e contaminantes pode trabalhar com mais eficiência. Em geral, quanto maior o valor do ORP, mais saudável é a água.\"<sup> <a href=\"#sup-9\">[9]</a></sup>"
 msgstr ""
 
 #: public/views/pages/monitoring.html:3
