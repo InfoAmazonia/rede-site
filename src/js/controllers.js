@@ -315,7 +315,7 @@ angular.module('rede')
 
 		if(Address.data.address) {
 			$scope.city = Address.data.address.city;
-			if($scope.city == 'Santarém') {
+			if($scope.city == 'Santarém' || $scope.city == 'Mojuí dos Campos') {
 				$scope.visaguasUrl = $sce.trustAsResourceUrl('http://visaguas.infoamazonia.org/uf/15/cidade/150680/?theme=rede&lock=true&hide_title=true');
 			} else if($scope.city == 'Belterra') {
 				$scope.visaguasUrl = $sce.trustAsResourceUrl('http://visaguas.infoamazonia.org/uf/15/cidade/150145/?theme=rede&lock=true&hide_title=true');
