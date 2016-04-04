@@ -33,7 +33,7 @@ article#sensor
 				.twelve.columns
 					img.cmm-pic(ng-src="{{sensor.image}}")
 					h2(translate) Comunidade deste sensor
-					p {{sensor.description}} 
+					div(ng-bind-html="sensor.description | autop | trustHtml")
 		section#sensor-main.anchor-section
 			.container
 				.six.columns

@@ -337,6 +337,7 @@ require('./translations');
 require('./messages');
 
 require('./service');
+require('./filters');
 require('./directives');
 require('./controllers');
 
