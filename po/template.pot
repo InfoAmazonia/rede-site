@@ -262,6 +262,10 @@ msgstr ""
 msgid "Atualizar senha"
 msgstr ""
 
+#: public/views/sensor.html:1
+msgid "Baixar estes dados"
+msgstr ""
+
 #: public/views/pages/press.html:1
 msgid "Blog do InfoAmazonia na UOL"
 msgstr ""
@@ -531,7 +535,7 @@ msgstr ""
 msgid "Mas o acesso ao saneamento nos 771 munícipios da região está entre as piores do país."
 msgstr ""
 
-#: src/js/controllers.js:839
+#: src/js/controllers.js:843
 msgid "Medição removida."
 msgstr ""
 
@@ -803,19 +807,19 @@ msgstr ""
 msgid "Senha atualizada"
 msgstr ""
 
-#: src/js/controllers.js:790
+#: src/js/controllers.js:794
 msgid "Senhas não coincidem"
 msgstr ""
 
-#: src/js/controllers.js:712
+#: src/js/controllers.js:716
 msgid "Sensor atualizado."
 msgstr ""
 
-#: src/js/controllers.js:717
+#: src/js/controllers.js:721
 msgid "Sensor criado."
 msgstr ""
 
-#: src/js/controllers.js:683
+#: src/js/controllers.js:687
 msgid "Sensor removido."
 msgstr ""
 
@@ -890,15 +894,15 @@ msgstr ""
 msgid "Unidade de medida"
 msgstr ""
 
-#: src/js/controllers.js:795
+#: src/js/controllers.js:799
 msgid "Usuário atualizado."
 msgstr ""
 
-#: src/js/controllers.js:800
+#: src/js/controllers.js:804
 msgid "Usuário criado."
 msgstr ""
 
-#: src/js/controllers.js:763
+#: src/js/controllers.js:767
 msgid "Usuário removido."
 msgstr ""
 
@@ -935,7 +939,7 @@ msgstr ""
 msgid "Você ainda não assinou nenhum sensor!"
 msgstr ""
 
-#: src/js/controllers.js:531
+#: src/js/controllers.js:535
 msgid "Você deixou de assinar este sensor!"
 msgstr ""
 
@@ -943,29 +947,29 @@ msgstr ""
 msgid "Você deve inserir uma senha"
 msgstr ""
 
-#: src/js/controllers.js:517
+#: src/js/controllers.js:521
 msgid "Você está assinando este sensor!"
 msgstr ""
 
-#: src/js/controllers.js:522
+#: src/js/controllers.js:526
 msgid "Você já assina este sensor!"
 msgstr ""
 
-#: src/js/controllers.js:724
+#: src/js/controllers.js:728
 msgid "Você tem certeza que deseja enviar \"\" para os assinantes de ?"
 msgstr ""
 
-#: src/js/controllers.js:808
+#: src/js/controllers.js:812
 msgid "Você tem certeza que deseja enviar \"\" para para ?"
 msgstr ""
 
-#: src/js/controllers.js:645
+#: src/js/controllers.js:649
 msgid "Você tem certeza que deseja enviar \"\" para todos os assinantes?"
 msgstr ""
 
-#: src/js/controllers.js:681
-#: src/js/controllers.js:761
-#: src/js/controllers.js:837
+#: src/js/controllers.js:685
+#: src/js/controllers.js:765
+#: src/js/controllers.js:841
 msgid "Você tem certeza?"
 msgstr ""
 

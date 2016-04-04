@@ -27,7 +27,7 @@ angular.module('rede')
 					method: 'PUT'
 				}
 			}),
-			sensors: $resource(apiUrl + '/sensors/:id', { id: '@id' }, {
+			sensors: _.extend($resource(apiUrl + '/sensors/:id', { id: '@id' }, {
 				query: {
 					method: 'GET',
 					isArray: false
@@ -52,6 +52,10 @@ angular.module('rede')
 					url: apiUrl + '/sensors/:id/unsubscribe',
 					method: 'POST',
 					isArray: false
+				}
+			}), {
+				getDownloadUrl: function(sensorId, param) {
+					return apiUrl + '/sensors/' + sensorId + '/measurements/' + param + '.csv';
 				}
 			}),
 			measurements: $resource(apiUrl + '/measurements/:id', { id: '@id' }, {

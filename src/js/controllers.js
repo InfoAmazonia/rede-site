@@ -490,6 +490,10 @@ angular.module('rede')
 			updateChart();
 		});
 
+		$scope.getDownloadUrl = function() {
+			return Rede.sensors.getDownloadUrl($scope.sensor._id, $scope.chart.current.type._id);
+		};
+
 	}
 ])
 
