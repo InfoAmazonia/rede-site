@@ -54,11 +54,11 @@ var parameters = {
     "defaultUnit": "C",
     "qualityWeight": 0.10
   },
-  "ambient_temperature": {
-    "_id": "ambient_temperature",
+  "sensor_temperature": {
+    "_id": "sensor_temperature",
     "name": {
-      "en": "Ambient temperature",
-      "pt": "Temperatura ambiente"
+      "en": "Sensor temperature",
+      "pt": "Temperatura do sensor"
     },
     "abbreviations": ["Ta"],
     "defaultUnit": "C"
@@ -74,7 +74,7 @@ module.exports = {
 		rootPath: rootPath,
 		apiPrefix: apiPrefix,
 		parameters: parameters,
-		db: 'mongodb://localhost/rede_dev'
+		db: 'mongodb://localhost/rede'
 	},
 	test: {
 		rootPath: rootPath,

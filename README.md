@@ -492,7 +492,7 @@ A list of measurements will be return as JSON, with HTTP status code 200 (succes
             }
         },
         "collectedAt": "2015-08-01T13:08:15.000Z",
-        "parameter": "ambient_temperature",
+        "parameter": "sensor_temperature",
         "unit": "F",
         "value": 78.29,
         "_id": "55c4ba47b01be2cb5b3c76b1"

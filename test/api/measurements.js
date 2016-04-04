@@ -460,7 +460,7 @@ describe('API: Measurements', function(){
               Measurement
                 .findOne({
                   sensor: sensor1._id,
-                  parameter: 'ambient_temperature',
+                  parameter: 'sensor_temperature',
                   collectedAt: {
                     $gte: time,
                     $lte: time
@@ -539,7 +539,7 @@ describe('API: Measurements', function(){
               Measurement
                 .find({
                   sensor: sensor2._id,
-                  parameter: 'ambient_temperature'
+                  parameter: 'sensor_temperature'
                 })
                 .sort('-collectedAt')
                 .limit(1)
@@ -601,7 +601,7 @@ describe('API: Measurements', function(){
               Measurement
                 .findOne({
                   sensor: sensor1._id,
-                  parameter: 'ambient_temperature',
+                  parameter: 'sensor_temperature',
                   collectedAt: {
                     $gte: time,
                     $lte: time
