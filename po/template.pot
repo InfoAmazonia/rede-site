@@ -927,7 +927,7 @@ msgstr ""
 msgid "Verifique se as senhas digitadas são identicas"
 msgstr ""
 
-#: src/js/directives.js:563
+#: src/js/directives.js:571
 msgid "Verifique se as senhas digitadas são iguais"
 msgstr ""
 

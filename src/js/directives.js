@@ -482,6 +482,8 @@ angular.module('rede')
 						}
 					};
 
+					// $('.anchor-section').wrapAll('<div class="anchor-section-container" />');
+
 					var scroll = function() {
 						var scrollTop = $(window).scrollTop();
 						if(scrollTop >= offset) {
@@ -499,7 +501,10 @@ angular.module('rede')
 								anchorOffset = clone.height() + 42;
 								$('.anchor-section').each(function() {
 									var section = $(this);
-									section.css({
+									if(!section.parent().hasClass('anchor-section-container')) {
+										section.wrapAll('<div class="anchor-section-container" />');
+									}
+									section.parent().css({
 										'padding-top': '+=' + anchorOffset + 'px',
 										'margin-top': '-=' + anchorOffset + 'px'
 									});
@@ -511,7 +516,10 @@ angular.module('rede')
 								clone = false;
 								$('.anchor-section').each(function() {
 									var section = $(this);
-									section.css({
+									if(!section.parent().hasClass('anchor-section-container')) {
+										section.wrapAll('<div class="anchor-section-container" />');
+									}
+									section.parent().css({
 										'padding-top': '-=' + anchorOffset + 'px',
 										'margin-top': '+=' + anchorOffset + 'px'
 									});
