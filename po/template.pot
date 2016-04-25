@@ -706,6 +706,10 @@ msgid "Para entender melhor as descrições abaixo, é importante entender que u
 msgstr ""
 
 #: public/views/index.html:1
+msgid "Partnership"
+msgstr ""
+
+#: public/views/index.html:1
 msgid "Parâmetros monitorados"
 msgstr ""
 
@@ -723,6 +727,10 @@ msgstr ""
 
 #: public/views/admin/sensors-edit.html:1
 msgid "Privado"
+msgstr ""
+
+#: public/views/index.html:1
+msgid "Project by"
 msgstr ""
 
 #: public/views/index.html:1
