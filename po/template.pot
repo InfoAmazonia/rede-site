@@ -229,6 +229,14 @@ msgstr ""
 msgid "Ao observar potencial de contaminação a partir dos dados do site, devem ser relizadas outras análises."
 msgstr ""
 
+#: public/views/index.html:1
+msgid "Apoio"
+msgstr ""
+
+#: public/views/index.html:1
+msgid "Apoio Institucional"
+msgstr ""
+
 #: public/views/pages/mae-dagua.html:1
 msgid "Aspectos técnicos"
 msgstr ""
@@ -706,7 +714,7 @@ msgid "Para entender melhor as descrições abaixo, é importante entender que u
 msgstr ""
 
 #: public/views/index.html:1
-msgid "Partnership"
+msgid "Parceria"
 msgstr ""
 
 #: public/views/index.html:1
@@ -727,10 +735,6 @@ msgstr ""
 
 #: public/views/admin/sensors-edit.html:1
 msgid "Privado"
-msgstr ""
-
-#: public/views/index.html:1
-msgid "Project by"
 msgstr ""
 
 #: public/views/index.html:1
@@ -755,6 +759,10 @@ msgstr ""
 
 #: public/views/home.html:1
 msgid "Qualidade da água e doenças na Amazônia"
+msgstr ""
+
+#: public/views/index.html:1
+msgid "Realização"
 msgstr ""
 
 #: public/views/sensor.html:1

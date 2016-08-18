@@ -1,18 +1,23 @@
 #colophon
   .container
-    .four.columns
-      a(href="https://desafiosocial.withgoogle.com/brazil2014" target="_blank" rel="external")
-        img.google(src="/img/logos/google.png" alt="Google")
-    .four.columns
-      h3(translate) Project by
+    .three.columns
+      h3(translate) Realização
       a(href="http://infoamazonia.org" rel="external" target="_blank")
         img.ia(src="/img/logos/ia.png" alt="InfoAmazonia")
-    .four.columns
-      h3(translate) Partnership
+    .three.columns
+      h3(translate) Apoio
+      a(href="https://desafiosocial.withgoogle.com/brazil2014" target="_blank" rel="external")
+        img.google(src="/img/logos/google.png" alt="Google")
+    .three.columns
+      h3(translate) Parceria
       a(href="http://www.saudeealegria.org.br/" rel="external" target="_blank")
         img.sa(src="/img/logos/saude_alegria.png" alt="Saúde e Alegria")
       a(href="http://devtecnologia.com.br/" rel="external" target="_blank")
         img.dev(src="/img/logos/dev.png" alt="DEV Tecnologia")
+    .three.columns
+      h3(translate) Apoio Institucional
+      a(href="http://www.oeco.org.br/" rel="external" target="_blank")
+        img.oeco(src="/img/logos/oeco.png" alt="O Eco")
 .message-notification(ng-controller="MessageCtrl")
   .message-item(ng-repeat="message in messages" ng-show="message.text")
     .message-content
