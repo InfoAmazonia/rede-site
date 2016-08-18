@@ -1,6 +1,6 @@
 var apiPrefix = '/api/v1';
 var path = require('path');
-var rootPath = path.resolve(__dirname + '../..');
+var rootPath = path.resolve(__dirname + '/../');
 var parameters = {
   "atmospheric_pressure": {
     "_id": "atmospheric_pressure",
