@@ -53,7 +53,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "international-phone-number": "mareczek/international-phone-number#0.0.8",
     "intl-tel-input": "Bluefieldscom/intl-tel-input#v6.0.0",
-    "jquery": "^2.1.4",
+    "jquery": "^3.0.0",
     "leaflet": "^0.7.3",
     "leaflet.markercluster": "^0.4.0",
     "mapbox.js": "mapbox/mapbox.js#v2.2.1",
