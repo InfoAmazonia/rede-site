@@ -1,0 +1,6 @@
+version: "2"
+services:
+  rede-db:
+    image: mongo:3.2
+    ports:
+      - 27018:27017
