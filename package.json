@@ -6,7 +6,8 @@
   "scripts": {
     "postinstall": "napa && mkdir -p public && ./node_modules/.bin/grunt build",
     "start": "node app.js",
-    "watch": "NODE_ENV=development ./node_modules/.bin/nodemon --watch app.js",
+    "watch-server": "NODE_ENV=development ./node_modules/.bin/nodemon --watch app.js",
+    "watch-client": "NODE_ENV=development ./node_modules/.bin/grunt watch",
     "test": "NODE_ENV=test ./node_modules/.bin/mocha test"
   },
   "repository": {
@@ -18,7 +19,11 @@
     "water",
     "quality"
   ],
-  "author": "Miguel Peixe <miguel@cardume.art.br> (http://codigourbano.org/)",
+  "author": "InfoAmazonia <contact@infoamazonia.org>",
+  "contributors": [
+    "Miguel Peixe <miguel@cardume.art.br>",
+    "Vitor George <vitor.george@gmail.com>"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/infoamazonia/rede/issues"
