@@ -74,18 +74,12 @@ module.exports = {
 		rootPath: rootPath,
 		apiPrefix: apiPrefix,
 		parameters: parameters,
-		db: 'mongodb://localhost/rede'
+		db: 'mongodb://localhost:27018/rede-dev'
 	},
 	test: {
 		rootPath: rootPath,
 		apiPrefix: apiPrefix,
 		parameters: parameters,
-		db: 'mongodb://localhost/rede_test'
-	},
-	production: {
-		rootPath: rootPath,
-		apiPrefix: apiPrefix,
-		parameters: parameters,
-		db: process.env.MONGO_URI || 'mongodb://localhost/rede_production'
+		db: 'mongodb://localhost:27018/rede-test'
 	}
 }
