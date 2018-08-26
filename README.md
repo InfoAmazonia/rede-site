@@ -18,3 +18,7 @@ A documentação e código-fonte do RIA estão distribuídos em três repositór
 ### Contribua
 
 Use [issues](https://help.github.com/articles/creating-an-issue/) e [pull requests](https://help.github.com/articles/about-pull-requests/) para pedidos de suporte ou envio de contribuições ao projeto.
+
+## Licença
+
+Este é um software livre sob licença [MIT](LICENSE).
