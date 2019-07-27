@@ -10,7 +10,6 @@ var app = express();
 /*
  * Load config
  */
-var dotenv = require('dotenv').load({silent: true});
 var env = process.env.NODE_ENV || 'development'
 var config = require('./config')[env]
 var rootPath = config.rootPath
