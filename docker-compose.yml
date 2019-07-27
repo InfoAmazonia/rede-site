@@ -1,0 +1,29 @@
+version: '2'
+services:
+  app:
+    build: .
+    command: npm start 
+    links:
+      - mongo
+    ports:
+      - 23030:3000
+    #volumes:
+    #- /src/node_modules
+    #- .:/src
+    environment:
+      NODE_ENV: production 
+      MONGO_URI: mongodb://mongo/rede 
+    restart: always
+    networks:
+      - default
+      - weblan
+
+  mongo:
+    image: mongo:3.2
+    #ports:
+    # - 27018:27017
+
+networks:
+ weblan:
+   external: 
+    name: ispconfig_weblan
